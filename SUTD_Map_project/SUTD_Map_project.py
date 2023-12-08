@@ -1,13 +1,14 @@
 import time
+import Graph
+
 
 def testbench():
-    print(1+1)
+    gg = Graph.Graph()
+    print(gg.__dict__)
     pass
 
 def main():
     testbench()
-    print('test')
-    pass
 
 if __name__ == '__main__':
     start_time = time.process_time()
