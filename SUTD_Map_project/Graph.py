@@ -1,6 +1,8 @@
+import Json_OS_ProcessingFunctions
 
 class Graph():
     def __init__(self):
+        Json_OS_ProcessingFunctions.check_folders_exist()
         self.dd_graph = dict()  
         
     def __del__(self):
