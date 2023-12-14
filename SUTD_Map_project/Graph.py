@@ -19,7 +19,8 @@ class Graph():
                 "Visited": 0,
                 "Avg_density":1,
                 "Sheltered": True,
-                "Route_intersection": False
+                "Route_intersection": False,
+                "Access_Clearance": None
             }
         self.dd_graph[vertex_ID] = self.dd_vertex
     
@@ -33,13 +34,18 @@ class Graph():
         
 
     def query_vertex_Prefix(self):
-        ID_prefix = ["LIFT_","ROOM_","DUSTBIN_","IINTER_","TOILET_","STAIRS_"]
+        ID_prefix = ["LIFT_","ROOM_","DUSTBIN_","IINTER_","TOILET_","STAIRS_","ENTRANCE_"]
         print("Pick a prefix:\n{}".format(ID_prefix))
         pass
         
+    def query_vertex_Heading(self):
+        direction_heading = 0
+        print("Enter heading of vertex:\n")
+        return direction_heading
+        
     def query_vertex_ID(self):
         pass
-        
+           
     #store known solutions to be recalculated based on time to adjust for density and for rain
     #pseudo memo by storing solutions that aren't in runtime
     def store_solution(self):
