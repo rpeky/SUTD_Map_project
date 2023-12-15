@@ -24,6 +24,7 @@
     <Compile Include="Graph.py" />
     <Compile Include="Json_OS_ProcessingFunctions.py" />
     <Compile Include="SUTD_Map_project.py" />
+    <Compile Include="User.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
