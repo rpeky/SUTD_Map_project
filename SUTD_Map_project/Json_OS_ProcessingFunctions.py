@@ -4,7 +4,7 @@ import json
 #File handling module
 
 #to come up with folders needed to store data for easier validation
-folder_list = ['testfolder2']
+folder_list = ['Master','Working']
 
 def check_folders_exist():
     for folder in folder_list:
