@@ -1,15 +1,19 @@
 import time
 import Graph
 import User
+import json
 
 
 def testbench():
-    gg = Graph.Graph()
-    vt_pf = gg.query_vertex_Prefix()
-    print(vt_pf)
-    uu = User.User()
+
+    uu=User.User()
     uu.add_clearance()
+    uu.remove_clearance()
     print(uu.__dict__)
+    gg = Graph.Graph(uu.clearance_card)
+    gg.add_vertex()
+    print(gg.__dict__)    
+
 
 def main():
     testbench()
