@@ -33,8 +33,7 @@ class User():
             return self.query_vertex_Prefix()
         else:
             print("Not a valid input \nExiting add_clearance tool\n")
-               
-        
+                    
     def remove_clearance(self):
         cc_list = list(self.clearance_card)
         to_remove=""

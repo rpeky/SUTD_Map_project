@@ -5,12 +5,21 @@ selection_yes=['1','y','Y','Yes','yes']
 selection_no=['0','n','N','No','no']
 
 class Graph():
-    def __init__(self, clearance):
+    def __init__(self, area_file, clearance):
         Json_OS_ProcessingFunctions.check_folders_exist()
         self.dd_graph = dict()  
         self.access_clearance = clearance
+        self.area_file_tosave = area_file
+        
+        if self.check_area_file_exist(area_file):
+            print("Loading {} from Master")
+            self.dd_graph = Json_OS_ProcessingFunctions.load_file_json(area_file, 0)
+        else:
+            print("File does not exist")
         
     def __del__(self):
+        print("Saving to Working folder")
+        self.store_solution_Working()
         print('deleting')   
         
 #_GRAPH TOOLS_#
@@ -75,9 +84,6 @@ class Graph():
         else:
             self.dd_graph[neighbour_ID]["Neighbour"][vertex_ID]=adj_dist
             
-        
-        
-        
     def add_neighbour_distance(self):
         while True:
             try:
@@ -168,8 +174,15 @@ class Graph():
                
     #store known solutions to be recalculated based on time to adjust for density and for rain
     #pseudo memo by storing solutions that aren't in runtime
-    def store_solution(self):
-        pass
+    def store_solution_Master(self):
+        Json_OS_ProcessingFunctions.save_file_json(self.dd_graph, self.area_file_tosave, 0)
+        
+    def store_solution_Working(self):
+        Json_OS_ProcessingFunctions.save_file_json(self.dd_graph, self.area_file_tosave, 1)
+    
+    def check_area_file_exist(self, area_file):
+        #check if master file exists
+        return Json_OS_ProcessingFunctions.check_file_exist(area_file, 0)   
      
 #_GRAPH TOOLS_#
 
