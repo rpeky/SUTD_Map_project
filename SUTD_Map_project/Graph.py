@@ -16,6 +16,7 @@ class Graph():
             self.dd_graph = Json_OS_ProcessingFunctions.load_file_json(area_file, 0)
         else:
             print("File does not exist")
+            self.graph_generation_tool()
         
     def __del__(self):
         print("Saving to Working folder")
@@ -35,7 +36,9 @@ class Graph():
                     "Sheltered": True,
                     "Route_intersection": False,
                     "Access_Clearance": {},
-                    "Average_travel_time": None
+                    "Average_travel_time": None,
+                    "Room_ID": None,
+                    "Connection_Point": False
                 }
             self.dd_graph[vertex_ID] = dd_vertex
         self.neighbour_tool(vertex_ID)
@@ -171,6 +174,53 @@ class Graph():
         else:
             print("Not a valid input\n")
             return self.query_vertex_ID()
+        
+    def add_neighbour_display_existing_vertex_and_neighbour_tool(self):
+        existing_vertex = self.display_existing_vertex()
+        self.neighbour_tool(existing_vertex)
+        
+    def save_and_exit(self):
+        print("Saving and exiting graph generation tool.")
+        self.store_solution('Master', 0)
+        self.store_solution('Working', 1)
+        print("Saved")
+        
+    def graph_generation_tool(self):
+        print("Entering graph generation tool for {}".format(self.area_file_tosave[:-5]))
+        tool_options = {
+            '01': self.add_vertex,
+            '02': self.add_neighbour_display_existing_vertex_and_neighbour_tool,
+            '03': self.save_and_exit
+            }
+
+        while True:
+            print("\nCurrent Graph State: ")
+            print(json.dumps(self.dd_graph, indent=4))
+            
+            print("\nSelect option:\n")
+            for key, value in tool_options.items():
+                print("{}\t{}".format(key, value.__name__))
+                
+            print("q\tExit\n")
+
+            choice_option = input("Enter Choice: ")
+
+            if choice_option == 'q':
+                print("Exiting tool and saving")
+                self.save_and_exit()
+                break
+
+            choice_option = input("Enter Choice: ")
+            selected_option = tool_options.get(choice_option)
+
+            if selected_option:
+                selected_option()
+            else:
+                print("Invalid choice. Please select a valid option.\n")
+            
+            
+            
+            
                
     #store known solutions to be recalculated based on time to adjust for density and for rain
     #pseudo memo by storing solutions that aren't in runtime
@@ -188,11 +238,39 @@ class Graph():
 
 #_DEBUG PRINT STUFF_#
 
-
-
 #_DEBUG PRINT STUFF_#
         
 #_DENSIRY MODIFIER FUNCTIONS_#
+
+    def display_existing_vertex(self):
+        vert_list=list(self.dd_graph.keys())
+        selection=[i for i in range(len(vert_list))]
+        for i in range(len(vert_list)):
+            print("{:02d}\t{}".format(i,vert_list[i]))
+        vert_modify = input("\nSelect index of Vertex to modify: ")
+        if int(vert_modify) in selection:
+            print("Selected {}".format(vert_list[int(vert_modify)]))
+            return self.display_keys_to_modify(vert_list[int(vert_modify)])
+        else:
+            print("Invalid input!")
+            return self.display_existing_vertex()
+        
+    def display_keys_to_modify(self, vert):
+        # modifier_functions={
+            
+        #     }
+        k_list = list(self.dd_graph[vert].keys())
+        selection=[i for i in range(len(k_list))]
+        for i in range(len(k_list)):
+            print("{:02d}\t{}".format(i,k_list[i]))
+        to_modify = input("\nSelect index of Key to modify: ")
+        if int(to_modify) in selection:
+            print("Selected {}".format(k_list[int(to_modify)]))
+            #to write a dictionary of the modifier functions to select from
+            return
+        else:
+            print("Invalid input!")
+            return self.display_existing_vertex()     
 
     #used to modify the average density based on time, set higher on certain places on certain times
     #used to normalise routes based on density (i.e. a route might be shorter but have more people vs slightly longer route with no people)

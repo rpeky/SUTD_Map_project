@@ -30,7 +30,7 @@ class User():
             print("Selected {}\n".format(clearance_list[selection]))
             return clearance_list[selection]
         elif sel in selection_no:
-            return self.query_vertex_Prefix()
+            return self.add_clearance()
         else:
             print("Not a valid input \nExiting add_clearance tool\n")
                     

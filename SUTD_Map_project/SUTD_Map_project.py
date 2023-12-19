@@ -8,9 +8,11 @@ def testbench():
     uu=User.User()
     #uu.add_clearance()
     #uu.remove_clearance()
-    print(uu.__dict__)
+    #print(uu.__dict__)
     gg = Graph.Graph(f_zone, uu.clearance_card)
+    gg.graph_generation_tool()
     #gg.add_vertex()
+    #gg.display_existing_vertex()
     print(gg.__dict__)
     
 def Area_Selection():
@@ -30,7 +32,7 @@ def Area_Selection():
         }
     B_select = Building_Selection(list(dd_zones.keys()))
     F_select = Floor_Selection(dd_zones[B_select])
-    A_select = B_select+'_'+F_select+".json"
+    A_select = B_select+'_Level_'+F_select+".json"
     print("Loading file: {}\n".format(A_select))
     return A_select
       
