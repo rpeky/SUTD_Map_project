@@ -10,7 +10,7 @@ def testbench():
     #uu.remove_clearance()
     #print(uu.__dict__)
     gg = Graph.Graph(f_zone, uu.clearance_card)
-    gg.graph_generation_tool()
+
     #gg.add_vertex()
     #gg.display_existing_vertex()
     print(gg.__dict__)

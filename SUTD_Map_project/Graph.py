@@ -56,7 +56,6 @@ class Graph():
                 print("Invalid input")
                 continue
     
-    # tuple (distance, ID)
     def add_neighbour(self, vertex_ID):
         print("Enter Neighbour Vertex ID: ")
         neighbour_ID=self.query_vertex()
@@ -104,6 +103,7 @@ class Graph():
     
     # UI portion for adding vertex information
     def query_vertex(self):
+        #to add existing vertex selection
         q_pf=self.query_vertex_Prefix()
         q_hd=self.query_vertex_Heading()
         q_id=self.query_vertex_ID()
@@ -175,22 +175,21 @@ class Graph():
             print("Not a valid input\n")
             return self.query_vertex_ID()
         
-    def add_neighbour_display_existing_vertex_and_neighbour_tool(self):
-        existing_vertex = self.display_existing_vertex()
-        self.neighbour_tool(existing_vertex)
-        
     def save_and_exit(self):
         print("Saving and exiting graph generation tool.")
-        self.store_solution('Master', 0)
-        self.store_solution('Working', 1)
+        self.store_solution_Master()
+        self.store_solution_Working()
         print("Saved")
+        
         
     def graph_generation_tool(self):
         print("Entering graph generation tool for {}".format(self.area_file_tosave[:-5]))
         tool_options = {
             '01': self.add_vertex,
-            '02': self.add_neighbour_display_existing_vertex_and_neighbour_tool,
+            '02': self.modify_display_existing_vertex,
             '03': self.save_and_exit
+            #need a change graph option to jump graphs maybe
+
             }
 
         while True:
@@ -209,14 +208,13 @@ class Graph():
                 print("Exiting tool and saving")
                 self.save_and_exit()
                 break
-
-            choice_option = input("Enter Choice: ")
-            selected_option = tool_options.get(choice_option)
-
-            if selected_option:
-                selected_option()
+            
             else:
-                print("Invalid choice. Please select a valid option.\n")
+                selected_option = tool_options.get(choice_option)
+                if selected_option:
+                    selected_option()
+                else:
+                    print("Invalid choice. Please select a valid option.\n")
             
             
             
@@ -240,9 +238,9 @@ class Graph():
 
 #_DEBUG PRINT STUFF_#
         
-#_DENSIRY MODIFIER FUNCTIONS_#
+#_MODIFIER FUNCTIONS_#
 
-    def display_existing_vertex(self):
+    def modify_display_existing_vertex(self):
         vert_list=list(self.dd_graph.keys())
         selection=[i for i in range(len(vert_list))]
         for i in range(len(vert_list)):
@@ -253,11 +251,11 @@ class Graph():
             return self.display_keys_to_modify(vert_list[int(vert_modify)])
         else:
             print("Invalid input!")
-            return self.display_existing_vertex()
+            return self.modify_display_existing_vertex()
         
     def display_keys_to_modify(self, vert):
         # modifier_functions={
-            
+            #add a modifier to connect existing vertex together as neighbours
         #     }
         k_list = list(self.dd_graph[vert].keys())
         selection=[i for i in range(len(k_list))]
@@ -270,22 +268,54 @@ class Graph():
             return
         else:
             print("Invalid input!")
-            return self.display_existing_vertex()     
+            return self.modify_display_existing_vertex()     
 
     #used to modify the average density based on time, set higher on certain places on certain times
     #used to normalise routes based on density (i.e. a route might be shorter but have more people vs slightly longer route with no people)
+  
     def Time_check(self):
         pass
     
-    def Density_modifier(self):
+    def Time_Dist_modifier(self):
         pass
     
-#_DENSIRY MODIFIER FUNCTIONS_#
+    def Density_modifier_MANUAL(self, vertex):
+        pass
+    
+    #set to 1
+    def Density_modifier_Rare(self, vertex):
+        self.dd_graph[vertex]["Avg_density"]=1
+    
+    #set to 1.5
+    def Density_modifier_Medium(self, vertex):
+        self.dd_graph[vertex]["Avg_density"]=1.5
+    
+    #set to 2
+    def Density_modifier_Welldone(self, vertex):
+        self.dd_graph[vertex]["Avg_density"]=2
+    
+    def set_Sheltered_True(self, vertex):
+        self.dd_graph[vertex]["Sheltered"]=True
+        
+    def set_Sheltered_True(self, vertex):
+        self.dd_graph[vertex]["Sheltered"]=False
+    
+    def set_visited_MANUAL(self, vertex):
+        pass
+    
+    def set_visited_0(self, vertex):
+        self.dd_graph[vertex]["Visited"]=0
+    
+    def set_visited_1(self, vertex):
+        self.dd_graph[vertex]["Visited"]=1
+    
+#_MODIFIER FUNCTIONS_#
 
 #_ACCESS MODIFIER FUNCTIONS_#
 
     def check_Access(self, access_list, clearance_for_vertex):
         return len(set(access_list).intersection(clearance_for_vertex))>0
+    
 
 #_ACCESS MODIFIER FUNCTIONS_#
     

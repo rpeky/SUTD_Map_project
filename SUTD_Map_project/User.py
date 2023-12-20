@@ -5,30 +5,31 @@ selection_no=['0','n','N','No','no']
 class User():
     def __init__(self):
         self.clearance_card={"Basic"}
+        self.clearance_list=["Fablab_basic","Fablab_Woodwork","Fablab_Metalwork","Hostel_55","Hostel_57","Hostel_59"]
         
     def display_clearances(self):
         print(self.clearance_card)
         
     def add_clearance(self):
-        clearance_list=["Fablab_basic","Fablab_Woodwork","Fablab_Metalwork","Hostel_55","Hostel_57","Hostel_59"]
-        for i in range(len(clearance_list)):
-            print("{:02d}\t{}".format(i, clearance_list[i]))
+        
+        for i in range(len(self.clearance_list)):
+            print("{:02d}\t{}".format(i, self.clearance_list[i]))
         while True:
             try:
                 selection=int(input("\nPick a Clearance: "))
-                if selection>-1 and selection<len(clearance_list):
-                    self.clearance_card.add(clearance_list[selection])
+                if selection>-1 and selection<len(self.clearance_list):
+                    self.clearance_card.add(self.clearance_list[selection])
                     break
                 else:
                     print("out of index")
             except ValueError:
                 print("Not a valid input")
                 
-        print("\nConfirm selection \n{:02d}\t{}?\n".format(selection, clearance_list[selection]))
+        print("\nConfirm selection \n{:02d}\t{}?\n".format(selection, self.clearance_list[selection]))
         sel=input("y/n: ")
         if sel in selection_yes:
-            print("Selected {}\n".format(clearance_list[selection]))
-            return clearance_list[selection]
+            print("Selected {}\n".format(self.clearance_list[selection]))
+            return self.clearance_list[selection]
         elif sel in selection_no:
             return self.add_clearance()
         else:
