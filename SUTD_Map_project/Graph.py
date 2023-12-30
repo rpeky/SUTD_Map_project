@@ -394,10 +394,13 @@ class Graph():
                 return
             print("{} clearance added to {}".format(c_list[int(clearance_select)],vertex))
             self.dd_graph[vertex]["Access_Clearance"].append(c_list[int(clearance_select)])
-            return 
         else:
             print("Invalid input!")
             return self.set_clearance(vertex)
+        
+        cont = input("\nContinue adding clearance? y/n: ")
+        if cont in selection_yes:
+            self.set_clearance(vertex)
         
     def remove_clearance(self, vertex):
         #special case empty and one clearance
@@ -408,20 +411,23 @@ class Graph():
             print("Removing only clearance")
             self.dd_graph[vertex]["Access_Clearance"].clear()
             return
+        selection=[i for i in range(len(self.dd_graph[vertex]["Access_Clearance"]))]
         
         print("Clearances for {}:\n".format(vertex))
-        for i in self.dd_graph[vertex]["Access_Clearance"]:
-            print(i)
-        todisc = input("Copy and paste which clearance to remove: ")
-        self.dd_graph[vertex]["Access_Clearance"].remove(todisc)
-        print("Current clearance state for {}".format(vertex))
+        for i in range(len(self.dd_graph[vertex]["Access_Clearance"])):
+            print("{:02d}\t{}".format(i, self.dd_graph[vertex]["Access_Clearance"][i]))
+            
+        todisc = input("\nSelect index of clearance to remove: ")
+        if int(todisc) in selection:
+            self.dd_graph[vertex]["Access_Clearance"].remove(self.dd_graph[vertex]["Access_Clearance"][int(todisc)])
+        
+
+        print("Current clearance state for {}:\n".format(vertex))
         for i in self.dd_graph[vertex]["Access_Clearance"]:
             print(i)
         cont = input("\nContinue removing clearance? y/n: ")
         if cont in selection_yes:
             self.remove_clearance(vertex)
-        else:
-            return
               
         
             
