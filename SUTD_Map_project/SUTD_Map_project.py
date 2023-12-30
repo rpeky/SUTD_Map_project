@@ -6,14 +6,10 @@ import json
 def testbench():
     f_zone = Area_Selection()
     uu=User.User()
-    #uu.add_clearance()
-    #uu.remove_clearance()
-    #print(uu.__dict__)
     gg = Graph.Graph(f_zone, uu.clearance_card)
-
-    #gg.add_vertex()
-    #gg.display_existing_vertex()
-    print(gg.__dict__)
+    gg.graph_generation_tool()
+    print(gg.Time_check())
+    #print(gg.__dict__)
     
 def Area_Selection():
     dd_zones={
@@ -61,8 +57,18 @@ def Floor_Selection(floors):
         print("Invalid input!")
         return Floor_Selection(floors)
     
+
+
 def main():
     testbench()
+    # cl_s="\n"*100
+    # while True:
+    #     print(cl_s)
+    #     print("SUTD Map Project 2023 Default Page\n")
+    #     ct=input("Enter q to exit mapping tool\nAny other key to proceed: ")
+    #     if ct=='q':
+    #         break
+    #     testbench()
     
 if __name__ == '__main__':
     start_time = time.process_time()

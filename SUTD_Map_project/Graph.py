@@ -1,5 +1,6 @@
 import Json_OS_ProcessingFunctions
 import json
+import datetime
 
 selection_yes=['1','y','Y','Yes','yes']
 selection_no=['0','n','N','No','no']
@@ -35,7 +36,7 @@ class Graph():
                     "Avg_density":1,
                     "Sheltered": True,
                     "Route_intersection": False,
-                    "Access_Clearance": {},
+                    "Access_Clearance": list(),
                     "Average_travel_time": None,
                     "Room_ID": None,
                     "Connection_Point": False
@@ -79,7 +80,7 @@ class Graph():
                     "Avg_density":1,
                     "Sheltered": True,
                     "Route_intersection": False,
-                    "Access_Clearance": {},
+                    "Access_Clearance": list(),
                     "Average_travel_time": None
                 }
             self.dd_graph[neighbour_ID] = dd_vertex_new
@@ -195,6 +196,7 @@ class Graph():
         while True:
             print("\nCurrent Graph State: ")
             print(json.dumps(self.dd_graph, indent=4))
+            print("\n")
             
             print("\nSelect option:\n")
             for key, value in tool_options.items():
@@ -215,10 +217,6 @@ class Graph():
                     selected_option()
                 else:
                     print("Invalid choice. Please select a valid option.\n")
-            
-            
-            
-            
                
     #store known solutions to be recalculated based on time to adjust for density and for rain
     #pseudo memo by storing solutions that aren't in runtime
@@ -242,6 +240,9 @@ class Graph():
 
     def modify_display_existing_vertex(self):
         vert_list=list(self.dd_graph.keys())
+        if len(vert_list)==0:
+            print("Empty graph, returning to graph generating tool")
+            return self.graph_generation_tool()
         selection=[i for i in range(len(vert_list))]
         for i in range(len(vert_list)):
             print("{:02d}\t{}".format(i,vert_list[i]))
@@ -254,18 +255,36 @@ class Graph():
             return self.modify_display_existing_vertex()
         
     def display_keys_to_modify(self, vert):
-        # modifier_functions={
-            #add a modifier to connect existing vertex together as neighbours
-        #     }
-        k_list = list(self.dd_graph[vert].keys())
-        selection=[i for i in range(len(k_list))]
-        for i in range(len(k_list)):
-            print("{:02d}\t{}".format(i,k_list[i]))
-        to_modify = input("\nSelect index of Key to modify: ")
-        if int(to_modify) in selection:
-            print("Selected {}".format(k_list[int(to_modify)]))
-            #to write a dictionary of the modifier functions to select from
-            return
+        print("Current vertex state:\n")
+        print(json.dumps(self.dd_graph[vert], indent=4))
+        print('\n')
+
+        modifier_functions = {
+            "00": self.Density_modifier_Rare,
+            "01": self.Density_modifier_Medium,
+            "02": self.Density_modifier_Welldone,
+            "03": self.set_Sheltered_False,
+            "04": self.set_Sheltered_True,
+            "05": self.set_Route_intersection_False,
+            "06": self.set_Route_intersection_True,
+            "07": self.set_clearance,
+            "08": self.set_Average_travel_time,
+            "09": self.set_room_ID,
+            "10": self.set_Connection_Point_False,
+            "11": self.set_Connection_Point_True,
+            "12": self.remove_clearance
+        }
+
+        m_list = list(modifier_functions.keys())
+        selection = [i for i in range(len(m_list))]
+        print("Options:\n")
+        for i in range(len(m_list)):
+            print("{:02d}\t{}".format(i, modifier_functions[m_list[i]].__name__))
+    
+        to_modify = input("\nSelect modification: ")
+        if to_modify in m_list:
+            print("Selected {}".format(modifier_functions[to_modify].__name__))
+            modifier_functions[to_modify](vert)
         else:
             print("Invalid input!")
             return self.modify_display_existing_vertex()     
@@ -274,10 +293,24 @@ class Graph():
     #used to normalise routes based on density (i.e. a route might be shorter but have more people vs slightly longer route with no people)
   
     def Time_check(self):
-        pass
+        curr_DT = datetime.datetime.now()
+        time_lunch_start='11:45:00'
+        time_lunch_end='13:15:00'
+        #anti range of lunch
+        if datetime.datetime.now().strptime(time_lunch_start,'%H:%M:%S')<curr_DT<datetime.datetime.now().strptime(time_lunch_start,'%H:%M:%S'):
+            print("Lunch Rush, adjusting routes")
+            #find the specific vertex chokepoints to adjust in dd_graph
+            l_vert_tochange=[]
+            for i in l_vert_tochange:
+                self.Time_Dist_modifier(i,1.5)
+            
+        else:
+            print("Not lunch rush")
+            return
+            
     
-    def Time_Dist_modifier(self):
-        pass
+    def Time_Dist_modifier(self, vertex, adj_val):
+        self.dd_graph[vertex]["Average_travel_time"]*=adj_val
     
     def Density_modifier_MANUAL(self, vertex):
         pass
@@ -297,8 +330,14 @@ class Graph():
     def set_Sheltered_True(self, vertex):
         self.dd_graph[vertex]["Sheltered"]=True
         
-    def set_Sheltered_True(self, vertex):
+    def set_Sheltered_False(self, vertex):
         self.dd_graph[vertex]["Sheltered"]=False
+        
+    def set_Route_intersection_True(self, vertex):
+        self.dd_graph[vertex]["Route_intersection"]=True
+        
+    def set_Route_intersection_False(self, vertex):
+        self.dd_graph[vertex]["Route_intersection"]=False
     
     def set_visited_MANUAL(self, vertex):
         pass
@@ -308,6 +347,30 @@ class Graph():
     
     def set_visited_1(self, vertex):
         self.dd_graph[vertex]["Visited"]=1
+        
+    def set_Average_travel_time(self, vertex):
+        while True:
+            try:
+                t_time=int(input("Enter average time to travel through this vertex in seconds: "))
+                if t_time>=0:
+                    break
+                else:
+                    print("out of index")
+            except ValueError:
+                print("Not a valid input (number)")
+            
+        self.dd_graph[vertex]["Average_travel_time"]=t_time
+        
+    def set_room_ID(self, vertex):
+        ID_code = input("Enter Location ID code: ")
+        self.dd_graph[vertex]["Room_ID"]=ID_code
+        #to add this reflection into a lookup table in main, for quick reference 
+
+    def set_Connection_Point_True(self, vertex):
+        self.dd_graph[vertex]["Connection_Point"]=True
+        
+    def set_Connection_Point_False(self, vertex):
+        self.dd_graph[vertex]["Connection_Point"]=False
     
 #_MODIFIER FUNCTIONS_#
 
@@ -316,7 +379,52 @@ class Graph():
     def check_Access(self, access_list, clearance_for_vertex):
         return len(set(access_list).intersection(clearance_for_vertex))>0
     
-
+    def set_clearance(self, vertex):
+        #copy availiable clearance from user.py
+        c_list=["Fablab_basic","Fablab_Woodwork","Fablab_Metalwork","Hostel_55","Hostel_57","Hostel_59"]
+        selection=[i for i in range(len(c_list))]
+        print("Set Clearance for vertex: ")
+        for i in range(len(c_list)):
+            print("{:02d}\t{}".format(i,c_list[i]))
+        clearance_select = input("\nSelect index of clearance to add: ")
+        if int(clearance_select) in selection:
+            #prevent double add (might not matter since itll be converted to a set but make life easy)
+            if c_list[int(clearance_select)] in self.dd_graph[vertex]["Access_Clearance"]:
+                print("Existing clearance")
+                return
+            print("{} clearance added to {}".format(c_list[int(clearance_select)],vertex))
+            self.dd_graph[vertex]["Access_Clearance"].append(c_list[int(clearance_select)])
+            return 
+        else:
+            print("Invalid input!")
+            return self.set_clearance(vertex)
+        
+    def remove_clearance(self, vertex):
+        #special case empty and one clearance
+        if len(self.dd_graph[vertex]["Access_Clearance"])==0:
+            print("No clearance to remove")
+            return
+        elif len(self.dd_graph[vertex]["Access_Clearance"])==1:
+            print("Removing only clearance")
+            self.dd_graph[vertex]["Access_Clearance"].clear()
+            return
+        
+        print("Clearances for {}:\n".format(vertex))
+        for i in self.dd_graph[vertex]["Access_Clearance"]:
+            print(i)
+        todisc = input("Copy and paste which clearance to remove: ")
+        self.dd_graph[vertex]["Access_Clearance"].remove(todisc)
+        print("Current clearance state for {}".format(vertex))
+        for i in self.dd_graph[vertex]["Access_Clearance"]:
+            print(i)
+        cont = input("\nContinue removing clearance? y/n: ")
+        if cont in selection_yes:
+            self.remove_clearance(vertex)
+        else:
+            return
+              
+        
+            
 #_ACCESS MODIFIER FUNCTIONS_#
     
     

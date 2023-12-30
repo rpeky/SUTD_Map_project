@@ -11,22 +11,21 @@ class User():
         print(self.clearance_card)
         
     def add_clearance(self):
-        
-        for i in range(len(self.clearance_list)):
-            print("{:02d}\t{}".format(i, self.clearance_list[i]))
+        for i, clearance in enumerate(self.clearance_list):
+            print("{:02d}\t{}".format(i, clearance))
         while True:
             try:
-                selection=int(input("\nPick a Clearance: "))
-                if selection>-1 and selection<len(self.clearance_list):
+                selection = int(input("\nPick a Clearance: "))
+                if 0 <= selection < len(self.clearance_list):
                     self.clearance_card.add(self.clearance_list[selection])
                     break
                 else:
-                    print("out of index")
+                    print("Out of index")
             except ValueError:
                 print("Not a valid input")
-                
+
         print("\nConfirm selection \n{:02d}\t{}?\n".format(selection, self.clearance_list[selection]))
-        sel=input("y/n: ")
+        sel = input("y/n: ")
         if sel in selection_yes:
             print("Selected {}\n".format(self.clearance_list[selection]))
             return self.clearance_list[selection]
