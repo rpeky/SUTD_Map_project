@@ -24,6 +24,13 @@ def save_file_json(tosave, filename, folder_idx):
     full_path = os.path.join(newdir, filename)
     with open(full_path, 'w') as outfile:
         json.dump(tosave, outfile, sort_keys=True, indent=4, ensure_ascii=False)
+        
+def load_file_json(filename, folder_idx):
+    cwd = os.getcwd()
+    newdir = os.path.join(cwd, folder_list[folder_idx])
+    full_path = os.path.join(newdir, filename)
+    f=open(full_path)
+    return json.load(f)
 
 def swap_Master_working_dataset():
     pass
