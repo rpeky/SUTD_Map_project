@@ -1,0 +1,180 @@
+{
+    "ENTRANCE_06_Inside_Wood_Workshop_door2": {
+        "Access_Clearance": [
+            "Fablab_Woodwork"
+        ],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_36_Project_Lab": 1.0
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ENTRANCE_09_Inside_Wood_Workshop_door1": {
+        "Access_Clearance": [
+            "Fablab_Woodwork"
+        ],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_35_FabLab_Assembly_Space": 1.0
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ENTRANCE_35_Assembly_Space_Shutter1": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_35_FabLab_Assembly_Space": 1.0
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ENTRANCE_35_Assembly_Space_Shutter2": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_35_FabLab_Assembly_Space": 1.0
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ENTRANCE_35_Assembly_Space_door1": {
+        "Access_Clearance": [
+            "Fablab_basic"
+        ],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_35_FabLab_Assembly_Space": 1.0
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ENTRANCE_35_Assembly_Space_door2": {
+        "Access_Clearance": [
+            "Fablab_basic"
+        ],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_35_FabLab_Assembly_Space": 1.0
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ENTRANCE_35_Outside_Wood_Workshop_door1": {
+        "Access_Clearance": [
+            "Fablab_Woodwork"
+        ],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_35_Wood_Workshop": 1.0
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ENTRANCE_35_Wood_Workshop_Shutter": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_35_Wood_Workshop": 1.0
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ENTRANCE_36_Project_Lab_Door1": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_35_FabLab_Assembly_Space": 1.0
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ENTRANCE_36_Project_Lab_Door2": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_35_FabLab_Assembly_Space": 1.0
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "INTER_31_Project_Lab_Entrance_Intersect": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_36_Project_Lab": 2.0
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_35_FabLab_Assembly_Space": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connection_Point": false,
+        "Neighbour": {
+            "ENTRANCE_09_Inside_Wood_Workshop_door1": 1.0,
+            "ENTRANCE_35_Assembly_Space_Shutter1": 1.0,
+            "ENTRANCE_35_Assembly_Space_Shutter2": 1.0,
+            "ENTRANCE_35_Assembly_Space_door1": 1.0,
+            "ENTRANCE_35_Assembly_Space_door2": 1.0,
+            "ENTRANCE_36_Project_Lab_Door1": 1.0,
+            "ENTRANCE_36_Project_Lab_Door2": 1.0
+        },
+        "Room_ID": "5.101-07",
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_35_Wood_Workshop": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connection_Point": false,
+        "Neighbour": {
+            "ENTRANCE_35_Outside_Wood_Workshop_door1": 1.0,
+            "ENTRANCE_35_Wood_Workshop_Shutter": 1.0
+        },
+        "Room_ID": "5.101-06",
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_36_Project_Lab": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connection_Point": false,
+        "Neighbour": {
+            "ENTRANCE_06_Inside_Wood_Workshop_door2": 1.0,
+            "INTER_31_Project_Lab_Entrance_Intersect": 2.0
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    }
+}
