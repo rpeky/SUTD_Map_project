@@ -141,6 +141,7 @@ class Graph():
         direction_heading = ""
         print("Enter heading of vertex [01-36]: ")
         while True:
+            #breaks if not in, try something else?
             try:
                 pref=int(input())
                 if pref>0 and pref<37:
