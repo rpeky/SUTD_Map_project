@@ -56,19 +56,17 @@ def Floor_Selection(floors):
     else:
         print("Invalid input!")
         return Floor_Selection(floors)
-    
-
 
 def main():
-    testbench()
-    # cl_s="\n"*100
-    # while True:
-    #     print(cl_s)
-    #     print("SUTD Map Project 2023 Default Page\n")
-    #     ct=input("Enter q to exit mapping tool\nAny other key to proceed: ")
-    #     if ct=='q':
-    #         break
-    #     testbench()
+    #testbench()
+    cl_s="\n"*100
+    while True:
+        print(cl_s)
+        print("SUTD Map Project 2023 Default Page\n")
+        ct=input("Enter q to exit mapping tool\nAny other key to proceed: ")
+        if ct=='q':
+            break
+        testbench()
     
 if __name__ == '__main__':
     start_time = time.process_time()

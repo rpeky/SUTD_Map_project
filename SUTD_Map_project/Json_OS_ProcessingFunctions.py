@@ -4,7 +4,7 @@ import json
 #File handling module
 
 #to come up with folders needed to store data for easier validation
-folder_list = ['Master','Working']
+folder_list = ['Master','Working','LookUp']
 
 def check_folders_exist():
     for folder in folder_list:
@@ -31,6 +31,3 @@ def load_file_json(filename, folder_idx):
     full_path = os.path.join(newdir, filename)
     f=open(full_path)
     return json.load(f)
-
-def swap_Master_working_dataset():
-    pass

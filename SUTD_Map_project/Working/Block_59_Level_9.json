@@ -1,0 +1,427 @@
+{
+    "DUSTBIN_30_RUBBISH_CHUTE": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "LIFT_12_MAIN": 0.75
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "INTER_05_LIFTLOBBY_INTERSECTION": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connection_Point": false,
+        "Neighbour": {
+            "LIFT_01_11": 1.0,
+            "ROOM_02_09-97": 1.5,
+            "ROOM_05_09-98": 1.0,
+            "STAIRS_30_LOBBY_STAIRS": 0.5
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "LIFT_01_11": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "INTER_05_LIFTLOBBY_INTERSECTION": 1.0
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "LIFT_12_MAIN": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connection_Point": true,
+        "Neighbour": {
+            "DUSTBIN_30_RUBBISH_CHUTE": 0.75,
+            "STAIRS_30_LOBBY_STAIRS": 0.75
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "LIFT_33_11111": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "STAIRS_22_LVL9_LVL10": 1.0
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_02_09-92": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connection_Point": false,
+        "Neighbour": {
+            "ROOM_02_09-95": 1.0,
+            "ROOM_02_09-96": 0.5
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_02_09-93": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connection_Point": false,
+        "Neighbour": {
+            "ROOM_02_09-94": 1.0,
+            "ROOM_02_09-95": 0.5
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_02_09-94": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_02_09-93": 1.0,
+            "ROOM_30_MEETING_ROOM": 2.0
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_02_09-95": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_02_09-92": 1.0,
+            "ROOM_02_09-93": 0.5
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_02_09-96": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_02_09-92": 0.5,
+            "ROOM_02_19-91": 1.5
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_02_09-97": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "INTER_05_LIFTLOBBY_INTERSECTION": 1.5,
+            "ROOM_02_19-91": 0.5
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_02_19-91": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connection_Point": false,
+        "Neighbour": {
+            "ROOM_02_09-96": 1.5,
+            "ROOM_02_09-97": 0.5
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_04_09-100": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_04_09-115": 1.5,
+            "ROOM_04_09-116": 0.5
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_04_09-101": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connection_Point": false,
+        "Neighbour": {
+            "ROOM_04_09-113": 1.0,
+            "ROOM_04_09-114": 1.5
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_04_09-102": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connection_Point": false,
+        "Neighbour": {
+            "ROOM_04_09-112": 1.0,
+            "ROOM_04_09-113": 1.0
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_04_09-103": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connection_Point": false,
+        "Neighbour": {
+            "ROOM_04_09-111": 1.5,
+            "ROOM_04_09-112": 0.5
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_04_09-104": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connection_Point": false,
+        "Neighbour": {
+            "ROOM_04_09-110": 1.0,
+            "ROOM_04_09-111": 1.0
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_04_09-105": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_04_09-106": 2.0,
+            "STAIRS_22_LVL9_LVL10": 1.5
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_04_09-106": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connection_Point": false,
+        "Neighbour": {
+            "ROOM_04_09-105": 2.0,
+            "STAIRS_22_FIRE_ESCAPE": 1.5
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_04_09-110": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_04_09-104": 1.0,
+            "STAIRS_22_LVL9_LVL10": 1.5
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_04_09-111": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_04_09-103": 1.5,
+            "ROOM_04_09-104": 1.0
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_04_09-112": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_04_09-102": 1.0,
+            "ROOM_04_09-103": 0.5
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_04_09-113": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_04_09-101": 1.0,
+            "ROOM_04_09-102": 1.0
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_04_09-114": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_04_09-101": 1.5,
+            "ROOM_04_09-115": 0.5
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_04_09-115": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connection_Point": false,
+        "Neighbour": {
+            "ROOM_04_09-100": 1.5,
+            "ROOM_04_09-114": 0.5
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_04_09-116": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connection_Point": false,
+        "Neighbour": {
+            "ROOM_04_09-100": 0.5,
+            "ROOM_04_09-117": 1.0
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_04_09-117": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_04_09-116": 1.0,
+            "ROOM_04_09-99": 0.5
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_04_09-99": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connection_Point": false,
+        "Neighbour": {
+            "ROOM_04_09-117": 0.5,
+            "ROOM_05_09-98": 1.5
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_05_09-98": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "INTER_05_LIFTLOBBY_INTERSECTION": 1.0,
+            "ROOM_04_09-99": 1.5
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_30_MEETING_ROOM": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connection_Point": false,
+        "Neighbour": {
+            "ROOM_02_09-94": 2.0
+        },
+        "Room_ID": "59.931A",
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "STAIRS_22_FIRE_ESCAPE": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_04_09-106": 1.5
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "STAIRS_22_LVL9_LVL10": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connection_Point": false,
+        "Neighbour": {
+            "LIFT_33_11111": 1.0,
+            "ROOM_04_09-105": 1.5,
+            "ROOM_04_09-110": 1.5
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "STAIRS_30_LOBBY_STAIRS": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connection_Point": true,
+        "Neighbour": {
+            "INTER_05_LIFTLOBBY_INTERSECTION": 0.5,
+            "LIFT_12_MAIN": 0.75
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    }
+}
