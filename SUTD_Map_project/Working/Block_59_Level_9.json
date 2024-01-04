@@ -16,23 +16,11 @@
         "Avg_density": 1,
         "Connection_Point": false,
         "Neighbour": {
-            "LIFT_01_11": 1.0,
             "ROOM_02_09-97": 1.5,
             "ROOM_05_09-98": 1.0,
             "STAIRS_30_LOBBY_STAIRS": 0.5
         },
         "Room_ID": null,
-        "Route_intersection": false,
-        "Sheltered": true,
-        "Visited": 0
-    },
-    "LIFT_01_11": {
-        "Access_Clearance": [],
-        "Average_travel_time": null,
-        "Avg_density": 1,
-        "Neighbour": {
-            "INTER_05_LIFTLOBBY_INTERSECTION": 1.0
-        },
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -47,17 +35,6 @@
             "STAIRS_30_LOBBY_STAIRS": 0.75
         },
         "Room_ID": null,
-        "Route_intersection": false,
-        "Sheltered": true,
-        "Visited": 0
-    },
-    "LIFT_33_11111": {
-        "Access_Clearance": [],
-        "Average_travel_time": null,
-        "Avg_density": 1,
-        "Neighbour": {
-            "STAIRS_22_LVL9_LVL10": 1.0
-        },
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -246,6 +223,43 @@
         "Sheltered": true,
         "Visited": 0
     },
+    "ROOM_04_09-107": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_04_09-109": 1.0,
+            "ROOM_22_MINI_PANTRY": 2.0
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_04_09-108": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_04_09-109": 1.0
+        },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_04_09-109": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connection_Point": false,
+        "Neighbour": {
+            "ROOM_04_09-107": 1.0,
+            "ROOM_04_09-108": 1.0
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
     "ROOM_04_09-110": {
         "Access_Clearance": [],
         "Average_travel_time": null,
@@ -360,6 +374,19 @@
         "Sheltered": true,
         "Visited": 0
     },
+    "ROOM_04_PANTRY": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Neighbour": {
+            "ROOM_22_MINI_PANTRY": 1.0,
+            "TOILET_13_LVL9_MALE": 2.5
+        },
+        "Room_ID": "59.9106A",
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
     "ROOM_05_09-98": {
         "Access_Clearance": [],
         "Average_travel_time": null,
@@ -368,6 +395,20 @@
             "INTER_05_LIFTLOBBY_INTERSECTION": 1.0,
             "ROOM_04_09-99": 1.5
         },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "ROOM_22_MINI_PANTRY": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connection_Point": false,
+        "Neighbour": {
+            "ROOM_04_09-107": 2.0,
+            "ROOM_04_PANTRY": 1.0
+        },
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -389,8 +430,10 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
+        "Connection_Point": true,
         "Neighbour": {
-            "ROOM_04_09-106": 1.5
+            "ROOM_04_09-106": 1.5,
+            "TOILET_13_LVL9_MALE": 2.0
         },
         "Route_intersection": false,
         "Sheltered": true,
@@ -400,9 +443,8 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connection_Point": false,
+        "Connection_Point": true,
         "Neighbour": {
-            "LIFT_33_11111": 1.0,
             "ROOM_04_09-105": 1.5,
             "ROOM_04_09-110": 1.5
         },
@@ -420,6 +462,20 @@
             "INTER_05_LIFTLOBBY_INTERSECTION": 0.5,
             "LIFT_12_MAIN": 0.75
         },
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "TOILET_13_LVL9_MALE": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connection_Point": false,
+        "Neighbour": {
+            "ROOM_04_PANTRY": 2.5,
+            "STAIRS_22_FIRE_ESCAPE": 2.0
+        },
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
