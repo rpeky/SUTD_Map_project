@@ -15,6 +15,7 @@ class Graph():
         if self.check_area_file_exist(area_file):
             print("Loading {} from Master")
             self.dd_graph = Json_OS_ProcessingFunctions.load_file_json(area_file, 0)
+            
         else:
             print("File does not exist")
             self.graph_generation_tool()
@@ -45,10 +46,11 @@ class Graph():
         self.neighbour_tool(vertex_ID)
         
     def neighbour_tool(self, vertex_ID):
+        #add escape con
         while True:
             print("Current Graph State: ")
             print(json.dumps(self.dd_graph,indent=4))
-            cont = input("\nConfirm adding neighbour?\ny/n: ")
+            cont = input("\nConfirm adding neighbour to {}?\ny/n: ".format(vertex_ID))
             if cont in selection_yes:
                 self.add_neighbour(vertex_ID)
             elif cont in selection_no:
@@ -113,7 +115,7 @@ class Graph():
     def query_vertex_Prefix(self):
         pref = ""
         #edit as needed
-        ID_prefix = ["LIFT_","ROOM_","DUSTBIN_","INTER_","TOILET_","STAIRS_","ENTRANCE_"]
+        ID_prefix = ["LIFT_","ROOM_","DUSTBIN_","INTER_","TOILET_","STAIRS_","ENTRANCE_","MAINROAD_","WALKWAY_"]
         for i in range(len(ID_prefix)):
             print("{:02d}\t{}".format(i, ID_prefix[i]))
         while True:
