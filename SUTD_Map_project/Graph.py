@@ -275,7 +275,8 @@ class Graph():
             "09": self.set_room_ID,
             "10": self.set_Connection_Point_False,
             "11": self.set_Connection_Point_True,
-            "12": self.remove_clearance
+            "12": self.remove_clearance,
+            "13": self.add_neighbour
         }
 
         m_list = list(modifier_functions.keys())
@@ -300,7 +301,7 @@ class Graph():
         time_lunch_start='11:45:00'
         time_lunch_end='13:15:00'
         #anti range of lunch
-        if datetime.datetime.now().strptime(time_lunch_start,'%H:%M:%S')<curr_DT<datetime.datetime.now().strptime(time_lunch_start,'%H:%M:%S'):
+        if datetime.datetime.strptime(time_lunch_start,'%H:%M:%S')<curr_DT<datetime.datetime.strptime(time_lunch_end,'%H:%M:%S'):
             print("Lunch Rush, adjusting routes")
             #find the specific vertex chokepoints to adjust in dd_graph
             l_vert_tochange=[]
