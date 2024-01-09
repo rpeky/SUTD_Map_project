@@ -275,7 +275,9 @@ class Graph():
             "09": self.set_room_ID,
             "10": self.set_Connection_Point_False,
             "11": self.set_Connection_Point_True,
-            "12": self.remove_clearance
+            "12": self.remove_clearance,
+            "13": self.add_existing_neighbours,
+            "14": self.remove_existing_neighbours
         }
 
         m_list = list(modifier_functions.keys())
@@ -431,6 +433,60 @@ class Graph():
         cont = input("\nContinue removing clearance? y/n: ")
         if cont in selection_yes:
             self.remove_clearance(vertex)
+
+    def add_existing_neighbours(self, vertex_ID):
+        while True:
+            vert_list = list(self.dd_graph.keys())
+            selection = [i for i in range(len(vert_list))]
+            for i in range(len(vert_list)):
+                print("{:02d}\t{}".format(i, vert_list[i]))
+            to_add_as_neighbour = None
+            while True:
+                to_add_as_neighbour = input("Enter existing Vertex ID to add as neighbour: ")
+                if int(to_add_as_neighbour) in selection:
+                    print("Selected {}".format(vert_list[int(to_add_as_neighbour)]))
+                    break
+                else:
+                    print("Invalid input!")
+                    continue
+            neighbour_ID = vert_list[int(to_add_as_neighbour)]
+            confirm_Neighbour_ID = input("\nConfirm adding neighbour {} to {}?\ny/n: ".format(neighbour_ID, vertex_ID))
+            if confirm_Neighbour_ID in selection_yes:
+                adj_dist = self.add_neighbour_distance()
+                self.dd_graph[vertex_ID]["Neighbour"][neighbour_ID] = adj_dist
+                self.dd_graph[neighbour_ID]["Neighbour"][vertex_ID] = adj_dist
+                print("\nNeighbour {} added to {}".format(neighbour_ID, vertex_ID))
+            confirm = input("Continue setting an existing vertex as neighbour to {}?\ny/n: ".format(vertex_ID))
+            if confirm in selection_no:
+                break
+
+    def remove_existing_neighbours(self, vertex_ID):
+        while True:
+            vert_list = list(self.dd_graph.keys())
+            selection = [i for i in range(len(vert_list))]
+            for i in range(len(vert_list)):
+                print("{:02d}\t{}".format(i, vert_list[i]))
+            to_remove_as_neighbour = None
+            while True:
+                to_remove_as_neighbour = input("Enter existing Vertex ID to remove as neighbour: ")
+                if int(to_remove_as_neighbour) in selection:
+                    print("Selected {}".format(vert_list[int(to_remove_as_neighbour)]))
+                    break
+                else:
+                    print("Invalid input!")
+                    continue
+            neighbour_ID = vert_list[int(to_remove_as_neighbour)]
+            confirm_Neighbour_ID = input("\nConfirm removing neighbour {} from {}?\ny/n: ".format(neighbour_ID, vertex_ID))
+            if confirm_Neighbour_ID in selection_yes:
+                if neighbour_ID in self.dd_graph[vertex_ID]["Neighbour"]:
+                    del self.dd_graph[vertex_ID]["Neighbour"][neighbour_ID]
+                if vertex_ID in self.dd_graph[neighbour_ID]["Neighbour"]:
+                    del self.dd_graph[neighbour_ID]["Neighbour"][vertex_ID]
+                print("\nNeighbour {} removed from {}".format(neighbour_ID, vertex_ID))
+            confirm = input("Continue removing an existing vertex as neighbour from {}?\ny/n: ".format(vertex_ID))
+            if confirm in selection_no:
+                break
+        pass
               
         
             
