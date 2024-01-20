@@ -265,10 +265,6 @@ class Graph():
                 print("Invalid choice. Please select a valid option.\n")
         
     def display_keys_to_modify(self, vert):
-        print("Current vertex state:\n")
-        print(json.dumps(self.dd_graph[vert], indent=4))
-        print('\n')
-
         modifier_functions = {
             "00": self.Density_modifier_Rare,
             "01": self.Density_modifier_Medium,
@@ -289,17 +285,25 @@ class Graph():
 
         m_list = list(modifier_functions.keys())
         selection = [i for i in range(len(m_list))]
-        print("Options:\n")
-        for i in range(len(m_list)):
-            print("{:02d}\t{}".format(i, modifier_functions[m_list[i]].__name__))
-    
-        to_modify = input("\nSelect modification: ")
-        if to_modify in m_list:
-            print("Selected {}".format(modifier_functions[to_modify].__name__))
-            modifier_functions[to_modify](vert)
-        else:
-            print("Invalid input!")
-            return self.modify_display_existing_vertex()     
+
+        while True:
+            print("Current vertex state:\n")
+            print(json.dumps(self.dd_graph[vert], indent=4))
+            print('\n')
+
+            print("Options:\n")
+            for i in range(len(m_list)):
+                print("{:02d}\t{}".format(i, modifier_functions[m_list[i]].__name__))
+            print("q\tExit")
+            to_modify = input("\nSelect modification: ")
+            if to_modify == "q":
+                print("Returning to modify_display_existing_vertex\n")
+                break
+            elif to_modify in m_list:
+                print("Selected {}".format(modifier_functions[to_modify].__name__))
+                modifier_functions[to_modify](vert)
+            else:
+                print("Invalid choice. Please select a valid option.\n")
 
     #used to modify the average density based on time, set higher on certain places on certain times
     #used to normalise routes based on density (i.e. a route might be shorter but have more people vs slightly longer route with no people)
