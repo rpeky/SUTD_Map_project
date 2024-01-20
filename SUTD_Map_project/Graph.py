@@ -245,17 +245,23 @@ class Graph():
         vert_list=list(self.dd_graph.keys())
         if len(vert_list)==0:
             print("Empty graph, returning to graph generating tool")
-            return self.graph_generation_tool()
         selection=[i for i in range(len(vert_list))]
-        for i in range(len(vert_list)):
-            print("{:02d}\t{}".format(i,vert_list[i]))
-        vert_modify = input("\nSelect index of Vertex to modify: ")
-        if int(vert_modify) in selection:
-            print("Selected {}".format(vert_list[int(vert_modify)]))
-            return self.display_keys_to_modify(vert_list[int(vert_modify)])
-        else:
-            print("Invalid input!")
-            return self.modify_display_existing_vertex()
+        while True:
+            for i in range(len(vert_list)):
+                print("{:02d}\t{}".format(i,vert_list[i]))
+            print("q\tExit")
+            vert_modify = input("\nSelect index of Vertex to modify: ")
+            if vert_modify == "q":
+                print("Returning to neighbour creation tool")
+                break
+            try:
+                if int(vert_modify) in selection:
+                    print("Selected {}".format(vert_list[int(vert_modify)]))
+                    self.display_keys_to_modify(vert_list[int(vert_modify)])
+                else:
+                    print("Invalid choice. Please select a valid option.\n")
+            except ValueError:
+                print("Invalid choice. Please select a valid option.\n")
         
     def display_keys_to_modify(self, vert):
         print("Current vertex state:\n")
