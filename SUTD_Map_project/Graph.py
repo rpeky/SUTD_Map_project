@@ -184,23 +184,24 @@ class Graph():
         self.store_solution_Master()
         self.store_solution_Working()
         print("Saved")
-        
+
+    def print_current_graph_state(self):
+        print("\nCurrent Graph State: ")
+        print(json.dumps(self.dd_graph, indent=4))
+        print("\n")
         
     def graph_generation_tool(self):
         print("Entering graph generation tool for {}".format(self.area_file_tosave[:-5]))
         tool_options = {
             '01': self.add_vertex,
             '02': self.modify_display_existing_vertex,
-            '03': self.save_and_exit
+            '03': self.save_and_exit,
+            '04': self.print_current_graph_state
             #need a change graph option to jump graphs maybe
 
             }
 
         while True:
-            print("\nCurrent Graph State: ")
-            print(json.dumps(self.dd_graph, indent=4))
-            print("\n")
-            
             print("\nSelect option:\n")
             for key, value in tool_options.items():
                 print("{}\t{}".format(key, value.__name__))
