@@ -184,23 +184,24 @@ class Graph():
         self.store_solution_Master()
         self.store_solution_Working()
         print("Saved")
-        
+
+    def print_current_graph_state(self):
+        print("\nCurrent Graph State: ")
+        print(json.dumps(self.dd_graph, indent=4))
+        print("\n")
         
     def graph_generation_tool(self):
         print("Entering graph generation tool for {}".format(self.area_file_tosave[:-5]))
         tool_options = {
             '01': self.add_vertex,
             '02': self.modify_display_existing_vertex,
-            '03': self.save_and_exit
+            '03': self.save_and_exit,
+            '04': self.print_current_graph_state
             #need a change graph option to jump graphs maybe
 
             }
 
         while True:
-            print("\nCurrent Graph State: ")
-            print(json.dumps(self.dd_graph, indent=4))
-            print("\n")
-            
             print("\nSelect option:\n")
             for key, value in tool_options.items():
                 print("{}\t{}".format(key, value.__name__))
@@ -245,23 +246,25 @@ class Graph():
         vert_list=list(self.dd_graph.keys())
         if len(vert_list)==0:
             print("Empty graph, returning to graph generating tool")
-            return self.graph_generation_tool()
         selection=[i for i in range(len(vert_list))]
-        for i in range(len(vert_list)):
-            print("{:02d}\t{}".format(i,vert_list[i]))
-        vert_modify = input("\nSelect index of Vertex to modify: ")
-        if int(vert_modify) in selection:
-            print("Selected {}".format(vert_list[int(vert_modify)]))
-            return self.display_keys_to_modify(vert_list[int(vert_modify)])
-        else:
-            print("Invalid input!")
-            return self.modify_display_existing_vertex()
+        while True:
+            for i in range(len(vert_list)):
+                print("{:02d}\t{}".format(i,vert_list[i]))
+            print("q\tExit")
+            vert_modify = input("\nSelect index of Vertex to modify: ")
+            if vert_modify == "q":
+                print("Returning to neighbour creation tool")
+                break
+            try:
+                if int(vert_modify) in selection:
+                    print("Selected {}".format(vert_list[int(vert_modify)]))
+                    self.display_keys_to_modify(vert_list[int(vert_modify)])
+                else:
+                    print("Invalid choice. Please select a valid option.\n")
+            except ValueError:
+                print("Invalid choice. Please select a valid option.\n")
         
     def display_keys_to_modify(self, vert):
-        print("Current vertex state:\n")
-        print(json.dumps(self.dd_graph[vert], indent=4))
-        print('\n')
-
         modifier_functions = {
             "00": self.Density_modifier_Rare,
             "01": self.Density_modifier_Medium,
@@ -282,17 +285,25 @@ class Graph():
 
         m_list = list(modifier_functions.keys())
         selection = [i for i in range(len(m_list))]
-        print("Options:\n")
-        for i in range(len(m_list)):
-            print("{:02d}\t{}".format(i, modifier_functions[m_list[i]].__name__))
-    
-        to_modify = input("\nSelect modification: ")
-        if to_modify in m_list:
-            print("Selected {}".format(modifier_functions[to_modify].__name__))
-            modifier_functions[to_modify](vert)
-        else:
-            print("Invalid input!")
-            return self.modify_display_existing_vertex()     
+
+        while True:
+            print("Current vertex state:\n")
+            print(json.dumps(self.dd_graph[vert], indent=4))
+            print('\n')
+
+            print("Options:\n")
+            for i in range(len(m_list)):
+                print("{:02d}\t{}".format(i, modifier_functions[m_list[i]].__name__))
+            print("q\tExit")
+            to_modify = input("\nSelect modification: ")
+            if to_modify == "q":
+                print("Returning to modify_display_existing_vertex\n")
+                break
+            elif to_modify in m_list:
+                print("Selected {}".format(modifier_functions[to_modify].__name__))
+                modifier_functions[to_modify](vert)
+            else:
+                print("Invalid choice. Please select a valid option.\n")
 
     #used to modify the average density based on time, set higher on certain places on certain times
     #used to normalise routes based on density (i.e. a route might be shorter but have more people vs slightly longer route with no people)
