@@ -8,23 +8,23 @@ selection_no=['0','n','N','No','no']
 class Graph():
     def __init__(self, area_file, clearance):
         Json_OS_ProcessingFunctions.check_folders_exist()
-        self.dd_graph = dict()  
+        self.dd_graph = dict()
         self.access_clearance = clearance
         self.area_file_tosave = area_file
-        
+
         if self.check_area_file_exist(area_file):
             print("Loading {} from Master")
             self.dd_graph = Json_OS_ProcessingFunctions.load_file_json(area_file, 0)
-            
+
         else:
             print("File does not exist")
             self.graph_generation_tool()
-        
+
     def __del__(self):
         print("Saving to Working folder")
         self.store_solution_Working()
-        print('deleting')   
-        
+        print('deleting')
+
 #_GRAPH TOOLS_#
     #to think of more conditions of the vertex
     def add_vertex(self):
@@ -44,7 +44,7 @@ class Graph():
                 }
             self.dd_graph[vertex_ID] = dd_vertex
         self.neighbour_tool(vertex_ID)
-        
+
     def neighbour_tool(self, vertex_ID):
         #add escape con
         while True:
@@ -58,7 +58,7 @@ class Graph():
             else:
                 print("Invalid input")
                 continue
-    
+
     def add_neighbour(self, vertex_ID):
         print("Enter Neighbour Vertex ID: ")
         neighbour_ID=self.query_vertex()
@@ -70,9 +70,9 @@ class Graph():
         else:
             print("Returning to neighbour creation tool")
             self.neighbour_tool(vertex_ID)
-            
+
         adj_dist=self.add_neighbour_distance()
-        
+
         self.dd_graph[vertex_ID]["Neighbour"][neighbour_ID]=adj_dist
         if neighbour_ID not in self.dd_graph.keys():
             neighbours = {vertex_ID:adj_dist}
@@ -88,7 +88,7 @@ class Graph():
             self.dd_graph[neighbour_ID] = dd_vertex_new
         else:
             self.dd_graph[neighbour_ID]["Neighbour"][vertex_ID]=adj_dist
-            
+
     def add_neighbour_distance(self):
         while True:
             try:
@@ -102,16 +102,16 @@ class Graph():
                 else:
                     print("Distance must be more than 0!")
             except ValueError:
-                print("Not a number") 
-    
+                print("Not a number")
+
     # UI portion for adding vertex information
     def query_vertex(self):
         #to add existing vertex selection
         q_pf=self.query_vertex_Prefix()
         q_hd=self.query_vertex_Heading()
         q_id=self.query_vertex_ID()
-        return q_pf+q_hd+q_id    
-        
+        return q_pf+q_hd+q_id
+
     def query_vertex_Prefix(self):
         pref = ""
         #edit as needed
@@ -127,7 +127,7 @@ class Graph():
                     print("out of index")
             except ValueError:
                 print("Not a valid input")
-            
+
         print("\nConfirm selection \n{:02d}\t{}?\n".format(pref,ID_prefix[pref]))
         sel=input("y/n: ")
         if sel in selection_yes:
@@ -138,7 +138,7 @@ class Graph():
         else:
             print("Not a valid input\n")
             return self.query_vertex_Prefix()
-    
+
     def query_vertex_Heading(self):
         direction_heading = ""
         print("Enter heading of vertex [01-36]: ")
@@ -153,7 +153,7 @@ class Graph():
                     print("out of index")
             except ValueError:
                 print("Not a valid input")
-                
+
         print("\nConfirm entry: \t{}\n".format(direction_heading))
         sel=input("y/n: ")
         if sel in selection_yes:
@@ -178,20 +178,21 @@ class Graph():
         else:
             print("Not a valid input\n")
             return self.query_vertex_ID()
-        
+
     def save_and_exit(self):
         print("Saving and exiting graph generation tool.")
         self.store_solution_Master()
         self.store_solution_Working()
         print("Saved")
-        
-        
+
+
     def graph_generation_tool(self):
         print("Entering graph generation tool for {}".format(self.area_file_tosave[:-5]))
         tool_options = {
             '01': self.add_vertex,
             '02': self.modify_display_existing_vertex,
-            '03': self.save_and_exit
+            '03': self.change_graph,
+            '04': self.save_and_exit
             #need a change graph option to jump graphs maybe
 
             }
@@ -200,11 +201,11 @@ class Graph():
             print("\nCurrent Graph State: ")
             print(json.dumps(self.dd_graph, indent=4))
             print("\n")
-            
+
             print("\nSelect option:\n")
             for key, value in tool_options.items():
                 print("{}\t{}".format(key, value.__name__))
-                
+
             print("q\tExit\n")
 
             choice_option = input("Enter Choice: ")
@@ -213,32 +214,32 @@ class Graph():
                 print("Exiting tool and saving")
                 self.save_and_exit()
                 break
-            
+
             else:
                 selected_option = tool_options.get(choice_option)
                 if selected_option:
                     selected_option()
                 else:
                     print("Invalid choice. Please select a valid option.\n")
-               
+
     #store known solutions to be recalculated based on time to adjust for density and for rain
     #pseudo memo by storing solutions that aren't in runtime
     def store_solution_Master(self):
         Json_OS_ProcessingFunctions.save_file_json(self.dd_graph, self.area_file_tosave, 0)
-        
+
     def store_solution_Working(self):
         Json_OS_ProcessingFunctions.save_file_json(self.dd_graph, self.area_file_tosave, 1)
-    
+
     def check_area_file_exist(self, area_file):
         #check if master file exists
-        return Json_OS_ProcessingFunctions.check_file_exist(area_file, 0)   
-     
+        return Json_OS_ProcessingFunctions.check_file_exist(area_file, 0)
+
 #_GRAPH TOOLS_#
 
 #_DEBUG PRINT STUFF_#
 
 #_DEBUG PRINT STUFF_#
-        
+
 #_MODIFIER FUNCTIONS_#
 
     def modify_display_existing_vertex(self):
@@ -256,7 +257,7 @@ class Graph():
         else:
             print("Invalid input!")
             return self.modify_display_existing_vertex()
-        
+
     def display_keys_to_modify(self, vert):
         print("Current vertex state:\n")
         print(json.dumps(self.dd_graph[vert], indent=4))
@@ -283,18 +284,18 @@ class Graph():
         print("Options:\n")
         for i in range(len(m_list)):
             print("{:02d}\t{}".format(i, modifier_functions[m_list[i]].__name__))
-    
+
         to_modify = input("\nSelect modification: ")
         if to_modify in m_list:
             print("Selected {}".format(modifier_functions[to_modify].__name__))
             modifier_functions[to_modify](vert)
         else:
             print("Invalid input!")
-            return self.modify_display_existing_vertex()     
+            return self.modify_display_existing_vertex()
 
     #used to modify the average density based on time, set higher on certain places on certain times
     #used to normalise routes based on density (i.e. a route might be shorter but have more people vs slightly longer route with no people)
-  
+
     def Time_check(self):
         curr_DT = datetime.datetime.now()
         time_lunch_start='11:45:00'
@@ -306,51 +307,54 @@ class Graph():
             l_vert_tochange=[]
             for i in l_vert_tochange:
                 self.Time_Dist_modifier(i,1.5)
-            
+
         else:
             print("Not lunch rush")
             return
-            
-    
+
+
     def Time_Dist_modifier(self, vertex, adj_val):
         self.dd_graph[vertex]["Average_travel_time"]*=adj_val
-    
+
     def Density_modifier_MANUAL(self, vertex):
         pass
-    
+
     #set to 1
     def Density_modifier_Rare(self, vertex):
         self.dd_graph[vertex]["Avg_density"]=1
-    
+
     #set to 1.5
     def Density_modifier_Medium(self, vertex):
         self.dd_graph[vertex]["Avg_density"]=1.5
-    
+
     #set to 2
     def Density_modifier_Welldone(self, vertex):
         self.dd_graph[vertex]["Avg_density"]=2
-    
+
     def set_Sheltered_True(self, vertex):
         self.dd_graph[vertex]["Sheltered"]=True
-        
+
     def set_Sheltered_False(self, vertex):
         self.dd_graph[vertex]["Sheltered"]=False
-        
+
     def set_Route_intersection_True(self, vertex):
         self.dd_graph[vertex]["Route_intersection"]=True
-        
+
     def set_Route_intersection_False(self, vertex):
         self.dd_graph[vertex]["Route_intersection"]=False
-    
+
     def set_visited_MANUAL(self, vertex):
-        pass
-    
+        temp = self.dd_graph[vertex]["Visited"]
+        man_visited = input("Set number of times visited for {}:\t".format(vertex))
+        self.dd_graph[vertex]["Visited"]=man_visited
+        print("Initial visited: {}\nNew visited :{}\n".format(temp, man_visited))
+
     def set_visited_0(self, vertex):
         self.dd_graph[vertex]["Visited"]=0
-    
+
     def set_visited_1(self, vertex):
         self.dd_graph[vertex]["Visited"]=1
-        
+
     def set_Average_travel_time(self, vertex):
         while True:
             try:
@@ -361,27 +365,27 @@ class Graph():
                     print("out of index")
             except ValueError:
                 print("Not a valid input (number)")
-            
+
         self.dd_graph[vertex]["Average_travel_time"]=t_time
-        
+
     def set_room_ID(self, vertex):
         ID_code = input("Enter Location ID code: ")
         self.dd_graph[vertex]["Room_ID"]=ID_code
-        #to add this reflection into a lookup table in main, for quick reference 
+        #to add this reflection into a lookup table in main, for quick reference
 
     def set_Connection_Point_True(self, vertex):
         self.dd_graph[vertex]["Connection_Point"]=True
-        
+
     def set_Connection_Point_False(self, vertex):
         self.dd_graph[vertex]["Connection_Point"]=False
-    
+
 #_MODIFIER FUNCTIONS_#
 
 #_ACCESS MODIFIER FUNCTIONS_#
 
     def check_Access(self, access_list, clearance_for_vertex):
         return len(set(access_list).intersection(clearance_for_vertex))>0
-    
+
     def set_clearance(self, vertex):
         #copy availiable clearance from user.py
         c_list=["Fablab_basic","Fablab_Woodwork","Fablab_Metalwork","Hostel_55","Hostel_57","Hostel_59"]
@@ -400,11 +404,11 @@ class Graph():
         else:
             print("Invalid input!")
             return self.set_clearance(vertex)
-        
+
         cont = input("\nContinue adding clearance? y/n: ")
         if cont in selection_yes:
             self.set_clearance(vertex)
-        
+
     def remove_clearance(self, vertex):
         #special case empty and one clearance
         if len(self.dd_graph[vertex]["Access_Clearance"])==0:
@@ -415,15 +419,15 @@ class Graph():
             self.dd_graph[vertex]["Access_Clearance"].clear()
             return
         selection=[i for i in range(len(self.dd_graph[vertex]["Access_Clearance"]))]
-        
+
         print("Clearances for {}:\n".format(vertex))
         for i in range(len(self.dd_graph[vertex]["Access_Clearance"])):
             print("{:02d}\t{}".format(i, self.dd_graph[vertex]["Access_Clearance"][i]))
-            
+
         todisc = input("\nSelect index of clearance to remove: ")
         if int(todisc) in selection:
             self.dd_graph[vertex]["Access_Clearance"].remove(self.dd_graph[vertex]["Access_Clearance"][int(todisc)])
-        
+
 
         print("Current clearance state for {}:\n".format(vertex))
         for i in self.dd_graph[vertex]["Access_Clearance"]:
@@ -431,27 +435,27 @@ class Graph():
         cont = input("\nContinue removing clearance? y/n: ")
         if cont in selection_yes:
             self.remove_clearance(vertex)
-              
-        
-            
+
+
+
 #_ACCESS MODIFIER FUNCTIONS_#
-    
-    
+
+
 #_PATH FINDING FUNCTIONS_#
- 
+
     #Shortest paths
     def Dijkstra(self, source):
         pass
-    
+
     def Floyd_Warshall(self, source):
         pass
-    
+
     #heuristics
     def A_star(self, source, destination):
         pass
-    
+
     def Ant_colony(self, source):
         pass
-    
-    
-#_PATH FINDING FUNCTIONS_#        
+
+
+#_PATH FINDING FUNCTIONS_#
