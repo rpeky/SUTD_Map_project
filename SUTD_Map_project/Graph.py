@@ -255,7 +255,7 @@ class Graph():
 
             if vert_modify=='q':
                 print("returning  to graph generating tool")
-                break
+                return
             try:
                 vert_index = int(vert_modify)
                 if 0<=vert_index < len(vert_list):
