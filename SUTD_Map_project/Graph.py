@@ -191,8 +191,8 @@ class Graph():
         tool_options = {
             '01': self.add_vertex,
             '02': self.modify_display_existing_vertex,
-            '03': self.change_graph,
-            '04': self.save_and_exit
+            #'03': self.change_graph,
+            '03': self.save_and_exit
             #need a change graph option to jump graphs maybe
 
             }
@@ -246,17 +246,25 @@ class Graph():
         vert_list=list(self.dd_graph.keys())
         if len(vert_list)==0:
             print("Empty graph, returning to graph generating tool")
-            return self.graph_generation_tool()
-        selection=[i for i in range(len(vert_list))]
-        for i in range(len(vert_list)):
-            print("{:02d}\t{}".format(i,vert_list[i]))
-        vert_modify = input("\nSelect index of Vertex to modify: ")
-        if int(vert_modify) in selection:
-            print("Selected {}".format(vert_list[int(vert_modify)]))
-            return self.display_keys_to_modify(vert_list[int(vert_modify)])
-        else:
-            print("Invalid input!")
-            return self.modify_display_existing_vertex()
+            return
+        while True:
+            for i in range(len(vert_list)):
+                print("{:02d\t{}}".format(i,vert_list[i]))
+            print("q\tExit")
+            vert_modify = input("\nSelect index of Vertex to modify: ")
+
+            if vert_modify=='q':
+                print("returning  to graph generating tool")
+                break
+            try:
+                vert_index = int(vert_modify)
+                if 0<=vert_index < len(vert_list):
+                    print("Selected {}".format(vert_list[vert_index]))
+                    self.display_keys_to_modify(vert_list[vert_index])
+                else:
+                    print("Invalid choice. Please select a valid option.\n")
+            except ValueError:
+                print("Invalid choice. Please select a valid option.\n")
 
     def display_keys_to_modify(self, vert):
         print("Current vertex state:\n")
