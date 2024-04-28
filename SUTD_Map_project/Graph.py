@@ -192,7 +192,9 @@ class Graph():
             '01': self.add_vertex,
             '02': self.modify_display_existing_vertex,
             #'03': self.change_graph,
-            '03': self.save_and_exit
+            '03': self.save_and_exit,
+            '04': self.query_pathfind
+            
             #need a change graph option to jump graphs maybe
 
             }
@@ -444,17 +446,49 @@ class Graph():
         if cont in selection_yes:
             self.remove_clearance(vertex)
 
-
-
 #_ACCESS MODIFIER FUNCTIONS_#
-
 
 #_PATH FINDING FUNCTIONS_#
 
     #Shortest paths
-    def Dijkstra(self, source):
-        pass
+    def Dijkstra_modified(self, startpoint):
+        djk_dict = dict()
+        vtxs = set(self.dd_graph.keys())
+        for vtx in vtxs:
+            if (vtx == startpoint):
+                djk_dict[vtx] = (0,[])
+            else:
+                djk_dict[vtx] = (float('inf'),[])
+        visited_vtxs = set()
+        current_vtx = startpoint
+        while True:
+            # Mark current vertex as visited
+            visited_vtxs.add(current_vtx)
 
+            # Get list of adjacent vertices
+            adj_vtxs = [i for i in self.dd_graph[current_vtx]["Neighbour"].keys() if i in vtxs]
+
+            # Update distances of adjacent vertices
+            for adj_vtx in adj_vtxs:
+                old_dist = djk_dict[adj_vtx][0]
+                old_path = djk_dict[adj_vtx][1]
+                new_dist = djk_dict[current_vtx][0] + self.dd_graph[current_vtx]["Neighbour"][adj_vtx]
+                new_path = djk_dict[current_vtx][1] + [current_vtx]
+                if new_dist < old_dist:
+                    djk_dict[adj_vtx] = (new_dist,new_path)
+
+            # Unvisited vertex with minimum distance is visited next
+            current_vtx = None
+            current_vtx_dist = float('inf')
+            for vtx, tuptup in djk_dict.items():
+                if vtx not in visited_vtxs and tuptup[0] < current_vtx_dist:
+                    current_vtx = vtx
+                    current_vtx_dist = tuptup[0]
+            if current_vtx == None:
+                break
+
+        return djk_dict
+                
     def Floyd_Warshall(self, source):
         pass
 
@@ -466,4 +500,24 @@ class Graph():
         pass
 
 
-#_PATH FINDING FUNCTIONS_#
+#_PATH OUTPUT FUNCTIONS_#
+
+    def query_pathfind(self):
+        vtxs = list(self.dd_graph.keys())
+        for i in range(len(vtxs)):
+            print("{:02d}\t{}".format(i, vtxs[i]))
+        while True:
+            try:
+                start_point = int(input("\nSelect index of starting point: "))
+                if start_point in range(len(vtxs)):
+                    break
+                else:
+                    print("Not a valid starting point index \n")
+            except ValueError:
+                print("Not a valid starting point index \n")
+        sol = self.Dijkstra_modified(vtxs[start_point])
+        print(json.dumps(sol, indent=4))
+
+    def show_route(self):
+        pass
+    
