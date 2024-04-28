@@ -5,11 +5,12 @@ selection_no=['0','n','N','No','no']
 class User():
     def __init__(self):
         self.clearance_card={"Basic"}
-        self.clearance_list=["Fablab_basic","Fablab_Woodwork","Fablab_Metalwork","Hostel_55","Hostel_57","Hostel_59"]
-        
+        self.clearance_list=["Fablab_basic","Fablab_Woodwork","Fablab_Metalwork","Hostel_55","Hostel_57","Hostel_59","Freshmore_Cohortclass", "42SG_Access"]
+        self.freshmore_preset_list=["Fablab_basic","Freshmore_Cohortclass"]
+
     def display_clearances(self):
         print(self.clearance_card)
-        
+
     def add_clearance(self):
         for i, clearance in enumerate(self.clearance_list):
             print("{:02d}\t{}".format(i, clearance))
@@ -33,13 +34,13 @@ class User():
             return self.add_clearance()
         else:
             print("Not a valid input \nExiting add_clearance tool\n")
-                    
+
     def remove_clearance(self):
         cc_list = list(self.clearance_card)
         to_remove=""
         for i in range(len(cc_list)):
             print("{:02d}\t{}".format(i, cc_list[i]))
-            
+
         while True:
             try:
                 selection=int(input("\nSelect clearance to remove: "))
@@ -50,7 +51,7 @@ class User():
                     print("out of index")
             except ValueError:
                 print("Not a valid input")
-                
+
         print("\nConfirm selection {}?\n".format(to_remove))
         sel=input("y/n: ")
         if sel in selection_yes:
@@ -60,4 +61,3 @@ class User():
             return self.query_vertex_Prefix()
         else:
             print("Not a valid input \nExiting remove_clearance tool\n")
-            
