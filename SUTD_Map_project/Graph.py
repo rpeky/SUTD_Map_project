@@ -190,7 +190,7 @@ class Graph():
         print("\nCurrent Graph State: ")
         print(json.dumps(self.dd_graph, indent=4))
         print("\n")
-        
+
 
     def graph_generation_tool(self):
         print("Entering graph generation tool for {}".format(self.area_file_tosave[:-5]))
@@ -256,7 +256,7 @@ class Graph():
             return
         while True:
             for i in range(len(vert_list)):
-                print("{:02d\t{}}".format(i,vert_list[i]))
+                print("{:02d}\t{}".format(i,vert_list[i]))
             print("q\tExit")
             vert_modify = input("\nSelect index of Vertex to modify: ")
 
@@ -273,7 +273,7 @@ class Graph():
                     print("Invalid choice. Please select a valid option.\n")
             except ValueError:
                 print("Invalid choice. Please select a valid option.\n")
-                
+
     def display_keys_to_modify(self, vert):
         modifier_functions = {
             "00": self.Density_modifier_Rare,
@@ -549,7 +549,7 @@ class Graph():
                 break
 
         return djk_dict
-                
+
     def Floyd_Warshall(self, source):
         pass
 
@@ -581,4 +581,4 @@ class Graph():
 
     def show_route(self):
         pass
-    
+
