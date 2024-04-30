@@ -5,7 +5,8 @@ selection_no=['0','n','N','No','no']
 class User():
     def __init__(self):
         self.clearance_card={"Basic"}
-        self.clearance_list=["Fablab_basic","Fablab_Woodwork","Fablab_Metalwork","Hostel_55","Hostel_57","Hostel_59","Freshmore_Cohortclass", "42SG_Access"]
+        self.clearance_list=["Fablab_basic","Fablab_Woodwork","Fablab_Metalwork","Hostel_55","Hostel_57","Hostel_59","Freshmore_Cohortclass", "42SG_Access",\
+                             "DAI_Studio", "Auditorioum_Backstage_Alley"]
         self.freshmore_preset_list=["Fablab_basic","Freshmore_Cohortclass"]
 
     def display_clearances(self):

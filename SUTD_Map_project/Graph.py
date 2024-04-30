@@ -322,7 +322,7 @@ class Graph():
             #find the specific vertex chokepoints to adjust in dd_graph
             l_vert_tochange=[]
             for i in l_vert_tochange:
-                self.Time_Dist_modifier(i,1.5)
+                self.Time_Dist_modifier(i,2)
 
         else:
             print("Not lunch rush")
@@ -333,7 +333,16 @@ class Graph():
         self.dd_graph[vertex]["Average_travel_time"]*=adj_val
 
     def Density_modifier_MANUAL(self, vertex):
-        pass
+        while True:
+            try:
+                man_density = int(input("\nSet average density: "))
+                if man_density > 0:
+                    break
+                else:
+                    print("Not wihtin valid index > 0")
+            except:
+                print("\nNot a number, try again\n")
+        self.dd_graph[vertex]["Avg_density"]=man_density
 
     #set to 1
     def Density_modifier_Rare(self, vertex):
