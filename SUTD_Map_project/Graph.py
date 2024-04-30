@@ -585,9 +585,22 @@ class Graph():
                     print("Not a valid starting point index \n")
             except ValueError:
                 print("Not a valid starting point index \n")
+        while True:
+            try:
+                end_point = int(input("\nSelect index of end point: "))
+                if end_point in range(len(vtxs)):
+                    break
+                else:
+                    print("Not a valid end point index \n")
+            except ValueError:
+                print("Not a valid end point index \n")
         sol = self.Dijkstra_modified(vtxs[start_point])
+        print("All solutions:\n")
         print(json.dumps(sol, indent=4))
+        print("\nSolution: ")
+        self.show_route(sol[vtxs[end_point]][1])
 
-    def show_route(self):
-        pass
+    def show_route(self, ls_sol):
+        for i in ls_sol:
+            print(i, "\n")
 
