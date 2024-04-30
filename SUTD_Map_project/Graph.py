@@ -322,7 +322,7 @@ class Graph():
             #find the specific vertex chokepoints to adjust in dd_graph
             l_vert_tochange=[]
             for i in l_vert_tochange:
-                self.Time_Dist_modifier(i,1.5)
+                self.Time_Dist_modifier(i,2)
 
         else:
             print("Not lunch rush")
@@ -333,7 +333,16 @@ class Graph():
         self.dd_graph[vertex]["Average_travel_time"]*=adj_val
 
     def Density_modifier_MANUAL(self, vertex):
-        pass
+        while True:
+            try:
+                man_density = int(input("\nSet average density: "))
+                if man_density > 0:
+                    break
+                else:
+                    print("Not wihtin valid index > 0")
+            except:
+                print("\nNot a number, try again\n")
+        self.dd_graph[vertex]["Avg_density"]=man_density
 
     #set to 1
     def Density_modifier_Rare(self, vertex):
@@ -576,9 +585,22 @@ class Graph():
                     print("Not a valid starting point index \n")
             except ValueError:
                 print("Not a valid starting point index \n")
+        while True:
+            try:
+                end_point = int(input("\nSelect index of end point: "))
+                if end_point in range(len(vtxs)):
+                    break
+                else:
+                    print("Not a valid end point index \n")
+            except ValueError:
+                print("Not a valid end point index \n")
         sol = self.Dijkstra_modified(vtxs[start_point])
+        print("All solutions:\n")
         print(json.dumps(sol, indent=4))
+        print("\nSolution: ")
+        self.show_route(sol[vtxs[end_point]][1])
 
-    def show_route(self):
-        pass
+    def show_route(self, ls_sol):
+        for i in ls_sol:
+            print(i, "\n")
 

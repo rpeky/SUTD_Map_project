@@ -10,10 +10,10 @@ def testbench():
     gg.graph_generation_tool()
     print(gg.Time_check())
     #print(gg.__dict__)
-    
+
 def Area_Selection():
     dd_zones={
-        "LEVEL_1":['1'], 
+        "LEVEL_1":['1'],
         'Building_1':['2','3','4','5','6','7'],
         'Building_2':['2','3','4','5','6','7'],
         'Building_3':['2','3','4','5','6','7'],
@@ -31,7 +31,7 @@ def Area_Selection():
     A_select = B_select+'_Level_'+F_select+".json"
     print("Loading file: {}\n".format(A_select))
     return A_select
-      
+
 def Building_Selection(buildings):
     selection = ["{:02d}".format(i) for i in range(len(buildings))]
     print("Availiable Buildings:")
@@ -44,7 +44,7 @@ def Building_Selection(buildings):
     else:
         print("Invalid input!")
         return Building_Selection(buildings)
-    
+
 def Floor_Selection(floors):
     print("\nAvailiable Levels:")
     for i in floors:
@@ -62,12 +62,12 @@ def main():
     cl_s="\n"*100
     while True:
         print(cl_s)
-        print("SUTD Map Project 2023 Default Page\n")
+        print("SUTD Map Project 2023/2024 Default Page\n")
         ct=input("Enter q to exit mapping tool\nAny other key to proceed: ")
         if ct=='q':
             break
         testbench()
-    
+
 if __name__ == '__main__':
     start_time = time.process_time()
     main()
