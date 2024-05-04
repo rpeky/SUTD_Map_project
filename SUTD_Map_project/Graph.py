@@ -379,6 +379,9 @@ class Graph():
 
     def set_visited_1(self, vertex):
         self.dd_graph[vertex]["Visited"]=1
+        
+    def set_visited_add(self, vertex):
+        self.dd_graph[vertex]["Visited"]+=1
 
     def set_Average_travel_time(self, vertex):
         while True:
