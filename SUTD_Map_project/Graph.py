@@ -243,6 +243,10 @@ class Graph():
 
 #_GRAPH TOOLS_#
 
+    def verify_endpoint_samegraph(self, endpoint):
+        internal_vert_list = list(self.dd_graph.keys())
+        return True if (endpoint in internal_vert_list) else False
+
 #_DEBUG PRINT STUFF_#
 
 #_DEBUG PRINT STUFF_#
