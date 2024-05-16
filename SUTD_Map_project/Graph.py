@@ -15,6 +15,7 @@ class Graph():
         if self.check_area_file_exist(area_file):
             print("Loading {} from Master")
             self.dd_graph = Json_OS_ProcessingFunctions.load_file_json(area_file, 0)
+            self.graph_generation_tool()
 
         else:
             print("File does not exist")
