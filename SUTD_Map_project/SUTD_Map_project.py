@@ -7,7 +7,7 @@ def testbench():
     f_zone = Area_Selection()
     uu=User.User()
     gg = Graph.Graph(f_zone, uu.clearance_card)
-    gg.graph_generation_tool()
+    #gg.graph_generation_tool()
     print(gg.Time_check())
     #print(gg.__dict__)
 
