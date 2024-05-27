@@ -266,7 +266,7 @@ class Graph():
             vert_modify = input("\nSelect index of Vertex to modify: ")
 
             if vert_modify=='q':
-                print("returning  to graph generating tool")
+                print("returning to graph generating tool")
                 return
             try:
                 vert_index = int(vert_modify)
@@ -281,21 +281,21 @@ class Graph():
 
     def display_keys_to_modify(self, vert):
         modifier_functions = {
-            "00": self.Density_modifier_Rare,
-            "01": self.Density_modifier_Medium,
-            "02": self.Density_modifier_Welldone,
-            "03": self.set_Sheltered_False,
-            "04": self.set_Sheltered_True,
-            "05": self.set_Route_intersection_False,
-            "06": self.set_Route_intersection_True,
-            "07": self.set_clearance,
-            "08": self.set_Average_travel_time,
-            "09": self.set_room_ID,
-            "10": self.set_Connection_Point_False,
-            "11": self.set_Connection_Point_True,
-            "12": self.remove_clearance,
-            "13": self.add_existing_neighbours,
-            "14": self.remove_existing_neighbours
+            "00":self.Density_modifier_Rare,
+            "01":self.Density_modifier_Rare,
+            "02":self.Density_modifier_Medium,
+            "03":self.Density_modifier_Welldone,
+            "04":self.set_Sheltered_True,
+            "05":self.set_Sheltered_False,
+            "06":self.set_Route_intersection_True,
+            "07":self.set_Route_intersection_False,
+            "08":self.set_visited_MANUAL,
+            "09":self.set_visited_0,
+            "10":self.set_visited_1,
+            "11":self.set_Average_travel_time,
+            "12":self.set_room_ID,
+            "13":self.set_Connection_Point_True,
+            "14":self.set_Connection_Point_False
         }
 
         m_list = list(modifier_functions.keys())
