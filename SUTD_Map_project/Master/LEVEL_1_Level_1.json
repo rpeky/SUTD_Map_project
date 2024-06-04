@@ -5,9 +5,11 @@
         ],
         "Average_travel_time": null,
         "Avg_density": 1,
+        "Connection_Point": true,
         "Neighbour": {
             "ROOM_36_Project_Lab": 1.0
         },
+        "Room_ID": "",
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
