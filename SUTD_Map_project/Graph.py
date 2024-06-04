@@ -198,9 +198,8 @@ class Graph():
         tool_options = {
             '01': self.add_vertex,
             '02': self.modify_display_existing_vertex,
-            '03': self.save_and_exit,
-            '04': self.query_pathfind
-
+            '03': self.query_pathfind,
+            '04': self.save_and_exit
             #need a change graph option to jump graphs maybe
 
             }
@@ -295,7 +294,11 @@ class Graph():
             "11":self.set_Average_travel_time,
             "12":self.set_room_ID,
             "13":self.set_Connection_Point_True,
-            "14":self.set_Connection_Point_False
+            "14":self.set_Connection_Point_False,
+            "15":self.set_clearance,
+            "16":self.remove_clearance,
+            "17":self.add_existing_neighbours,
+            "18":self.remove_existing_neighbours
         }
 
         m_list = list(modifier_functions.keys())
@@ -438,6 +441,9 @@ class Graph():
             print("Invalid input!")
             return self.set_clearance(vertex)
 
+        print("Clearances for {}:\n".format(vertex))
+        for i in range(len(self.dd_graph[vertex]["Access_Clearance"])):
+            print("{:02d}\t{}".format(i, self.dd_graph[vertex]["Access_Clearance"][i]))
         cont = input("\nContinue adding clearance? y/n: ")
         if cont in selection_yes:
             self.set_clearance(vertex)
@@ -522,7 +528,6 @@ class Graph():
             confirm = input("Continue removing an existing vertex as neighbour from {}?\ny/n: ".format(vertex_ID))
             if confirm in selection_no:
                 break
-        pass
 
 #_ACCESS MODIFIER FUNCTIONS_#
 
