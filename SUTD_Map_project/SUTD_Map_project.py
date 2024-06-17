@@ -1,15 +1,28 @@
 import time
+import json
+
 import Graph
 import User
-import json
+import Json_OS_ProcessingFunctions
 
 def testbench():
     f_zone = Area_Selection()
     uu=User.User()
-    gg = Graph.Graph(f_zone, uu.clearance_card)
+    lkup = masterlookup_ini()
+    gg = Graph.Graph(f_zone, uu.clearance_card, lkup)
     #gg.graph_generation_tool()
     print(gg.Time_check())
     #print(gg.__dict__)
+
+def masterlookup_ini():
+    #for looking up which vertex belongs to which json
+    dd_lkup = dict()
+    Json_OS_ProcessingFunctions.check_folders_exist()
+    if Json_OS_ProcessingFunctions.check_file_exist("Lookup_directory.json",2):
+        dd_lkup = Json_OS_ProcessingFunctions.load_file_json("Lookup_directory.json",2)
+    return dd_lkup
+
+
 
 def Area_Selection():
     dd_zones={

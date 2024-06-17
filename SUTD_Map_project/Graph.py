@@ -6,12 +6,15 @@ selection_yes=['1','y','Y','Yes','yes']
 selection_no=['0','n','N','No','no']
 
 class Graph():
-    def __init__(self, area_file, clearance):
-        Json_OS_ProcessingFunctions.check_folders_exist()
+    def __init__(self, area_file, clearance, dd_lkup):
+        #checked outside in main when initialising master lookup
+        #Json_OS_ProcessingFunctions.check_folders_exist()
         self.dd_graph = dict()
+        self.dd_lkup = dd_lkup
         self.access_clearance = clearance
         self.area_file_tosave = area_file
 
+        #check if map of area exists
         if self.check_area_file_exist(area_file):
             print("Loading {} from Master")
             self.dd_graph = Json_OS_ProcessingFunctions.load_file_json(area_file, 0)
@@ -24,6 +27,12 @@ class Graph():
     def __del__(self):
         print("Saving to Working folder")
         self.store_solution_Working()
+        print("Updating Lookup")
+        #modify master lookup
+        for key in self.dd_graph.keys():
+            self.dd_lkup.update({key:self.area_file_tosave})
+        #print(json.dump(self.dd_lkup))
+        Json_OS_ProcessingFunctions.save_file_json(self.dd_lkup,"Lookup_directory.json",2)
         print('deleting')
 
 #_GRAPH TOOLS_#
