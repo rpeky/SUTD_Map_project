@@ -208,7 +208,8 @@ class Graph():
             '01': self.add_vertex,
             '02': self.modify_display_existing_vertex,
             '03': self.query_pathfind,
-            '04': self.save_and_exit
+            '04': self.display_vertices,
+            '05': self.save_and_exit
             #need a change graph option to jump graphs maybe
 
             }
@@ -257,6 +258,13 @@ class Graph():
         return True if (endpoint in internal_vert_list) else False
 
 #_DEBUG PRINT STUFF_#
+
+    def display_vertices(self):
+        vert_list=list(self.dd_graph.keys())
+        if len(vert_list)==0:
+            print("Empty graph")
+        for i in range(len(vert_list)):
+            print("{:02d}\t{}".format(i,vert_list[i]))
 
 #_DEBUG PRINT STUFF_#
 
