@@ -9,7 +9,8 @@ def testbench():
     f_zone = Area_Selection()
     uu=User.User()
     lkup = masterlookup_ini()
-    gg = Graph.Graph(f_zone, uu.clearance_card, lkup)
+    cplkup = lookup_connection_ini()
+    gg = Graph.Graph(f_zone, uu.clearance_card, lkup, cplkup)
     #gg.graph_generation_tool()
     print(gg.Time_check())
     #print(gg.__dict__)
@@ -22,7 +23,12 @@ def masterlookup_ini():
         dd_lkup = Json_OS_ProcessingFunctions.load_file_json("Lookup_directory.json",2)
     return dd_lkup
 
-
+def lookup_connection_ini():
+    #for connection point json list, run after masterlookup_ini
+    dd_cplkup = dict()
+    if Json_OS_ProcessingFunctions.check_file_exist("Lookup_connections.json",2):
+        dd_cplkup = Json_OS_ProcessingFunctions.load_file_json("Lookup_connections.json",2)
+    return dd_cplkup
 
 def Area_Selection():
     dd_zones={

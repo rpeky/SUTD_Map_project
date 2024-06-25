@@ -6,11 +6,12 @@ selection_yes=['1','y','Y','Yes','yes']
 selection_no=['0','n','N','No','no']
 
 class Graph():
-    def __init__(self, area_file, clearance, dd_lkup):
+    def __init__(self, area_file, clearance, dd_lkup, dd_cplkup):
         #checked outside in main when initialising master lookup
         #Json_OS_ProcessingFunctions.check_folders_exist()
         self.dd_graph = dict()
         self.dd_lkup = dd_lkup
+        self.dd_cplkup = dd_cplkup
         self.access_clearance = clearance
         self.area_file_tosave = area_file
 
@@ -33,6 +34,7 @@ class Graph():
             self.dd_lkup.update({key:self.area_file_tosave})
         #print(json.dump(self.dd_lkup))
         Json_OS_ProcessingFunctions.save_file_json(self.dd_lkup,"Lookup_directory.json",2)
+        Json_OS_ProcessingFunctions.save_file_json(self.dd_cplkup,"Lookup_connections.json",2)
         print('deleting')
 
 #_GRAPH TOOLS_#
@@ -315,7 +317,8 @@ class Graph():
             "15":self.set_clearance,
             "16":self.remove_clearance,
             "17":self.add_existing_neighbours,
-            "18":self.remove_existing_neighbours
+            "18":self.remove_existing_neighbours,
+            "19":self.add_external_connectionpoint
         }
 
         m_list = list(modifier_functions.keys())
@@ -425,9 +428,13 @@ class Graph():
 
     def set_Connection_Point_True(self, vertex):
         self.dd_graph[vertex]["Connection_Point"]=True
+        self.dd_cplkup.update({vertex:self.area_file_tosave})
+        self.add_external_connectionpoint(vertex)
 
     def set_Connection_Point_False(self, vertex):
         self.dd_graph[vertex]["Connection_Point"]=False
+        tmep = self.dd_cplkup.pop(vertex, None)
+        print("Removed: {}".format(tmep))
 
 #_MODIFIER FUNCTIONS_#
 
@@ -544,6 +551,36 @@ class Graph():
                 break
 
 #_ACCESS MODIFIER FUNCTIONS_#
+
+#_CONNECTION POINT FUNCTIONS_#
+
+    def add_external_connectionpoint(self, vertex):
+        cont = input("\nConnection Point Tool\nThis node appears to connect to other mapped areas, continue setting link? y/n")
+        if cont in selection_yes:
+            counter=0
+            sel_list=list()
+            for point in self.dd_cplkup:
+                if (self.dd_cplkup[point]!=self.area_file_tosave) and (point not in self.dd_grpah[vertex]["Connected_vertex"]):
+                    print("{:02d}\t{}\t{}".format(counter,point,self.area_file_tosave))
+                    counter+=1
+                    sel_list.append((point,self.area_file_tosave))
+            while True:
+                try:
+                    selec = int(input("Select Connection Point: "))
+                    if selec>-1 and selec<counter:
+                        break
+                    else:
+                        print("out of index")
+                except ValueError:
+                    print("Not a valid input")
+            self.dd_graph[vertex]["Connected_vertex"].update(sel_list[selec])
+            ct = input("Additional vertices? y/n")
+            if ct in selection_yes:
+                return self.add_external_connectionpoint(vertex)
+
+
+#_CONNECTION POINT FUNCTIONS_#
+
 
 #_PATH FINDING FUNCTIONS_#
 

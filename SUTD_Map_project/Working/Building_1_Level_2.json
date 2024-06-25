@@ -1,1 +1,13 @@
-{}
+{
+    "LIFT_20_LOBBY_C_MAIN": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connection_Point": false,
+        "Neighbour": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    }
+}
