@@ -52,13 +52,14 @@ class Graph():
                     "Access_Clearance": list(),
                     "Average_travel_time": None,
                     "Room_ID": None,
-                    "Connection_Point": False
+                    "Connection_Point": False,
+                    "Connected_vertex": dict()
                 }
             self.dd_graph[vertex_ID] = dd_vertex
         self.neighbour_tool(vertex_ID)
 
     def neighbour_tool(self, vertex_ID):
-        #add escape con
+        #add heading to neighbour in data with distance
         while True:
             print("Current Graph State: ")
             print(json.dumps(self.dd_graph,indent=4))
@@ -95,18 +96,23 @@ class Graph():
                     "Sheltered": True,
                     "Route_intersection": False,
                     "Access_Clearance": list(),
-                    "Average_travel_time": None
-                }
+                    "Average_travel_time": None,
+                    "Room_ID": None,
+                    "Connection_Point": False,
+                    "Connected_vertex": dict()
+               }
             self.dd_graph[neighbour_ID] = dd_vertex_new
         else:
             self.dd_graph[neighbour_ID]["Neighbour"][vertex_ID]=adj_dist
-
+    
+    #adds distance and heading
     def add_neighbour_distance(self):
         while True:
             try:
                 adj_vtx_dist = float(input("Enter distance to adjacent vertex: "))
-                if adj_vtx_dist > 0:
-                    cont = input("\nConfirm distance {} \ny/n: ".format(adj_vtx_dist))
+                adj_vtx_head = int(input("\nEnter bearing to adjacent vertex: "))
+                if adj_vtx_dist > 0 and adj_vtx_head >= 0 and adj_vtx_head < 361:
+                    cont = input("\nConfirm distance :{}m \nConfirm heading {} degrees \ny/n: ".format(adj_vtx_dist,adj_vtx_head))
                     if cont in selection_yes:
                         return adj_vtx_dist
                     else:
@@ -291,6 +297,7 @@ class Graph():
                 if 0<=vert_index < len(vert_list):
                     print("Selected {}".format(vert_list[vert_index]))
                     self.display_keys_to_modify(vert_list[vert_index])
+                    break
 
                 else:
                     print("Invalid choice. Please select a valid option.\n")
@@ -432,7 +439,8 @@ class Graph():
     def set_Connection_Point_True(self, vertex):
         self.dd_graph[vertex]["Connection_Point"]=True
         self.dd_cplkup.update({vertex:self.area_file_tosave})
-        self.add_external_connectionpoint(vertex)
+        print("Connection point set to True")
+        #self.add_external_connectionpoint(vertex)
 
     def set_Connection_Point_False(self, vertex):
         self.dd_graph[vertex]["Connection_Point"]=False
@@ -558,29 +566,45 @@ class Graph():
 #_CONNECTION POINT FUNCTIONS_#
 
     def add_external_connectionpoint(self, vertex):
-        cont = input("\nConnection Point Tool\nThis node appears to connect to other mapped areas, continue setting link? y/n")
+        #not allowed if not a connection point
+        if self.dd_graph[vertex]["Connection_Point"]==False:
+            print("Not a connection point\n")
+            return
+        cont = input("\nConnection Point Tool\nThis node appears to connect to other mapped areas, continue setting link? y/n:\t")
         if cont in selection_yes:
             counter=0
             sel_list=list()
             for point in self.dd_cplkup:
-                if (self.dd_cplkup[point]!=self.area_file_tosave) and (point not in self.dd_grpah[vertex]["Connected_vertex"]):
-                    print("{:02d}\t{}\t{}".format(counter,point,self.area_file_tosave))
+                if (self.dd_cplkup[point]!=self.area_file_tosave) and (point not in self.dd_graph[vertex]["Connected_vertex"]):
+                    print("{:02d}\t{}\t{}".format(counter,point,self.dd_cplkup[point]))
                     counter+=1
-                    sel_list.append((point,self.area_file_tosave))
+                    temp_tup = (point, self.dd_cplkup[point])
+                    sel_list.append(temp_tup)
             while True:
                 try:
-                    selec = int(input("Select Connection Point: "))
+                    selec = input("Select Connection Point: ")
+                    if selec == 'q':
+                        return
+                    selec = int(selec)
                     if selec>-1 and selec<counter:
                         break
                     else:
                         print("out of index")
                 except ValueError:
                     print("Not a valid input")
-            self.dd_graph[vertex]["Connected_vertex"].update(sel_list[selec])
-            ct = input("Additional vertices? y/n")
+            self.dd_graph[vertex]["Connected_vertex"].update({sel_list[selec][0]:sel_list[selec][1]})
+            #add for conjugate,save to master
+            dd_mod = Json_OS_ProcessingFunctions.load_file_json(sel_list[selec][1],0)
+            if vertex not in dd_mod[sel_list[selec][0]]["Connected_vertex"]:
+                dd_mod[sel_list[selec][0]]["Connected_vertex"].update({vertex:self.area_file_tosave})
+                Json_OS_ProcessingFunctions.save_file_json(dd_mod,sel_list[selec][1],0)
+
+            print("Added connection\n")
+            ct = input("Additional vertices? y/n:\t")
             if ct in selection_yes:
                 return self.add_external_connectionpoint(vertex)
-
+        else:
+            return
 
 #_CONNECTION POINT FUNCTIONS_#
 

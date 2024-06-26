@@ -1,1 +1,18 @@
-{}
+{
+    "LIFT_25_LOBBY_C_B1L3": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {
+            "LIFT_25_LOBBY_C_B1L1": "LEVEL_1_Level_1.json",
+            "LIFT_25_LOBBY_C_B1L2": "Building_1_Level_2.json",
+            "LIFT_25_LOBBY_C_B1L4": "Building_1_Level_4.json"
+        },
+        "Connection_Point": true,
+        "Neighbour": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    }
+}
