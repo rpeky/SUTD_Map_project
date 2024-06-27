@@ -1,6 +1,7 @@
 {
+    "DUSTBIN_17_LOBBY_C_COMBINATION_DUSTBIN": "Building_1_Level_2.json",
+    "INTER_15_MAIN_JUNCTION": "Building_1_Level_2.json",
     "LIFT_25_LOBBY_C_B1L1": "LEVEL_1_Level_1.json",
     "LIFT_25_LOBBY_C_B1L2": "Building_1_Level_2.json",
-    "LIFT_25_LOBBY_C_B1L3": "Building_1_Level_3.json",
-    "LIFT_25_LOBBY_C_B1L4": "Building_1_Level_4.json"
+    "LIFT_25_LOBBY_C_B1L3": "Building_1_Level_3.json"
 }

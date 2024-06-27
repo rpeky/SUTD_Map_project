@@ -45,6 +45,7 @@ class Graph():
             neighbours = dict()
             dd_vertex = {
                     "Neighbour":neighbours,
+                    "Neighbour_head":dict(),
                     "Visited": 0,
                     "Avg_density":1,
                     "Sheltered": True,
@@ -84,13 +85,15 @@ class Graph():
             print("Returning to neighbour creation tool")
             self.neighbour_tool(vertex_ID)
 
-        adj_dist=self.add_neighbour_distance()
+        adj_dist, adj_heading = self.add_neighbour_distance()
 
         self.dd_graph[vertex_ID]["Neighbour"][neighbour_ID]=adj_dist
         if neighbour_ID not in self.dd_graph.keys():
             neighbours = {vertex_ID:adj_dist}
+            neighbourshead = {vertex_ID:adj_heading}
             dd_vertex_new = {
                     "Neighbour":neighbours,
+                    "Neighbour_head":neighbourshead,
                     "Visited": 0,
                     "Avg_density":1,
                     "Sheltered": True,
@@ -104,6 +107,7 @@ class Graph():
             self.dd_graph[neighbour_ID] = dd_vertex_new
         else:
             self.dd_graph[neighbour_ID]["Neighbour"][vertex_ID]=adj_dist
+            self.dd_graph[neighbour_ID]["Neighbour_head"][vertex_ID]=adj_heading
     
     #adds distance and heading
     def add_neighbour_distance(self):
@@ -114,7 +118,7 @@ class Graph():
                 if adj_vtx_dist > 0 and adj_vtx_head >= 0 and adj_vtx_head < 361:
                     cont = input("\nConfirm distance :{}m \nConfirm heading {} degrees \ny/n: ".format(adj_vtx_dist,adj_vtx_head))
                     if cont in selection_yes:
-                        return adj_vtx_dist
+                        return adj_vtx_dist, adj_vtx_head
                     else:
                         continue
                 else:
@@ -273,6 +277,9 @@ class Graph():
             print("Empty graph")
         for i in range(len(vert_list)):
             print("{:02d}\t{}".format(i,vert_list[i]))
+        while True:
+            endstare = input("Enter anything to return to Graph Generation Tool")
+            break
 
 #_DEBUG PRINT STUFF_#
 
@@ -582,8 +589,8 @@ class Graph():
                     sel_list.append(temp_tup)
             while True:
                 try:
-                    selec = input("Select Connection Point: ")
-                    if selec == 'q':
+                    selec = input("Select Connection Point (q to exit): ")
+                    if selec == 'q' or selec == 'Q':
                         return
                     selec = int(selec)
                     if selec>-1 and selec<counter:
@@ -593,16 +600,25 @@ class Graph():
                 except ValueError:
                     print("Not a valid input")
             self.dd_graph[vertex]["Connected_vertex"].update({sel_list[selec][0]:sel_list[selec][1]})
+            #add distance to connected vertex
+            con_dist, con_heading = self.add_neighbour_distance() 
+            if sel_list[selec][0] not in self.dd_graph[vertex]["Neighbour"]:
+                self.dd_graph[vertex]["Neighbour"][sel_list[selec][0]] = con_dist
+                self.dd_graph[vertex]["Neighbour_head"][sel_list[selec][0]] = con_heading
             #add for conjugate,save to master
             dd_mod = Json_OS_ProcessingFunctions.load_file_json(sel_list[selec][1],0)
             if vertex not in dd_mod[sel_list[selec][0]]["Connected_vertex"]:
                 dd_mod[sel_list[selec][0]]["Connected_vertex"].update({vertex:self.area_file_tosave})
+                dd_mod[sel_list[selec][0]]["Neighbour"][vertex] = con_dist
+                dd_mod[sel_list[selec][0]]["Neighbour_head"][vertex] = con_heading
                 Json_OS_ProcessingFunctions.save_file_json(dd_mod,sel_list[selec][1],0)
 
             print("Added connection\n")
             ct = input("Additional vertices? y/n:\t")
-            if ct in selection_yes:
+            if ct in selection_yes and counter>1:
                 return self.add_external_connectionpoint(vertex)
+            else:
+                print("No additional connections to add")
         else:
             return
 
@@ -650,6 +666,9 @@ class Graph():
 
         return djk_dict
 
+    def Dijkstra_externalpoints(self, startpoint):
+        pass
+
     def Floyd_Warshall(self, source):
         pass
 
@@ -664,6 +683,7 @@ class Graph():
 #_PATH OUTPUT FUNCTIONS_#
 
     def query_pathfind(self):
+        #need to provide an option to choose points beyond internal graph
         vtxs = list(self.dd_graph.keys())
         for i in range(len(vtxs)):
             print("{:02d}\t{}".format(i, vtxs[i]))
@@ -685,12 +705,16 @@ class Graph():
                     print("Not a valid end point index \n")
             except ValueError:
                 print("Not a valid end point index \n")
-        sol = self.Dijkstra_modified(vtxs[start_point])
-        print("All solutions:\n")
-        print(json.dumps(sol, indent=4))
-        print("\nSolution: ")
-        self.show_route(sol[vtxs[end_point]][1])
+        if self.verify_endpoint_samegraph(vtxs[end_point]):
+            sol = self.Dijkstra_modified(vtxs[start_point])
+            print("All solutions:\n")
+            print(json.dumps(sol, indent=4))
+            print("\nSolution: ")
+            self.show_route(sol[vtxs[end_point]][1])
 
+        else:
+            print("WIP point out of current graph")
+    
     def show_route(self, ls_sol):
         for i in ls_sol:
             print(i, "\n")

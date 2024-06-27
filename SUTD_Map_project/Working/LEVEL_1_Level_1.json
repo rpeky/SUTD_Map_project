@@ -6,6 +6,7 @@
         "Connected_vertex": {},
         "Connection_Point": true,
         "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,

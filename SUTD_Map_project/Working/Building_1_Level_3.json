@@ -8,7 +8,14 @@
             "LIFT_25_LOBBY_C_B1L2": "Building_1_Level_2.json"
         },
         "Connection_Point": true,
-        "Neighbour": {},
+        "Neighbour": {
+            "LIFT_25_LOBBY_C_B1L1": 2.0,
+            "LIFT_25_LOBBY_C_B1L2": 1.0
+        },
+        "Neighbour_head": {
+            "LIFT_25_LOBBY_C_B1L1": 250,
+            "LIFT_25_LOBBY_C_B1L2": 250
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
