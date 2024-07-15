@@ -4,6 +4,7 @@ import datetime
 
 selection_yes=['1','y','Y','Yes','yes']
 selection_no=['0','n','N','No','no']
+selection_yes_and_no=selection_yes+selection_no
 
 class Graph():
     def __init__(self, area_file, clearance, dd_lkup, dd_cplkup):
@@ -62,8 +63,7 @@ class Graph():
     def neighbour_tool(self, vertex_ID):
         #add heading to neighbour in data with distance
         while True:
-            print("Current Graph State: ")
-            print(json.dumps(self.dd_graph,indent=4))
+            self.print_current_graph_state()
             cont = input("\nConfirm adding neighbour to {}?\ny/n: ".format(vertex_ID))
             if cont in selection_yes:
                 self.add_neighbour(vertex_ID)
@@ -132,74 +132,71 @@ class Graph():
         q_pf=self.query_vertex_Prefix()
         q_hd=self.query_vertex_Heading()
         q_id=self.query_vertex_ID()
-        return q_pf+q_hd+q_id
+        return q_pf+q_hd+"_"+q_id
 
     def query_vertex_Prefix(self):
         pref = ""
-        #edit as needed
-        ID_prefix = ["LIFT_","ROOM_","DUSTBIN_","INTER_","TOILET_","STAIRS_","ENTRANCE_","MAINROAD_","WALKWAY_"]
-        for i in range(len(ID_prefix)):
-            print("{:02d}\t{}".format(i, ID_prefix[i]))
+        # edit as needed
+        ID_prefix = ["LIFT_", "ROOM_", "DUSTBIN_", "INTER_", "TOILET_", "STAIRS_", "ENTRANCE_", "MAINROAD_",
+                     "WALKWAY_"]
         while True:
-            try:
-                pref=int(input("\nPick a prefix: "))
-                if pref>-1 and pref<len(ID_prefix):
-                    break
-                else:
-                    print("out of index")
-            except ValueError:
-                print("Not a valid input")
+            for i, p in enumerate(ID_prefix):
+                print("{:02d}\t{}".format(i, p))
+            while True:
+                try:
+                    pref = int(input("\nPick a prefix: "))
+                    if -1 < pref < len(ID_prefix):
+                        break
+                    else:
+                        print("out of index")
+                except ValueError:
+                    print("Not a valid input")
 
-        print("\nConfirm selection \n{:02d}\t{}?\n".format(pref,ID_prefix[pref]))
-        sel=input("y/n: ")
-        if sel in selection_yes:
-            print("Selected {}\n".format(ID_prefix[pref]))
-            return ID_prefix[pref]
-        elif sel in selection_no:
-            return self.query_vertex_Prefix()
-        else:
-            print("Not a valid input\n")
-            return self.query_vertex_Prefix()
+            print("\nConfirm selection \n{:02d}\t{}?\n".format(pref, ID_prefix[pref]))
+            sel = input("y/n: ")
+            if sel in selection_yes:
+                print("Selected {}\n".format(ID_prefix[pref]))
+                return ID_prefix[pref]
+            if sel not in selection_yes_and_no:
+                print("Not a valid input\n")
+
 
     def query_vertex_Heading(self):
         direction_heading = ""
-        print("Enter heading of vertex [01-36]: ")
         while True:
-            #breaks if not in, try something else?
-            try:
-                pref=int(input())
-                if pref>0 and pref<37:
-                    direction_heading=format(pref,'02d')
-                    break
-                else:
-                    print("out of index")
-            except ValueError:
-                print("Not a valid input")
+            print("Enter heading of vertex [01-36]: ")
+            while True:
+                #breaks if not in, try something else?
+                try:
+                    pref=int(input())
+                    if 0 < pref < 37:
+                        direction_heading=format(pref,'02d')
+                        break
+                    else:
+                        print("out of index")
+                except ValueError:
+                    print("Not a valid input")
 
-        print("\nConfirm entry: \t{}\n".format(direction_heading))
-        sel=input("y/n: ")
-        if sel in selection_yes:
-            print("Heading {}\n".format(direction_heading))
-            return direction_heading+'_'
-        elif sel in selection_no:
-            return self.query_vertex_Heading()
-        else:
-            print("Not a valid input\n")
-            return self.query_vertex_Heading()
+            print("\nConfirm entry: \t{}\n".format(direction_heading))
+            sel=input("y/n: ")
+            if sel in selection_yes:
+                print("Heading {}\n".format(direction_heading))
+                return direction_heading
+            elif sel not in selection_yes_and_no:
+                print("Not a valid input\n")
 
     def query_vertex_ID(self):
-        ID = input("Enter ID of vertex: ")
-        print("\nConfirm entry: \t{}\n".format(ID))
-        sel=input("y/n: ")
-        if sel in selection_yes:
-            print("ID of vertex: {}\n".format(ID))
-            return ID
-        elif sel in selection_no:
-            print("Re-enter ID\n")
-            return self.query_vertex_ID()
-        else:
-            print("Not a valid input\n")
-            return self.query_vertex_ID()
+        while True:
+            ID = input("Enter ID of vertex: ")
+            print("\nConfirm entry: \t{}\n".format(ID))
+            sel=input("y/n: ")
+            if sel in selection_yes:
+                print("ID of vertex: {}\n".format(ID))
+                return ID
+            elif sel in selection_no:
+                print("Re-enter ID\n")
+            else:
+                print("Not a valid input\n")
 
     def save_and_exit(self):
         print("Saving and exiting graph generation tool.")
@@ -227,9 +224,7 @@ class Graph():
             }
 
         while True:
-            print("\nCurrent Graph State: ")
-            print(json.dumps(self.dd_graph, indent=4))
-            print("\n")
+            self.print_current_graph_state()
 
             print("\nSelect option:\n")
             for key, value in tool_options.items():
@@ -524,12 +519,15 @@ class Graph():
             to_add_as_neighbour = None
             while True:
                 to_add_as_neighbour = input("Enter existing Vertex ID to add as neighbour: ")
-                if int(to_add_as_neighbour) in selection:
-                    print("Selected {}".format(vert_list[int(to_add_as_neighbour)]))
-                    break
-                else:
-                    print("Invalid input!")
-                    continue
+                try:
+                    if int(to_add_as_neighbour) in selection:
+                        print("Selected {}".format(vert_list[int(to_add_as_neighbour)]))
+                        break
+                    else:
+                        print("Invalid input!")
+                        continue
+                except ValueError:
+                    print("Not a valid existing Vertex ID")
             neighbour_ID = vert_list[int(to_add_as_neighbour)]
             confirm_Neighbour_ID = input("\nConfirm adding neighbour {} to {}?\ny/n: ".format(neighbour_ID, vertex_ID))
             if confirm_Neighbour_ID in selection_yes:
