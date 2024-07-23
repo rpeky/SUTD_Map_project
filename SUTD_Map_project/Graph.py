@@ -74,40 +74,48 @@ class Graph():
                 continue
 
     def add_neighbour(self, vertex_ID):
-        print("Enter Neighbour Vertex ID: ")
-        neighbour_ID=self.query_vertex()
-        confirm_Neighbour_ID = input("\nConfirm adding neighbour {} to {}?\ny/n: ".format(neighbour_ID,vertex_ID))
-        if confirm_Neighbour_ID in selection_yes:
-            pass
-        elif confirm_Neighbour_ID in selection_no:
-            self.add_neighbour(vertex_ID)
-        else:
-            print("Returning to neighbour creation tool")
-            self.neighbour_tool(vertex_ID)
+        while True:
+            print("Enter Neighbour Vertex ID: ")
+            neighbour_ID=self.query_vertex()
+            confirm_Neighbour_ID = input("\nConfirm adding neighbour {} to {}?\ny/n: ".format(neighbour_ID,vertex_ID))
+            if confirm_Neighbour_ID in selection_yes:
+                adj_dist, adj_heading = self.add_neighbour_distance()
+                self.dd_graph[vertex_ID]["Neighbour"][neighbour_ID] = adj_dist
 
-        adj_dist, adj_heading = self.add_neighbour_distance()
+                # If neighbour is a new vertex, add it to dd_graph
+                if neighbour_ID not in self.dd_graph.keys():
+                    dd_vertex_new = {
+                        "Neighbour": dict(),
+                        "Neighbour_head": dict(),
+                        "Visited": 0,
+                        "Avg_density": 1,
+                        "Sheltered": True,
+                        "Route_intersection": False,
+                        "Access_Clearance": list(),
+                        "Average_travel_time": None,
+                        "Room_ID": None,
+                        "Connection_Point": False,
+                        "Connected_vertex": dict()
+                    }
+                    self.dd_graph[neighbour_ID] = dd_vertex_new
 
-        self.dd_graph[vertex_ID]["Neighbour"][neighbour_ID]=adj_dist
-        if neighbour_ID not in self.dd_graph.keys():
-            neighbours = {vertex_ID:adj_dist}
-            neighbourshead = {vertex_ID:adj_heading}
-            dd_vertex_new = {
-                    "Neighbour":neighbours,
-                    "Neighbour_head":neighbourshead,
-                    "Visited": 0,
-                    "Avg_density":1,
-                    "Sheltered": True,
-                    "Route_intersection": False,
-                    "Access_Clearance": list(),
-                    "Average_travel_time": None,
-                    "Room_ID": None,
-                    "Connection_Point": False,
-                    "Connected_vertex": dict()
-               }
-            self.dd_graph[neighbour_ID] = dd_vertex_new
-        else:
-            self.dd_graph[neighbour_ID]["Neighbour"][vertex_ID]=adj_dist
-            self.dd_graph[neighbour_ID]["Neighbour_head"][vertex_ID]=adj_heading
+                neighbour_adj_dist = adj_dist
+                neighbour_adj_heading = adj_heading + 18 if adj_heading < 18 else adj_heading - 18
+                self.dd_graph[neighbour_ID]["Neighbour"][vertex_ID] = neighbour_adj_dist
+                self.dd_graph[neighbour_ID]["Neighbour_head"][vertex_ID] = neighbour_adj_heading
+
+                print("Returning to neighbour creation tool")
+                break
+            elif confirm_Neighbour_ID in selection_no:
+                print("Returning to neighbour creation tool")
+                break
+            else:
+                print("Invalid input")
+                continue
+
+
+
+
     
     #adds distance and heading
     def add_neighbour_distance(self):
@@ -115,7 +123,7 @@ class Graph():
             try:
                 adj_vtx_dist = float(input("Enter distance to adjacent vertex: "))
                 adj_vtx_head = int(input("\nEnter bearing to adjacent vertex: "))
-                if adj_vtx_dist > 0 and adj_vtx_head >= 0 and adj_vtx_head < 361:
+                if adj_vtx_dist > 0 and adj_vtx_head >= 0 and adj_vtx_head < 37:
                     cont = input("\nConfirm distance :{}m \nConfirm heading {} degrees \ny/n: ".format(adj_vtx_dist,adj_vtx_head))
                     if cont in selection_yes:
                         return adj_vtx_dist, adj_vtx_head
