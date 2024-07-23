@@ -53,7 +53,6 @@ def rebuild_lookupdir():
                 print(entry.name)
                 for key in jsoncheck:
                     rebuild[key] = entry.name
-                    #rebuild.update({key:entry})
                     lkupcount+=1
 
     print("Lookup Keys: {} \nKey Count: {}".format(inilkdictcount, lkupcount))
@@ -67,9 +66,32 @@ def rebuild_lookupdir():
     if (rebuild != lkdict):
         print("override original with rebuild dict")
         save_file_json(rebuild,"Lookup_directory.json",2)
+    else:
+        print("Validated lookup ref, no errors to correct")
 
+def rebuild_lookupcon():
+    cwd = os.getcwd()
+    lkupdir = os.path.join(cwd, 'LookUp')
+    masdir = os.path.join(cwd, 'Master')
 
-def validate_lookupcon():
-    pass
+    lkdict = load_file_json("Lookup_connections.json", 2)
 
+    rebuild = dict()
 
+    with os.scandir(masdir) as it:
+        for entry in it:
+            if not entry.name.startswith('.') and entry.is_file():
+                jsoncheck = load_file_json(entry, 0)
+                print(entry.name)
+                for key in jsoncheck:
+                    if jsoncheck[key]["Connection_Point"]:
+                        rebuild[key]=entry.name
+
+    print(rebuild)
+
+    #do a cross check, overwrite with rebuilt if not the same
+    if (rebuild != lkdict):
+        print("override original with rebuild dict")
+        save_file_json(rebuild,"Lookup_connections.json",2)
+    else:
+        print("Validated connections, no errors to correct")
