@@ -87,6 +87,10 @@ def main():
             break
         testbench()
 
+def main2():
+    Json_OS_ProcessingFunctions.rebuild_lookupdir()
+    Json_OS_ProcessingFunctions.rebuild_lookupcon()
+
 if __name__ == '__main__':
     start_time = time.process_time()
     main()
