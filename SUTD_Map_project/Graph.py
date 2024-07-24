@@ -4,6 +4,7 @@ import datetime
 
 selection_yes=['1','y','Y','Yes','yes']
 selection_no=['0','n','N','No','no']
+selection_yes_and_no=selection_yes+selection_no
 
 class Graph():
     def __init__(self, area_file, clearance, dd_lkup, dd_cplkup):
@@ -45,6 +46,7 @@ class Graph():
             neighbours = dict()
             dd_vertex = {
                     "Neighbour":neighbours,
+                    "Neighbour_head":dict(),
                     "Visited": 0,
                     "Avg_density":1,
                     "Sheltered": True,
@@ -52,16 +54,16 @@ class Graph():
                     "Access_Clearance": list(),
                     "Average_travel_time": None,
                     "Room_ID": None,
-                    "Connection_Point": False
+                    "Connection_Point": False,
+                    "Connected_vertex": dict()
                 }
             self.dd_graph[vertex_ID] = dd_vertex
         self.neighbour_tool(vertex_ID)
 
     def neighbour_tool(self, vertex_ID):
-        #add escape con
+        #add heading to neighbour in data with distance
         while True:
-            print("Current Graph State: ")
-            print(json.dumps(self.dd_graph,indent=4))
+            self.print_current_graph_state()
             cont = input("\nConfirm adding neighbour to {}?\ny/n: ".format(vertex_ID))
             if cont in selection_yes:
                 self.add_neighbour(vertex_ID)
@@ -72,43 +74,59 @@ class Graph():
                 continue
 
     def add_neighbour(self, vertex_ID):
-        print("Enter Neighbour Vertex ID: ")
-        neighbour_ID=self.query_vertex()
-        confirm_Neighbour_ID = input("\nConfirm adding neighbour {} to {}?\ny/n: ".format(neighbour_ID,vertex_ID))
-        if confirm_Neighbour_ID in selection_yes:
-            pass
-        elif confirm_Neighbour_ID in selection_no:
-            self.add_neighbour(vertex_ID)
-        else:
-            print("Returning to neighbour creation tool")
-            self.neighbour_tool(vertex_ID)
+        while True:
+            print("Enter Neighbour Vertex ID: ")
+            neighbour_ID=self.query_vertex()
+            confirm_Neighbour_ID = input("\nConfirm adding neighbour {} to {}?\ny/n: ".format(neighbour_ID,vertex_ID))
+            if confirm_Neighbour_ID in selection_yes:
+                adj_dist, adj_heading = self.add_neighbour_distance()
+                self.dd_graph[vertex_ID]["Neighbour"][neighbour_ID] = adj_dist
 
-        adj_dist=self.add_neighbour_distance()
+                # If neighbour is a new vertex, add it to dd_graph
+                if neighbour_ID not in self.dd_graph.keys():
+                    dd_vertex_new = {
+                        "Neighbour": dict(),
+                        "Neighbour_head": dict(),
+                        "Visited": 0,
+                        "Avg_density": 1,
+                        "Sheltered": True,
+                        "Route_intersection": False,
+                        "Access_Clearance": list(),
+                        "Average_travel_time": None,
+                        "Room_ID": None,
+                        "Connection_Point": False,
+                        "Connected_vertex": dict()
+                    }
+                    self.dd_graph[neighbour_ID] = dd_vertex_new
 
-        self.dd_graph[vertex_ID]["Neighbour"][neighbour_ID]=adj_dist
-        if neighbour_ID not in self.dd_graph.keys():
-            neighbours = {vertex_ID:adj_dist}
-            dd_vertex_new = {
-                    "Neighbour":neighbours,
-                    "Visited": 0,
-                    "Avg_density":1,
-                    "Sheltered": True,
-                    "Route_intersection": False,
-                    "Access_Clearance": list(),
-                    "Average_travel_time": None
-                }
-            self.dd_graph[neighbour_ID] = dd_vertex_new
-        else:
-            self.dd_graph[neighbour_ID]["Neighbour"][vertex_ID]=adj_dist
+                neighbour_adj_dist = adj_dist
+                neighbour_adj_heading = adj_heading + 18 if adj_heading < 18 else adj_heading - 18
+                self.dd_graph[neighbour_ID]["Neighbour"][vertex_ID] = neighbour_adj_dist
+                self.dd_graph[neighbour_ID]["Neighbour_head"][vertex_ID] = neighbour_adj_heading
 
+                print("Returning to neighbour creation tool")
+                break
+            elif confirm_Neighbour_ID in selection_no:
+                print("Returning to neighbour creation tool")
+                break
+            else:
+                print("Invalid input")
+                continue
+
+
+
+
+    
+    #adds distance and heading
     def add_neighbour_distance(self):
         while True:
             try:
                 adj_vtx_dist = float(input("Enter distance to adjacent vertex: "))
-                if adj_vtx_dist > 0:
-                    cont = input("\nConfirm distance {} \ny/n: ".format(adj_vtx_dist))
+                adj_vtx_head = int(input("\nEnter bearing to adjacent vertex: "))
+                if adj_vtx_dist > 0 and adj_vtx_head >= 0 and adj_vtx_head < 37:
+                    cont = input("\nConfirm distance :{}m \nConfirm heading {} degrees \ny/n: ".format(adj_vtx_dist,adj_vtx_head))
                     if cont in selection_yes:
-                        return adj_vtx_dist
+                        return adj_vtx_dist, adj_vtx_head
                     else:
                         continue
                 else:
@@ -122,74 +140,71 @@ class Graph():
         q_pf=self.query_vertex_Prefix()
         q_hd=self.query_vertex_Heading()
         q_id=self.query_vertex_ID()
-        return q_pf+q_hd+q_id
+        return q_pf+q_hd+"_"+q_id
 
     def query_vertex_Prefix(self):
         pref = ""
-        #edit as needed
-        ID_prefix = ["LIFT_","ROOM_","DUSTBIN_","INTER_","TOILET_","STAIRS_","ENTRANCE_","MAINROAD_","WALKWAY_"]
-        for i in range(len(ID_prefix)):
-            print("{:02d}\t{}".format(i, ID_prefix[i]))
+        # edit as needed
+        ID_prefix = ["LIFT_", "ROOM_", "DUSTBIN_", "INTER_", "TOILET_", "STAIRS_", "ENTRANCE_", "MAINROAD_",
+                     "WALKWAY_"]
         while True:
-            try:
-                pref=int(input("\nPick a prefix: "))
-                if pref>-1 and pref<len(ID_prefix):
-                    break
-                else:
-                    print("out of index")
-            except ValueError:
-                print("Not a valid input")
+            for i, p in enumerate(ID_prefix):
+                print("{:02d}\t{}".format(i, p))
+            while True:
+                try:
+                    pref = int(input("\nPick a prefix: "))
+                    if -1 < pref < len(ID_prefix):
+                        break
+                    else:
+                        print("out of index")
+                except ValueError:
+                    print("Not a valid input")
 
-        print("\nConfirm selection \n{:02d}\t{}?\n".format(pref,ID_prefix[pref]))
-        sel=input("y/n: ")
-        if sel in selection_yes:
-            print("Selected {}\n".format(ID_prefix[pref]))
-            return ID_prefix[pref]
-        elif sel in selection_no:
-            return self.query_vertex_Prefix()
-        else:
-            print("Not a valid input\n")
-            return self.query_vertex_Prefix()
+            print("\nConfirm selection \n{:02d}\t{}?\n".format(pref, ID_prefix[pref]))
+            sel = input("y/n: ")
+            if sel in selection_yes:
+                print("Selected {}\n".format(ID_prefix[pref]))
+                return ID_prefix[pref]
+            if sel not in selection_yes_and_no:
+                print("Not a valid input\n")
+
 
     def query_vertex_Heading(self):
         direction_heading = ""
-        print("Enter heading of vertex [01-36]: ")
         while True:
-            #breaks if not in, try something else?
-            try:
-                pref=int(input())
-                if pref>0 and pref<37:
-                    direction_heading=format(pref,'02d')
-                    break
-                else:
-                    print("out of index")
-            except ValueError:
-                print("Not a valid input")
+            print("Enter heading of vertex [01-36]: ")
+            while True:
+                #breaks if not in, try something else?
+                try:
+                    pref=int(input())
+                    if 0 < pref < 37:
+                        direction_heading=format(pref,'02d')
+                        break
+                    else:
+                        print("out of index")
+                except ValueError:
+                    print("Not a valid input")
 
-        print("\nConfirm entry: \t{}\n".format(direction_heading))
-        sel=input("y/n: ")
-        if sel in selection_yes:
-            print("Heading {}\n".format(direction_heading))
-            return direction_heading+'_'
-        elif sel in selection_no:
-            return self.query_vertex_Heading()
-        else:
-            print("Not a valid input\n")
-            return self.query_vertex_Heading()
+            print("\nConfirm entry: \t{}\n".format(direction_heading))
+            sel=input("y/n: ")
+            if sel in selection_yes:
+                print("Heading {}\n".format(direction_heading))
+                return direction_heading
+            elif sel not in selection_yes_and_no:
+                print("Not a valid input\n")
 
     def query_vertex_ID(self):
-        ID = input("Enter ID of vertex: ")
-        print("\nConfirm entry: \t{}\n".format(ID))
-        sel=input("y/n: ")
-        if sel in selection_yes:
-            print("ID of vertex: {}\n".format(ID))
-            return ID
-        elif sel in selection_no:
-            print("Re-enter ID\n")
-            return self.query_vertex_ID()
-        else:
-            print("Not a valid input\n")
-            return self.query_vertex_ID()
+        while True:
+            ID = input("Enter ID of vertex: ")
+            print("\nConfirm entry: \t{}\n".format(ID))
+            sel=input("y/n: ")
+            if sel in selection_yes:
+                print("ID of vertex: {}\n".format(ID))
+                return ID
+            elif sel in selection_no:
+                print("Re-enter ID\n")
+            else:
+                print("Not a valid input\n")
 
     def save_and_exit(self):
         print("Saving and exiting graph generation tool.")
@@ -217,9 +232,7 @@ class Graph():
             }
 
         while True:
-            print("\nCurrent Graph State: ")
-            print(json.dumps(self.dd_graph, indent=4))
-            print("\n")
+            self.print_current_graph_state()
 
             print("\nSelect option:\n")
             for key, value in tool_options.items():
@@ -267,6 +280,9 @@ class Graph():
             print("Empty graph")
         for i in range(len(vert_list)):
             print("{:02d}\t{}".format(i,vert_list[i]))
+        while True:
+            endstare = input("Enter anything to return to Graph Generation Tool")
+            break
 
 #_DEBUG PRINT STUFF_#
 
@@ -291,6 +307,7 @@ class Graph():
                 if 0<=vert_index < len(vert_list):
                     print("Selected {}".format(vert_list[vert_index]))
                     self.display_keys_to_modify(vert_list[vert_index])
+                    break
 
                 else:
                     print("Invalid choice. Please select a valid option.\n")
@@ -432,7 +449,8 @@ class Graph():
     def set_Connection_Point_True(self, vertex):
         self.dd_graph[vertex]["Connection_Point"]=True
         self.dd_cplkup.update({vertex:self.area_file_tosave})
-        self.add_external_connectionpoint(vertex)
+        print("Connection point set to True")
+        #self.add_external_connectionpoint(vertex)
 
     def set_Connection_Point_False(self, vertex):
         self.dd_graph[vertex]["Connection_Point"]=False
@@ -509,12 +527,15 @@ class Graph():
             to_add_as_neighbour = None
             while True:
                 to_add_as_neighbour = input("Enter existing Vertex ID to add as neighbour: ")
-                if int(to_add_as_neighbour) in selection:
-                    print("Selected {}".format(vert_list[int(to_add_as_neighbour)]))
-                    break
-                else:
-                    print("Invalid input!")
-                    continue
+                try:
+                    if int(to_add_as_neighbour) in selection:
+                        print("Selected {}".format(vert_list[int(to_add_as_neighbour)]))
+                        break
+                    else:
+                        print("Invalid input!")
+                        continue
+                except ValueError:
+                    print("Not a valid existing Vertex ID")
             neighbour_ID = vert_list[int(to_add_as_neighbour)]
             confirm_Neighbour_ID = input("\nConfirm adding neighbour {} to {}?\ny/n: ".format(neighbour_ID, vertex_ID))
             if confirm_Neighbour_ID in selection_yes:
@@ -558,29 +579,54 @@ class Graph():
 #_CONNECTION POINT FUNCTIONS_#
 
     def add_external_connectionpoint(self, vertex):
-        cont = input("\nConnection Point Tool\nThis node appears to connect to other mapped areas, continue setting link? y/n")
+        #not allowed if not a connection point
+        if self.dd_graph[vertex]["Connection_Point"]==False:
+            print("Not a connection point\n")
+            return
+        cont = input("\nConnection Point Tool\nThis node appears to connect to other mapped areas, continue setting link? y/n:\t")
         if cont in selection_yes:
             counter=0
             sel_list=list()
             for point in self.dd_cplkup:
-                if (self.dd_cplkup[point]!=self.area_file_tosave) and (point not in self.dd_grpah[vertex]["Connected_vertex"]):
-                    print("{:02d}\t{}\t{}".format(counter,point,self.area_file_tosave))
+                if (self.dd_cplkup[point]!=self.area_file_tosave) and (point not in self.dd_graph[vertex]["Connected_vertex"]):
+                    print("{:02d}\t{}\t{}".format(counter,point,self.dd_cplkup[point]))
                     counter+=1
-                    sel_list.append((point,self.area_file_tosave))
+                    temp_tup = (point, self.dd_cplkup[point])
+                    sel_list.append(temp_tup)
             while True:
                 try:
-                    selec = int(input("Select Connection Point: "))
+                    selec = input("Select Connection Point (q to exit): ")
+                    if selec == 'q' or selec == 'Q':
+                        return
+                    selec = int(selec)
                     if selec>-1 and selec<counter:
                         break
                     else:
                         print("out of index")
                 except ValueError:
                     print("Not a valid input")
-            self.dd_graph[vertex]["Connected_vertex"].update(sel_list[selec])
-            ct = input("Additional vertices? y/n")
-            if ct in selection_yes:
-                return self.add_external_connectionpoint(vertex)
+            self.dd_graph[vertex]["Connected_vertex"].update({sel_list[selec][0]:sel_list[selec][1]})
+            #add distance to connected vertex
+            con_dist, con_heading = self.add_neighbour_distance() 
+            if sel_list[selec][0] not in self.dd_graph[vertex]["Neighbour"]:
+                self.dd_graph[vertex]["Neighbour"][sel_list[selec][0]] = con_dist
+                self.dd_graph[vertex]["Neighbour_head"][sel_list[selec][0]] = con_heading
+            #add for conjugate,save to master
+            dd_mod = Json_OS_ProcessingFunctions.load_file_json(sel_list[selec][1],0)
+            if vertex not in dd_mod[sel_list[selec][0]]["Connected_vertex"]:
+                dd_mod[sel_list[selec][0]]["Connected_vertex"].update({vertex:self.area_file_tosave})
+                dd_mod[sel_list[selec][0]]["Neighbour"][vertex] = con_dist
+                dd_mod[sel_list[selec][0]]["Neighbour_head"][vertex] = con_heading
+                Json_OS_ProcessingFunctions.save_file_json(dd_mod,sel_list[selec][1],0)
 
+            print("Added connection\n")
+            ct = input("Additional vertices? y/n:\t")
+            if ct in selection_yes and counter>1:
+                return self.add_external_connectionpoint(vertex)
+            else:
+                print("No additional connections to add")
+        else:
+            return
 
 #_CONNECTION POINT FUNCTIONS_#
 
@@ -626,6 +672,9 @@ class Graph():
 
         return djk_dict
 
+    def Dijkstra_externalpoints(self, startpoint):
+        pass
+
     def Floyd_Warshall(self, source):
         pass
 
@@ -640,6 +689,7 @@ class Graph():
 #_PATH OUTPUT FUNCTIONS_#
 
     def query_pathfind(self):
+        #need to provide an option to choose points beyond internal graph
         vtxs = list(self.dd_graph.keys())
         for i in range(len(vtxs)):
             print("{:02d}\t{}".format(i, vtxs[i]))
@@ -661,12 +711,16 @@ class Graph():
                     print("Not a valid end point index \n")
             except ValueError:
                 print("Not a valid end point index \n")
-        sol = self.Dijkstra_modified(vtxs[start_point])
-        print("All solutions:\n")
-        print(json.dumps(sol, indent=4))
-        print("\nSolution: ")
-        self.show_route(sol[vtxs[end_point]][1])
+        if self.verify_endpoint_samegraph(vtxs[end_point]):
+            sol = self.Dijkstra_modified(vtxs[start_point])
+            print("All solutions:\n")
+            print(json.dumps(sol, indent=4))
+            print("\nSolution: ")
+            self.show_route(sol[vtxs[end_point]][1])
 
+        else:
+            print("WIP point out of current graph")
+    
     def show_route(self, ls_sol):
         for i in ls_sol:
             print(i, "\n")
