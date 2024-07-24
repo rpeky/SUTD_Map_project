@@ -629,7 +629,8 @@ class Graph():
             return
 
 #_CONNECTION POINT FUNCTIONS_#
-
+    def graphswaps():
+        pass
 
 #_PATH FINDING FUNCTIONS_#
 
