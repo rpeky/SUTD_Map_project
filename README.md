@@ -3,6 +3,7 @@
 # Mapping Procedure
 
 > [!Note]
+
 > (1) - Determine point of interest to map
 
 > (2) - Measure and record distance, bearing of main direction
