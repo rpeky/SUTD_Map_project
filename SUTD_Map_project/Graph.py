@@ -116,7 +116,7 @@ class Graph():
 
 
 
-    
+
     #adds distance and heading
     def add_neighbour_distance(self):
         while True:
@@ -335,7 +335,8 @@ class Graph():
             "16":self.remove_clearance,
             "17":self.add_existing_neighbours,
             "18":self.remove_existing_neighbours,
-            "19":self.add_external_connectionpoint
+            "19":self.add_external_connectionpoint,
+            "20":self.add_node_description
         }
 
         m_list = list(modifier_functions.keys())
@@ -424,7 +425,7 @@ class Graph():
 
     def set_visited_1(self, vertex):
         self.dd_graph[vertex]["Visited"]=1
-        
+
     def set_visited_add(self, vertex):
         self.dd_graph[vertex]["Visited"]+=1
 
@@ -607,7 +608,7 @@ class Graph():
                     print("Not a valid input")
             self.dd_graph[vertex]["Connected_vertex"].update({sel_list[selec][0]:sel_list[selec][1]})
             #add distance to connected vertex
-            con_dist, con_heading = self.add_neighbour_distance() 
+            con_dist, con_heading = self.add_neighbour_distance()
             if sel_list[selec][0] not in self.dd_graph[vertex]["Neighbour"]:
                 self.dd_graph[vertex]["Neighbour"][sel_list[selec][0]] = con_dist
                 self.dd_graph[vertex]["Neighbour_head"][sel_list[selec][0]] = con_heading
@@ -627,6 +628,16 @@ class Graph():
                 print("No additional connections to add")
         else:
             return
+
+    def add_node_description(self, vertex):
+        if self.dd_graph[vertex].get("Description") != None:
+            print("Update description\n")
+            #some update description function
+        else:
+            vtxdesc = input("Enter vertex context / description: \t")
+            print("adding description: {}".format(vtxdesc))
+            #some confirm logic
+            #self.dd_graph[vertex].update({"Description":vtxdesc})
 
 #_CONNECTION POINT FUNCTIONS_#
     def graphswaps():
@@ -721,7 +732,7 @@ class Graph():
 
         else:
             print("WIP point out of current graph")
-    
+
     def show_route(self, ls_sol):
         for i in ls_sol:
             print(i, "\n")

@@ -87,7 +87,7 @@ def main():
             break
         testbench()
 
-def main2():
+def validate_lookupdir():
     Json_OS_ProcessingFunctions.rebuild_lookupdir()
     Json_OS_ProcessingFunctions.rebuild_lookupcon()
 

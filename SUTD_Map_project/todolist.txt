@@ -1,0 +1,8 @@
+Priority changes
+
+    Naming format for Vertices, require the location tag (B1L1 etc) in the format to prevent conflict in lookup
+
+Good to do but not urgent
+
+
+Suggestions
