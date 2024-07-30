@@ -79,6 +79,7 @@ def Floor_Selection(floors):
 def main():
     #testbench()
     cl_s="\n"*100
+    validate_lookupdir()
     while True:
         print(cl_s)
         print("SUTD Map Project 2023/2024 Default Page\n")

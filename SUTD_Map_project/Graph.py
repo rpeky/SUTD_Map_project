@@ -41,6 +41,7 @@ class Graph():
 
 #_GRAPH TOOLS_#
     #to think of more conditions of the vertex
+    #using dictionaries to store the neighbour and its heading since python stores the insertion order of values
     def add_vertex(self):
         vertex_ID = self.query_vertex()
         if vertex_ID not in self.dd_graph.keys():
@@ -82,6 +83,7 @@ class Graph():
             if confirm_Neighbour_ID in selection_yes:
                 adj_dist, adj_heading = self.add_neighbour_distance()
                 self.dd_graph[vertex_ID]["Neighbour"][neighbour_ID] = adj_dist
+                self.dd_graph[vertex_ID]["Neighbour_head"][neighbour_ID] = adj_heading
 
                 # If neighbour is a new vertex, add it to dd_graph
                 if neighbour_ID not in self.dd_graph.keys():
@@ -121,13 +123,13 @@ class Graph():
                 adj_vtx_dist = float(input("Enter distance to adjacent vertex: "))
                 adj_vtx_head = int(input("\nEnter bearing to adjacent vertex: "))
                 if adj_vtx_dist > 0 and adj_vtx_head >= 0 and adj_vtx_head < 37:
-                    cont = input("\nConfirm distance :{}m \nConfirm heading {} degrees \ny/n: ".format(adj_vtx_dist,adj_vtx_head))
+                    cont = input("\nConfirm distance: {}m \nConfirm heading {} degrees: \ny/n: ".format(adj_vtx_dist,adj_vtx_head))
                     if cont in selection_yes:
                         return adj_vtx_dist, adj_vtx_head
                     else:
                         continue
                 else:
-                    print("Distance must be more than 0!")
+                    print("Distance / Heading must be more than 0!")
             except ValueError:
                 print("Not a number")
 
@@ -537,9 +539,11 @@ class Graph():
             neighbour_ID = vert_list[int(to_add_as_neighbour)]
             confirm_Neighbour_ID = input("\nConfirm adding neighbour {} to {}?\ny/n: ".format(neighbour_ID, vertex_ID))
             if confirm_Neighbour_ID in selection_yes:
-                adj_dist = self.add_neighbour_distance()
+                adj_dist, adj_heading = self.add_neighbour_distance()
                 self.dd_graph[vertex_ID]["Neighbour"][neighbour_ID] = adj_dist
+                self.dd_graph[vertex_ID]["Neighbour_head"][neighbour_ID] = adj_heading
                 self.dd_graph[neighbour_ID]["Neighbour"][vertex_ID] = adj_dist
+                self.dd_graph[neighbour_ID]["Neighbour_head"][vertex_ID] = adj_heading + 18 if adj_heading < 18 else adj_heading - 18
                 print("\nNeighbour {} added to {}".format(neighbour_ID, vertex_ID))
             confirm = input("Continue setting an existing vertex as neighbour to {}?\ny/n: ".format(vertex_ID))
             if confirm in selection_no:
@@ -634,7 +638,7 @@ class Graph():
             vtxdesc = input("Enter vertex context / description: \t")
             print("adding description: {}".format(vtxdesc))
             #some confirm logic
-            #self.dd_graph[vertex].update({"Description":vtxdesc})
+            self.dd_graph[vertex].update({"Description":vtxdesc})
 
 #_CONNECTION POINT FUNCTIONS_#
     def graphswaps():
