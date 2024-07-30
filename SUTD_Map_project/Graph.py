@@ -15,10 +15,11 @@ class Graph():
         self.dd_cplkup = dd_cplkup
         self.access_clearance = clearance
         self.area_file_tosave = area_file
+        self.localname = area_file[:-5]
 
         #check if map of area exists
         if self.check_area_file_exist(area_file):
-            print("Loading {} from Master")
+            print("Loading {} from Master".format(self.localname))
             self.dd_graph = Json_OS_ProcessingFunctions.load_file_json(area_file, 0)
             self.graph_generation_tool()
 
@@ -100,10 +101,10 @@ class Graph():
                     self.dd_graph[neighbour_ID] = dd_vertex_new
 
                 neighbour_adj_dist = adj_dist
+                #neigbour conjugate heading
                 neighbour_adj_heading = adj_heading + 18 if adj_heading < 18 else adj_heading - 18
                 self.dd_graph[neighbour_ID]["Neighbour"][vertex_ID] = neighbour_adj_dist
                 self.dd_graph[neighbour_ID]["Neighbour_head"][vertex_ID] = neighbour_adj_heading
-
                 print("Returning to neighbour creation tool")
                 break
             elif confirm_Neighbour_ID in selection_no:
@@ -113,10 +114,6 @@ class Graph():
                 print("Invalid input")
                 continue
 
-
-
-
-    
     #adds distance and heading
     def add_neighbour_distance(self):
         while True:
@@ -135,18 +132,18 @@ class Graph():
                 print("Not a number")
 
     # UI portion for adding vertex information
+    #vertex name making
     def query_vertex(self):
         #to add existing vertex selection
         q_pf=self.query_vertex_Prefix()
-        q_hd=self.query_vertex_Heading()
         q_id=self.query_vertex_ID()
-        return q_pf+q_hd+"_"+q_id
+        return self.localname+q_pf+"_"+q_id
 
     def query_vertex_Prefix(self):
         pref = ""
         # edit as needed
         ID_prefix = ["LIFT_", "ROOM_", "DUSTBIN_", "INTER_", "TOILET_", "STAIRS_", "ENTRANCE_", "MAINROAD_",
-                     "WALKWAY_"]
+                     "WALKWAY_","BUILDING"]
         while True:
             for i, p in enumerate(ID_prefix):
                 print("{:02d}\t{}".format(i, p))
@@ -164,11 +161,11 @@ class Graph():
             sel = input("y/n: ")
             if sel in selection_yes:
                 print("Selected {}\n".format(ID_prefix[pref]))
-                return ID_prefix[pref]
+                return '_'+ID_prefix[pref]
             if sel not in selection_yes_and_no:
                 print("Not a valid input\n")
 
-
+    #kiv, removed from naming process since vert heading is now an attribute, may be able to reuse
     def query_vertex_Heading(self):
         direction_heading = ""
         while True:
@@ -335,7 +332,8 @@ class Graph():
             "16":self.remove_clearance,
             "17":self.add_existing_neighbours,
             "18":self.remove_existing_neighbours,
-            "19":self.add_external_connectionpoint
+            "19":self.add_external_connectionpoint,
+            "20":self.add_node_description
         }
 
         m_list = list(modifier_functions.keys())
@@ -424,7 +422,7 @@ class Graph():
 
     def set_visited_1(self, vertex):
         self.dd_graph[vertex]["Visited"]=1
-        
+
     def set_visited_add(self, vertex):
         self.dd_graph[vertex]["Visited"]+=1
 
@@ -607,7 +605,7 @@ class Graph():
                     print("Not a valid input")
             self.dd_graph[vertex]["Connected_vertex"].update({sel_list[selec][0]:sel_list[selec][1]})
             #add distance to connected vertex
-            con_dist, con_heading = self.add_neighbour_distance() 
+            con_dist, con_heading = self.add_neighbour_distance()
             if sel_list[selec][0] not in self.dd_graph[vertex]["Neighbour"]:
                 self.dd_graph[vertex]["Neighbour"][sel_list[selec][0]] = con_dist
                 self.dd_graph[vertex]["Neighbour_head"][sel_list[selec][0]] = con_heading
@@ -628,8 +626,19 @@ class Graph():
         else:
             return
 
-#_CONNECTION POINT FUNCTIONS_#
+    def add_node_description(self, vertex):
+        if self.dd_graph[vertex].get("Description") != None:
+            print("Update description\n")
+            #some update description function
+        else:
+            vtxdesc = input("Enter vertex context / description: \t")
+            print("adding description: {}".format(vtxdesc))
+            #some confirm logic
+            #self.dd_graph[vertex].update({"Description":vtxdesc})
 
+#_CONNECTION POINT FUNCTIONS_#
+    def graphswaps():
+        pass
 
 #_PATH FINDING FUNCTIONS_#
 
@@ -720,7 +729,7 @@ class Graph():
 
         else:
             print("WIP point out of current graph")
-    
+
     def show_route(self, ls_sol):
         for i in ls_sol:
             print(i, "\n")

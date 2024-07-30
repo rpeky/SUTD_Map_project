@@ -43,7 +43,7 @@ def Area_Selection():
         'Block_57':['2','3','4','5','6','7','8','9','10','11','12'],
         'Block_59':['2','3','4','5','6','7','8','9','10','11','12'],
         'Sports_and_Recreation_Centre':['2','3'],
-        'Special_Zones':[]
+        'Special_Zones':['0','1','2','3','5']
         }
     B_select = Building_Selection(list(dd_zones.keys()))
     F_select = Floor_Selection(dd_zones[B_select])
@@ -87,7 +87,7 @@ def main():
             break
         testbench()
 
-def main2():
+def validate_lookupdir():
     Json_OS_ProcessingFunctions.rebuild_lookupdir()
     Json_OS_ProcessingFunctions.rebuild_lookupcon()
 
