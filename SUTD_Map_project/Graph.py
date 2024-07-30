@@ -15,10 +15,11 @@ class Graph():
         self.dd_cplkup = dd_cplkup
         self.access_clearance = clearance
         self.area_file_tosave = area_file
+        self.localname = area_file[:-5]
 
         #check if map of area exists
         if self.check_area_file_exist(area_file):
-            print("Loading {} from Master")
+            print("Loading {} from Master".format(self.localname))
             self.dd_graph = Json_OS_ProcessingFunctions.load_file_json(area_file, 0)
             self.graph_generation_tool()
 
@@ -100,10 +101,10 @@ class Graph():
                     self.dd_graph[neighbour_ID] = dd_vertex_new
 
                 neighbour_adj_dist = adj_dist
+                #neigbour conjugate heading
                 neighbour_adj_heading = adj_heading + 18 if adj_heading < 18 else adj_heading - 18
                 self.dd_graph[neighbour_ID]["Neighbour"][vertex_ID] = neighbour_adj_dist
                 self.dd_graph[neighbour_ID]["Neighbour_head"][vertex_ID] = neighbour_adj_heading
-
                 print("Returning to neighbour creation tool")
                 break
             elif confirm_Neighbour_ID in selection_no:
@@ -112,10 +113,6 @@ class Graph():
             else:
                 print("Invalid input")
                 continue
-
-
-
-
 
     #adds distance and heading
     def add_neighbour_distance(self):
@@ -135,18 +132,18 @@ class Graph():
                 print("Not a number")
 
     # UI portion for adding vertex information
+    #vertex name making
     def query_vertex(self):
         #to add existing vertex selection
         q_pf=self.query_vertex_Prefix()
-        q_hd=self.query_vertex_Heading()
         q_id=self.query_vertex_ID()
-        return q_pf+q_hd+"_"+q_id
+        return self.localname+q_pf+"_"+q_id
 
     def query_vertex_Prefix(self):
         pref = ""
         # edit as needed
         ID_prefix = ["LIFT_", "ROOM_", "DUSTBIN_", "INTER_", "TOILET_", "STAIRS_", "ENTRANCE_", "MAINROAD_",
-                     "WALKWAY_"]
+                     "WALKWAY_","BUILDING"]
         while True:
             for i, p in enumerate(ID_prefix):
                 print("{:02d}\t{}".format(i, p))
@@ -164,11 +161,11 @@ class Graph():
             sel = input("y/n: ")
             if sel in selection_yes:
                 print("Selected {}\n".format(ID_prefix[pref]))
-                return ID_prefix[pref]
+                return '_'+ID_prefix[pref]
             if sel not in selection_yes_and_no:
                 print("Not a valid input\n")
 
-
+    #kiv, removed from naming process since vert heading is now an attribute, may be able to reuse
     def query_vertex_Heading(self):
         direction_heading = ""
         while True:
