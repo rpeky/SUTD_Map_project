@@ -1,0 +1,78 @@
+{
+    "Special_Zones_Level_3_BUILDING_1": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Neighbour": {
+            "Special_Zones_Level_3_BUILDING_2": 3.0,
+            "Special_Zones_Level_3_BUILDING_3": 5.0
+        },
+        "Neighbour_head": {
+            "Special_Zones_Level_3_BUILDING_2": 0,
+            "Special_Zones_Level_3_BUILDING_3": 0
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Special_Zones_Level_3_BUILDING_2": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Neighbour": {
+            "Special_Zones_Level_3_BUILDING_1": 3.0,
+            "Special_Zones_Level_3_BUILDING_3": 5.0,
+            "Special_Zones_Level_3_BUILDING_5": 4.0
+        },
+        "Neighbour_head": {
+            "Special_Zones_Level_3_BUILDING_1": 18,
+            "Special_Zones_Level_3_BUILDING_3": 0,
+            "Special_Zones_Level_3_BUILDING_5": 18
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Special_Zones_Level_3_BUILDING_3": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Neighbour": {
+            "Special_Zones_Level_3_BUILDING_1": 5.0,
+            "Special_Zones_Level_3_BUILDING_2": 5.0
+        },
+        "Neighbour_head": {
+            "Special_Zones_Level_3_BUILDING_1": 18,
+            "Special_Zones_Level_3_BUILDING_2": 18
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Special_Zones_Level_3_BUILDING_5": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Neighbour": {
+            "Special_Zones_Level_3_BUILDING_2": 4.0
+        },
+        "Neighbour_head": {
+            "Special_Zones_Level_3_BUILDING_2": 0
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    }
+}

@@ -1,8 +1,13 @@
 Priority changes
 
     Naming format for Vertices, require the location tag (B1L1 etc) in the format to prevent conflict in lookup
+    Heading change function
+    Quit option for all selections, return to previous selection state
+    For add_existing_neighoburs, remove the option to select itself and options already in dictionary
+
 
 Good to do but not urgent
-
+    Existing vertex selection for query vertex
+    For new vertices, add context that you can add existing vertices as neighbours in the modification tool later
 
 Suggestions
