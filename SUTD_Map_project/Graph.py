@@ -520,8 +520,11 @@ class Graph():
 
     def add_existing_neighbours(self, vertex_ID):
         while True:
-            vert_list = list(self.dd_graph.keys())
+            already_neighbours = self.dd_graph[vertex_ID]["Neighbour"]
+            # Selection vertices must not already be neighbours, nor can the vertex be a neighbour to itself
+            vert_list = [vert for vert in self.dd_graph.keys() if vert not in already_neighbours and vert != vertex_ID]
             selection = [i for i in range(len(vert_list))]
+
             for i in range(len(vert_list)):
                 print("{:02d}\t{}".format(i, vert_list[i]))
             to_add_as_neighbour = None
@@ -641,7 +644,7 @@ class Graph():
             self.dd_graph[vertex].update({"Description":vtxdesc})
 
 #_CONNECTION POINT FUNCTIONS_#
-    def graphswaps():
+    def graphswaps(self):
         pass
 
 #_PATH FINDING FUNCTIONS_#
