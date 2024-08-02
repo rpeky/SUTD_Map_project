@@ -520,10 +520,14 @@ class Graph():
 
     def add_existing_neighbours(self, vertex_ID):
         while True:
-            already_neighbours = self.dd_graph[vertex_ID]["Neighbour"]
+            already_neighbours = self.dd_graph[vertex_ID]["Neighbour"].keys() 
             # Selection vertices must not already be neighbours, nor can the vertex be a neighbour to itself
-            vert_list = [vert for vert in self.dd_graph.keys() if vert not in already_neighbours and vert != vertex_ID]
+            vert_list = [vert for vert in self.dd_graph.keys() if (vert not in already_neighbours) and (vert != vertex_ID)]
+            if len(vert_list)==0:
+                print("No neighbours to add!\n")
+                break
             selection = [i for i in range(len(vert_list))]
+
 
             for i in range(len(vert_list)):
                 print("{:02d}\t{}".format(i, vert_list[i]))
