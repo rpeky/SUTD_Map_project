@@ -81,7 +81,8 @@ class Graph():
             neighbour_ID=self.query_vertex()
             confirm_Neighbour_ID = input("\nConfirm adding neighbour {} to {}?\ny/n: ".format(neighbour_ID,vertex_ID))
             if confirm_Neighbour_ID in selection_yes:
-                adj_dist, adj_heading = self.add_neighbour_distance()
+                adj_dist = self.add_neighbour_distance()
+                adj_heading = self.add_neighbour_heading()
                 self.dd_graph[vertex_ID]["Neighbour"][neighbour_ID] = adj_dist
                 self.dd_graph[vertex_ID]["Neighbour_head"][neighbour_ID] = adj_heading
 
@@ -121,15 +122,29 @@ class Graph():
         while True:
             try:
                 adj_vtx_dist = float(input("Enter distance to adjacent vertex: "))
-                adj_vtx_head = int(input("\nEnter bearing to adjacent vertex: "))
-                if adj_vtx_dist > 0 and adj_vtx_head >= 0 and adj_vtx_head < 37:
-                    cont = input("\nConfirm distance: {}m \nConfirm heading {} degrees: \ny/n: ".format(adj_vtx_dist,adj_vtx_head))
+                if adj_vtx_dist > 0:
+                    cont = input("\nConfirm distance: {}m \ny/n: ".format(adj_vtx_dist))
                     if cont in selection_yes:
-                        return adj_vtx_dist, adj_vtx_head
+                        return adj_vtx_dist
                     else:
                         continue
                 else:
-                    print("Distance / Heading must be more than 0!")
+                    print("Distance must be more than 0!")
+            except ValueError:
+                print("Not a number")
+
+    def add_neighbour_heading(self):
+        while True:
+            try:
+                adj_vtx_head = int(input("\nEnter bearing to adjacent vertex: "))
+                if 0 <= adj_vtx_head <= 36:
+                    cont = input("\nConfirm heading {} degrees: \ny/n: ".format(adj_vtx_head))
+                    if cont in selection_yes:
+                        return adj_vtx_head
+                    else:
+                        continue
+                else:
+                    print("Heading must be more than 0!")
             except ValueError:
                 print("Not a number")
 
@@ -334,8 +349,9 @@ class Graph():
             "16":self.remove_clearance,
             "17":self.add_existing_neighbours,
             "18":self.remove_existing_neighbours,
-            "19":self.add_external_connectionpoint,
-            "20":self.add_node_description
+            "19":self.modify_existing_neighbours_headings,
+            "20":self.add_external_connectionpoint,
+            "21":self.add_node_description,
         }
 
         m_list = list(modifier_functions.keys())
@@ -546,7 +562,8 @@ class Graph():
             neighbour_ID = vert_list[int(to_add_as_neighbour)]
             confirm_Neighbour_ID = input("\nConfirm adding neighbour {} to {}?\ny/n: ".format(neighbour_ID, vertex_ID))
             if confirm_Neighbour_ID in selection_yes:
-                adj_dist, adj_heading = self.add_neighbour_distance()
+                adj_dist = self.add_neighbour_distance()
+                adj_heading = self.add_neighbour_heading()
                 self.dd_graph[vertex_ID]["Neighbour"][neighbour_ID] = adj_dist
                 self.dd_graph[vertex_ID]["Neighbour_head"][neighbour_ID] = adj_heading
                 self.dd_graph[neighbour_ID]["Neighbour"][vertex_ID] = adj_dist
@@ -583,6 +600,34 @@ class Graph():
             if confirm in selection_no:
                 break
 
+    def modify_existing_neighbours_headings(self, vertex_ID):
+        while True:
+            neighbours_headings = self.dd_graph[vertex_ID]["Neighbour_head"]
+            vert_list = list(neighbours_headings.keys())
+            selection = [i for i in range(len(vert_list))]
+            for i in range(len(vert_list)):
+                print("{:02d}\t{}".format(i, vert_list[i]))
+            to_modify_heading = None
+            while True:
+                to_modify_heading = input("Enter existing neighbour Vertex ID whose heading to modify: ")
+                if int(to_modify_heading) in selection:
+                    print("Selected {}".format(vert_list[int(to_modify_heading)]))
+                    break
+                else:
+                    print("Invalid input!")
+                    continue
+            neighbour_ID = vert_list[int(to_modify_heading)]
+            existing_heading = neighbours_headings[neighbour_ID]
+            new_heading = self.add_neighbour_heading()
+            neighbour_new_heading = new_heading + 18 if new_heading < 18 else new_heading - 18
+            confirm_modify_heading = input("\nConfirm changing heading of {} from {} to {}?\ny/n: ".format(neighbour_ID, existing_heading, new_heading))
+            if confirm_modify_heading in selection_yes:
+                self.dd_graph[vertex_ID]["Neighbour_head"][neighbour_ID] = new_heading
+                self.dd_graph[neighbour_ID]["Neighbour_head"][vertex_ID] = neighbour_new_heading
+            confirm = input("Continue modifying headings of existing neighbours of {}? \ny/n: ".format(vertex_ID))
+            if confirm in selection_no:
+                break
+
 #_ACCESS MODIFIER FUNCTIONS_#
 
 #_CONNECTION POINT FUNCTIONS_#
@@ -616,7 +661,8 @@ class Graph():
                     print("Not a valid input")
             self.dd_graph[vertex]["Connected_vertex"].update({sel_list[selec][0]:sel_list[selec][1]})
             #add distance to connected vertex
-            con_dist, con_heading = self.add_neighbour_distance()
+            con_dist = self.add_neighbour_distance()
+            con_heading = self.add_neighbour_heading()
             if sel_list[selec][0] not in self.dd_graph[vertex]["Neighbour"]:
                 self.dd_graph[vertex]["Neighbour"][sel_list[selec][0]] = con_dist
                 self.dd_graph[vertex]["Neighbour_head"][sel_list[selec][0]] = con_heading
