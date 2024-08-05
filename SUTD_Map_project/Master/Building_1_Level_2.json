@@ -1,4 +1,21 @@
 {
+    "Building_1_Level_2_WALKWAY__MAIN": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Neighbour": {
+            "DUSTBIN_17_LOBBY_C_COMBINATION_DUSTBIN": 12.0
+        },
+        "Neighbour_head": {
+            "DUSTBIN_17_LOBBY_C_COMBINATION_DUSTBIN": 30
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
     "DUSTBIN_17_LOBBY_C_COMBINATION_DUSTBIN": {
         "Access_Clearance": [],
         "Average_travel_time": null,
@@ -6,13 +23,16 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Neighbour": {
+            "Building_1_Level_2_WALKWAY__MAIN": 12.0,
             "INTER_15_MAIN_JUNCTION": 15.0,
             "LIFT_25_LOBBY_C_B1L2": [
                 3.0,
                 270
             ]
         },
-        "Neighbour_head": {},
+        "Neighbour_head": {
+            "Building_1_Level_2_WALKWAY__MAIN": 12
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
