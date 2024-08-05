@@ -10,5 +10,6 @@ Priority changes
 Good to do but not urgent
     Existing vertex selection for query vertex
     For new vertices, add context that you can add existing vertices as neighbours in the modification tool later
+    Shift pathfinding functions from Graph.py to Path_query.py
 
 Suggestions

@@ -6,7 +6,7 @@ import User
 import Json_OS_ProcessingFunctions
 import Path_query
 
-def testbench():
+def graphtool_ini():
     f_zone = Area_Selection()
     uu=User.User()
     lkup = masterlookup_ini()
@@ -61,6 +61,8 @@ def Area_Selection():
         'Special_Zones':['2','3','5']
         }
     B_select = Building_Selection(list(dd_zones.keys()))
+    if B_select == 'q':
+        return
     F_select = Floor_Selection(dd_zones[B_select])
     A_select = B_select+'_Level_'+F_select+".json"
     print("Loading file: {}\n".format(A_select))
@@ -71,10 +73,13 @@ def Building_Selection(buildings):
     print("Availiable Buildings:")
     for i in range(len(buildings)):
         print("{:02d}\t{}".format(i, buildings[i]))
+    print("Enter q to return to main menu")
     b_select = input("\nSelect building to load: ")
     if b_select in selection:
         print("Selected {}".format(buildings[int(b_select)]))
         return buildings[int(b_select)]
+    elif b_select == 'q':
+        return b_select
     else:
         print("Invalid input!")
         return Building_Selection(buildings)
@@ -91,18 +96,6 @@ def Floor_Selection(floors):
         print("Invalid input!")
         return Floor_Selection(floors)
 
-def main():
-    #testbench()
-    cl_s="\n"*100
-    validate_lookupdir()
-    while True:
-        print(cl_s)
-        print("SUTD Map Project 2023/2024 Default Page\n")
-        ct=input("Enter q to exit mapping tool\nAny other key to proceed: ")
-        if ct=='q':
-            break
-        testbench()
-
 def validate_lookupdir():
     Json_OS_ProcessingFunctions.rebuild_lookupdir()
     Json_OS_ProcessingFunctions.rebuild_lookupcon()
@@ -111,6 +104,24 @@ def main2():
     idlkup = lookup_id_ini()
     pq = Path_query.Query(idlkup)
 
+
+def main():
+    cl_s="\n"*100
+    validate_lookupdir()
+    options = {
+            '0': main2,
+            '1': graphtool_ini,
+            '2': validate_lookupdir
+            }
+    while True:
+        print(cl_s)
+        print("SUTD Map Project 2023/2024 Default Page\n")
+        print("0 - Run Pathfinding\n1 - Run Graph mapping tool\n2 - Run Lookup directory validation\n") 
+        ct=input("Enter q to exit mapping tool\nAny other key to proceed: ")
+        if ct == 'q':
+            break
+        options[ct]()
+        
 if __name__ == '__main__':
     start_time = time.process_time()
     main()
