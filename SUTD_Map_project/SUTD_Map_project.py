@@ -4,13 +4,16 @@ import json
 import Graph
 import User
 import Json_OS_ProcessingFunctions
+import Path_query
 
 def testbench():
     f_zone = Area_Selection()
     uu=User.User()
     lkup = masterlookup_ini()
     cplkup = lookup_connection_ini()
-    gg = Graph.Graph(f_zone, uu.clearance_card, lkup, cplkup)
+    idlkup = lookup_id_ini()
+    #idlkup to be used for path search, graph generation for graph generation
+    gg = Graph.Graph(f_zone, uu.clearance_card, lkup, cplkup, idlkup)
     #gg.graph_generation_tool()
     print(gg.Time_check())
     #print(gg.__dict__)
@@ -18,9 +21,10 @@ def testbench():
 def masterlookup_ini():
     #for looking up which vertex belongs to which json
     dd_lkup = dict()
-    Json_OS_ProcessingFunctions.check_folders_exist()
     if Json_OS_ProcessingFunctions.check_file_exist("Lookup_directory.json",2):
         dd_lkup = Json_OS_ProcessingFunctions.load_file_json("Lookup_directory.json",2)
+    else:
+        Json_OS_ProcessingFunctions.save_file_json(dd_lkup,"Lookup_directory.json",2)
     return dd_lkup
 
 def lookup_connection_ini():
@@ -28,7 +32,18 @@ def lookup_connection_ini():
     dd_cplkup = dict()
     if Json_OS_ProcessingFunctions.check_file_exist("Lookup_connections.json",2):
         dd_cplkup = Json_OS_ProcessingFunctions.load_file_json("Lookup_connections.json",2)
+    else:
+        Json_OS_ProcessingFunctions.save_file_json(dd_cplkup,"Lookup_connections.json",2)
     return dd_cplkup
+
+def lookup_id_ini():
+    #for general lookup based on location ID
+    dd_idlkup = dict()
+    if Json_OS_ProcessingFunctions.check_file_exist("Lookup_locationID.json",2):
+        dd_idlkup = Json_OS_ProcessingFunctions.load_file_json("Lookup_locationID.json",2)
+    else:
+        Json_OS_ProcessingFunctions.save_file_json(dd_idlkup,"Lookup_locationID.json",2)
+    return dd_idlkup
 
 def Area_Selection():
     dd_zones={
@@ -43,7 +58,7 @@ def Area_Selection():
         'Block_57':['2','3','4','5','6','7','8','9','10','11','12'],
         'Block_59':['2','3','4','5','6','7','8','9','10','11','12'],
         'Sports_and_Recreation_Centre':['2','3'],
-        'Special_Zones':['0','1','2','3','5']
+        'Special_Zones':['2','3','5']
         }
     B_select = Building_Selection(list(dd_zones.keys()))
     F_select = Floor_Selection(dd_zones[B_select])
@@ -91,6 +106,10 @@ def main():
 def validate_lookupdir():
     Json_OS_ProcessingFunctions.rebuild_lookupdir()
     Json_OS_ProcessingFunctions.rebuild_lookupcon()
+
+def main2():
+    idlkup = lookup_id_ini()
+    pq = Path_query.Query(idlkup)
 
 if __name__ == '__main__':
     start_time = time.process_time()

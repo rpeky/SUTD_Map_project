@@ -32,11 +32,15 @@ def load_file_json(filename, folder_idx):
     f=open(full_path)
     return json.load(f)
 
+def generate_logfile():
+    pass
+
 def rebuild_lookupdir():
     #dirs
     cwd = os.getcwd()
     lkupdir = os.path.join(cwd, 'LookUp')
-    masdir = os.path.join(cwd, 'Master')    
+    masdir = os.path.join(cwd, 'Master')
+    logdir = os.path.join(cwd, 'Log')
 
     lkdict = load_file_json("Lookup_directory.json", 2)
     lkupcount = 0

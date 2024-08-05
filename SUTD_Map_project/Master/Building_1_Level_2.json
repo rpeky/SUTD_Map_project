@@ -11,7 +11,7 @@
         "Neighbour_head": {
             "DUSTBIN_17_LOBBY_C_COMBINATION_DUSTBIN": 30
         },
-        "Room_ID": null,
+        "Room_ID": "01.02.305",
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0

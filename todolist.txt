@@ -4,6 +4,7 @@ Priority changes
     Add lookup for point using room ID - for user to select - WIP peky
     Auto update distance and heading of 3rd vertex based on connection to two existing vertices (trigo) - WIP cy
     Append dictionary attribute info - WIP cy
+    graph.py/lookup_locationid - validate by combing through and rebuilding the lookup based on master data [room_id] values
 
 
 Good to do but not urgent
