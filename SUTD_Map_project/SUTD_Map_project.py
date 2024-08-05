@@ -8,13 +8,19 @@ import Path_query
 
 def graphtool_ini():
     f_zone = Area_Selection()
+    if f_zone is None:
+        print("No area selected, returning to main menu!\n")
+        return
     uu=User.User()
+    if not uu:
+        print("No user detected, returning to main menu!\n")
+        return
+
     lkup = masterlookup_ini()
     cplkup = lookup_connection_ini()
     idlkup = lookup_id_ini()
-    #idlkup to be used for path search, graph generation for graph generation
-    gg = Graph.Graph(f_zone, uu.clearance_card, lkup, cplkup, idlkup)
-    #gg.graph_generation_tool()
+
+    gg = Graph.Graph(f_zone, uu.clearance_card, lkup, cplkup, idlkup) 
     print(gg.Time_check())
     #print(gg.__dict__)
 
@@ -62,7 +68,7 @@ def Area_Selection():
         }
     B_select = Building_Selection(list(dd_zones.keys()))
     if B_select == 'q':
-        return
+        return None
     F_select = Floor_Selection(dd_zones[B_select])
     A_select = B_select+'_Level_'+F_select+".json"
     print("Loading file: {}\n".format(A_select))
@@ -74,28 +80,28 @@ def Building_Selection(buildings):
     for i in range(len(buildings)):
         print("{:02d}\t{}".format(i, buildings[i]))
     print("Enter q to return to main menu")
-    b_select = input("\nSelect building to load: ")
-    if b_select in selection:
-        print("Selected {}".format(buildings[int(b_select)]))
-        return buildings[int(b_select)]
-    elif b_select == 'q':
-        return b_select
-    else:
-        print("Invalid input!")
-        return Building_Selection(buildings)
+    while True:
+        b_select = input("\nSelect building to load: ")
+        if b_select in selection:
+            print("Selected {}".format(buildings[int(b_select)]))
+            return buildings[int(b_select)]
+        elif b_select == 'q':
+            return 'q'
+        else:
+            print("Invalid input!")
 
 def Floor_Selection(floors):
     print("\nAvailiable Levels:")
     for i in floors:
         print("Level {}".format(i))
-    f_select = input("\nSelect floor to load: ")
-    if f_select in floors:
-        print("Selected level {}".format(f_select))
-        return f_select
-    else:
-        print("Invalid input!")
-        return Floor_Selection(floors)
-
+    while True:
+        f_select = input("\nSelect floor to load: ")
+        if f_select in floors:
+            print("Selected level {}".format(f_select))
+            return f_select
+        else:
+            print("Invalid input!")
+       
 def validate_lookupdir():
     Json_OS_ProcessingFunctions.rebuild_lookupdir()
     Json_OS_ProcessingFunctions.rebuild_lookupcon()
