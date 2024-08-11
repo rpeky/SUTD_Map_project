@@ -105,7 +105,7 @@ class Graph():
 
                 neighbour_adj_dist = adj_dist
                 #neigbour conjugate heading
-                neighbour_adj_heading = adj_heading + 18 if adj_heading < 18 else adj_heading - 18
+                neighbour_adj_heading = adj_heading + 180 if adj_heading < 180 else adj_heading - 180
                 self.dd_graph[neighbour_ID]["Neighbour"][vertex_ID] = neighbour_adj_dist
                 self.dd_graph[neighbour_ID]["Neighbour_head"][vertex_ID] = neighbour_adj_heading
                 print("Returning to neighbour creation tool")
@@ -137,7 +137,7 @@ class Graph():
         while True:
             try:
                 adj_vtx_head = int(input("\nEnter bearing to adjacent vertex: "))
-                if 0 <= adj_vtx_head <= 36:
+                if 0 <= adj_vtx_head < 360:
                     cont = input("\nConfirm heading {} degrees: \ny/n: ".format(adj_vtx_head))
                     if cont in selection_yes:
                         return adj_vtx_head
@@ -186,12 +186,12 @@ class Graph():
     def query_vertex_Heading(self):
         direction_heading = ""
         while True:
-            print("Enter heading of vertex [01-36]: ")
+            print("Enter heading of vertex [01-360]: ")
             while True:
                 #breaks if not in, try something else?
                 try:
                     pref=int(input())
-                    if 0 < pref < 37:
+                    if 0 <= pref < 360:
                         direction_heading=format(pref,'02d')
                         break
                     else:
@@ -567,7 +567,7 @@ class Graph():
                 self.dd_graph[vertex_ID]["Neighbour"][neighbour_ID] = adj_dist
                 self.dd_graph[vertex_ID]["Neighbour_head"][neighbour_ID] = adj_heading
                 self.dd_graph[neighbour_ID]["Neighbour"][vertex_ID] = adj_dist
-                self.dd_graph[neighbour_ID]["Neighbour_head"][vertex_ID] = adj_heading + 18 if adj_heading < 18 else adj_heading - 18
+                self.dd_graph[neighbour_ID]["Neighbour_head"][vertex_ID] = adj_heading + 180 if adj_heading < 180 else adj_heading - 180
                 print("\nNeighbour {} added to {}".format(neighbour_ID, vertex_ID))
             confirm = input("Continue setting an existing vertex as neighbour to {}?\ny/n: ".format(vertex_ID))
             if confirm in selection_no:
@@ -619,7 +619,7 @@ class Graph():
             neighbour_ID = vert_list[int(to_modify_heading)]
             existing_heading = neighbours_headings[neighbour_ID]
             new_heading = self.add_neighbour_heading()
-            neighbour_new_heading = new_heading + 18 if new_heading < 18 else new_heading - 18
+            neighbour_new_heading = new_heading + 180 if new_heading < 180 else new_heading - 180
             confirm_modify_heading = input("\nConfirm changing heading of {} from {} to {}?\ny/n: ".format(neighbour_ID, existing_heading, new_heading))
             if confirm_modify_heading in selection_yes:
                 self.dd_graph[vertex_ID]["Neighbour_head"][neighbour_ID] = new_heading
