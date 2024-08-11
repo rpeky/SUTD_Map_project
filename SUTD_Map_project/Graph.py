@@ -298,7 +298,7 @@ class Graph():
         for i in range(len(vert_list)):
             print("{:02d}\t{}".format(i,vert_list[i]))
         while True:
-            endstare = input("Enter anything to return to Graph Generation Tool")
+            endstare = input("Enter any key to continue:\t")
             break
 
 #_DEBUG PRINT STUFF_#
