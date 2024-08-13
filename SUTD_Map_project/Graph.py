@@ -7,12 +7,13 @@ selection_no=['0','n','N','No','no']
 selection_yes_and_no=selection_yes+selection_no
 
 class Graph():
-    def __init__(self, area_file, clearance, dd_lkup, dd_cplkup):
+    def __init__(self, area_file, clearance, dd_lkup, dd_cplkup, dd_idlkup):
         #checked outside in main when initialising master lookup
         #Json_OS_ProcessingFunctions.check_folders_exist()
         self.dd_graph = dict()
         self.dd_lkup = dd_lkup
         self.dd_cplkup = dd_cplkup
+        self.dd_idlkup = dd_idlkup
         self.access_clearance = clearance
         self.area_file_tosave = area_file
         self.localname = area_file[:-5]
@@ -37,6 +38,8 @@ class Graph():
         #print(json.dump(self.dd_lkup))
         Json_OS_ProcessingFunctions.save_file_json(self.dd_lkup,"Lookup_directory.json",2)
         Json_OS_ProcessingFunctions.save_file_json(self.dd_cplkup,"Lookup_connections.json",2)
+        Json_OS_ProcessingFunctions.save_file_json(self.dd_idlkup, "Lookup_locationID.json",2)
+
         print('deleting')
 
 #_GRAPH TOOLS_#
@@ -295,7 +298,7 @@ class Graph():
         for i in range(len(vert_list)):
             print("{:02d}\t{}".format(i,vert_list[i]))
         while True:
-            endstare = input("Enter anything to return to Graph Generation Tool")
+            endstare = input("Enter any key to continue:\t")
             break
 
 #_DEBUG PRINT STUFF_#
@@ -458,9 +461,25 @@ class Graph():
         self.dd_graph[vertex]["Average_travel_time"]=t_time
 
     def set_room_ID(self, vertex):
-        ID_code = input("Enter Location ID code: ")
-        self.dd_graph[vertex]["Room_ID"]=ID_code
         #to add this reflection into a lookup table in main, for quick reference
+        if self.dd_graph[vertex]["Room_ID"] == None:
+            #temp prints
+            ID_code = input("Enter Location ID code: ")
+            print("New room ID {}, appending to lookup".format(ID_code))
+            self.dd_graph[vertex]["Room_ID"]=ID_code
+            self.dd_idlkup.update({ID_code:vertex})
+
+        else:
+            initialID = self.dd_graph[vertex]["Room_ID"]
+            while True:
+                cont = input("Modify room ID {}?".format(initialID))
+                if cont in selection_yes:
+                    self.dd_graph[vertex]["Room_ID"]=ID_code
+                elif cont in selection_no:
+                    break
+                else:
+                    print("Invalid input")
+                    continue
 
     def set_Connection_Point_True(self, vertex):
         self.dd_graph[vertex]["Connection_Point"]=True
@@ -536,7 +555,7 @@ class Graph():
 
     def add_existing_neighbours(self, vertex_ID):
         while True:
-            already_neighbours = self.dd_graph[vertex_ID]["Neighbour"].keys() 
+            already_neighbours = self.dd_graph[vertex_ID]["Neighbour"].keys()
             # Selection vertices must not already be neighbours, nor can the vertex be a neighbour to itself
             vert_list = [vert for vert in self.dd_graph.keys() if (vert not in already_neighbours) and (vert != vertex_ID)]
             if len(vert_list)==0:

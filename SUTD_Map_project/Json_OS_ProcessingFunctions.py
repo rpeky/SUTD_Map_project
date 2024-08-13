@@ -1,6 +1,6 @@
 import os
 import json
-
+from datetime import datetime
 #File handling module
 
 #to come up with folders needed to store data for easier validation
@@ -32,11 +32,29 @@ def load_file_json(filename, folder_idx):
     f=open(full_path)
     return json.load(f)
 
+def pullup_vertices(filename, folder_idx):
+    vt_names = load_file_json(filename, folder_idx)
+    return list(vt_names.keys())
+
+def generate_logfile(logmsg):
+    cwd = os.getcwd()
+    newdir = os.path.join(cwd, "Log")
+    fullpath = os.path.join(newdir, "logs.log")
+    if not check_file_exist("logs.log",4):
+        open(fullpath,'w').close()
+    now = datetime.now()
+    dt = now.strftime('%Y/%m/%d, %H:%M:%S')
+    log_append = dt+': '+logmsg
+    with open(fullpath,'a') as fd:
+        fd.write(log_append)
+    fd.close()
+
 def rebuild_lookupdir():
     #dirs
     cwd = os.getcwd()
     lkupdir = os.path.join(cwd, 'LookUp')
-    masdir = os.path.join(cwd, 'Master')    
+    masdir = os.path.join(cwd, 'Master')
+    logdir = os.path.join(cwd, 'Log')
 
     lkdict = load_file_json("Lookup_directory.json", 2)
     lkupcount = 0
@@ -66,6 +84,7 @@ def rebuild_lookupdir():
     if (rebuild != lkdict):
         print("override original with rebuild dict")
         save_file_json(rebuild,"Lookup_directory.json",2)
+        generate_logfile('Replaced {} with {}'.format(lkdict,rebuild))
     else:
         print("Validated lookup ref, no errors to correct")
 
@@ -93,5 +112,7 @@ def rebuild_lookupcon():
     if (rebuild != lkdict):
         print("override original with rebuild dict")
         save_file_json(rebuild,"Lookup_connections.json",2)
+        generate_logfile('Replaced {} with {}'.format(lkdict,rebuild))
+
     else:
         print("Validated connections, no errors to correct")
