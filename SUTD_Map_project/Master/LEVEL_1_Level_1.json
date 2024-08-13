@@ -16,10 +16,22 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {},
+        "Connected_vertex": {
+            "Building_1_Level_2_LIFT__LOBBY_C": "Building_1_Level_2.json",
+            "Building_1_Level_3_LIFT__LOBBY_C": "Building_1_Level_3.json",
+            "Building_1_Level_4_LIFT__LOBBY_C": "Building_1_Level_4.json"
+        },
         "Connection_Point": true,
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_1_Level_2_LIFT__LOBBY_C": 2.0,
+            "Building_1_Level_3_LIFT__LOBBY_C": 2.0,
+            "Building_1_Level_4_LIFT__LOBBY_C": 2.0
+        },
+        "Neighbour_head": {
+            "Building_1_Level_2_LIFT__LOBBY_C": 0,
+            "Building_1_Level_3_LIFT__LOBBY_C": 0,
+            "Building_1_Level_4_LIFT__LOBBY_C": 0
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
