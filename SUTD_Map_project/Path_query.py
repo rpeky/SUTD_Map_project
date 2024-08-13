@@ -1,5 +1,5 @@
 import Json_OS_ProcessingFunctions
-
+quits = ['q','Q']
 class Query():
     def __init__(self, idlkup):
         self.dd_locationid = idlkup
@@ -8,21 +8,21 @@ class Query():
         self.welcome_message()
         self.display_options_initial()
         #self.tempwaitinput()
-    
+
     def __del__(self):
         print('test del query class')
 
     def welcome_message(self):
         print("Welcome to Query page\n")
 
-    def display_options_initial(self): 
+    def display_options_initial(self):
         print("Starting location options: \n0 - Enter room ID \n1 - Location list \nq - Quit\n")
         while True:
             try:
                 sel = input("Selection: ")
                 if sel == 'q' or sel == 'Q':
                     return
-                
+
                 if sel == '0':
                     self.inputroomID()
                 elif sel == '1':
@@ -68,10 +68,10 @@ class Query():
 
             except ValueError:
                 print("Not a valid input")
-        
+
         while True:
             try:
-                flr = input("\nSelect floor - {}\nq\treturn to main menu\nSelectiona:\t".format(dd_zones[blist[bld]])) 
+                flr = input("\nSelect floor - {}\nq\treturn to main menu\nSelectiona:\t".format(dd_zones[blist[bld]]))
                 if flr == 'q' or flr == 'Q':
                     return
                 if flr in dd_zones[blist[bld]]:
@@ -85,4 +85,15 @@ class Query():
                 print("Not a valid input")
 
     def inputroomID(self):
-        pass
+        ls_validID = Json_OS_ProcessingFunctions.pullup_vertices("Lookup_locationID.json", 2)
+        try:
+            #give format example? maybe see how
+            rm_id = input("Enter Location ID")
+            if rm_id in ls_validID:
+                break
+            elif rm_id in quits:
+                return
+            else:
+                print("Invalid ID, try again")
+        except ValueError:
+            print("Not a valid input")
