@@ -86,14 +86,15 @@ class Query():
 
     def inputroomID(self):
         ls_validID = Json_OS_ProcessingFunctions.pullup_vertices("Lookup_locationID.json", 2)
-        try:
-            #give format example? maybe see how
-            rm_id = input("Enter Location ID")
-            if rm_id in ls_validID:
-                break
-            elif rm_id in quits:
-                return
-            else:
-                print("Invalid ID, try again")
-        except ValueError:
-            print("Not a valid input")
+        while True:
+            try:
+                #give format example? maybe see how
+                rm_id = input("Enter Location ID")
+                if rm_id in ls_validID:
+                    break
+                elif rm_id in quits:
+                    return
+                else:
+                    print("Invalid ID, try again")
+            except ValueError:
+                print("Not a valid input")

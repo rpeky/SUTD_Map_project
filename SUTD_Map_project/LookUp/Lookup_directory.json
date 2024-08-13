@@ -1,4 +1,11 @@
 {
+    "LEVEL_1_Level_1_LIFT__LOBBY_A": "LEVEL_1_Level_1.json",
+    "LEVEL_1_Level_1_LIFT__LOBBY_C": "LEVEL_1_Level_1.json",
+    "LEVEL_1_Level_1_LIFT__LOBBY_E": "LEVEL_1_Level_1.json",
+    "LEVEL_1_Level_1_LIFT__LOBBY_F": "LEVEL_1_Level_1.json",
+    "LEVEL_1_Level_1_LIFT__LOBBY_J": "LEVEL_1_Level_1.json",
+    "LEVEL_1_Level_1_STAIRS__CAMPUS_CENTRE_ONESTOPCENTER_SIDE": "LEVEL_1_Level_1.json",
+    "LEVEL_1_Level_1_STAIRS__CAMPUS_CENTRE_PIANO_SIDE": "LEVEL_1_Level_1.json",
     "Special_Zones_Level_1_BUILDING_1": "Special_Zones_Level_1.json",
     "Special_Zones_Level_1_BUILDING_2": "Special_Zones_Level_1.json",
     "Special_Zones_Level_3_BUILDING_1": "Special_Zones_Level_3.json",
