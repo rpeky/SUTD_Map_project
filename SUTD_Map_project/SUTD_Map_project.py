@@ -20,7 +20,7 @@ def graphtool_ini():
     cplkup = lookup_connection_ini()
     idlkup = lookup_id_ini()
 
-    gg = Graph.Graph(f_zone, uu.clearance_card, lkup, cplkup, idlkup) 
+    gg = Graph.Graph(f_zone, uu.clearance_card, lkup, cplkup, idlkup)
     print(gg.Time_check())
     #print(gg.__dict__)
 
@@ -101,7 +101,7 @@ def Floor_Selection(floors):
             return f_select
         else:
             print("Invalid input!")
-       
+
 def validate_lookupdir():
     Json_OS_ProcessingFunctions.rebuild_lookupdir()
     Json_OS_ProcessingFunctions.rebuild_lookupcon()
@@ -122,13 +122,16 @@ def main():
     while True:
         print(cl_s)
         print("SUTD Map Project 2023/2024 Default Page\n")
-        print("0 - Run Pathfinding\n1 - Run Graph mapping tool\n2 - Run Lookup directory validation\n") 
+        print("0 - Run Pathfinding\n1 - Run Graph mapping tool\n2 - Run Lookup directory validation\n")
         ct=input("Enter q to exit mapping tool\nAny other key to proceed: ")
         if ct == 'q':
             break
         options[ct]()
-        
+
 if __name__ == '__main__':
     start_time = time.process_time()
     main()
+    #masterlookup_ini()
+    #lookup_id_ini()
+    #validate_lookupdir()
     print(time.process_time()-start_time)
