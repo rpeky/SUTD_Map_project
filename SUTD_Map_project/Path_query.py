@@ -1,5 +1,9 @@
 import Json_OS_ProcessingFunctions
+#import Graph
+
 quits = ['q','Q']
+
+
 class Query():
     def __init__(self, idlkup):
         self.dd_locationid = idlkup
@@ -16,13 +20,12 @@ class Query():
         print("Welcome to Query page\n")
 
     def display_options_initial(self):
-        print("Starting location options: \n0 - Enter room ID \n1 - Location list \nq - Quit\n")
+        print("\n\n\nStarting location options: \n0 - Enter room ID \n1 - Location list \nq - Quit\n")
         while True:
             try:
                 sel = input("Selection: ")
                 if sel == 'q' or sel == 'Q':
                     return
-
                 if sel == '0':
                     self.inputroomID()
                 elif sel == '1':
@@ -59,7 +62,7 @@ class Query():
             try:
                 bld = input("\nBuilding ID: ")
                 if bld == 'q' or bld == 'Q':
-                    return
+                    return self.display_options_initial()
                 bld = int(bld)
                 if bld > -1 and bld in range(len(dd_zones)):
                     bname = blist[bld]
@@ -89,12 +92,12 @@ class Query():
         while True:
             try:
                 #give format example? maybe see how
-                rm_id = input("Enter Location ID")
+                rm_id = input("Enter Location ID: ")
                 if rm_id in ls_validID:
                     break
                 elif rm_id in quits:
-                    return
+                    return self.display_options_initial()
                 else:
-                    print("Invalid ID, try again")
+                    print("Invalid ID / ID not in our database, try again")
             except ValueError:
                 print("Not a valid input")
