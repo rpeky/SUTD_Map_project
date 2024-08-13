@@ -11,6 +11,7 @@ def check_folders_exist():
         if os.path.isdir(folder):
             continue
         os.mkdir(folder)
+        generate_logfile("mkdir {}".format(folder))
 
 def check_file_exist(filename, folder_idx):
     cwd = os.getcwd()
