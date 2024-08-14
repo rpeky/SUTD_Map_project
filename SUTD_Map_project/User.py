@@ -1,6 +1,7 @@
 selection_yes=['1','y','Y','Yes','yes']
 selection_no=['0','n','N','No','no']
 
+
 class User():
     def __init__(self):
         self.clearance_card={"Basic"}
