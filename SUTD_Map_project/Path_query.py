@@ -11,7 +11,7 @@ class Query():
         print(self.dd_locationid)
         self.welcome_message()
         self.display_options_initial()
-        #self.tempwaitinput()
+        self.tempwaitinput()
 
     def __del__(self):
         print('test del query class')
@@ -60,6 +60,8 @@ class Query():
         for pos, key in enumerate(dd_zones):
             print("{:02d}\t{}".format(pos,key))
         print('q\tquit')
+
+        #building selection
         while True:
             try:
                 bld = input("\nBuilding ID: ")
@@ -74,19 +76,34 @@ class Query():
             except ValueError:
                 print("Not a valid input")
 
+        #for location selection
+        loclen = None
+        vnames = None
 
+        #floor selection
         while True:
             try:
-                flr = input("\nSelect floor - {}\nq\treturn to main menu\nSelectiona:\t".format(dd_zones[blist[bld]]))
+                flr = input("\nSelect floor - {}\nq\treturn to main menu\nSelection:\t".format(dd_zones[blist[bld]]))
                 if flr == 'q' or flr == 'Q':
                     return
                 if flr in dd_zones[blist[bld]]:
                     fname = bname+'_Level_'+flr+'.json'
                     vnames = Json_OS_ProcessingFunctions.pullup_vertices(fname,0)
-                    for i in range(len(vnames)):
+                    loclen = len(vnames)
+                    for i in range(loclen):
                         print("{:02d}\t{}".format(i,vnames[i]))
                     break
 
+            except ValueError:
+                print("Not a valid input")
+
+        #location selection
+        while True:
+            try:
+                idx = int(input("\nSelect location index\nSelection:\t"))
+                if idx > -1 and idx < loclen:
+                    print("Selected {}".format(vnames[idx]))
+                    break
             except ValueError:
                 print("Not a valid input")
 
@@ -104,3 +121,9 @@ class Query():
                     print("Invalid ID / ID not in our database, try again")
             except ValueError:
                 print("Not a valid input")
+
+    def translatermIDtovert(self, ID):
+        pass
+
+    def startloc(self, loc):
+        pass
