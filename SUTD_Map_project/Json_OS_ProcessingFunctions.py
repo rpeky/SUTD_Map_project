@@ -81,13 +81,6 @@ def rebuild_lookupdir():
                     lkupcount+=1
 
     print("Lookup Keys: {} \nKey Count: {}".format(inilkdictcount, lkupcount))
-
-    #to do:
-    #log if the rebuild is more than or less than the original lkup count, output to log in log dir
-
-    print(rebuild)
-
-    #do a cross check, overwrite with rebuilt if not the same
     if (rebuild != lkdict):
         print("override original with rebuild dict")
         save_file_json(rebuild,"Lookup_directory.json",2)
@@ -114,8 +107,6 @@ def rebuild_lookupcon():
                         rebuild[key]=entry.name
 
     print(rebuild)
-
-    #do a cross check, overwrite with rebuilt if not the same
     if (rebuild != lkdict):
         print("override original with rebuild dict")
         save_file_json(rebuild,"Lookup_connections.json",2)
