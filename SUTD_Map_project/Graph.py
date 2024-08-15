@@ -42,6 +42,30 @@ class Graph():
 
         print('deleting')
 
+    @classmethod
+    def query_options_list(cls, options_list, quit_option=False):
+        while True:
+            for i in range(len(options_list)):
+                print("{:02d}\t{}".format(i,options_list[i]))
+            if quit_option == True:
+                print("q\tExit")
+            user_input = input("\nSelect index of Vertex to modify: ")
+            if quit_option == True and user_input == 'q':
+                return "q"
+            else:
+                try:
+                    user_input = int(user_input)
+                    if 0 < user_input < len(options_list):
+                        selected = options_list[user_input]
+                        print("Selected {}".format(selected))
+                        return selected
+                    else:
+                        print("Invalid choice. Please select a valid option.\n")
+                except ValueError:
+                    print("Invalid choice. Please select a valid option.\n")
+
+
+
 #_GRAPH TOOLS_#
     #to think of more conditions of the vertex
     #using dictionaries to store the neighbour and its heading since python stores the insertion order of values
