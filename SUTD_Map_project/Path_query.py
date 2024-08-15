@@ -28,8 +28,10 @@ class Query():
                     return
                 if sel == '0':
                     self.inputroomID()
+                    break
                 elif sel == '1':
                     self.locationlsit()
+                    break
                 else:
                     print("Input out of index")
             except ValueError:
@@ -72,6 +74,7 @@ class Query():
             except ValueError:
                 print("Not a valid input")
 
+
         while True:
             try:
                 flr = input("\nSelect floor - {}\nq\treturn to main menu\nSelectiona:\t".format(dd_zones[blist[bld]]))
@@ -80,8 +83,8 @@ class Query():
                 if flr in dd_zones[blist[bld]]:
                     fname = bname+'_Level_'+flr+'.json'
                     vnames = Json_OS_ProcessingFunctions.pullup_vertices(fname,0)
-                    for vert in vnames:
-                        print(vert)
+                    for i in range(len(vnames)):
+                        print("{:02d}\t{}".format(i,vnames[i]))
                     break
 
             except ValueError:
