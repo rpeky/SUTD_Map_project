@@ -474,6 +474,9 @@ class Graph():
             while True:
                 cont = input("Modify room ID {}?".format(initialID))
                 if cont in selection_yes:
+                    ID_code = input("Enter Location ID code: ")
+                    print("Modified room ID {}, appending to lookup".format(ID_code))
+                    self.dd_idlkup.update({ID_code: vertex})
                     self.dd_graph[vertex]["Room_ID"]=ID_code
                 elif cont in selection_no:
                     break
