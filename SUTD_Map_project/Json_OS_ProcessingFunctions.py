@@ -49,6 +49,13 @@ def generate_logfile(logmsg):
     with open(fullpath,'a') as fd:
         fd.write(log_append)
 
+def clear_logfile():
+    cwd = os.getcwd()
+    newdir = os.path.join(cwd, "Log")
+    fullpath = os.path.join(newdir, "logs.log")
+    if not check_file_exist("logs.log",4):
+        open(fullpath,'w').close()
+
 def rebuild_lookupdir():
     #dirs
     cwd = os.getcwd()
