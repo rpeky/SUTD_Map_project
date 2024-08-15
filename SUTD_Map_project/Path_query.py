@@ -10,7 +10,7 @@ class Query():
         print('test query class')
         print(self.dd_locationid)
         self.welcome_message()
-        self.display_options_initial()
+        self.display_options_startpoint()
         self.tempwaitinput()
 
     def __del__(self):
@@ -19,7 +19,7 @@ class Query():
     def welcome_message(self):
         print("Welcome to Query page\n")
 
-    def display_options_initial(self):
+    def display_options_startpoint(self):
         print("\n\n\nStarting location options: \n0 - Enter room ID \n1 - Location list \nq - Quit\n")
         while True:
             try:
@@ -30,7 +30,7 @@ class Query():
                     self.inputroomID()
                     break
                 elif sel == '1':
-                    self.locationlsit()
+                    self.locationlist()
                     break
                 else:
                     print("Input out of index")
@@ -40,7 +40,7 @@ class Query():
     def tempwaitinput(self):
         temp = input("\nEnter any key to continue:\t\n")
 
-    def locationlsit(self):
+    def locationlist(self):
         print("\n\n\nLocation Listing\n")
         dd_zones={
         "LEVEL_1":['1'],
@@ -66,7 +66,7 @@ class Query():
             try:
                 bld = input("\nBuilding ID: ")
                 if bld == 'q' or bld == 'Q':
-                    return self.display_options_initial()
+                    return self.display_options_startpoint()
                 bld = int(bld)
                 if bld > -1 and bld in range(len(dd_zones)):
                     bname = blist[bld]
@@ -103,7 +103,10 @@ class Query():
                 idx = int(input("\nSelect location index\nSelection:\t"))
                 if idx > -1 and idx < loclen:
                     print("Selected {}".format(vnames[idx]))
+                    self.startloc(vnames[idx])
                     break
+                else:
+                    print("Invalid input")
             except ValueError:
                 print("Not a valid input")
 
@@ -116,7 +119,7 @@ class Query():
                 if rm_id in ls_validID:
                     break
                 elif rm_id in quits:
-                    return self.display_options_initial()
+                    return self.display_options_startpoint()
                 else:
                     print("Invalid ID / ID not in our database, try again")
             except ValueError:
@@ -126,4 +129,11 @@ class Query():
         pass
 
     def startloc(self, loc):
+        stpt = loc
+        #load map
+
+
+    def endloc(self, loc):
         pass
+
+    #pathfinding for cross map can be done here
