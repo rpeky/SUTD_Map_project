@@ -1,4 +1,8 @@
 import Json_OS_ProcessingFunctions
+#import Graph
+
+quits = ['q','Q']
+
 
 class Query():
     def __init__(self, idlkup):
@@ -6,27 +10,28 @@ class Query():
         print('test query class')
         print(self.dd_locationid)
         self.welcome_message()
-        self.display_options_initial()
-        #self.tempwaitinput()
-    
+        self.display_options_startpoint()
+        self.tempwaitinput()
+
     def __del__(self):
         print('test del query class')
 
     def welcome_message(self):
         print("Welcome to Query page\n")
 
-    def display_options_initial(self): 
-        print("Starting location options: \n0 - Enter room ID \n1 - Location list \nq - Quit\n")
+    def display_options_startpoint(self):
+        print("\n\n\nStarting location options: \n0 - Enter room ID \n1 - Location list \nq - Quit\n")
         while True:
             try:
                 sel = input("Selection: ")
                 if sel == 'q' or sel == 'Q':
                     return
-                
                 if sel == '0':
                     self.inputroomID()
+                    break
                 elif sel == '1':
-                    self.locationlsit()
+                    self.locationlist()
+                    break
                 else:
                     print("Input out of index")
             except ValueError:
@@ -35,7 +40,7 @@ class Query():
     def tempwaitinput(self):
         temp = input("\nEnter any key to continue:\t\n")
 
-    def locationlsit(self):
+    def locationlist(self):
         print("\n\n\nLocation Listing\n")
         dd_zones={
         "LEVEL_1":['1'],
@@ -55,11 +60,13 @@ class Query():
         for pos, key in enumerate(dd_zones):
             print("{:02d}\t{}".format(pos,key))
         print('q\tquit')
+
+        #building selection
         while True:
             try:
                 bld = input("\nBuilding ID: ")
                 if bld == 'q' or bld == 'Q':
-                    return
+                    return self.display_options_startpoint()
                 bld = int(bld)
                 if bld > -1 and bld in range(len(dd_zones)):
                     bname = blist[bld]
@@ -68,21 +75,65 @@ class Query():
 
             except ValueError:
                 print("Not a valid input")
-        
+
+        #for location selection
+        loclen = None
+        vnames = None
+
+        #floor selection
         while True:
             try:
-                flr = input("\nSelect floor - {}\nq\treturn to main menu\nSelectiona:\t".format(dd_zones[blist[bld]])) 
+                flr = input("\nSelect floor - {}\nq\treturn to main menu\nSelection:\t".format(dd_zones[blist[bld]]))
                 if flr == 'q' or flr == 'Q':
                     return
                 if flr in dd_zones[blist[bld]]:
                     fname = bname+'_Level_'+flr+'.json'
                     vnames = Json_OS_ProcessingFunctions.pullup_vertices(fname,0)
-                    for vert in vnames:
-                        print(vert)
+                    loclen = len(vnames)
+                    for i in range(loclen):
+                        print("{:02d}\t{}".format(i,vnames[i]))
                     break
 
             except ValueError:
                 print("Not a valid input")
 
+        #location selection
+        while True:
+            try:
+                idx = int(input("\nSelect location index\nSelection:\t"))
+                if idx > -1 and idx < loclen:
+                    print("Selected {}".format(vnames[idx]))
+                    self.startloc(vnames[idx])
+                    break
+                else:
+                    print("Invalid input")
+            except ValueError:
+                print("Not a valid input")
+
     def inputroomID(self):
+        ls_validID = Json_OS_ProcessingFunctions.pullup_vertices("Lookup_locationID.json", 2)
+        while True:
+            try:
+                #give format example? maybe see how
+                rm_id = input("Enter Location ID: ")
+                if rm_id in ls_validID:
+                    break
+                elif rm_id in quits:
+                    return self.display_options_startpoint()
+                else:
+                    print("Invalid ID / ID not in our database, try again")
+            except ValueError:
+                print("Not a valid input")
+
+    def translatermIDtovert(self, ID):
         pass
+
+    def startloc(self, loc):
+        stpt = loc
+        #load map
+
+
+    def endloc(self, loc):
+        pass
+
+    #pathfinding for cross map can be done here

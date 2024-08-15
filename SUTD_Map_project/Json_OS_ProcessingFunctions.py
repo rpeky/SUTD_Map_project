@@ -11,6 +11,7 @@ def check_folders_exist():
         if os.path.isdir(folder):
             continue
         os.mkdir(folder)
+        generate_logfile("mkdir {}".format(folder))
 
 def check_file_exist(filename, folder_idx):
     cwd = os.getcwd()
@@ -24,6 +25,7 @@ def save_file_json(tosave, filename, folder_idx):
     full_path = os.path.join(newdir, filename)
     with open(full_path, 'w') as outfile:
         json.dump(tosave, outfile, sort_keys=True, indent=4, ensure_ascii=False)
+    generate_logfile("Appended {} to {}".format(tosave, filename))
 
 def load_file_json(filename, folder_idx):
     cwd = os.getcwd()
@@ -42,12 +44,17 @@ def generate_logfile(logmsg):
     fullpath = os.path.join(newdir, "logs.log")
     if not check_file_exist("logs.log",4):
         open(fullpath,'w').close()
-    now = datetime.now()
-    dt = now.strftime('%Y/%m/%d, %H:%M:%S')
-    log_append = dt+': '+logmsg
+    timestamp = datetime.now().strftime('%Y/%m/%d, %H:%M:%S')
+    log_append = f"{timestamp}: {logmsg}\n"
     with open(fullpath,'a') as fd:
         fd.write(log_append)
-    fd.close()
+
+def clear_logfile():
+    cwd = os.getcwd()
+    newdir = os.path.join(cwd, "Log")
+    fullpath = os.path.join(newdir, "logs.log")
+    if not check_file_exist("logs.log",4):
+        open(fullpath,'w').close()
 
 def rebuild_lookupdir():
     #dirs
@@ -74,13 +81,6 @@ def rebuild_lookupdir():
                     lkupcount+=1
 
     print("Lookup Keys: {} \nKey Count: {}".format(inilkdictcount, lkupcount))
-
-    #to do:
-    #log if the rebuild is more than or less than the original lkup count, output to log in log dir
-
-    print(rebuild)
-
-    #do a cross check, overwrite with rebuilt if not the same
     if (rebuild != lkdict):
         print("override original with rebuild dict")
         save_file_json(rebuild,"Lookup_directory.json",2)
@@ -107,8 +107,6 @@ def rebuild_lookupcon():
                         rebuild[key]=entry.name
 
     print(rebuild)
-
-    #do a cross check, overwrite with rebuilt if not the same
     if (rebuild != lkdict):
         print("override original with rebuild dict")
         save_file_json(rebuild,"Lookup_connections.json",2)

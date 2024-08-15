@@ -1,8 +1,25 @@
 {
+    "Building_1_Level_2_LIFT__LOBBY_C": "Building_1_Level_2.json",
+    "Building_1_Level_3_LIFT__LOBBY_C": "Building_1_Level_3.json",
+    "Building_1_Level_4_LIFT__LOBBY_C": "Building_1_Level_4.json",
+    "LEVEL_1_Level_1_LIFT__LOBBY_A": "LEVEL_1_Level_1.json",
+    "LEVEL_1_Level_1_LIFT__LOBBY_C": "LEVEL_1_Level_1.json",
+    "LEVEL_1_Level_1_LIFT__LOBBY_E": "LEVEL_1_Level_1.json",
+    "LEVEL_1_Level_1_LIFT__LOBBY_F": "LEVEL_1_Level_1.json",
+    "LEVEL_1_Level_1_LIFT__LOBBY_J": "LEVEL_1_Level_1.json",
+    "LEVEL_1_Level_1_STAIRS__CAMPUS_CENTRE_ONESTOPCENTER_SIDE": "LEVEL_1_Level_1.json",
+    "LEVEL_1_Level_1_STAIRS__CAMPUS_CENTRE_PIANO_SIDE": "LEVEL_1_Level_1.json",
     "Special_Zones_Level_1_BUILDING_1": "Special_Zones_Level_1.json",
     "Special_Zones_Level_1_BUILDING_2": "Special_Zones_Level_1.json",
+    "Special_Zones_Level_2_BUILDING_BLOCK_59": "Special_Zones_Level_2.json",
+    "Special_Zones_Level_2_BUILDING_BUILDING_1": "Special_Zones_Level_2.json",
+    "Special_Zones_Level_2_BUILDING_BUILDING_2": "Special_Zones_Level_2.json",
+    "Special_Zones_Level_2_BUILDING_BUILDING_3": "Special_Zones_Level_2.json",
+    "Special_Zones_Level_2_BUILDING_SPORTS_AND_RECREATION_CENTRE": "Special_Zones_Level_2.json",
     "Special_Zones_Level_3_BUILDING_1": "Special_Zones_Level_3.json",
     "Special_Zones_Level_3_BUILDING_2": "Special_Zones_Level_3.json",
     "Special_Zones_Level_3_BUILDING_3": "Special_Zones_Level_3.json",
-    "Special_Zones_Level_3_BUILDING_5": "Special_Zones_Level_3.json"
+    "Special_Zones_Level_3_BUILDING_5": "Special_Zones_Level_3.json",
+    "Special_Zones_Level_5_BUILDING_BUILDING_1": "Special_Zones_Level_5.json",
+    "Special_Zones_Level_5_BUILDING_BUILDING_2": "Special_Zones_Level_5.json"
 }
