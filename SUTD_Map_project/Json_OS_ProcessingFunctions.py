@@ -95,7 +95,7 @@ def rebuild_lookupcon():
 
     lkdict = load_file_json("Lookup_connections.json", 2)
 
-    rebuild = dict()
+    rebuildlcon = dict()
 
     with os.scandir(masdir) as it:
         for entry in it:
@@ -104,13 +104,40 @@ def rebuild_lookupcon():
                 print(entry.name)
                 for key in jsoncheck:
                     if jsoncheck[key]["Connection_Point"]:
-                        rebuild[key]=entry.name
+                        rebuildlcon[key]=entry.name
 
-    print(rebuild)
-    if (rebuild != lkdict):
+    print(rebuildlcon)
+    if (rebuildlcon != lkdict):
         print("override original with rebuild dict")
-        save_file_json(rebuild,"Lookup_connections.json",2)
-        generate_logfile('Replaced {} with {}'.format(lkdict,rebuild))
+        save_file_json(rebuildlcon,"Lookup_connections.json",2)
+        generate_logfile('Replaced {} with {}'.format(lkdict,rebuildlcon))
+
+    else:
+        print("Validated connections, no errors to correct")
+
+def rebuild_locationID():
+    cwd = os.getcwd()
+    lkupdir = os.path.join(cwd, 'LookUp')
+    masdir = os.path.join(cwd, 'Master')
+
+    lkdict = load_file_json("Lookup_locationID.json", 2)
+
+    rebuildlid = dict()
+
+    with os.scandir(masdir) as it:
+        for entry in it:
+            if not entry.name.startswith('.') and entry.is_file():
+                jsoncheck = load_file_json(entry, 0)
+                print(entry.name)
+                for key in jsoncheck:
+                    if jsoncheck[key]["Room_ID"]!=None:
+                        rebuildlid[jsoncheck[key]["Room_ID"]]=key
+
+    print(rebuildlid)
+    if (rebuildlid != lkdict):
+        print("override original with rebuild dict")
+        save_file_json(rebuildlid,"Lookup_locationID.json",2)
+        generate_logfile('Replaced {} with {}'.format(lkdict,rebuildlid))
 
     else:
         print("Validated connections, no errors to correct")

@@ -259,7 +259,7 @@ class Graph():
 
             choice_option = input("Enter Choice: ")
 
-            if choice_option == 'q':
+            if choice_option == 'q' or choice_option == 'Q':
                 print("Exiting tool and saving")
                 self.save_and_exit()
                 break
@@ -316,7 +316,7 @@ class Graph():
             print("q\tExit")
             vert_modify = input("\nSelect index of Vertex to modify: ")
 
-            if vert_modify=='q':
+            if vert_modify=='q' or vert_modify=='Q':
                 print("returning to graph generating tool")
                 return
             try:
