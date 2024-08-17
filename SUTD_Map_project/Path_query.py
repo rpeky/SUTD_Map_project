@@ -117,6 +117,7 @@ class Query():
                 #give format example? maybe see how
                 rm_id = input("Enter Location ID: ")
                 if rm_id in ls_validID:
+                    self.translatermIDtovert(rm_id)
                     break
                 elif rm_id in quits:
                     return self.display_options_startpoint()
@@ -126,9 +127,9 @@ class Query():
                 print("Not a valid input")
 
     def translatermIDtovert(self, ID):
-        dd_translate = Json_OS_ProcessingFunctions.load_file_json("Lookup_locationID",2)
+        dd_translate = Json_OS_ProcessingFunctions.load_file_json("Lookup_locationID.json",2)
         internalname = dd_translate[ID]
-        dd_lookupmap = Json_OS_ProcessingFunctions.load_file_json("Lookup_connections",2)
+        dd_lookupmap = Json_OS_ProcessingFunctions.load_file_json("Lookup_directory.json",2)
         startmap = dd_lookupmap[internalname]
         print(startmap)
 
