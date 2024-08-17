@@ -23,5 +23,70 @@
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
+    },
+    "Building_1_Level_4_ROOM__CAPSTON_CONFERENCE_ROOM_1": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": "1.407",
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_1_Level_4_ROOM__COHORT_CLASSROOM_3": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": "1.413",
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_1_Level_4_ROOM__SPARKS_STAFF_LOUNGE": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": "1.404",
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_1_Level_4_ROOM__THINK_TANK_6": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": "1.408",
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_1_Level_4_ROOM__THINK_TANK_7": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": "1.409",
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
     }
 }
