@@ -117,7 +117,7 @@ def main():
     cl_s="\n"*100
     validate_lookupdir()
     options = {
-            '0': runpq, 
+            '0': runpq,
             '1': graphtool_ini,
             '2': validate_lookupdir
             }
