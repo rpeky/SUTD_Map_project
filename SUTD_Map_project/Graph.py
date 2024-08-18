@@ -42,6 +42,67 @@ class Graph():
 
         print('deleting')
 
+    # 3 types of query: ask user to select an option from a list/range, or just text
+    @classmethod
+    def query(cls, query_type, prompt, options=None, quit_option=False, confirm_selected_option=False):
+        while True:
+            selected_option = None
+            while True:
+                # Prompt the user for input
+                if query_type == "list":
+                    for i, option in enumerate(options):
+                        print("{:02d}\t{}".format(i, option))
+                    if quit_option == True:
+                        print("q\tExit")
+                elif query_type == 'range':
+                    pass
+                elif query_type == "text":
+                    pass
+                user_input = input("\nEnter {}: ".format(prompt))
+                if quit_option == True and user_input == 'q':
+                    return "q"
+                # Ensure the user input is valid
+                else:
+                    # Input validation for list and range is similar
+                    if query_type == "list" or query_type == "range":
+                        try:
+                            selected_index = int(user_input)
+                            if 0 < selected_index < len(options):
+                                if query_type == "list":
+                                    selected_option = options[selected_index]
+                                elif query_type == "range":
+                                    selected_option = selected_index
+                                break
+                            else:
+                                print("Out of index. Please select a valid option.\n")
+                        except ValueError:
+                            print("Invalid choice. Please select a valid option.\n")
+                    # No input validation for text is needed
+                    elif query_type == "text":
+                        selected_option = user_input
+                        break
+
+            # Let the user confirm his input again
+            print("\nEntered input for {}: \n\t{}".format(prompt, selected_option))
+            if confirm_selected_option == True:
+                while True:
+                    print("\nConfirm input?")
+                    sel = input("y/n: ")
+                    if sel in selection_yes:
+                        return selected_option
+                    elif sel in selection_no:
+                        print("Reenter your input\n")
+                        break
+                    else:
+                        print("Invalid input. Please select y/n\n")
+            else:
+                return selected_option
+
+
+
+
+
+
 #_GRAPH TOOLS_#
     #to think of more conditions of the vertex
     #using dictionaries to store the neighbour and its heading since python stores the insertion order of values
@@ -162,66 +223,24 @@ class Graph():
     def query_vertex_Prefix(self):
         pref = ""
         # edit as needed
-        ID_prefix = ["LIFT_", "ROOM_", "DUSTBIN_", "INTER_", "TOILET_", "STAIRS_", "ENTRANCE_", "MAINROAD_",
+        ID_prefixes = ["LIFT_", "ROOM_", "DUSTBIN_", "INTER_", "TOILET_", "STAIRS_", "ENTRANCE_", "MAINROAD_",
                      "WALKWAY_","BUILDING"]
-        while True:
-            for i, p in enumerate(ID_prefix):
-                print("{:02d}\t{}".format(i, p))
-            while True:
-                try:
-                    pref = int(input("\nPick a prefix: "))
-                    if -1 < pref < len(ID_prefix):
-                        break
-                    else:
-                        print("out of index")
-                except ValueError:
-                    print("Not a valid input")
-
-            print("\nConfirm selection \n{:02d}\t{}?\n".format(pref, ID_prefix[pref]))
-            sel = input("y/n: ")
-            if sel in selection_yes:
-                print("Selected {}\n".format(ID_prefix[pref]))
-                return '_'+ID_prefix[pref]
-            if sel not in selection_yes_and_no:
-                print("Not a valid input\n")
+        prompt = "index of vertex prefix"
+        selected_prefix = Graph.query(query_type="list", prompt=prompt, options=ID_prefixes, confirm_selected_option=True)
+        return '_' + selected_prefix
 
     #kiv, removed from naming process since vert heading is now an attribute, may be able to reuse
     def query_vertex_Heading(self):
-        direction_heading = ""
-        while True:
-            print("Enter heading of vertex [01-360]: ")
-            while True:
-                #breaks if not in, try something else?
-                try:
-                    pref=int(input())
-                    if 0 <= pref < 360:
-                        direction_heading=format(pref,'02d')
-                        break
-                    else:
-                        print("out of index")
-                except ValueError:
-                    print("Not a valid input")
-
-            print("\nConfirm entry: \t{}\n".format(direction_heading))
-            sel=input("y/n: ")
-            if sel in selection_yes:
-                print("Heading {}\n".format(direction_heading))
-                return direction_heading
-            elif sel not in selection_yes_and_no:
-                print("Not a valid input\n")
+        prompt = "heading of vertex [01-360]"
+        headings_options = range(360)
+        heading = Graph.query(query_type="range", prompt=prompt, options=headings_options, confirm_selected_option=True)
+        heading = format(heading,'02d')
+        return heading
 
     def query_vertex_ID(self):
-        while True:
-            ID = input("Enter ID of vertex: ")
-            print("\nConfirm entry: \t{}\n".format(ID))
-            sel=input("y/n: ")
-            if sel in selection_yes:
-                print("ID of vertex: {}\n".format(ID))
-                return ID
-            elif sel in selection_no:
-                print("Re-enter ID\n")
-            else:
-                print("Not a valid input\n")
+        prompt = "ID of vertex"
+        vertex_ID = Graph.query(query_type="text", prompt=prompt, confirm_selected_option=True)
+        return vertex_ID
 
     def save_and_exit(self):
         print("Saving and exiting graph generation tool.")
