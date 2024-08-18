@@ -126,7 +126,11 @@ class Query():
                 print("Not a valid input")
 
     def translatermIDtovert(self, ID):
-        pass
+        dd_translate = Json_OS_ProcessingFunctions.load_file_json("Lookup_locationID",2)
+        internalname = dd_translate[ID]
+        dd_lookupmap = Json_OS_ProcessingFunctions.load_file_json("Lookup_connections",2)
+        startmap = dd_lookupmap[internalname]
+        print(startmap)
 
     def startloc(self, loc):
         stpt = loc
@@ -134,6 +138,7 @@ class Query():
 
 
     def endloc(self, loc):
-        pass
+        edpt = loc
+        #load map
 
     #pathfinding for cross map can be done here

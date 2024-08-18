@@ -66,6 +66,7 @@ def Area_Selection():
         'Sports_and_Recreation_Centre':['2','3'],
         'Special_Zones':['2','3','5']
         }
+
     B_select = Building_Selection(list(dd_zones.keys()))
     if B_select == 'q':
         return None
@@ -105,8 +106,9 @@ def Floor_Selection(floors):
 def validate_lookupdir():
     Json_OS_ProcessingFunctions.rebuild_lookupdir()
     Json_OS_ProcessingFunctions.rebuild_lookupcon()
+    Json_OS_ProcessingFunctions.rebuild_locationID()
 
-def main2():
+def runpq():
     idlkup = lookup_id_ini()
     pq = Path_query.Query(idlkup)
 
@@ -115,23 +117,24 @@ def main():
     cl_s="\n"*100
     validate_lookupdir()
     options = {
-            '0': main2,
+            '0': runpq, 
             '1': graphtool_ini,
             '2': validate_lookupdir
             }
     while True:
-        print(cl_s)
-        print("SUTD Map Project 2023/2024 Default Page\n")
-        print("0 - Run Pathfinding\n1 - Run Graph mapping tool\n2 - Run Lookup directory validation\n")
-        ct=input("Enter q to exit mapping tool\nAny other key to proceed: ")
-        if ct == 'q':
-            break
-        options[ct]()
+        try:
+            print(cl_s)
+            print("SUTD Map Project 2023/2024 Default Page\n")
+            print("0 - Run Pathfinding\n1 - Run Graph mapping tool\n2 - Run Lookup directory validation\n")
+            ct=input("Enter q to exit mapping tool\nSelect tool to run: ")
+            if ct == 'q' or ct == 'Q':
+                break
+            elif ct in options.keys():
+                options[ct]()
+        except ValueError:
+            print("Invalid input")
 
 if __name__ == '__main__':
     start_time = time.process_time()
     main()
-    #masterlookup_ini()
-    #lookup_id_ini()
-    #validate_lookupdir()
     print(time.process_time()-start_time)
