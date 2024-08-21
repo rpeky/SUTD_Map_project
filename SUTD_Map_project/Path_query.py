@@ -1,5 +1,5 @@
 import Json_OS_ProcessingFunctions
-#import Graph
+import Graph
 
 quits = ['q','Q']
 
@@ -24,7 +24,7 @@ class Query():
         while True:
             try:
                 sel = input("Selection: ")
-                if sel == 'q' or sel == 'Q':
+                if sel in quits:
                     return
                 if sel == '0':
                     self.inputroomID()
@@ -65,7 +65,7 @@ class Query():
         while True:
             try:
                 bld = input("\nBuilding ID: ")
-                if bld == 'q' or bld == 'Q':
+                if bld in quits:
                     return self.display_options_startpoint()
                 bld = int(bld)
                 if bld > -1 and bld in range(len(dd_zones)):
@@ -84,7 +84,7 @@ class Query():
         while True:
             try:
                 flr = input("\nSelect floor - {}\nq\treturn to main menu\nSelection:\t".format(dd_zones[blist[bld]]))
-                if flr == 'q' or flr == 'Q':
+                if flr in quits:
                     return
                 if flr in dd_zones[blist[bld]]:
                     fname = bname+'_Level_'+flr+'.json'
@@ -131,7 +131,8 @@ class Query():
         internalname = dd_translate[ID]
         dd_lookupmap = Json_OS_ProcessingFunctions.load_file_json("Lookup_directory.json",2)
         startmap = dd_lookupmap[internalname]
-        print(startmap)
+        dd_smap = Json_OS_ProcessingFunctions.load_file_json(startmap,0)
+        print(dd_smap)
 
     def startloc(self, loc):
         stpt = loc

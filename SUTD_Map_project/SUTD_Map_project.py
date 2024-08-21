@@ -6,6 +6,8 @@ import User
 import Json_OS_ProcessingFunctions
 import Path_query
 
+quits = ['q','Q']
+
 def graphtool_ini():
     f_zone = Area_Selection()
     if f_zone is None:
@@ -68,7 +70,7 @@ def Area_Selection():
         }
 
     B_select = Building_Selection(list(dd_zones.keys()))
-    if B_select == 'q':
+    if B_select in quits:
         return None
     F_select = Floor_Selection(dd_zones[B_select])
     A_select = B_select+'_Level_'+F_select+".json"
@@ -86,7 +88,7 @@ def Building_Selection(buildings):
         if b_select in selection:
             print("Selected {}".format(buildings[int(b_select)]))
             return buildings[int(b_select)]
-        elif b_select == 'q':
+        elif b_select in quits:
             return 'q'
         else:
             print("Invalid input!")
