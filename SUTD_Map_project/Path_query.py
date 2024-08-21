@@ -10,7 +10,9 @@ class Query():
         print('test query class')
         print(self.dd_locationid)
         self.welcome_message()
-        self.display_options_startpoint()
+        #self.display_options_startpoint()
+        self.startloc()
+        self.endloc()
         self.tempwaitinput()
 
     def __del__(self):
@@ -20,22 +22,25 @@ class Query():
         print("Welcome to Query page\n")
 
     def display_options_startpoint(self):
-        print("\n\n\nStarting location options: \n0 - Enter room ID \n1 - Location list \nq - Quit\n")
+        print("\n\n\nLocation options: \n0 - Enter room ID \n1 - Location list \nq - Quit\n")
+        loc = None
         while True:
             try:
                 sel = input("Selection: ")
                 if sel in quits:
                     return
                 if sel == '0':
-                    self.inputroomID()
+                    loc = self.inputroomID()
                     break
                 elif sel == '1':
-                    self.locationlist()
+                    loc = self.locationlist()
                     break
                 else:
                     print("Input out of index")
             except ValueError:
                 print("Not a valid input")
+
+        return loc
 
     def tempwaitinput(self):
         temp = input("\nEnter any key to continue:\t\n")
@@ -110,14 +115,17 @@ class Query():
             except ValueError:
                 print("Not a valid input")
 
+        return vnames[idx] 
+
     def inputroomID(self):
         ls_validID = Json_OS_ProcessingFunctions.pullup_vertices("Lookup_locationID.json", 2)
+        idloc = None
         while True:
             try:
                 #give format example? maybe see how
                 rm_id = input("Enter Location ID: ")
                 if rm_id in ls_validID:
-                    self.translatermIDtovert(rm_id)
+                    idloc = self.translatermIDtovert(rm_id)
                     break
                 elif rm_id in quits:
                     return self.display_options_startpoint()
@@ -125,22 +133,43 @@ class Query():
                     print("Invalid ID / ID not in our database, try again")
             except ValueError:
                 print("Not a valid input")
+        return idloc
 
     def translatermIDtovert(self, ID):
+        #lookup ID in lookup table and translate
         dd_translate = Json_OS_ProcessingFunctions.load_file_json("Lookup_locationID.json",2)
         internalname = dd_translate[ID]
+        #find which map location belongs to
         dd_lookupmap = Json_OS_ProcessingFunctions.load_file_json("Lookup_directory.json",2)
         startmap = dd_lookupmap[internalname]
+        #starting map
         dd_smap = Json_OS_ProcessingFunctions.load_file_json(startmap,0)
         print(dd_smap)
+        return internalname
 
-    def startloc(self, loc):
-        stpt = loc
+    def startloc(self):
+        print("Current location selection")
+        sloc = self.display_options_startpoint()
+        print("Starting location is {}".format(sloc))
         #load map
 
 
-    def endloc(self, loc):
-        edpt = loc
+    def endloc(self):
+        print("Destination selection")
+        eloc = self.display_options_startpoint()
+        print("Destination is {}".format(eloc))
         #load map
 
     #pathfinding for cross map can be done here
+    def pfind(self, startloc=None, endloc=None, sloc_tovisit = None, eloc_tovisit = None):
+        #check for error
+        if startloc == None or endloc == None:
+            print("invalid locations")
+        #check if pfind is good to go
+        if startloc == endloc:
+            print("Solution found")
+            return
+
+
+        return
+
