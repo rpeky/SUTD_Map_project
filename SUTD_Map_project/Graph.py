@@ -5,6 +5,7 @@ import datetime
 selection_yes=['1','y','Y','Yes','yes']
 selection_no=['0','n','N','No','no']
 selection_yes_and_no=selection_yes+selection_no
+quits = ['q','Q']
 
 class Graph():
     def __init__(self, area_file, clearance, dd_lkup, dd_cplkup, dd_idlkup):
@@ -59,7 +60,7 @@ class Graph():
                 elif query_type == "text":
                     pass
                 user_input = input("\nEnter {}: ".format(prompt))
-                if quit_option == True and user_input == 'q':
+                if quit_option == True and user_input in quits:
                     return "q"
                 # Ensure the user input is valid
                 else:
@@ -97,11 +98,6 @@ class Graph():
                         print("Invalid input. Please select y/n\n")
             else:
                 return selected_option
-
-
-
-
-
 
 #_GRAPH TOOLS_#
     #to think of more conditions of the vertex
