@@ -1,18 +1,15 @@
 WIP
 
-    - Quit option for all selections, return to previous selection state - WIP peky
-    - Add lookup for point using room ID - for user to select - WIP peky
     - Auto update distance and heading of 3rd vertex based on connection to two existing vertices (trigo) - WIP cy
     - Append dictionary attribute info - WIP cy
-    - jsonprocessing.py/graph.py/lookup_locationid - validate by combing through and rebuilding the lookup based on master data [room_id] values
+    - Shift pathfinding functions from Graph.py to Path_query.py - WIP peky
+    - create inverted lookup connections for end point end point search - WIP peky
 
 
 Tasks not picked up yet
     - Existing vertex selection for query vertex
     - For new vertices, add context that you can add existing vertices as neighbours in the modification tool later
-    - Shift pathfinding functions from Graph.py to Path_query.py
     - add logging for funcitons based on Jsonprocessingfn log fn
-    - create inverted lookup connections for end point end point search
     - integrate User.py options to main, to select clearance
     - come up with function to select mutiple vertices to modify in graph.py modify fns ?? see how first (kiv)
     - additional pathfinding algos in graph.py -> do internal same map pathfinding first

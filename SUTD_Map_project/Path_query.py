@@ -115,7 +115,7 @@ class Query():
             except ValueError:
                 print("Not a valid input")
 
-        return vnames[idx] 
+        return vnames[idx]
 
     def inputroomID(self):
         ls_validID = Json_OS_ProcessingFunctions.pullup_vertices("Lookup_locationID.json", 2)
@@ -161,7 +161,7 @@ class Query():
         #load map
 
     #pathfinding for cross map can be done here
-    def pfind(self, startloc=None, endloc=None, sloc_tovisit = None, eloc_tovisit = None):
+    def twosidepfind(self, startloc=None, endloc=None, sloc_tovisit = None, eloc_tovisit = None):
         #check for error
         if startloc == None or endloc == None:
             print("invalid locations")
