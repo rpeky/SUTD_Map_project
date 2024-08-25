@@ -112,7 +112,7 @@ def validate_lookupdir():
 
 def runpq():
     idlkup = lookup_id_ini()
-    pq = Path_query.Query(idlkup)
+    pq = Path_query.Query()
 
 
 def main():

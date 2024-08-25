@@ -5,14 +5,18 @@ quits = ['q','Q']
 
 
 class Query():
-    def __init__(self, idlkup):
-        self.dd_locationid = idlkup
+    def __init__(self):
+        self.dd_locationid = Json_OS_ProcessingFunctions.load_file_json("Lookup_locationID.json",2)
+        self.dd_masterlookup = Json_OS_ProcessingFunctions.load_file_json("Lookup_directory.json",2)
+
         print('test query class')
         print(self.dd_locationid)
+        print(self.dd_masterlookup)
         self.welcome_message()
         #self.display_options_startpoint()
-        self.startloc()
-        self.endloc()
+        #self.startloc()
+        #self.endloc()
+        self.twosidepfind()
         self.tempwaitinput()
 
     def __del__(self):
@@ -108,7 +112,7 @@ class Query():
                 idx = int(input("\nSelect location index\nSelection:\t"))
                 if idx > -1 and idx < loclen:
                     print("Selected {}".format(vnames[idx]))
-                    self.startloc(vnames[idx])
+
                     break
                 else:
                     print("Invalid input")
@@ -152,21 +156,26 @@ class Query():
         sloc = self.display_options_startpoint()
         print("Starting location is {}".format(sloc))
         #load map
-
+        return sloc
 
     def endloc(self):
         print("Destination selection")
         eloc = self.display_options_startpoint()
         print("Destination is {}".format(eloc))
         #load map
+        return eloc
 
     #pathfinding for cross map can be done here
-    def twosidepfind(self, startloc=None, endloc=None, sloc_tovisit = None, eloc_tovisit = None):
+    def twosidepfind(self):
+        sloc = self.startloc()
+        eloc = self.endloc()
         #check for error
-        if startloc == None or endloc == None:
+        if sloc == None or eloc == None or sloc == eloc:
             print("invalid locations")
-        #check if pfind is good to go
-        if startloc == endloc:
+            return
+
+        #check if pfind in same map, use dijkstra/simle pathfind
+        if sloc in self.dd_masterlookup and eloc in self.dd_masterlookup:
             print("Solution found")
             return
 

@@ -7,13 +7,12 @@ import time
 #Using telegram API not local host
 
 #All queries to the Telegram Bot API must be served over HTTPS and need to be presented in this form: https://api.telegram.org/bot<token>/METHOD_NAME
-#token = '7338576036:AAEpgpNoLoja05lQyvx7R3WgEBk5Bzgvy5Y' 
+#token = '7338576036:AAEpgpNoLoja05lQyvx7R3WgEBk5Bzgvy5Y'
 #req = 'https://api.telegram.org/bot7338576036:AAEpgpNoLoja05lQyvx7R3WgEBk5Bzgvy5Y/'
 
 # Function to get updates from the Telegram bot
 def get_updates(offset=None):
     url = 'https://api.telegram.org/bot7338576036:AAEpgpNoLoja05lQyvx7R3WgEBk5Bzgvy5Y/getUpdates'
-    
     # If offset is provided, add it to the request URL to get new updates only
     if offset:
         url += f'?offset={offset}'
@@ -73,9 +72,8 @@ def main():
                 if message:
                     chat_id = str(message["chat"]["id"])
                     text = message.get("text", "")
-                    
+
                     print(f"User said: {text}")
-                    
                     # Respond to the user
                     reply_message = f"You said: {text}"
                     send_tele_message(chat_id, reply_message)
@@ -84,7 +82,7 @@ def main():
                     offset = update["update_id"] + 1
 
         # Wait for 3 seconds before checking again
-        time.sleep(3)
+        time.sleep(2)
 
 if __name__ == '__main__':
     main()
