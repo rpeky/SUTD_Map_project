@@ -1,11 +1,12 @@
 import Json_OS_ProcessingFunctions
 import json
 import datetime
+import inspect
 
 selection_yes=['1','y','Y','Yes','yes']
 selection_no=['0','n','N','No','no']
 selection_yes_and_no=selection_yes+selection_no
-quits = ['q','Q']
+selection_quits = ['q','Q']
 
 class Graph():
     def __init__(self, area_file, clearance, dd_lkup, dd_cplkup, dd_idlkup):
@@ -49,10 +50,11 @@ class Graph():
         while True:
             selected_option = None
             while True:
+                print()
                 # Prompt the user for input
                 if query_type == "list":
                     for i, option in enumerate(options):
-                        print("{:02d}\t{}".format(i, option))
+                        print("{:02d}\t{}".format(i, Graph.get_name_str(option)))
                     if quit_option == True:
                         print("q\tExit")
                 elif query_type == 'range':
@@ -60,15 +62,15 @@ class Graph():
                 elif query_type == "text":
                     pass
                 user_input = input("\nEnter {}: ".format(prompt))
-                if quit_option == True and user_input in quits:
-                    return "q"
+                if quit_option == True and user_input in selection_quits:
+                    return "quit"
                 # Ensure the user input is valid
                 else:
                     # Input validation for list and range is similar
                     if query_type == "list" or query_type == "range":
                         try:
                             selected_index = int(user_input)
-                            if 0 < selected_index < len(options):
+                            if 0 <= selected_index < len(options):
                                 if query_type == "list":
                                     selected_option = options[selected_index]
                                 elif query_type == "range":
@@ -84,7 +86,7 @@ class Graph():
                         break
 
             # Let the user confirm his input again
-            print("\nEntered input for {}: \n\t{}".format(prompt, selected_option))
+            print("\nEntered input for {}: \n\t{}".format(prompt, Graph.get_name_str(selected_option)))
             if confirm_selected_option == True:
                 while True:
                     print("\nConfirm input?")
@@ -98,6 +100,14 @@ class Graph():
                         print("Invalid input. Please select y/n\n")
             else:
                 return selected_option
+
+    @staticmethod
+    def get_name_str(obj):
+        if inspect.ismethod(obj) or inspect.isfunction(obj):
+            return obj.__name__
+        else:
+            return obj
+
 
 #_GRAPH TOOLS_#
     #to think of more conditions of the vertex
@@ -326,7 +336,45 @@ class Graph():
             print("Empty graph, returning to graph generating tool")
             return
         while True:
-            for i in range(len(vert_list)):
+            prompt = "index of vertex to modify"
+            vert = Graph.query("list", prompt, options=vert_list, quit_option=True)
+            if vert == "quit":
+                print("returning to graph generating tool")
+                return
+
+            modifier_functions = [
+                self.Density_modifier_Rare,
+                self.Density_modifier_Rare,
+                self.Density_modifier_Medium,
+                self.Density_modifier_Welldone,
+                self.set_Sheltered_True,
+                self.set_Sheltered_False,
+                self.set_Route_intersection_True,
+                self.set_Route_intersection_False,
+                self.set_visited_MANUAL,
+                self.set_visited_0,
+                self.set_visited_1,
+                self.set_Average_travel_time,
+                self.set_room_ID,
+                self.set_Connection_Point_True,
+                self.set_Connection_Point_False,
+                self.set_clearance,
+                self.remove_clearance,
+                self.add_existing_neighbours,
+                self.remove_existing_neighbours,
+                self.modify_existing_neighbours_headings,
+                self.add_external_connectionpoint,
+                self.add_node_description
+            ]
+            while True:
+                prompt = "modifier function"
+                to_modify = Graph.query("list", prompt, options=modifier_functions, quit_option=True)
+                if to_modify == "quit":
+                    break
+                else:
+                    to_modify(vert)
+
+            '''for i in range(len(vert_list)):
                 print("{:02d}\t{}".format(i,vert_list[i]))
             print("q\tExit")
             vert_modify = input("\nSelect index of Vertex to modify: ")
@@ -344,7 +392,7 @@ class Graph():
                 else:
                     print("Invalid choice. Please select a valid option.\n")
             except ValueError:
-                print("Invalid choice. Please select a valid option.\n")
+                print("Invalid choice. Please select a valid option.\n")'''
 
     def display_keys_to_modify(self, vert):
         modifier_functions = {
