@@ -165,6 +165,34 @@ class Query():
         #load map
         return eloc
 
+    def convertloc_todd(self, vtx):
+        dd_conv = None
+        dd_lookupmap = None
+        #find which map location belongs to
+        dd_lookupmap = Json_OS_ProcessingFunctions.load_file_json("Lookup_directory.json",2)
+        locmap = dd_lookupmap[vtx]
+        #load and return map
+        dd_conv = Json_OS_ProcessingFunctions.load_file_json(locmap,2)
+        return dd_conv
+
+    def dijkstra(self, sp):
+        dd_ref = convertloc_todd(sp)
+        dd_djk = dict()
+        vtxs = set(dd_ref)
+        for vtx in vtxs:
+            if(vtx==sp):
+                dd_djk[vtx] = (0,[])
+            else:
+                dd_djk[vtx] = (float('inf'),[])
+        visited_vtxs = set()
+        curr_vtx = sp
+        while True:
+            visited_vtxs.add(curr_vtx)
+            adj_vtx = [i for i in dd_ref[curr_vtx]["Neighbour"].keys() if i in vtxs]
+            for adj in adj_vtx:
+                old_dist = dd_ref[adj]
+                pass
+
     #pathfinding for cross map can be done here
     def twosidepfind(self):
         sloc = self.startloc()
@@ -178,7 +206,9 @@ class Query():
         if sloc in self.dd_masterlookup and eloc in self.dd_masterlookup:
             print("Solution found")
             return
-
-
         return
 
+    def pathfind_long(self):
+        sloc = self.startloc()
+        eloc = self.endloc()
+        pass
