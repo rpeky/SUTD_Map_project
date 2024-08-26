@@ -4,7 +4,7 @@ WIP
     - Append dictionary attribute info - WIP cy
     - Shift pathfinding functions from Graph.py to Path_query.py - WIP peky
     - create inverted lookup connections for end point end point search - WIP peky
-
+    - update readme to tell user to pip install the requirement.txt
 
 Tasks not picked up yet
     - Existing vertex selection for query vertex

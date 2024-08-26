@@ -208,6 +208,7 @@ class Query():
             return
         return
 
+    #append graphs and search
     def pathfind_long(self):
         sloc = self.startloc()
         eloc = self.endloc()
