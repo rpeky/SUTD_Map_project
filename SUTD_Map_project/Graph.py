@@ -67,19 +67,28 @@ class Graph():
                 # Ensure the user input is valid
                 else:
                     # Input validation for list and range is similar
-                    if query_type == "list" or query_type == "range":
+                    if query_type == "list":
+                        min_input, max_input = 0, len(options)
                         try:
                             selected_index = int(user_input)
-                            if 0 <= selected_index < len(options):
-                                if query_type == "list":
-                                    selected_option = options[selected_index]
-                                elif query_type == "range":
-                                    selected_option = selected_index
-                                break
+                            if min_input <= selected_index < max_input:
+                                selected_option = options[selected_index]
                             else:
                                 print("Out of index. Please select a valid option.\n")
                         except ValueError:
                             print("Invalid choice. Please select a valid option.\n")
+
+                    elif query_type == "range":
+                        min_input, max_input = options
+                        try:
+                            selected_index = int(user_input)
+                            if min_input <= selected_index < max_input:
+                                selected_option = selected_index
+                            else:
+                                print("Out of index. Please select a valid option.\n")
+                        except ValueError:
+                            print("Invalid choice. Please select a valid option.\n")
+
                     # No input validation for text is needed
                     elif query_type == "text":
                         selected_option = user_input
@@ -151,8 +160,8 @@ class Graph():
             neighbour_ID=self.query_vertex()
             confirm_Neighbour_ID = input("\nConfirm adding neighbour {} to {}?\ny/n: ".format(neighbour_ID,vertex_ID))
             if confirm_Neighbour_ID in selection_yes:
-                adj_dist = self.add_neighbour_distance()
-                adj_heading = self.add_neighbour_heading()
+                adj_dist = self.query_neighbour_distance()
+                adj_heading = self.query_neighbour_heading()
                 self.dd_graph[vertex_ID]["Neighbour"][neighbour_ID] = adj_dist
                 self.dd_graph[vertex_ID]["Neighbour_head"][neighbour_ID] = adj_heading
 
@@ -188,8 +197,12 @@ class Graph():
                 continue
 
     #adds distance and heading
-    def add_neighbour_distance(self):
-        while True:
+    def query_neighbour_distance(self):
+        prompt = "distance to adjacent vertex"
+        distance_options = (0, float('inf'))
+        distance = Graph.query("range", prompt, distance_options, confirm_selected_option=True)
+        return distance
+        '''while True:
             try:
                 adj_vtx_dist = float(input("Enter distance to adjacent vertex: "))
                 if adj_vtx_dist > 0:
@@ -201,10 +214,14 @@ class Graph():
                 else:
                     print("Distance must be more than 0!")
             except ValueError:
-                print("Not a number")
+                print("Not a number")'''
 
-    def add_neighbour_heading(self):
-        while True:
+    def query_neighbour_heading(self):
+        prompt = "bearing to adjacent vertex"
+        bearing_options = (0, 360)
+        bearing = Graph.query("range", prompt, bearing_options, confirm_selected_option=True)
+        return bearing
+        '''while True:
             try:
                 adj_vtx_head = int(input("\nEnter bearing to adjacent vertex: "))
                 if 0 <= adj_vtx_head < 360:
@@ -216,7 +233,7 @@ class Graph():
                 else:
                     print("Heading must be more than 0!")
             except ValueError:
-                print("Not a number")
+                print("Not a number")'''
 
     # UI portion for adding vertex information
     #vertex name making
@@ -238,7 +255,7 @@ class Graph():
     #kiv, removed from naming process since vert heading is now an attribute, may be able to reuse
     def query_vertex_Heading(self):
         prompt = "heading of vertex [01-360]"
-        headings_options = range(360)
+        headings_options = (0, 360)
         heading = Graph.query(query_type="range", prompt=prompt, options=headings_options, confirm_selected_option=True)
         heading = format(heading,'02d')
         return heading
@@ -263,38 +280,27 @@ class Graph():
 
     def graph_generation_tool(self):
         print("Entering graph generation tool for {}".format(self.area_file_tosave[:-5]))
-        tool_options = {
-            '01': self.add_vertex,
-            '02': self.modify_display_existing_vertex,
-            '03': self.query_pathfind,
-            '04': self.display_vertices,
-            '05': self.save_and_exit
-            #need a change graph option to jump graphs maybe
-
-            }
+        prompt = "tool for graph generation"
+        tool_options = [
+            self.add_vertex,
+            self.modify_display_existing_vertex,
+            self.query_pathfind,
+            self.display_vertices,
+            self.save_and_exit,
+        ]
 
         while True:
             self.print_current_graph_state()
-
-            print("\nSelect option:\n")
-            for key, value in tool_options.items():
-                print("{}\t{}".format(key, value.__name__))
-
-            print("q\tExit\n")
-
-            choice_option = input("Enter Choice: ")
-
-            if choice_option == 'q' or choice_option == 'Q':
-                print("Exiting tool and saving")
+            selected_option = Graph.query("list", prompt,tool_options, quit_option=True)
+            if selected_option == "quit":
+                print("Exiting graph generation tool and saving")
                 self.save_and_exit()
+                print("Returning to mapping tool")
                 break
-
             else:
-                selected_option = tool_options.get(choice_option)
-                if selected_option:
-                    selected_option()
-                else:
-                    print("Invalid choice. Please select a valid option.\n")
+                selected_option()
+
+
 
     #store known solutions to be recalculated based on time to adjust for density and for rain
     #pseudo memo by storing solutions that aren't in runtime
@@ -331,110 +337,51 @@ class Graph():
 #_MODIFIER FUNCTIONS_#
 
     def modify_display_existing_vertex(self):
-        vert_list=list(self.dd_graph.keys())
-        if len(vert_list)==0:
+        vertex_list=list(self.dd_graph.keys())
+        if len(vertex_list)==0:
             print("Empty graph, returning to graph generating tool")
             return
         while True:
             prompt = "index of vertex to modify"
-            vert = Graph.query("list", prompt, options=vert_list, quit_option=True)
-            if vert == "quit":
+            vertex = Graph.query("list", prompt, options=vertex_list, quit_option=True)
+            if vertex == "quit":
                 print("returning to graph generating tool")
                 return
+            else:
+                self.modify_display_vertex(vertex)
 
-            modifier_functions = [
-                self.Density_modifier_Rare,
-                self.Density_modifier_Rare,
-                self.Density_modifier_Medium,
-                self.Density_modifier_Welldone,
-                self.set_Sheltered_True,
-                self.set_Sheltered_False,
-                self.set_Route_intersection_True,
-                self.set_Route_intersection_False,
-                self.set_visited_MANUAL,
-                self.set_visited_0,
-                self.set_visited_1,
-                self.set_Average_travel_time,
-                self.set_room_ID,
-                self.set_Connection_Point_True,
-                self.set_Connection_Point_False,
-                self.set_clearance,
-                self.remove_clearance,
-                self.add_existing_neighbours,
-                self.remove_existing_neighbours,
-                self.modify_existing_neighbours_headings,
-                self.add_external_connectionpoint,
-                self.add_node_description
-            ]
-            while True:
-                prompt = "modifier function"
-                to_modify = Graph.query("list", prompt, options=modifier_functions, quit_option=True)
-                if to_modify == "quit":
-                    break
-                else:
-                    to_modify(vert)
-
-            '''for i in range(len(vert_list)):
-                print("{:02d}\t{}".format(i,vert_list[i]))
-            print("q\tExit")
-            vert_modify = input("\nSelect index of Vertex to modify: ")
-
-            if vert_modify=='q' or vert_modify=='Q':
-                print("returning to graph generating tool")
-                return
-            try:
-                vert_index = int(vert_modify)
-                if 0<=vert_index < len(vert_list):
-                    print("Selected {}".format(vert_list[vert_index]))
-                    self.display_keys_to_modify(vert_list[vert_index])
-                    break
-
-                else:
-                    print("Invalid choice. Please select a valid option.\n")
-            except ValueError:
-                print("Invalid choice. Please select a valid option.\n")'''
-
-    def display_keys_to_modify(self, vert):
-        modifier_functions = {
-            "00":self.Density_modifier_Rare,
-            "01":self.Density_modifier_Rare,
-            "02":self.Density_modifier_Medium,
-            "03":self.Density_modifier_Welldone,
-            "04":self.set_Sheltered_True,
-            "05":self.set_Sheltered_False,
-            "06":self.set_Route_intersection_True,
-            "07":self.set_Route_intersection_False,
-            "08":self.set_visited_MANUAL,
-            "09":self.set_visited_0,
-            "10":self.set_visited_1,
-            "11":self.set_Average_travel_time,
-            "12":self.set_room_ID,
-            "13":self.set_Connection_Point_True,
-            "14":self.set_Connection_Point_False,
-            "15":self.set_clearance,
-            "16":self.remove_clearance,
-            "17":self.add_existing_neighbours,
-            "18":self.remove_existing_neighbours,
-            "19":self.modify_existing_neighbours_headings,
-            "20":self.add_external_connectionpoint,
-            "21":self.add_node_description,
-        }
-
-        m_list = list(modifier_functions.keys())
-        selection = [i for i in range(len(m_list))]
-
-        print("Options:\n")
-        for i in range(len(m_list)):
-            print("{:02d}\t{}".format(i, modifier_functions[m_list[i]].__name__))
-
-        to_modify = input("\nSelect modification: ")
-        if to_modify in m_list:
-            print("Selected {}".format(modifier_functions[to_modify].__name__))
-            modifier_functions[to_modify](vert)
-        else:
-            print("Invalid input!")
-            return self.modify_display_existing_vertex()
-
+    def modify_display_vertex(self, vertex):
+        modifier_functions = [
+            self.Density_modifier_Rare,
+            self.Density_modifier_Rare,
+            self.Density_modifier_Medium,
+            self.Density_modifier_Welldone,
+            self.set_Sheltered_True,
+            self.set_Sheltered_False,
+            self.set_Route_intersection_True,
+            self.set_Route_intersection_False,
+            self.set_visited_MANUAL,
+            self.set_visited_0,
+            self.set_visited_1,
+            self.set_Average_travel_time,
+            self.set_room_ID,
+            self.set_Connection_Point_True,
+            self.set_Connection_Point_False,
+            self.set_clearance,
+            self.remove_clearance,
+            self.add_existing_neighbours,
+            self.remove_existing_neighbours,
+            self.modify_existing_neighbours_headings,
+            self.add_external_connectionpoint,
+            self.add_node_description
+        ]
+        prompt = "modifier function"
+        while True:
+            to_modify = Graph.query("list", prompt, options=modifier_functions, quit_option=True)
+            if to_modify == "quit":
+                break
+            else:
+                to_modify(vertex)
 
     #used to modify the average density based on time, set higher on certain places on certain times
     #used to normalise routes based on density (i.e. a route might be shorter but have more people vs slightly longer route with no people)
@@ -647,8 +594,8 @@ class Graph():
             neighbour_ID = vert_list[int(to_add_as_neighbour)]
             confirm_Neighbour_ID = input("\nConfirm adding neighbour {} to {}?\ny/n: ".format(neighbour_ID, vertex_ID))
             if confirm_Neighbour_ID in selection_yes:
-                adj_dist = self.add_neighbour_distance()
-                adj_heading = self.add_neighbour_heading()
+                adj_dist = self.query_neighbour_distance()
+                adj_heading = self.query_neighbour_heading()
                 self.dd_graph[vertex_ID]["Neighbour"][neighbour_ID] = adj_dist
                 self.dd_graph[vertex_ID]["Neighbour_head"][neighbour_ID] = adj_heading
                 self.dd_graph[neighbour_ID]["Neighbour"][vertex_ID] = adj_dist
@@ -703,7 +650,7 @@ class Graph():
                     continue
             neighbour_ID = vert_list[int(to_modify_heading)]
             existing_heading = neighbours_headings[neighbour_ID]
-            new_heading = self.add_neighbour_heading()
+            new_heading = self.query_neighbour_heading()
             neighbour_new_heading = new_heading + 180 if new_heading < 180 else new_heading - 180
             confirm_modify_heading = input("\nConfirm changing heading of {} from {} to {}?\ny/n: ".format(neighbour_ID, existing_heading, new_heading))
             if confirm_modify_heading in selection_yes:
@@ -746,8 +693,8 @@ class Graph():
                     print("Not a valid input")
             self.dd_graph[vertex]["Connected_vertex"].update({sel_list[selec][0]:sel_list[selec][1]})
             #add distance to connected vertex
-            con_dist = self.add_neighbour_distance()
-            con_heading = self.add_neighbour_heading()
+            con_dist = self.query_neighbour_distance()
+            con_heading = self.query_neighbour_heading()
             if sel_list[selec][0] not in self.dd_graph[vertex]["Neighbour"]:
                 self.dd_graph[vertex]["Neighbour"][sel_list[selec][0]] = con_dist
                 self.dd_graph[vertex]["Neighbour_head"][sel_list[selec][0]] = con_heading
