@@ -44,6 +44,23 @@ class Graph():
 
         print('deleting')
 
+    @classmethod
+    def get_new_vertex(cls):
+        dd_vertex_new = {
+            "Neighbour": dict(),
+            "Neighbour_head": dict(),
+            "Visited": 0,
+            "Avg_density": 1,
+            "Sheltered": True,
+            "Route_intersection": False,
+            "Access_Clearance": list(),
+            "Average_travel_time": None,
+            "Room_ID": None,
+            "Connection_Point": False,
+            "Connected_vertex": dict()
+        }
+        return dd_vertex_new
+
     # 3 types of query: ask user to select an option from a list/range, or just text
     @classmethod
     def query(cls, query_type, prompt, options=None, quit_option=False, confirm_selected_option=False):
@@ -73,6 +90,7 @@ class Graph():
                             selected_index = int(user_input)
                             if min_input <= selected_index < max_input:
                                 selected_option = options[selected_index]
+                                break
                             else:
                                 print("Out of index. Please select a valid option.\n")
                         except ValueError:
@@ -84,6 +102,7 @@ class Graph():
                             selected_index = int(user_input)
                             if min_input <= selected_index < max_input:
                                 selected_option = selected_index
+                                break
                             else:
                                 print("Out of index. Please select a valid option.\n")
                         except ValueError:
@@ -122,24 +141,33 @@ class Graph():
     #to think of more conditions of the vertex
     #using dictionaries to store the neighbour and its heading since python stores the insertion order of values
     def add_vertex(self):
-        vertex_ID = self.query_vertex()
-        if vertex_ID not in self.dd_graph.keys():
-            neighbours = dict()
-            dd_vertex = {
-                    "Neighbour":neighbours,
-                    "Neighbour_head":dict(),
-                    "Visited": 0,
-                    "Avg_density":1,
-                    "Sheltered": True,
-                    "Route_intersection": False,
-                    "Access_Clearance": list(),
-                    "Average_travel_time": None,
-                    "Room_ID": None,
-                    "Connection_Point": False,
-                    "Connected_vertex": dict()
-                }
-            self.dd_graph[vertex_ID] = dd_vertex
-        self.neighbour_tool(vertex_ID)
+        while True:
+            print("Enter new vertex ID: ")
+            vertex_ID = self.query_vertex()
+
+            # query vertex again if its already taken
+            if vertex_ID in self.dd_graph.keys():
+                print("Vertex ID is already taken, try another ID")
+                continue
+            while True:
+                confirm = input("\nConfirm adding vertex {}?\ny/n: ".format(vertex_ID))
+                if confirm in selection_yes:
+                    dd_vertex = Graph.get_new_vertex()
+                    self.dd_graph[vertex_ID] = dd_vertex
+                    self.print_current_graph_state()
+                    break
+                elif confirm in selection_no:
+                    break
+                else:
+                    print("Invalid input")
+            while True:
+                cont = input("\nContinue adding new vertex?\ny/n: ")
+                if cont in selection_yes:
+                    break
+                elif cont in selection_no:
+                    return
+                else:
+                    print("Invalid input")
 
     def neighbour_tool(self, vertex_ID):
         #add heading to neighbour in data with distance
@@ -154,47 +182,47 @@ class Graph():
                 print("Invalid input")
                 continue
 
-    def add_neighbour(self, vertex_ID):
+    def add_new_neighbours(self, vertex_ID):
         while True:
             print("Enter Neighbour Vertex ID: ")
-            neighbour_ID=self.query_vertex()
-            confirm_Neighbour_ID = input("\nConfirm adding neighbour {} to {}?\ny/n: ".format(neighbour_ID,vertex_ID))
-            if confirm_Neighbour_ID in selection_yes:
+            neighbour_ID = self.query_vertex()
+
+            # query vertex again if its already taken
+            if neighbour_ID in self.dd_graph.keys():
+                print("Vertex ID is already taken, try another ID")
+                continue
+
+            # Confirm neighbour ID to be added
+            confirm_options = ["yes", "no"]
+            prompt = "confirmation to add neighbour {} to {}?".format(neighbour_ID, vertex_ID)
+            confirm_Neighbour_ID = Graph.query("list", prompt, confirm_options, quit_option=True)
+            if confirm_Neighbour_ID == "yes":
                 adj_dist = self.query_neighbour_distance()
                 adj_heading = self.query_neighbour_heading()
+                neighbour_adj_heading = adj_heading + 180 if adj_heading < 180 else adj_heading - 180
+                neighbour_adj_dist = adj_dist
+
                 self.dd_graph[vertex_ID]["Neighbour"][neighbour_ID] = adj_dist
                 self.dd_graph[vertex_ID]["Neighbour_head"][neighbour_ID] = adj_heading
 
-                # If neighbour is a new vertex, add it to dd_graph
-                if neighbour_ID not in self.dd_graph.keys():
-                    dd_vertex_new = {
-                        "Neighbour": dict(),
-                        "Neighbour_head": dict(),
-                        "Visited": 0,
-                        "Avg_density": 1,
-                        "Sheltered": True,
-                        "Route_intersection": False,
-                        "Access_Clearance": list(),
-                        "Average_travel_time": None,
-                        "Room_ID": None,
-                        "Connection_Point": False,
-                        "Connected_vertex": dict()
-                    }
-                    self.dd_graph[neighbour_ID] = dd_vertex_new
-
-                neighbour_adj_dist = adj_dist
-                #neigbour conjugate heading
-                neighbour_adj_heading = adj_heading + 180 if adj_heading < 180 else adj_heading - 180
+                self.dd_graph[neighbour_ID] = Graph.get_new_vertex()
                 self.dd_graph[neighbour_ID]["Neighbour"][vertex_ID] = neighbour_adj_dist
                 self.dd_graph[neighbour_ID]["Neighbour_head"][vertex_ID] = neighbour_adj_heading
-                print("Returning to neighbour creation tool")
-                break
-            elif confirm_Neighbour_ID in selection_no:
-                print("Returning to neighbour creation tool")
-                break
-            else:
-                print("Invalid input")
-                continue
+
+                after_adding_options = ["Continue adding new neighbours", "Modify current new neighbour"]
+                after_adding_prompt = "next choice"
+                after_adding_selection = Graph.query("list", after_adding_prompt, after_adding_options, quit_option=True)
+
+                print("New neighbour {} added to {} with distance {} and bearing {}".format(neighbour_ID, vertex_ID, adj_dist, adj_heading))
+                self.print_current_graph_state()
+
+                if after_adding_selection == "Continue adding new neighbours":
+                    continue
+                elif after_adding_selection == "Modify current new neighbour":
+                    return neighbour_ID
+                else: # after_adding_selection == "quit"
+                    print("Returning to modify display vertex {}".format(vertex_ID))
+                    return
 
     #adds distance and heading
     def query_neighbour_distance(self):
@@ -202,38 +230,13 @@ class Graph():
         distance_options = (0, float('inf'))
         distance = Graph.query("range", prompt, distance_options, confirm_selected_option=True)
         return distance
-        '''while True:
-            try:
-                adj_vtx_dist = float(input("Enter distance to adjacent vertex: "))
-                if adj_vtx_dist > 0:
-                    cont = input("\nConfirm distance: {}m \ny/n: ".format(adj_vtx_dist))
-                    if cont in selection_yes:
-                        return adj_vtx_dist
-                    else:
-                        continue
-                else:
-                    print("Distance must be more than 0!")
-            except ValueError:
-                print("Not a number")'''
+
 
     def query_neighbour_heading(self):
         prompt = "bearing to adjacent vertex"
         bearing_options = (0, 360)
         bearing = Graph.query("range", prompt, bearing_options, confirm_selected_option=True)
         return bearing
-        '''while True:
-            try:
-                adj_vtx_head = int(input("\nEnter bearing to adjacent vertex: "))
-                if 0 <= adj_vtx_head < 360:
-                    cont = input("\nConfirm heading {} degrees: \ny/n: ".format(adj_vtx_head))
-                    if cont in selection_yes:
-                        return adj_vtx_head
-                    else:
-                        continue
-                else:
-                    print("Heading must be more than 0!")
-            except ValueError:
-                print("Not a number")'''
 
     # UI portion for adding vertex information
     #vertex name making
@@ -341,14 +344,14 @@ class Graph():
         if len(vertex_list)==0:
             print("Empty graph, returning to graph generating tool")
             return
-        while True:
-            prompt = "index of vertex to modify"
-            vertex = Graph.query("list", prompt, options=vertex_list, quit_option=True)
-            if vertex == "quit":
-                print("returning to graph generating tool")
-                return
-            else:
-                self.modify_display_vertex(vertex)
+        prompt = "index of vertex to modify"
+        vertex = Graph.query("list", prompt, options=vertex_list, quit_option=True)
+        if vertex == "quit":
+            print("returning to graph generating tool")
+            return
+        else:
+            self.modify_display_vertex(vertex)
+
 
     def modify_display_vertex(self, vertex):
         modifier_functions = [
@@ -369,19 +372,30 @@ class Graph():
             self.set_Connection_Point_False,
             self.set_clearance,
             self.remove_clearance,
+            self.add_new_neighbours,
             self.add_existing_neighbours,
             self.remove_existing_neighbours,
             self.modify_existing_neighbours_headings,
             self.add_external_connectionpoint,
-            self.add_node_description
+            self.add_node_description,
+            self.change_vertex_to_modify_display,
         ]
-        prompt = "modifier function"
         while True:
-            to_modify = Graph.query("list", prompt, options=modifier_functions, quit_option=True)
+            prompt = "modifier function for {}".format(vertex)
+            to_modify = Graph.query("list", prompt, options=modifier_functions, quit_option=True, confirm_selected_option=True)
             if to_modify == "quit":
-                break
+                return
             else:
-                to_modify(vertex)
+                new_vertex = to_modify(vertex)
+                if new_vertex != None:
+                    vertex = new_vertex
+                self.print_current_graph_state()
+
+    def change_vertex_to_modify_display(self, vertex):
+        vert_list = list(self.dd_graph.keys())
+        prompt = "index of new vertex to modify/display"
+        new_vertex = Graph.query("list", prompt, vert_list)
+        return new_vertex
 
     #used to modify the average density based on time, set higher on certain places on certain times
     #used to normalise routes based on density (i.e. a route might be shorter but have more people vs slightly longer route with no people)
@@ -567,70 +581,61 @@ class Graph():
 
 
     def add_existing_neighbours(self, vertex_ID):
+        already_neighbours = self.dd_graph[vertex_ID]["Neighbour"]
+        # Selection vertices must not already be neighbours, nor can the vertex be a neighbour to itself
+        vert_set = self.dd_graph.keys() - already_neighbours.keys() - {vertex_ID}
+        vert_list = list(vert_set)
+        if len(vert_list) == 0:
+            print("No neighbours to add!\n")
+            return
+        prompt = "existing vertex ID to add as neighbour of {}".format(vertex_ID)
+
         while True:
-            already_neighbours = self.dd_graph[vertex_ID]["Neighbour"].keys()
-            # Selection vertices must not already be neighbours, nor can the vertex be a neighbour to itself
-            vert_list = [vert for vert in self.dd_graph.keys() if (vert not in already_neighbours) and (vert != vertex_ID)]
-            if len(vert_list)==0:
-                print("No neighbours to add!\n")
-                break
-            selection = [i for i in range(len(vert_list))]
-
-
-            for i in range(len(vert_list)):
-                print("{:02d}\t{}".format(i, vert_list[i]))
-            to_add_as_neighbour = None
+            neighbour_ID = Graph.query("list", prompt, vert_list, quit_option=True, confirm_selected_option=True)
+            if neighbour_ID == "quit":
+                return
+            adj_dist = self.query_neighbour_distance()
+            adj_heading = self.query_neighbour_heading()
+            self.dd_graph[vertex_ID]["Neighbour"][neighbour_ID] = adj_dist
+            self.dd_graph[vertex_ID]["Neighbour_head"][neighbour_ID] = adj_heading
+            self.dd_graph[neighbour_ID]["Neighbour"][vertex_ID] = adj_dist
+            self.dd_graph[neighbour_ID]["Neighbour_head"][vertex_ID] = adj_heading + 180 if adj_heading < 180 else adj_heading - 180
+            print("\nExisting neighbour {} added to {} with distance {} and bearing {}".format(neighbour_ID, vertex_ID, adj_dist, adj_heading))
             while True:
-                to_add_as_neighbour = input("Enter existing Vertex ID to add as neighbour: ")
-                try:
-                    if int(to_add_as_neighbour) in selection:
-                        print("Selected {}".format(vert_list[int(to_add_as_neighbour)]))
-                        break
-                    else:
-                        print("Invalid input!")
-                        continue
-                except ValueError:
-                    print("Not a valid existing Vertex ID")
-            neighbour_ID = vert_list[int(to_add_as_neighbour)]
-            confirm_Neighbour_ID = input("\nConfirm adding neighbour {} to {}?\ny/n: ".format(neighbour_ID, vertex_ID))
-            if confirm_Neighbour_ID in selection_yes:
-                adj_dist = self.query_neighbour_distance()
-                adj_heading = self.query_neighbour_heading()
-                self.dd_graph[vertex_ID]["Neighbour"][neighbour_ID] = adj_dist
-                self.dd_graph[vertex_ID]["Neighbour_head"][neighbour_ID] = adj_heading
-                self.dd_graph[neighbour_ID]["Neighbour"][vertex_ID] = adj_dist
-                self.dd_graph[neighbour_ID]["Neighbour_head"][vertex_ID] = adj_heading + 180 if adj_heading < 180 else adj_heading - 180
-                print("\nNeighbour {} added to {}".format(neighbour_ID, vertex_ID))
-            confirm = input("Continue setting an existing vertex as neighbour to {}?\ny/n: ".format(vertex_ID))
-            if confirm in selection_no:
-                break
+                cont = input("Continue setting an existing vertex as neighbour to {}?\ny/n: ".format(vertex_ID))
+                if cont in selection_yes:
+                    vert_list.remove(neighbour_ID)
+                    break
+                elif cont in selection_no:
+                    return
+                else:
+                    print("Invalid input")
 
     def remove_existing_neighbours(self, vertex_ID):
+        vert_list = list(self.dd_graph[vertex_ID]["Neighbour"].keys())
+        prompt = "existing Vertex ID to remove as neighbour"
         while True:
-            vert_list = list(self.dd_graph.keys())
-            selection = [i for i in range(len(vert_list))]
-            for i in range(len(vert_list)):
-                print("{:02d}\t{}".format(i, vert_list[i]))
-            to_remove_as_neighbour = None
+            neighbour_ID = Graph.query("list", prompt, vert_list, quit_option=True, confirm_selected_option=True)
+            if neighbour_ID == "quit":
+                return
+            self.dd_graph[vertex_ID]["Neighbour"].pop(neighbour_ID)
+            self.dd_graph[vertex_ID]["Neighbour_head"].pop(neighbour_ID)
+            self.dd_graph[neighbour_ID]["Neighbour"].pop(vertex_ID)
+            self.dd_graph[neighbour_ID]["Neighbour_head"].pop(vertex_ID)
+
+            print("\nExisting neighbour {} is no longer a neighbour of {}".format(neighbour_ID, vertex_ID,))
+
             while True:
-                to_remove_as_neighbour = input("Enter existing Vertex ID to remove as neighbour: ")
-                if int(to_remove_as_neighbour) in selection:
-                    print("Selected {}".format(vert_list[int(to_remove_as_neighbour)]))
+                cont = input("Continue removing existing vertices as neighbours to {}?\ny/n: ".format(vertex_ID))
+                if cont in selection_yes:
+                    vert_list.remove(neighbour_ID)
                     break
+                elif cont in selection_no:
+                    return
                 else:
-                    print("Invalid input!")
-                    continue
-            neighbour_ID = vert_list[int(to_remove_as_neighbour)]
-            confirm_Neighbour_ID = input("\nConfirm removing neighbour {} from {}?\ny/n: ".format(neighbour_ID, vertex_ID))
-            if confirm_Neighbour_ID in selection_yes:
-                if neighbour_ID in self.dd_graph[vertex_ID]["Neighbour"]:
-                    del self.dd_graph[vertex_ID]["Neighbour"][neighbour_ID]
-                if vertex_ID in self.dd_graph[neighbour_ID]["Neighbour"]:
-                    del self.dd_graph[neighbour_ID]["Neighbour"][vertex_ID]
-                print("\nNeighbour {} removed from {}".format(neighbour_ID, vertex_ID))
-            confirm = input("Continue removing an existing vertex as neighbour from {}?\ny/n: ".format(vertex_ID))
-            if confirm in selection_no:
-                break
+                    print("Invalid input")
+
+
 
     def modify_existing_neighbours_headings(self, vertex_ID):
         while True:
