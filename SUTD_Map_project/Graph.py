@@ -157,7 +157,9 @@ class Graph():
                 if confirm in selection_yes:
                     dd_vertex = Graph.get_new_vertex()
                     self.dd_graph[vertex_ID] = dd_vertex
+                    print("{} added. Can add existing neighbours in modification tool later\n".format(vertex_ID))
                     self.print_current_graph_state()
+                    print("")
                     break
                 elif confirm in selection_no:
                     break
@@ -375,6 +377,7 @@ class Graph():
             self.modify_existing_neighbours_headings,
             self.add_external_connectionpoint,
             self.add_node_description,
+            self.set_coordinates,
             self.change_vertex_to_modify_display,
         ]
         while True:
@@ -629,12 +632,9 @@ class Graph():
                 continue
 
             # Confirm neighbour ID to be added
-            confirm_options = ["yes", "no"]
-            prompt = "confirmation to add neighbour {} to {}?".format(neighbour_ID, vertex_ID)
-            confirm_Neighbour_ID = Graph.query("list", prompt, confirm_options, quit_option=True)
-            if confirm_Neighbour_ID == "quit":
-                return
-            elif confirm_Neighbour_ID == "yes":
+            confirm = input("Confirm adding neighbour {} to {}? y/n: ".format(neighbour_ID, vertex_ID))
+            print()
+            if confirm in selection_yes:
                 self.dd_graph[neighbour_ID] = Graph.get_new_vertex()
                 self.add_neighbour(vertex_ID, neighbour_ID)
 
@@ -652,6 +652,10 @@ class Graph():
                 else:  # after_adding_selection == "quit"
                     print("Returning to modify display vertex {}\n".format(vertex_ID))
                     return
+            elif confirm in selection_no:
+                return
+            else:
+                print("Invalid input\n")
 
     def add_existing_neighbours(self, vertex_ID):
         already_neighbours = self.dd_graph[vertex_ID]["Neighbour"]
@@ -796,6 +800,27 @@ class Graph():
                 print("No additional connections to add")
         else:
             return
+
+    def set_coordinates(self, vertex_ID):
+        while True:
+            x, y = self.dd_graph[vertex_ID]["Coordinates"]
+            new_x = Graph.query("range", "x coordinate", options=(0, float('inf')), confirm_selected_option=True)
+            new_y = Graph.query("range", "y coordinate", options=(0, float('inf')), confirm_selected_option=True)
+            confirm = input("Confirm setting {} coordinates to ({}, {})? y/n: ".format(vertex_ID, new_x, new_y))
+            if confirm in selection_yes:
+                x_shift, y_shift = new_x - x, new_y - y
+                for vtx in self.get_cluster(vertex_ID):
+                    old_x, old_y = self.dd_graph[vtx]["Coordinates"]
+                    self.dd_graph[vtx]["Coordinates"] = (old_x + x_shift, old_y + y_shift)
+                print("Coordinates of {} set to ({}, {})\n".format(vertex_ID, new_x, new_y))
+                break
+            elif confirm in selection_no:
+                return
+            else:
+                print("Invalid input\n")
+
+
+
 
     def add_node_description(self, vertex):
         if self.dd_graph[vertex].get("Description") != None:
