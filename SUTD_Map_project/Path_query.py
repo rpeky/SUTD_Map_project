@@ -13,9 +13,6 @@ class Query():
         print(self.dd_locationid)
         print(self.dd_masterlookup)
         self.welcome_message()
-        #self.display_options_startpoint()
-        #self.startloc()
-        #self.endloc()
         self.twosidepfind()
         self.tempwaitinput()
 

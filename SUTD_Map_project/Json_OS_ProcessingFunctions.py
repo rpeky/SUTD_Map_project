@@ -113,7 +113,7 @@ def rebuild_lookupcon():
         generate_logfile('Replaced {} with {}'.format(lkdict,rebuildlcon))
 
     else:
-        print("Validated connections, no errors to correct")
+        print("Validated lookup connections, no errors to correct")
 
 def rebuild_locationID():
     cwd = os.getcwd()
@@ -140,4 +140,4 @@ def rebuild_locationID():
         generate_logfile('Replaced {} with {}'.format(lkdict,rebuildlid))
 
     else:
-        print("Validated connections, no errors to correct")
+        print("Validated locatio IDs, no errors to correct")
