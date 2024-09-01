@@ -70,18 +70,19 @@ class Graph():
         while True:
             selected_option = None
             while True:
-                print()
                 # Prompt the user for input
                 if query_type == "list":
+                    print("Enter {} ".format(prompt))
                     for i, option in enumerate(options):
                         print("{:02d}\t{}".format(i, Graph.get_name_str(option)))
                     if quit_option == True:
                         print("q\tExit")
+                    print()
                 elif query_type == 'range':
                     pass
                 elif query_type == "text":
                     pass
-                user_input = input("\nEnter {}: ".format(prompt))
+                user_input = input("Enter {}: ".format(prompt))
                 if quit_option == True and user_input in selection_quits:
                     return "quit"
                 # Ensure the user input is valid
@@ -117,12 +118,12 @@ class Graph():
                         break
 
             # Let the user confirm his input again
-            print("\nEntered input for {}: \n\t{}".format(prompt, Graph.get_name_str(selected_option)))
+            print("Entered input for {}: {}".format(prompt, Graph.get_name_str(selected_option)))
             if confirm_selected_option == True:
                 while True:
-                    print("\nConfirm input?")
-                    sel = input("y/n: ")
+                    sel = input("Confirm input? y/n: ")
                     if sel in selection_yes:
+                        print()
                         return selected_option
                     elif sel in selection_no:
                         print("Reenter your input\n")
@@ -130,6 +131,7 @@ class Graph():
                     else:
                         print("Invalid input. Please select y/n\n")
             else:
+                print()
                 return selected_option
 
     @staticmethod
@@ -145,15 +147,13 @@ class Graph():
     #using dictionaries to store the neighbour and its heading since python stores the insertion order of values
     def add_vertex(self):
         while True:
-            print("Enter new vertex ID: ")
             vertex_ID = self.query_vertex()
-
             # query vertex again if its already taken
             if vertex_ID in self.dd_graph.keys():
-                print("Vertex ID is already taken, try another ID")
+                print("Vertex ID is already taken, try another ID\n")
                 continue
             while True:
-                confirm = input("\nConfirm adding vertex {}?\ny/n: ".format(vertex_ID))
+                confirm = input("\nConfirm adding vertex {}? y/n: ".format(vertex_ID))
                 if confirm in selection_yes:
                     dd_vertex = Graph.get_new_vertex()
                     self.dd_graph[vertex_ID] = dd_vertex
@@ -162,9 +162,9 @@ class Graph():
                 elif confirm in selection_no:
                     break
                 else:
-                    print("Invalid input")
+                    print("Invalid input\n")
             while True:
-                cont = input("\nContinue adding new vertex?\ny/n: ")
+                cont = input("\nContinue adding new vertex? y/n: ")
                 if cont in selection_yes:
                     break
                 elif cont in selection_no:
@@ -184,20 +184,22 @@ class Graph():
                 print("returning to graph generating tool")
                 return
             while True:
-                confirm = input("\nConfirm removing vertex {}?\ny/n: ".format(vertex_ID))
+                confirm = input("Confirm removing vertex {}? y/n: ".format(vertex_ID))
                 if confirm in selection_yes:
                     for neighbour_ID in self.dd_graph[vertex_ID]["Neighbour"].keys():
                        self.dd_graph[neighbour_ID]["Neighbour"].pop(vertex_ID)
                        self.dd_graph[neighbour_ID]["Neighbour_head"].pop(vertex_ID)
                        self.print_current_graph_state()
                     self.dd_graph.pop(vertex_ID)
+                    print()
                     break
                 elif confirm in selection_no:
+                    print()
                     break
                 else:
-                    print("Invalid input")
+                    print("Invalid input\n")
             while True:
-                cont = input("\nContinue removing new vertex?\ny/n: ")
+                cont = input("Continue removing verteices? y/n: ")
                 if cont in selection_yes:
                     break
                 elif cont in selection_no:
@@ -578,12 +580,11 @@ class Graph():
         vertex_x, vertex_y = self.dd_graph[vertex_ID]["Coordinates"]
         neighbour_x, neighbour_y = self.dd_graph[neighbour_ID]["Coordinates"]
 
-        cluster = self.get_cluster(vertex_ID)
+        cluster = self.get_cluster(neighbour_ID)
         # Vertex and neighbour are in the same cluster
-        # Their positions relative to each other are constrained
-        # Hence we can automatically calculate their distance.
-        # By not having to ask the user for input, we avoid contradicting measurements
-        if neighbour_ID in cluster:
+        # This means their positions relative to each other are already constrained
+        # Hence we can automatically calculate distance and heading from vertex to neighbour without querying user
+        if vertex_ID in cluster:
             dx, dy = neighbour_x - vertex_x, neighbour_y - vertex_y
             adj_dist = (dx ** 2 + dy ** 2) ** 0.5
             adj_heading = 90 - degrees(atan2(dy, dx))
@@ -602,7 +603,7 @@ class Graph():
 
             # Shift all the vertices in the neighbour's cluster by the same distance that we shift the neighbour
             x_shift, y_shift = neighbour_new_x - neighbour_x, neighbour_new_y - neighbour_y
-            for vtx in self.get_cluster(neighbour_ID):
+            for vtx in cluster:
                 x, y = self.dd_graph[vtx]["Coordinates"]
                 self.dd_graph[vtx]["Coordinates"] = (x + x_shift, y + y_shift)
 
@@ -613,7 +614,7 @@ class Graph():
         neighbour_adj_dist = adj_dist
         self.dd_graph[neighbour_ID]["Neighbour"][vertex_ID] = neighbour_adj_dist
         self.dd_graph[neighbour_ID]["Neighbour_head"][vertex_ID] = neighbour_adj_heading
-        print("\nNeighbour {} added to {} with distance {} and bearing {}".format(neighbour_ID, vertex_ID, adj_dist, adj_heading))
+        print("Neighbour {} added to {} with distance {} and bearing {}\n".format(neighbour_ID, vertex_ID, adj_dist, adj_heading))
 
 
 
@@ -624,7 +625,7 @@ class Graph():
 
             # query vertex again if its already taken
             if neighbour_ID in self.dd_graph.keys():
-                print("Vertex ID is already taken, try another ID")
+                print("Vertex ID is already taken, try another ID\n")
                 continue
 
             # Confirm neighbour ID to be added
@@ -649,7 +650,7 @@ class Graph():
                 elif after_adding_selection == "Modify current new neighbour":
                     return neighbour_ID
                 else:  # after_adding_selection == "quit"
-                    print("Returning to modify display vertex {}".format(vertex_ID))
+                    print("Returning to modify display vertex {}\n".format(vertex_ID))
                     return
 
     def add_existing_neighbours(self, vertex_ID):
@@ -668,14 +669,16 @@ class Graph():
                 return
             self.add_neighbour(vertex_ID, neighbour_ID)
             while True:
-                cont = input("Continue setting an existing vertex as neighbour to {}?\ny/n: ".format(vertex_ID))
+                cont = input("Continue setting an existing vertex as neighbour to {}? y/n: ".format(vertex_ID))
                 if cont in selection_yes:
                     vert_list.remove(neighbour_ID)
+                    print()
                     break
                 elif cont in selection_no:
+                    print()
                     return
                 else:
-                    print("Invalid input")
+                    print("Invalid input\n")
 
     def remove_existing_neighbours(self, vertex_ID):
         vert_list = list(self.dd_graph[vertex_ID]["Neighbour"].keys())
@@ -692,7 +695,7 @@ class Graph():
             print("\n{} is no longer a neighbour of {}".format(neighbour_ID, vertex_ID, ))
 
             while True:
-                cont = input("Continue removing existing vertices as neighbours to {}?\ny/n: ".format(vertex_ID))
+                cont = input("Continue removing existing vertices as neighbours to {}? y/n: ".format(vertex_ID))
                 if cont in selection_yes:
                     vert_list.remove(neighbour_ID)
                     break
@@ -701,8 +704,8 @@ class Graph():
                 else:
                     print("Invalid input")
 
-    def get_cluster(self, vertex_ID):
-        visited = {vertex_ID}
+    def get_cluster(self, vertex_ID, include_current_vertex=True):
+        visited = {vertex_ID} if include_current_vertex else {}
         to_visit = set(self.dd_graph[vertex_ID]["Neighbour"].keys())
         while len(to_visit) > 0:
             visiting = to_visit.pop()
