@@ -129,7 +129,8 @@ def main():
             print("SUTD Map Project 2023/2024 Default Page\n")
             print("0 - Run Pathfinding\n1 - Run Graph mapping tool\n2 - Run Lookup directory validation\n")
             ct=input("Enter q to exit mapping tool\nSelect tool to run: ")
-            if ct == 'q' or ct == 'Q':
+            if ct in quits:
+                print("Terminating Program")
                 break
             elif ct in options.keys():
                 options[ct]()

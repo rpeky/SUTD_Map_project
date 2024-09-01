@@ -13,7 +13,7 @@ class Query():
         print(self.dd_locationid)
         print(self.dd_masterlookup)
         self.welcome_message()
-        self.twosidepfind()
+        self.path_find()
         self.tempwaitinput()
 
     def __del__(self):
@@ -156,7 +156,7 @@ class Query():
         return sloc
 
     def endloc(self):
-        print("Destination selection")
+        print("\nDestination selection")
         eloc = self.display_options_startpoint()
         print("Destination is {}".format(eloc))
         #load map
@@ -169,31 +169,61 @@ class Query():
         dd_lookupmap = Json_OS_ProcessingFunctions.load_file_json("Lookup_directory.json",2)
         locmap = dd_lookupmap[vtx]
         #load and return map
-        dd_conv = Json_OS_ProcessingFunctions.load_file_json(locmap,2)
+        dd_conv = Json_OS_ProcessingFunctions.load_file_json(locmap,0)
         return dd_conv
 
     def dijkstra(self, sp):
-        dd_ref = convertloc_todd(sp)
+        dd_ref = self.convertloc_todd(sp)
         dd_djk = dict()
         vtxs = set(dd_ref)
+        
         for vtx in vtxs:
             if(vtx==sp):
                 dd_djk[vtx] = (0,[])
             else:
                 dd_djk[vtx] = (float('inf'),[])
+        
         visited_vtxs = set()
         curr_vtx = sp
+        
         while True:
+            #set as visited
             visited_vtxs.add(curr_vtx)
+            
+            #set adjacent vtx
             adj_vtx = [i for i in dd_ref[curr_vtx]["Neighbour"].keys() if i in vtxs]
+            
+            #update distance
             for adj in adj_vtx:
-                old_dist = dd_ref[adj]
-                pass
+                #store distance and path to compare
+                old_dist = dd_djk[adj][0]
+                old_path = dd_djk[adj][1]
+
+                #calculate new distance for the current check
+                new_dist = dd_djk[curr_vtx][0] + dd_ref[curr_vtx]["Neighbour"][adj]
+                new_path = dd_djk[curr_vtx][1] + [curr_vtx]
+
+                #check diff
+                if new_dist < old_dist:
+                    dd_djk[adj] = (new_dist, new_path)
+
+            curr_vtx = None
+            curr_dist = float('inf')
+
+            #compare which distance is shortest and set value for next interation
+            for vtx, tupstore in dd_djk.items():
+                if (vtx not in visited_vtxs) and (tupstore[0] < curr_dist):
+                    curr_vtx = vtx
+                    curr_dist = tupstore[0]
+
+            #end condition, no more vtx to check
+            if curr_vtx == None:
+                break
+
+        return dd_djk
 
     #pathfinding for cross map can be done here
-    def twosidepfind(self):
-        sloc = self.startloc()
-        eloc = self.endloc()
+    def twosidepfind(self,sloc,eloc):
         #check for error
         if sloc == None or eloc == None or sloc == eloc:
             print("invalid locations")
@@ -206,7 +236,19 @@ class Query():
         return
 
     #append graphs and search
-    def pathfind_long(self):
+    def pathfind_long(self,sloc,eloc): 
+        pass
+
+    def path_find(self):
+        print("Pathfinding tool\n")
+
         sloc = self.startloc()
         eloc = self.endloc()
-        pass
+
+        if self.convertloc_todd(sloc) == self.convertloc_todd(eloc):
+            dd_djk = self.dijkstra(sloc)
+            sol_dist = dd_djk[eloc][0]
+            sol_path = dd_djk[eloc][1]
+            print("Shortest path: {}\nDistance to end point: {}".format(sol_path, sol_dist))
+        else:
+            self.pathfind_long()
