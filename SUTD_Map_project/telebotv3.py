@@ -4,6 +4,8 @@ import requests
 import time
 from urllib.parse import urlparse
 
+import Path_query
+
 # Base URL for Telegram API
 BASE_URL = 'https://api.telegram.org/bot7338576036:AAEpgpNoLoja05lQyvx7R3WgEBk5Bzgvy5Y/'
 
@@ -46,7 +48,7 @@ def wait_for_next_message(chat_id, timeout=60):
         time.sleep(2)
     return None
 
-# Handle different callback queries
+# Handle different callback queries -- lol ai solutions kinda troll wth
 def handle_callback_query(callback_query):
     chat_id = callback_query['message']['chat']['id']
     callback_data = callback_query['data']
