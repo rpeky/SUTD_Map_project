@@ -34,25 +34,74 @@ def get_chatid(jsdata):
         return None
 
 # Function to send a message via the Telegram bot
-def send_tele_message(chatid, msg):
+def send_tele_message(chatid, msg, reply_markup=None):
     url = 'https://api.telegram.org/bot7338576036:AAEpgpNoLoja05lQyvx7R3WgEBk5Bzgvy5Y/sendMessage'
-    target = urlparse(url + '?chat_id=' + chatid + '&text=' + msg)
+    
+    # Prepare the payload with chat ID and message
+    payload = {
+        'chat_id': chatid,
+        'text': msg
+    }
+    
+    # If reply_markup is provided, add it to the payload
+    if reply_markup:
+        payload['reply_markup'] = json.dumps(reply_markup)
 
-    method = 'GET'
-    body = ''
+    # Make the request
+    response = requests.post(url, data=payload)
+    
+    # Print and return the response content
+    print("Response:", response.content)
+    return response.json()
 
-    h = http.Http()
+def handle_callback_query(callback_query):
+    chat_id = callback_query['message']['chat']['id']
+    callback_data = callback_query['data']
 
-    response, content = h.request(
-            target.geturl(),
-            method,
-            body,
-            headers={}
-            )
+    if callback_data == "location_explorer":
+        send_tele_message(chat_id, "Please provide a location name or ID:")
+        # Fetch and display location details based on the input
+    elif callback_data == "pathfinding":
+        send_tele_message(chat_id, "Please enter the start location:")
+        start_location = wait_for_next_message(chat_id)  # Wait for user input
+        send_tele_message(chat_id, "Please enter the end location:")
+        end_location = wait_for_next_message(chat_id)
+        # Call pathquery.py to get the route and return to the user
+        route = get_route(start_location, end_location)
+        send_tele_message(chat_id, f"Your route is: {route}")
 
-    print("Response: ", content)
-    jsobj = json.loads(content)
-    return jsobj
+def main_menu_loadout(chatid):
+    keyboard = {
+        "inline_keyboard": [
+            [
+                {"text": "Location Explorer", "callback_data": "location_explorer"},
+                {"text": "Pathfinding", "callback_data": "pathfinding"}
+            ]
+        ]
+    }
+    send_tele_message(chat_id, "Choose an option:", reply_markup=keyboard)
+
+def wait_for_next_message(chat_id, timeout=60):
+    """
+    Polls Telegram for the next message from the specified chat ID.
+    Returns the text of the next message or None if no message arrives within the timeout.
+    """
+    start_time = time.time()
+    offset = None  # Track the latest update to prevent duplicates
+
+    while time.time() - start_time < timeout:
+        updates = get_updates(offset)
+
+        if updates["ok"] and len(updates["result"]) > 0:
+            for update in updates["result"]:
+                message = update.get("message")
+                if message and message["chat"]["id"] == chat_id:
+                    return message.get("text", "")
+                offset = update["update_id"] + 1
+
+        time.sleep(2)  # Poll every 2 seconds
+
+    return None
 
 # Main function with continuous polling
 def main():
