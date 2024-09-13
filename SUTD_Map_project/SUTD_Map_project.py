@@ -66,7 +66,7 @@ def Area_Selection():
         'Block_57':['2','3','4','5','6','7','8','9','10','11','12'],
         'Block_59':['2','3','4','5','6','7','8','9','10','11','12'],
         'Sports_and_Recreation_Centre':['2','3'],
-        'Special_Zones':['2','3','5']
+        'Special_Zones':['0','2','3','5']
         }
 
     B_select = Building_Selection(list(dd_zones.keys()))
@@ -114,6 +114,8 @@ def runpq():
     idlkup = lookup_id_ini()
     pq = Path_query.Query()
 
+def generate_supermap():
+    Json_OS_ProcessingFunctions.generate_supermap()
 
 def main():
     cl_s="\n"*100
@@ -121,13 +123,14 @@ def main():
     options = {
             '0': runpq,
             '1': graphtool_ini,
-            '2': validate_lookupdir
+            '2': validate_lookupdir,
+            '3': generate_supermap
             }
     while True:
         try:
             print(cl_s)
             print("SUTD Map Project 2023/2024 Default Page\n")
-            print("0 - Run Pathfinding\n1 - Run Graph mapping tool\n2 - Run Lookup directory validation\n")
+            print("0 - Run Pathfinding\n1 - Run Graph mapping tool\n2 - Run Lookup directory validation\n3 - Run supermap generation\n")
             ct=input("Enter q to exit mapping tool\nSelect tool to run: ")
             if ct in quits:
                 print("Terminating Program")

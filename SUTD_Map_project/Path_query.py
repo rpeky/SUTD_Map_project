@@ -236,8 +236,14 @@ class Query():
         return
 
     #append graphs and search
-    def pathfind_long(self,sloc,eloc): 
-        pass
+    def pathfind_long_assumeleastmaps(self,sloc,eloc): 
+        start_dd = self.convertloc_todd(sloc)
+        end_dd = self.convertloc_todd(eloc)
+        #do dijkstras on the supermap to find the shortest map crossing - assumption that crosssing less maps means faster path search
+
+
+    def pathfind_long_appendallmaps(self,sloc,eloc):
+        superdd = None
 
     def path_find(self):
         print("Pathfinding tool\n")
