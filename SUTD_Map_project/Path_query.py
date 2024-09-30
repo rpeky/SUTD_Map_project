@@ -243,7 +243,11 @@ class Query():
 
 
     def pathfind_long_appendallmaps(self,sloc,eloc):
-        superdd = None
+        superdd = Json_OS_ProcessingFunctions.load_file_json('supermap.json',0)
+        pass
+
+    def pathfind_long_appended_print(self):
+        print(Json_OS_ProcessingFunctions.load_file_json('supermap.json',0))
 
     def path_find(self):
         print("Pathfinding tool\n")
@@ -257,4 +261,4 @@ class Query():
             sol_path = dd_djk[eloc][1]
             print("Shortest path: {}\nDistance to end point: {}".format(sol_path, sol_dist))
         else:
-            self.pathfind_long()
+            self.pathfind_long_appendallmaps()
