@@ -13,7 +13,8 @@ class Query():
         print(self.dd_locationid)
         print(self.dd_masterlookup)
         self.welcome_message()
-        self.path_find()
+        self.pathfind_long_rundijk_supermap()
+        #self.path_find()
         self.tempwaitinput()
 
     def __del__(self):
@@ -176,23 +177,19 @@ class Query():
         dd_ref = self.convertloc_todd(sp)
         dd_djk = dict()
         vtxs = set(dd_ref)
-        
         for vtx in vtxs:
             if(vtx==sp):
                 dd_djk[vtx] = (0,[])
             else:
                 dd_djk[vtx] = (float('inf'),[])
-        
         visited_vtxs = set()
         curr_vtx = sp
-        
         while True:
             #set as visited
             visited_vtxs.add(curr_vtx)
-            
             #set adjacent vtx
             adj_vtx = [i for i in dd_ref[curr_vtx]["Neighbour"].keys() if i in vtxs]
-            
+
             #update distance
             for adj in adj_vtx:
                 #store distance and path to compare
@@ -236,15 +233,57 @@ class Query():
         return
 
     #append graphs and search
-    def pathfind_long_assumeleastmaps(self,sloc,eloc): 
+    def pathfind_long_assumeleastmaps(self,sloc,eloc):
         start_dd = self.convertloc_todd(sloc)
         end_dd = self.convertloc_todd(eloc)
         #do dijkstras on the supermap to find the shortest map crossing - assumption that crosssing less maps means faster path search
 
 
-    def pathfind_long_appendallmaps(self,sloc,eloc):
-        superdd = Json_OS_ProcessingFunctions.load_file_json('supermap.json',0)
-        pass
+    def pathfind_long_rundijk_supermap(self):
+        superdd = Json_OS_ProcessingFunctions.load_file_json('.supermap.json',0)
+        dd_djk = dict()
+        vtxs = set(superdd)
+        sp = None
+        for vtx in vtxs:
+            if(sp != None):
+                dd_djk[vtx] = (float('inf'),[])
+            else:
+                curr_vtx = vtx
+                dd_djk[vtx] = (0,[])
+        visited_vtxs = set()
+        while True:
+            #set as visited
+            visited_vtxs.add(curr_vtx)
+            #set adjacent vtx
+            adj_vtx = [i for i in superdd[curr_vtx]["Neighbour"].keys() if i in vtxs]
+            #update distance
+            for adj in adj_vtx:
+                #store distance and path to compare
+                old_dist = dd_djk[adj][0]
+                old_path = dd_djk[adj][1]
+
+                #calculate new distance for the current check
+                new_dist = dd_djk[curr_vtx][0] + superdd[curr_vtx]["Neighbour"][adj]
+                new_path = dd_djk[curr_vtx][1] + [curr_vtx]
+
+                #check diff
+                if new_dist < old_dist:
+                    dd_djk[adj] = (new_dist, new_path)
+
+            curr_vtx = None
+            curr_dist = float('inf')
+
+            #compare which distance is shortest and set value for next interation
+            for vtx, tupstore in dd_djk.items():
+                if (vtx not in visited_vtxs) and (tupstore[0] < curr_dist):
+                    curr_vtx = vtx
+                    curr_dist = tupstore[0]
+            #end condition, no more vtx to check
+            if curr_vtx == None:
+                break
+        Json_OS_ProcessingFunctions.save_file_json(dd_djk,".processed_dijk_supermap.json",0)
+        #return dd_djk
+
 
     def pathfind_long_appended_print(self):
         print(Json_OS_ProcessingFunctions.load_file_json('supermap.json',0))
@@ -261,4 +300,5 @@ class Query():
             sol_path = dd_djk[eloc][1]
             print("Shortest path: {}\nDistance to end point: {}".format(sol_path, sol_dist))
         else:
-            self.pathfind_long_appendallmaps()
+            pass
+            #self.pathfind_long_appendallmaps()

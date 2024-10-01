@@ -146,11 +146,11 @@ def rebuild_locationID():
 def generate_supermap():
     cwd = os.getcwd()
     masdir = os.path.join(cwd, 'Master')
-    fullpath_supermap = os.path.join(masdir, "supermap.json")
-    if not os.path.isfile(fullpath_supermap): 
+    fullpath_supermap = os.path.join(masdir, ".supermap.json")
+    if not os.path.isfile(fullpath_supermap):
         generate_logfile('Added new supermap')
     else:
-        oldsupermap = load_file_json("supermap.json")
+        oldsupermap = load_file_json(".supermap.json",0)
         generate_logfile('Updating supermap, initial map {}'.format(oldsupermap))
 
     supermap_dd = dict()
@@ -159,6 +159,6 @@ def generate_supermap():
         for entry in vertmaps:
             if not entry.name.startswith('.') and entry.is_file():
                 supermap_dd.update(load_file_json(entry,0))
-    save_file_json(supermap_dd,"supermap.json",0)
+    save_file_json(supermap_dd,".supermap.json",0)
     generate_logfile('Generated new supermap, values:\n{}'.format(supermap_dd))
     print('Generated new supermap')

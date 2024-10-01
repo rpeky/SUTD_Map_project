@@ -118,8 +118,10 @@ def generate_supermap():
     Json_OS_ProcessingFunctions.generate_supermap()
 
 def print_supermap():
+    generate_supermap()
+
     q = Path_query.Query()
-    q.pathfind_long_appended_print()
+    q.pathfind_long_rundijk_supermap()
 
 def main():
     cl_s="\n"*100
