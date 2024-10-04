@@ -6,13 +6,14 @@ import requests
 import time
 #Using telegram API not local host
 
-#All queries to the Telegram Bot API must be served over HTTPS and need to be presented in this form: https://api.telegram.org/bot<token>/METHOD_NAME
-#token = '7338576036:AAEpgpNoLoja05lQyvx7R3WgEBk5Bzgvy5Y'
-#req = 'https://api.telegram.org/bot7338576036:AAEpgpNoLoja05lQyvx7R3WgEBk5Bzgvy5Y/'
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+
+if not TELEGRAM_BOT_TOKEN:
+    raise ValueError("TELEGRAM_BOT_TOKEN environment variable not set")
 
 # Function to get updates from the Telegram bot
 def get_updates(offset=None):
-    url = 'https://api.telegram.org/bot7338576036:AAEpgpNoLoja05lQyvx7R3WgEBk5Bzgvy5Y/getUpdates'
+    url = f'https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/getUpdates'
     # If offset is provided, add it to the request URL to get new updates only
     if offset:
         url += f'?offset={offset}'
@@ -35,7 +36,7 @@ def get_chatid(jsdata):
 
 # Function to send a message via the Telegram bot
 def send_tele_message(chatid, msg, reply_markup=None):
-    url = 'https://api.telegram.org/bot7338576036:AAEpgpNoLoja05lQyvx7R3WgEBk5Bzgvy5Y/sendMessage'
+    url = f'https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage'
     
     # Prepare the payload with chat ID and message
     payload = {
