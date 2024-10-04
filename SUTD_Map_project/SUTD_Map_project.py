@@ -117,6 +117,12 @@ def runpq():
 def generate_supermap():
     Json_OS_ProcessingFunctions.generate_supermap()
 
+def print_supermap():
+    generate_supermap()
+
+    q = Path_query.Query()
+    q.pathfind_long_rundijk_supermap()
+
 def main():
     cl_s="\n"*100
     validate_lookupdir()
@@ -124,7 +130,7 @@ def main():
             '0': runpq,
             '1': graphtool_ini,
             '2': validate_lookupdir,
-            '3': generate_supermap
+            '3': print_supermap
             }
     while True:
         try:
