@@ -4,8 +4,10 @@ import os
 from urllib.parse import urlparse
 import requests
 import time
+from dotenv import load_dotenv
 #Using telegram API not local host
 
+load_dotenv()
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 
 if not TELEGRAM_BOT_TOKEN:
@@ -37,20 +39,20 @@ def get_chatid(jsdata):
 # Function to send a message via the Telegram bot
 def send_tele_message(chatid, msg, reply_markup=None):
     url = f'https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage'
-    
+
     # Prepare the payload with chat ID and message
     payload = {
         'chat_id': chatid,
         'text': msg
     }
-    
+
     # If reply_markup is provided, add it to the payload
     if reply_markup:
         payload['reply_markup'] = json.dumps(reply_markup)
 
     # Make the request
     response = requests.post(url, data=payload)
-    
+
     # Print and return the response content
     print("Response:", response.content)
     return response.json()
