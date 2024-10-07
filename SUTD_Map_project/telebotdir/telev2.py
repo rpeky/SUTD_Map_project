@@ -4,10 +4,17 @@ import os
 from urllib.parse import urlparse
 import requests
 import time
-from dotenv import load_dotenv
 #Using telegram API not local host
 
-load_dotenv()
+def load_env(fpath):
+    with open(fpath) as f:
+        for line in f:
+            if line.startswith('#') or not line.strip():
+                continue
+            key, value = line.strip().split('=', 1)
+            os.environ[key] = value
+load_env('.env')
+
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 
 if not TELEGRAM_BOT_TOKEN:
