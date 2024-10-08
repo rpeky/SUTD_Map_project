@@ -20,7 +20,7 @@ def load_env(fpath):
                 continue
             key, value = line.strip().split('=', 1)
             os.environ[key] = value
-            
+
 load_env('.env')
 
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
@@ -33,7 +33,7 @@ def get_updates(offset=None):
     url = f'https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/getUpdates'
     if offset:
         url += f'?offset={offset}'
-    
+
     try:
         response = requests.get(url)
         response.raise_for_status()
@@ -42,7 +42,7 @@ def get_updates(offset=None):
         print(f"Error getting updates: {e}")
         return None
     return data
-    
+
 # Function to get the chat ID from the latest update
 def get_chatid(jsdata):
     if jsdata and jsdata.get("ok") and len(jsdata.get("result", [])) > 0:
@@ -58,10 +58,10 @@ def get_chatid(jsdata):
 def send_tele_message(chatid, msg, reply_markup=None):
     url = f'https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage'
     payload = {'chat_id': chatid, 'text': msg}
-    
+
     if reply_markup:
         payload['reply_markup'] = json.dumps(reply_markup)
-    
+
     try:
         response = requests.post(url, data=payload, timeout=10)
         response.raise_for_status()
@@ -128,15 +128,25 @@ def handle_user_input(chat_id, text):
     if current_state == STATE_WAITING_FOR_START:
         send_tele_message(chat_id, "Please enter the end location:")
         user_states[chat_id] = STATE_WAITING_FOR_END  # Move to the next state
-    
+
     elif current_state == STATE_WAITING_FOR_END:
         # Here, you'd process the start and end locations and compute the route
         send_tele_message(chat_id, f"Calculating route to {text}.")
         user_states[chat_id] = STATE_IDLE  # Reset state after processing
-    
+
     else:
         # If idle, show the main menu
         main_menu(chat_id)
+
+def show_start_button(chat_id):
+    keyboard = {
+        "inline_keyboard": [
+            [
+            {"text": "Start", "callback_data": "start"}
+            ]
+        ]
+    }
+    send_tele_message(chat_id, "Press 'Start' to begin:", reply_markup=keyboard)
 
 # Main function with continuous polling
 def main():
@@ -159,8 +169,10 @@ def main():
                     chat_id = str(message["chat"]["id"])
                     text = message.get("text", "")
 
+                    if text.lower()=="/start":
+                        show_start_button(chat_id)
                     # Handle user input (text messages)
-                    handle_user_input(chat_id, text)
+                    #handle_user_input(chat_id, text)
 
                     # Update the offset to avoid processing the same message again
                     offset = update["update_id"] + 1
