@@ -20,6 +20,7 @@ def load_env(fpath):
                 continue
             key, value = line.strip().split('=', 1)
             os.environ[key] = value
+            
 load_env('.env')
 
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
@@ -70,23 +71,20 @@ def send_tele_message(chatid, msg, reply_markup=None):
 
     return response.json()
 
+# Function to handle callback queries
 def handle_callback_query(callback_query):
     chat_id = callback_query['message']['chat']['id']
     callback_data = callback_query['data']
 
     if callback_data == "location_explorer":
         send_tele_message(chat_id, "Please provide a location name or ID:")
-        # Fetch and display location details based on the input
+        # Handle location explorer logic here
     elif callback_data == "pathfinding":
         send_tele_message(chat_id, "Please enter the start location:")
-        start_location = wait_for_next_message(chat_id)  # Wait for user input
-        send_tele_message(chat_id, "Please enter the end location:")
-        end_location = wait_for_next_message(chat_id)
-        # Call pathquery.py to get the route and return to the user
-        route = get_route(start_location, end_location)
-        send_tele_message(chat_id, f"Your route is: {route}")
+        user_states[chat_id] = STATE_WAITING_FOR_START  # Set state for pathfinding
 
-def main_menu_loadout(chatid):
+# Function to display the main menu with inline buttons
+def main_menu(chat_id):
     keyboard = {
         "inline_keyboard": [
             [
@@ -121,29 +119,24 @@ def wait_for_next_message(chat_id, timeout=60):
 
 
 # Function to handle user state
+
+# Function to handle user input based on their state
 def handle_user_input(chat_id, text):
     # Check the user's current state
     current_state = user_states.get(chat_id, STATE_IDLE)
 
-    if current_state == STATE_IDLE:
-        if text.lower() == "pathfinding":
-            send_tele_message(chat_id, "Please enter the start location:")
-            user_states[chat_id] = STATE_WAITING_FOR_START  # Update state
-        elif text.lower() == "location explorer":
-            send_tele_message(chat_id, "Please provide a location name or ID:")
-            # Here, you can add logic for handling location explorer
-        else:
-            send_tele_message(chat_id, "Unknown command. Type 'Pathfinding' or 'Location Explorer'.")
-    
-    elif current_state == STATE_WAITING_FOR_START:
+    if current_state == STATE_WAITING_FOR_START:
         send_tele_message(chat_id, "Please enter the end location:")
         user_states[chat_id] = STATE_WAITING_FOR_END  # Move to the next state
     
     elif current_state == STATE_WAITING_FOR_END:
         # Here, you'd process the start and end locations and compute the route
-        send_tele_message(chat_id, f"Calculating route from start to {text}.")
-        # After processing, reset the user's state
-        user_states[chat_id] = STATE_IDLE
+        send_tele_message(chat_id, f"Calculating route to {text}.")
+        user_states[chat_id] = STATE_IDLE  # Reset state after processing
+    
+    else:
+        # If idle, show the main menu
+        main_menu(chat_id)
 
 # Main function with continuous polling
 def main():
@@ -155,12 +148,18 @@ def main():
 
         if updates and updates.get("ok") and len(updates.get("result", [])) > 0:
             for update in updates["result"]:
+                callback_query = update.get("callback_query")
                 message = update.get("message")
-                if message:
+
+                if callback_query:
+                    # Handle button presses (callback queries)
+                    handle_callback_query(callback_query)
+
+                elif message:
                     chat_id = str(message["chat"]["id"])
                     text = message.get("text", "")
 
-                    # Handle user input based on their state
+                    # Handle user input (text messages)
                     handle_user_input(chat_id, text)
 
                     # Update the offset to avoid processing the same message again
