@@ -4,7 +4,14 @@ import os
 from urllib.parse import urlparse
 import requests
 import time
-#Using telegram API not local host
+
+# Define conversation states
+STATE_WAITING_FOR_START = "waiting_for_start"
+STATE_WAITING_FOR_END = "waiting_for_end"
+STATE_IDLE = "idle"
+
+# Dictionary to store user states
+user_states = {}
 
 def load_env(fpath):
     with open(fpath) as f:
@@ -23,45 +30,44 @@ if not TELEGRAM_BOT_TOKEN:
 # Function to get updates from the Telegram bot
 def get_updates(offset=None):
     url = f'https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/getUpdates'
-    # If offset is provided, add it to the request URL to get new updates only
     if offset:
         url += f'?offset={offset}'
-
-    response = requests.get(url)
-    data = response.json()
-    print(data)
+    
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+    except requests.exceptions.RequestException as e:
+        print(f"Error getting updates: {e}")
+        return None
     return data
-
+    
 # Function to get the chat ID from the latest update
 def get_chatid(jsdata):
-    if jsdata["ok"] and len(jsdata["result"]) > 0:
-        # Get the last message's chat ID
-        chat_id = jsdata["result"][-1]["message"]["chat"]["id"]
-        print("Chat ID:", chat_id)
-        return str(chat_id)
-    else:
-        print("No new messages")
-        return None
+    if jsdata and jsdata.get("ok") and len(jsdata.get("result", [])) > 0:
+        last_message = jsdata["result"][-1].get("message")
+        if last_message:
+            chat_id = last_message["chat"]["id"]
+            print("Chat ID:", chat_id)
+            return str(chat_id)
+    print("No new messages or invalid data format.")
+    return None
 
 # Function to send a message via the Telegram bot
 def send_tele_message(chatid, msg, reply_markup=None):
     url = f'https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage'
-
-    # Prepare the payload with chat ID and message
-    payload = {
-        'chat_id': chatid,
-        'text': msg
-    }
-
-    # If reply_markup is provided, add it to the payload
+    payload = {'chat_id': chatid, 'text': msg}
+    
     if reply_markup:
         payload['reply_markup'] = json.dumps(reply_markup)
+    
+    try:
+        response = requests.post(url, data=payload, timeout=10)
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        print(f"Error sending message: {e}")
+        return None
 
-    # Make the request
-    response = requests.post(url, data=payload)
-
-    # Print and return the response content
-    print("Response:", response.content)
     return response.json()
 
 def handle_callback_query(callback_query):
@@ -113,34 +119,53 @@ def wait_for_next_message(chat_id, timeout=60):
 
     return None
 
+
+# Function to handle user state
+def handle_user_input(chat_id, text):
+    # Check the user's current state
+    current_state = user_states.get(chat_id, STATE_IDLE)
+
+    if current_state == STATE_IDLE:
+        if text.lower() == "pathfinding":
+            send_tele_message(chat_id, "Please enter the start location:")
+            user_states[chat_id] = STATE_WAITING_FOR_START  # Update state
+        elif text.lower() == "location explorer":
+            send_tele_message(chat_id, "Please provide a location name or ID:")
+            # Here, you can add logic for handling location explorer
+        else:
+            send_tele_message(chat_id, "Unknown command. Type 'Pathfinding' or 'Location Explorer'.")
+    
+    elif current_state == STATE_WAITING_FOR_START:
+        send_tele_message(chat_id, "Please enter the end location:")
+        user_states[chat_id] = STATE_WAITING_FOR_END  # Move to the next state
+    
+    elif current_state == STATE_WAITING_FOR_END:
+        # Here, you'd process the start and end locations and compute the route
+        send_tele_message(chat_id, f"Calculating route from start to {text}.")
+        # After processing, reset the user's state
+        user_states[chat_id] = STATE_IDLE
+
 # Main function with continuous polling
 def main():
-    # Initialize offset to keep track of the last message processed
     offset = None
-
-    print("Bot is running and waiting for user replies...")
 
     while True:
         # Fetch updates from Telegram
         updates = get_updates(offset)
 
-        if updates["ok"] and len(updates["result"]) > 0:
+        if updates and updates.get("ok") and len(updates.get("result", [])) > 0:
             for update in updates["result"]:
-                # Extract chat ID and message text
                 message = update.get("message")
                 if message:
                     chat_id = str(message["chat"]["id"])
                     text = message.get("text", "")
 
-                    print(f"User said: {text}")
-                    # Respond to the user
-                    reply_message = f"You said: {text}"
-                    send_tele_message(chat_id, reply_message)
+                    # Handle user input based on their state
+                    handle_user_input(chat_id, text)
 
                     # Update the offset to avoid processing the same message again
                     offset = update["update_id"] + 1
 
-        # Wait for 3 seconds before checking again
         time.sleep(2)
 
 if __name__ == '__main__':
