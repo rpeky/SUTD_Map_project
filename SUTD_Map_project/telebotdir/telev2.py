@@ -31,6 +31,7 @@ if not TELEGRAM_BOT_TOKEN:
 # Function to get updates from the Telegram bot
 def get_updates(offset=None):
     url = f'https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/getUpdates'
+
     if offset:
         url += f'?offset={offset}'
 
@@ -71,7 +72,7 @@ def send_tele_message(chatid, msg, reply_markup=None):
 
     return response.json()
 
-# Function to handle callback queries
+
 def handle_callback_query(callback_query):
     chat_id = callback_query['message']['chat']['id']
     callback_data = callback_query['data']
@@ -116,7 +117,6 @@ def wait_for_next_message(chat_id, timeout=60):
         time.sleep(2)  # Poll every 2 seconds
 
     return None
-
 
 # Function to handle user state
 
@@ -173,6 +173,7 @@ def main():
                         show_start_button(chat_id)
                     # Handle user input (text messages)
                     #handle_user_input(chat_id, text)
+
 
                     # Update the offset to avoid processing the same message again
                     offset = update["update_id"] + 1
