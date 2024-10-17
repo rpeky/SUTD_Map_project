@@ -1,0 +1,16 @@
+{
+    "Building_5_Level_4_ROOM__STUDENT_ACTIVITY_CENTRE": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Description": "Club lockers and activity centre",
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": "5.401",
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    }
+}
