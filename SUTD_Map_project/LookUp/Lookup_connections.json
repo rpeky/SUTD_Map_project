@@ -1,12 +1,12 @@
 {
-    "Building_1_Level_2_LIFT__LOBBY_C": "supermap.json",
-    "Building_1_Level_3_LIFT__LOBBY_C": "supermap.json",
-    "Building_1_Level_4_LIFT__LOBBY_C": "supermap.json",
-    "LEVEL_1_Level_1_LIFT__LOBBY_A": "supermap.json",
-    "LEVEL_1_Level_1_LIFT__LOBBY_C": "supermap.json",
-    "LEVEL_1_Level_1_LIFT__LOBBY_E": "supermap.json",
-    "LEVEL_1_Level_1_LIFT__LOBBY_F": "supermap.json",
-    "LEVEL_1_Level_1_LIFT__LOBBY_J": "supermap.json",
-    "LEVEL_1_Level_1_STAIRS__CAMPUS_CENTRE_ONESTOPCENTER_SIDE": "supermap.json",
-    "LEVEL_1_Level_1_STAIRS__CAMPUS_CENTRE_PIANO_SIDE": "supermap.json"
+    "Building_1_Level_2_LIFT__LOBBY_C": "Building_1_Level_2.json",
+    "Building_1_Level_3_LIFT__LOBBY_C": "Building_1_Level_3.json",
+    "Building_1_Level_4_LIFT__LOBBY_C": "Building_1_Level_4.json",
+    "LEVEL_1_Level_1_LIFT__LOBBY_A": "LEVEL_1_Level_1.json",
+    "LEVEL_1_Level_1_LIFT__LOBBY_C": "LEVEL_1_Level_1.json",
+    "LEVEL_1_Level_1_LIFT__LOBBY_E": "LEVEL_1_Level_1.json",
+    "LEVEL_1_Level_1_LIFT__LOBBY_F": "LEVEL_1_Level_1.json",
+    "LEVEL_1_Level_1_LIFT__LOBBY_J": "LEVEL_1_Level_1.json",
+    "LEVEL_1_Level_1_STAIRS__CAMPUS_CENTRE_ONESTOPCENTER_SIDE": "LEVEL_1_Level_1.json",
+    "LEVEL_1_Level_1_STAIRS__CAMPUS_CENTRE_PIANO_SIDE": "LEVEL_1_Level_1.json"
 }
