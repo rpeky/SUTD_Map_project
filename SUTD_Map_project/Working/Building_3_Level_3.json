@@ -628,23 +628,6 @@
         "Sheltered": true,
         "Visited": 0
     },
-    "Building_3_Level_3_STAIRS__1": {
-        "Access_Clearance": [],
-        "Average_travel_time": null,
-        "Avg_density": 1,
-        "Connected_vertex": {},
-        "Connection_Point": false,
-        "Coordinates": [
-            0,
-            0
-        ],
-        "Neighbour": {},
-        "Neighbour_head": {},
-        "Room_ID": null,
-        "Route_intersection": false,
-        "Sheltered": true,
-        "Visited": 0
-    },
     "Building_3_Level_3_STAIRS__S301": {
         "Access_Clearance": [],
         "Average_travel_time": null,
