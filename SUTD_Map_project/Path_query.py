@@ -302,3 +302,7 @@ class Query():
         else:
             pass
             #self.pathfind_long_appendallmaps()
+
+
+    def translate_internalnameforoutput(self):
+        pass
