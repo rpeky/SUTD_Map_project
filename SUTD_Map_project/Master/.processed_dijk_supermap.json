@@ -31,6 +31,210 @@
         0,
         []
     ],
+    "Building_2_Level_2_ENTRANCE__CANTEEN": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ENTRANCE__CANTEEN_SIDE_ENTRANCE": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ENTRANCE__CLEAN_ROOM": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ENTRANCE__FIRE_FIGHTING_LIFT_LOBBY_J": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ENTRANCE__IT_CARE": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ENTRANCE__METROLOGY_LAB": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ENTRANCE__OFFICE_OF_INFORMATION_TECHNOLOGY": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ENTRANCE__OFFICE_OF_INFORMATION_TECHNOLOGY_2": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ENTRANCE__OFFICE_OF_INFORMATION_TECHNOLOGY_ANNEX": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ENTRANCE__SMOKE_STOP_LOBBY_E": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ENTRANCE__SMOKE_STOP_LOBBY_F": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ENTRANCE__SMOKE_STOP_LOBBY_H": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ENTRANCE__STUDIO_7": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ENTRANCE__SUTD_WIRELESS_INNOVATION_CENTRE": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ENTRANCE__SUTD_WIRELESS_INNOVATION_CENTRE_2": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ENTRANCE__THINK_TANK_16": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ENTRANCE__THINK_TANK_16_2": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ENTRANCE__THINK_TANK_17": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ENTRANCE__THINK_TANK_17_2": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ENTRANCE__THINK_TANK_18": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ENTRANCE__THINK_TANK_18_2": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ENTRANCE__WALKWAY_LINK_DOORS": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_INTER__CLEAN_ROOM": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_INTER__LOBBY_F": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_INTER__SPIRAL_STAIRS": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_INTER__STUDIO_7": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_INTER__SUTD_WIRELESS_INNOVATION_CENTRE": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_INTER__THINK_TANK_18": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_LIFT__LOBBY_E": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_LIFT__LOBBY_F": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_LIFT__LOBBY_J": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ROOM__CANTEEN": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ROOM__CLEAN_ROOM": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ROOM__IT_CARE": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ROOM__METROLOGY_LAB": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ROOM__OFFICE_OF_INFORMATION_TECHNOLOGY": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ROOM__OFFICE_OF_INFORMATION_TECHNOLOGY_ANNEX": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ROOM__STUDIO_7": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ROOM__SUTD_WIRELESS_INNOVATION_CENTRE": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ROOM__THINK_TANK_16": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ROOM__THINK_TANK_17": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_ROOM__THINK_TANK_18": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_STAIRS__S201": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_STAIRS__S202": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_STAIRS__S203": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_STAIRS__S205": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_STAIRS__S206": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_STAIRS__SPIRAL_STAIRS": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_STAIRS__WOODEN_STAIRS": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_TOILET__1": [
+        0,
+        []
+    ],
+    "Building_2_Level_2_TOILET__2": [
+        0,
+        []
+    ],
     "Building_2_Level_4_ENTRANCE__AREIAL_ARENA@SUTD": [
         0,
         []
@@ -328,6 +532,326 @@
         []
     ],
     "Building_2_Level_6_ROOM__SKUNKWORKS_LAB": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ENTRANCE__AUGMENTED_HUMAN_DESIGN_LAB": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ENTRANCE__BEHAVIORAL_DESIGN_LAB_1": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ENTRANCE__BEHAVIORAL_DESIGN_LAB_2": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ENTRANCE__BEHAVIORAL_DESIGN_LAB_3": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ENTRANCE__BUILDING_1_DOOR": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ENTRANCE__BUILDING_2_DOOR": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ENTRANCE__COMPOSITES_DESIGN_LAB": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ENTRANCE__COMPUTATIONALLY_INTENSIVE_DESIGN_LAB": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ENTRANCE__COMPUTATIONALLY_INTENSIVE_DESIGN_LAB_2": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ENTRANCE__DARES_LAB": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ENTRANCE__DARES_LAB_2": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ENTRANCE__FIRE_FIGHTING_LOBBY_K": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ENTRANCE__GALILEO_ROOM": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ENTRANCE__INNOVATION_AND_ENTERPRISE": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ENTRANCE__INNOVATION_AND_ENTERPRISE_2": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ENTRANCE__INNOVATION_AND_ENTERPRISE_3": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ENTRANCE__INNOVATION_AND_ENTERPRISE_4": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ENTRANCE__OFFICE_OF_INTERNAL_RELATIONS": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ENTRANCE__OFFICE_OF_INTERNAL_RELATIONS_2": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ENTRANCE__SMOKE_STOP_LOBBY_L": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ENTRANCE__SUTD_ZJU_COLLABORATION_OFFICE": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_LIFT__LOBBY_J": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_LIFT__LOBBY_K": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ROOM__AUGMENTED_HUMAN_DESIGN_LAB": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ROOM__BEHAVIORAL_DESIGN_LAB_1": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ROOM__BEHAVIORAL_DESIGN_LAB_2": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ROOM__BEHAVIORAL_DESIGN_LAB_3": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ROOM__CAI_LUN_ROOM": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ROOM__COMPOSITES_DESIGN_LAB": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ROOM__COMPUTATIONALLY_INTENSIVE_DESIGN_LAB": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ROOM__DARES_LAB": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ROOM__GALILEO_ROOM": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ROOM__INNOVATION_AND_ENTERPRISE": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ROOM__OFFICE_OF_INTERNAL_RELATIONS": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ROOM__PANTRY": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ROOM__STORE_ROOM": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_ROOM__SUTD_ZJU_COLLABORATION_OFFICE": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_STAIRS__S301": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_STAIRS__S303": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_STAIRS__SPIRAL_STAIRS": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_TOILET__1": [
+        0,
+        []
+    ],
+    "Building_3_Level_3_TOILET__2": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ENTRANCE__BUCKMINISTER_FULLER_COLLABORATION_SPACE": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ENTRANCE__BUCKMINISTER_FULLER_COLLABORATION_SPACE_2": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ENTRANCE__BUCKMINISTER_FULLER_COLLABORATION_SPACE_SIDE_ALLEY": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ENTRANCE__BUCKMINISTER_FULLER_COLLABORATION_SPACE_SPIRAL_STAIRS": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ENTRANCE__ELECTRICAL_DEVICE_CHARACTERIZATION_DESIGN_LAB": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ENTRANCE__FIRE_FIGHTING_LOBBY_K": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ENTRANCE__GEORGE_WASHINGTON_CARVER_ROOM": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ENTRANCE__JAMES_WATT_ROOM": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ENTRANCE__MAGNETIC_&_MECHANICAL_MATERIALS_CHARACTERIZATION_DESIGN_LAB": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ENTRANCE__MATERIALS_DESIGN_LAB": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ENTRANCE__OPEN_AIR_BALCONY": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ENTRANCE__OPTICS_DESIGN_LAB": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ENTRANCE__OPTICS_DESIGN_LAB_BALCONY": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ENTRANCE__SMOKE_STOP_LOBBY_L": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ENTRANCE__THIN_FILM_CHARACTERIZATION_DESIGN_LAB": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_LIFT__LOBBY_J": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_LIFT__LOBBY_K": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ROOM__BABBAGE_ROOM": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ROOM__BUCKMINISTER_FULLER_COLLABORATION_SPACE": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ROOM__ELECTRICAL_DEVICE_CHARACTERIZATION_DESIGN_LAB": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ROOM__GEORGE_WASHINGTON_CARVER_ROOM": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ROOM__JAMES_WATT_ROOM": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ROOM__MAGNETIC_&_MECHANICAL_MATERIALS_CHARACTERIZATION_DESIGN_LAB": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ROOM__MATERIALS_DESIGN_LAB": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ROOM__OPTICS_DESIGN_LAB": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ROOM__PANTRY": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ROOM__STORE_ROOM": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ROOM__STORE_ROOM_2": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ROOM__THIN_FILM_CHARACTERIZATION_DESIGN_LAB": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ROOM__THOMAS_EDISON_ROOM": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ROOM__WORK_ROOM_1": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ROOM__WORK_ROOM_2": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_ROOM__WORK_ROOM_3": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_STAIRS__S301": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_STAIRS__S303": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_STAIRS__SPIRAL_STAIRS": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_TOILET__1": [
+        0,
+        []
+    ],
+    "Building_3_Level_4_TOILET__2": [
         0,
         []
     ],
