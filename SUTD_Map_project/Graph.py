@@ -27,7 +27,7 @@ class Graph():
         }
     def __init__(self, area_file, clearance, dd_lkup, dd_cplkup, dd_idlkup):
         #checked outside in main when initialising master lookup
-        #Json_OS_ProcessingFunctions.check_folders_exist()
+        Json_OS_ProcessingFunctions.check_folders_exist()
         self.dd_graph = dict()
         self.dd_lkup = dd_lkup
         self.dd_cplkup = dd_cplkup
