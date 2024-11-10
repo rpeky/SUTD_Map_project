@@ -58,6 +58,7 @@ class Graph():
         Json_OS_ProcessingFunctions.save_file_json(self.dd_cplkup,"Lookup_connections.json",2)
         Json_OS_ProcessingFunctions.save_file_json(self.dd_idlkup, "Lookup_locationID.json",2)
 
+        self.Dijkstra_all()
         print('deleting')
 
     @classmethod
@@ -876,6 +877,11 @@ class Graph():
                 break
 
         return djk_dict
+
+    def Dijkstra_all(self):
+        allsp=Json_OS_ProcessingFunctions.load_file_json('Lookup_directory.json',2)
+        for vertid in allsp:
+            print(vertid)
 
     def Dijkstra_externalpoints(self, startpoint):
         pass

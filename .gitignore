@@ -9,7 +9,13 @@
 *.user
 *.userosscache
 *.sln.docstates
+
+#ignore for security
 .env
+
+#ignore for ease of development
+#log files only need to be checked locally
+.log
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
