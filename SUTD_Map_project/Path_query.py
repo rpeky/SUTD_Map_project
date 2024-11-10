@@ -15,7 +15,7 @@ class Query():
         self.welcome_message()
         self.pathfind_long_rundijk_supermap()
         #self.path_find()
-        self.tempwaitinput()
+        #self.tempwaitinput()
 
     def __del__(self):
         print('test del query class')
