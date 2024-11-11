@@ -239,6 +239,7 @@ class Query():
         #do dijkstras on the supermap to find the shortest map crossing - assumption that crosssing less maps means faster path search
 
 
+    #to rewrite to fit the new storage format of graph
     def pathfind_long_rundijk_supermap(self):
         superdd = Json_OS_ProcessingFunctions.load_file_json('.supermap.json',0)
         dd_djk = dict()
