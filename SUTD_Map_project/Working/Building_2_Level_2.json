@@ -522,6 +522,8 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {
+            "Building_2_Level_3_LIFT__LOBBY_E": "Building_2_Level_3.json",
+            "Building_2_Level_4_LIFT__LOBBY_E": "Building_2_Level_4.json",
             "LEVEL_1_Level_1_LIFT__LOBBY_E": "LEVEL_1_Level_1.json"
         },
         "Connection_Point": true,
@@ -531,10 +533,14 @@
         ],
         "Neighbour": {
             "Building_2_Level_2_INTER__SPIRAL_STAIRS": 11,
+            "Building_2_Level_3_LIFT__LOBBY_E": 3,
+            "Building_2_Level_4_LIFT__LOBBY_E": 4,
             "LEVEL_1_Level_1_LIFT__LOBBY_E": 3
         },
         "Neighbour_head": {
             "Building_2_Level_2_INTER__SPIRAL_STAIRS": 55,
+            "Building_2_Level_3_LIFT__LOBBY_E": 270,
+            "Building_2_Level_4_LIFT__LOBBY_E": 270,
             "LEVEL_1_Level_1_LIFT__LOBBY_E": 270
         },
         "Room_ID": null,
@@ -547,6 +553,7 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {
+            "Building_2_Level_4_LIFT__LOBBY_F": "Building_2_Level_4.json",
             "LEVEL_1_Level_1_LIFT__LOBBY_F": "LEVEL_1_Level_1.json"
         },
         "Connection_Point": true,
@@ -556,10 +563,12 @@
         ],
         "Neighbour": {
             "Building_2_Level_2_INTER__LOBBY_F": 6,
+            "Building_2_Level_4_LIFT__LOBBY_F": 4,
             "LEVEL_1_Level_1_LIFT__LOBBY_F": 3
         },
         "Neighbour_head": {
             "Building_2_Level_2_INTER__LOBBY_F": 25,
+            "Building_2_Level_4_LIFT__LOBBY_F": 270,
             "LEVEL_1_Level_1_LIFT__LOBBY_F": 270
         },
         "Room_ID": null,
@@ -572,6 +581,7 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {
+            "Building_2_Level_4_LIFT__LIFT_LOBBY_J": "Building_2_Level_4.json",
             "LEVEL_1_Level_1_LIFT__LOBBY_J": "LEVEL_1_Level_1.json"
         },
         "Connection_Point": true,
@@ -580,9 +590,11 @@
             0
         ],
         "Neighbour": {
+            "Building_2_Level_4_LIFT__LIFT_LOBBY_J": 4,
             "LEVEL_1_Level_1_LIFT__LOBBY_J": 3
         },
         "Neighbour_head": {
+            "Building_2_Level_4_LIFT__LIFT_LOBBY_J": 265,
             "LEVEL_1_Level_1_LIFT__LOBBY_J": 260
         },
         "Room_ID": null,
