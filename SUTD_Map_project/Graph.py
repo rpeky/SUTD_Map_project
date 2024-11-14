@@ -659,10 +659,11 @@ class Graph():
                 print("Invalid input\n")
 
     def add_existing_neighbours(self, vertex_ID):
-        already_neighbours = self.dd_graph[vertex_ID]["Neighbour"]
+        already_neighbours = list(self.dd_graph[vertex_ID]["Neighbour"].keys())
         # Selection vertices must not already be neighbours, nor can the vertex be a neighbour to itself
-        vert_set = self.dd_graph.keys() - already_neighbours.keys() - {vertex_ID}
-        vert_list = list(vert_set)
+        vert_list = list(self.dd_graph.keys() - already_neighbours - {vertex_ID})
+        vert_list.sort()
+        #vert_list = list(vert_set)
         if len(vert_list) == 0:
             print("No neighbours to add!\n")
             return
