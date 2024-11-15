@@ -5,14 +5,16 @@ quits = ['q','Q']
 
 
 class Query():
-    def __init__(self, idlkup):
-        self.dd_locationid = idlkup
+    def __init__(self):
+        self.dd_locationid = Json_OS_ProcessingFunctions.load_file_json("Lookup_locationID.json",2)
+        self.dd_masterlookup = Json_OS_ProcessingFunctions.load_file_json("Lookup_directory.json",2)
+
         print('test query class')
         print(self.dd_locationid)
+        print(self.dd_masterlookup)
         self.welcome_message()
-        #self.display_options_startpoint()
-        self.startloc()
-        self.endloc()
+        self.pathfind_long_rundijk_supermap()
+        #self.path_find()
         self.tempwaitinput()
 
     def __del__(self):
@@ -108,14 +110,14 @@ class Query():
                 idx = int(input("\nSelect location index\nSelection:\t"))
                 if idx > -1 and idx < loclen:
                     print("Selected {}".format(vnames[idx]))
-                    self.startloc(vnames[idx])
+
                     break
                 else:
                     print("Invalid input")
             except ValueError:
                 print("Not a valid input")
 
-        return vnames[idx] 
+        return vnames[idx]
 
     def inputroomID(self):
         ls_validID = Json_OS_ProcessingFunctions.pullup_vertices("Lookup_locationID.json", 2)
@@ -152,24 +154,155 @@ class Query():
         sloc = self.display_options_startpoint()
         print("Starting location is {}".format(sloc))
         #load map
-
+        return sloc
 
     def endloc(self):
-        print("Destination selection")
+        print("\nDestination selection")
         eloc = self.display_options_startpoint()
         print("Destination is {}".format(eloc))
         #load map
+        return eloc
+
+    def convertloc_todd(self, vtx):
+        dd_conv = None
+        dd_lookupmap = None
+        #find which map location belongs to
+        dd_lookupmap = Json_OS_ProcessingFunctions.load_file_json("Lookup_directory.json",2)
+        locmap = dd_lookupmap[vtx]
+        #load and return map
+        dd_conv = Json_OS_ProcessingFunctions.load_file_json(locmap,0)
+        return dd_conv
+
+    def dijkstra(self, sp):
+        dd_ref = self.convertloc_todd(sp)
+        dd_djk = dict()
+        vtxs = set(dd_ref)
+        for vtx in vtxs:
+            if(vtx==sp):
+                dd_djk[vtx] = (0,[])
+            else:
+                dd_djk[vtx] = (float('inf'),[])
+        visited_vtxs = set()
+        curr_vtx = sp
+        while True:
+            #set as visited
+            visited_vtxs.add(curr_vtx)
+            #set adjacent vtx
+            adj_vtx = [i for i in dd_ref[curr_vtx]["Neighbour"].keys() if i in vtxs]
+
+            #update distance
+            for adj in adj_vtx:
+                #store distance and path to compare
+                old_dist = dd_djk[adj][0]
+                old_path = dd_djk[adj][1]
+
+                #calculate new distance for the current check
+                new_dist = dd_djk[curr_vtx][0] + dd_ref[curr_vtx]["Neighbour"][adj]
+                new_path = dd_djk[curr_vtx][1] + [curr_vtx]
+
+                #check diff
+                if new_dist < old_dist:
+                    dd_djk[adj] = (new_dist, new_path)
+
+            curr_vtx = None
+            curr_dist = float('inf')
+
+            #compare which distance is shortest and set value for next interation
+            for vtx, tupstore in dd_djk.items():
+                if (vtx not in visited_vtxs) and (tupstore[0] < curr_dist):
+                    curr_vtx = vtx
+                    curr_dist = tupstore[0]
+
+            #end condition, no more vtx to check
+            if curr_vtx == None:
+                break
+
+        return dd_djk
 
     #pathfinding for cross map can be done here
-    def pfind(self, startloc=None, endloc=None, sloc_tovisit = None, eloc_tovisit = None):
+    def twosidepfind(self,sloc,eloc):
         #check for error
-        if startloc == None or endloc == None:
+        if sloc == None or eloc == None or sloc == eloc:
             print("invalid locations")
-        #check if pfind is good to go
-        if startloc == endloc:
-            print("Solution found")
             return
 
-
+        #check if pfind in same map, use dijkstra/simle pathfind
+        if sloc in self.dd_masterlookup and eloc in self.dd_masterlookup:
+            print("Solution found")
+            return
         return
 
+    #append graphs and search
+    def pathfind_long_assumeleastmaps(self,sloc,eloc):
+        start_dd = self.convertloc_todd(sloc)
+        end_dd = self.convertloc_todd(eloc)
+        #do dijkstras on the supermap to find the shortest map crossing - assumption that crosssing less maps means faster path search
+
+
+    def pathfind_long_rundijk_supermap(self):
+        superdd = Json_OS_ProcessingFunctions.load_file_json('.supermap.json',0)
+        dd_djk = dict()
+        vtxs = set(superdd)
+        sp = None
+        for vtx in vtxs:
+            if(sp != None):
+                dd_djk[vtx] = (float('inf'),[])
+            else:
+                curr_vtx = vtx
+                dd_djk[vtx] = (0,[])
+        visited_vtxs = set()
+        while True:
+            #set as visited
+            visited_vtxs.add(curr_vtx)
+            #set adjacent vtx
+            adj_vtx = [i for i in superdd[curr_vtx]["Neighbour"].keys() if i in vtxs]
+            #update distance
+            for adj in adj_vtx:
+                #store distance and path to compare
+                old_dist = dd_djk[adj][0]
+                old_path = dd_djk[adj][1]
+
+                #calculate new distance for the current check
+                new_dist = dd_djk[curr_vtx][0] + superdd[curr_vtx]["Neighbour"][adj]
+                new_path = dd_djk[curr_vtx][1] + [curr_vtx]
+
+                #check diff
+                if new_dist < old_dist:
+                    dd_djk[adj] = (new_dist, new_path)
+
+            curr_vtx = None
+            curr_dist = float('inf')
+
+            #compare which distance is shortest and set value for next interation
+            for vtx, tupstore in dd_djk.items():
+                if (vtx not in visited_vtxs) and (tupstore[0] < curr_dist):
+                    curr_vtx = vtx
+                    curr_dist = tupstore[0]
+            #end condition, no more vtx to check
+            if curr_vtx == None:
+                break
+        Json_OS_ProcessingFunctions.save_file_json(dd_djk,".processed_dijk_supermap.json",0)
+        #return dd_djk
+
+
+    def pathfind_long_appended_print(self):
+        print(Json_OS_ProcessingFunctions.load_file_json('supermap.json',0))
+
+    def path_find(self):
+        print("Pathfinding tool\n")
+
+        sloc = self.startloc()
+        eloc = self.endloc()
+
+        if self.convertloc_todd(sloc) == self.convertloc_todd(eloc):
+            dd_djk = self.dijkstra(sloc)
+            sol_dist = dd_djk[eloc][0]
+            sol_path = dd_djk[eloc][1]
+            print("Shortest path: {}\nDistance to end point: {}".format(sol_path, sol_dist))
+        else:
+            pass
+            #self.pathfind_long_appendallmaps()
+
+
+    def translate_internalnameforoutput(self):
+        pass
