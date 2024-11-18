@@ -662,7 +662,6 @@ class Graph():
         already_neighbours = list(self.dd_graph[vertex_ID]["Neighbour"].keys())
         # Selection vertices must not already be neighbours, nor can the vertex be a neighbour to itself
         vert_list = list(self.dd_graph.keys() - already_neighbours - {vertex_ID})
-        vert_list.sort()
         #vert_list = list(vert_set)
         if len(vert_list) == 0:
             print("No neighbours to add!\n")
@@ -880,9 +879,9 @@ class Graph():
         return djk_dict
 
     def Dijkstra_all(self):
-        allsp=Json_OS_ProcessingFunctions.load_file_json('Lookup_directory.json',2)
-        for vertid in allsp:
-            print(vertid)
+        #allsp=Json_OS_ProcessingFunctions.load_file_json('Lookup_directory.json',2)
+        for vertid in self.dd_graph:
+            self.Dijkstra_modified(vertid)
 
     def Dijkstra_externalpoints(self, startpoint):
         pass
