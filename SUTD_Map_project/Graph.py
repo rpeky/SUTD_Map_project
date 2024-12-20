@@ -620,8 +620,6 @@ class Graph():
         self.dd_graph[neighbour_ID]["Neighbour_head"][vertex_ID] = neighbour_adj_heading
         print("Neighbour {} added to {} with distance {} and bearing {}\n".format(neighbour_ID, vertex_ID, adj_dist, adj_heading))
 
-
-
     def add_new_neighbours(self, vertex_ID):
         while True:
             print("Enter Neighbour Vertex ID: ")
@@ -820,9 +818,6 @@ class Graph():
             else:
                 print("Invalid input\n")
 
-
-
-
     def add_node_description(self, vertex):
         if self.dd_graph[vertex].get("Description") != None:
             print("Update description\n")
@@ -896,7 +891,6 @@ class Graph():
     def Ant_colony(self, source):
         pass
 
-
 #_PATH OUTPUT FUNCTIONS_#
 
     def query_pathfind(self):
@@ -935,4 +929,3 @@ class Graph():
     def show_route(self, ls_sol):
         for i in ls_sol:
             print(i, "\n")
-

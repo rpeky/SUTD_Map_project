@@ -3,7 +3,6 @@ import Graph
 
 quits = ['q','Q']
 
-
 class Query():
     def __init__(self):
         self.dd_locationid = Json_OS_ProcessingFunctions.load_file_json("Lookup_locationID.json",2)
@@ -238,7 +237,6 @@ class Query():
         end_dd = self.convertloc_todd(eloc)
         #do dijkstras on the supermap to find the shortest map crossing - assumption that crosssing less maps means faster path search
 
-
     #to rewrite to fit the new storage format of graph
     def pathfind_long_rundijk_supermap(self):
         superdd = Json_OS_ProcessingFunctions.load_file_json('.supermap.json',0)
@@ -285,7 +283,6 @@ class Query():
         Json_OS_ProcessingFunctions.save_file_json(dd_djk,".processed_dijk_supermap.json",0)
         #return dd_djk
 
-
     def pathfind_long_appended_print(self):
         print(Json_OS_ProcessingFunctions.load_file_json('supermap.json',0))
 
@@ -303,7 +300,6 @@ class Query():
         else:
             pass
             #self.pathfind_long_appendallmaps()
-
 
     def translate_internalnameforoutput(self):
         pass
