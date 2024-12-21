@@ -13,6 +13,7 @@ Tasks not picked up yet
     - integrate User.py options to main, to select clearance
     - come up with function to select mutiple vertices to modify in graph.py modify fns ?? see how first (kiv)
     - additional pathfinding algos in graph.py -> do internal same map pathfinding first
+    - refactor telegram bot using the actual telegram api for easier use/uiux reasons
 
 
 Suggestions
