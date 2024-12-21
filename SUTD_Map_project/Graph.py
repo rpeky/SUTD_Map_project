@@ -27,7 +27,7 @@ class Graph():
         }
     def __init__(self, area_file, clearance, dd_lkup, dd_cplkup, dd_idlkup):
         #checked outside in main when initialising master lookup
-        #Json_OS_ProcessingFunctions.check_folders_exist()
+        Json_OS_ProcessingFunctions.check_folders_exist()
         self.dd_graph = dict()
         self.dd_lkup = dd_lkup
         self.dd_cplkup = dd_cplkup
@@ -58,6 +58,7 @@ class Graph():
         Json_OS_ProcessingFunctions.save_file_json(self.dd_cplkup,"Lookup_connections.json",2)
         Json_OS_ProcessingFunctions.save_file_json(self.dd_idlkup, "Lookup_locationID.json",2)
 
+        self.Dijkstra_all()
         print('deleting')
 
     @classmethod
@@ -619,8 +620,6 @@ class Graph():
         self.dd_graph[neighbour_ID]["Neighbour_head"][vertex_ID] = neighbour_adj_heading
         print("Neighbour {} added to {} with distance {} and bearing {}\n".format(neighbour_ID, vertex_ID, adj_dist, adj_heading))
 
-
-
     def add_new_neighbours(self, vertex_ID):
         while True:
             print("Enter Neighbour Vertex ID: ")
@@ -658,10 +657,10 @@ class Graph():
                 print("Invalid input\n")
 
     def add_existing_neighbours(self, vertex_ID):
-        already_neighbours = self.dd_graph[vertex_ID]["Neighbour"]
+        already_neighbours = list(self.dd_graph[vertex_ID]["Neighbour"].keys())
         # Selection vertices must not already be neighbours, nor can the vertex be a neighbour to itself
-        vert_set = self.dd_graph.keys() - already_neighbours.keys() - {vertex_ID}
-        vert_list = list(vert_set)
+        vert_list = list(self.dd_graph.keys() - already_neighbours - {vertex_ID})
+        #vert_list = list(vert_set)
         if len(vert_list) == 0:
             print("No neighbours to add!\n")
             return
@@ -819,9 +818,6 @@ class Graph():
             else:
                 print("Invalid input\n")
 
-
-
-
     def add_node_description(self, vertex):
         if self.dd_graph[vertex].get("Description") != None:
             print("Update description\n")
@@ -877,6 +873,11 @@ class Graph():
 
         return djk_dict
 
+    def Dijkstra_all(self):
+        #allsp=Json_OS_ProcessingFunctions.load_file_json('Lookup_directory.json',2)
+        for vertid in self.dd_graph:
+            self.Dijkstra_modified(vertid)
+
     def Dijkstra_externalpoints(self, startpoint):
         pass
 
@@ -889,7 +890,6 @@ class Graph():
 
     def Ant_colony(self, source):
         pass
-
 
 #_PATH OUTPUT FUNCTIONS_#
 
@@ -929,4 +929,3 @@ class Graph():
     def show_route(self, ls_sol):
         for i in ls_sol:
             print(i, "\n")
-
