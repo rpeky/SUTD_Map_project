@@ -717,14 +717,23 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {},
-        "Connection_Point": false,
+        "Connected_vertex": {
+            "Building_2_Level_2_LIFT__LOBBY_J": "Building_2_Level_2.json",
+            "LEVEL_1_Level_1_LIFT__LOBBY_J": "LEVEL_1_Level_1.json"
+        },
+        "Connection_Point": true,
         "Coordinates": [
             0,
             0
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_2_LIFT__LOBBY_J": 4,
+            "LEVEL_1_Level_1_LIFT__LOBBY_J": 6
+        },
+        "Neighbour_head": {
+            "Building_2_Level_2_LIFT__LOBBY_J": 265,
+            "LEVEL_1_Level_1_LIFT__LOBBY_J": 265
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -734,14 +743,23 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {},
-        "Connection_Point": false,
+        "Connected_vertex": {
+            "Building_2_Level_2_LIFT__LOBBY_E": "Building_2_Level_2.json",
+            "LEVEL_1_Level_1_LIFT__LOBBY_E": "LEVEL_1_Level_1.json"
+        },
+        "Connection_Point": true,
         "Coordinates": [
             0,
             0
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_2_LIFT__LOBBY_E": 4,
+            "LEVEL_1_Level_1_LIFT__LOBBY_E": 5
+        },
+        "Neighbour_head": {
+            "Building_2_Level_2_LIFT__LOBBY_E": 270,
+            "LEVEL_1_Level_1_LIFT__LOBBY_E": 270
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -751,14 +769,23 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {},
-        "Connection_Point": false,
+        "Connected_vertex": {
+            "Building_2_Level_2_LIFT__LOBBY_F": "Building_2_Level_2.json",
+            "LEVEL_1_Level_1_LIFT__LOBBY_F": "LEVEL_1_Level_1.json"
+        },
+        "Connection_Point": true,
         "Coordinates": [
             0,
             0
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_2_LIFT__LOBBY_F": 4,
+            "LEVEL_1_Level_1_LIFT__LOBBY_F": 6
+        },
+        "Neighbour_head": {
+            "Building_2_Level_2_LIFT__LOBBY_F": 270,
+            "LEVEL_1_Level_1_LIFT__LOBBY_F": 270
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -1126,7 +1153,7 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": false,
+        "Connection_Point": true,
         "Coordinates": [
             0,
             0
@@ -1143,7 +1170,7 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": false,
+        "Connection_Point": true,
         "Coordinates": [
             0,
             0
@@ -1160,7 +1187,7 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": false,
+        "Connection_Point": true,
         "Coordinates": [
             0,
             0
@@ -1177,7 +1204,7 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": false,
+        "Connection_Point": true,
         "Coordinates": [
             0,
             0
@@ -1194,7 +1221,7 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": false,
+        "Connection_Point": true,
         "Coordinates": [
             0,
             0
@@ -1211,7 +1238,7 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": false,
+        "Connection_Point": true,
         "Coordinates": [
             0,
             0

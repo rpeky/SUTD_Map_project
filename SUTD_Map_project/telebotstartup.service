@@ -1,0 +1,13 @@
+[Unit]
+Description=Mapping project telegram bot interface
+After=network.target
+
+[Service]
+WorkingDirectory=/home/mappi/SUTD_Map_project/SUTD_Map_project/
+ExecStart=/usr/bin/python3 /home/mappi/SUTD_Map_project/SUTD_Map_project/telebot.py
+StandardOutput=append:/home/mappi/SUTD_Map_project/SUTD_Map_project/Log/telebot.log
+StandardError=append:/home/mappi/SUTD_Map_project/SUTD_Map_project/Log/telebot.log
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
