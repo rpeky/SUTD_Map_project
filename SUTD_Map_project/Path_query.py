@@ -286,6 +286,15 @@ class Query():
     def pathfind_long_appended_print(self):
         print(Json_OS_ProcessingFunctions.load_file_json('supermap.json',0))
 
+    def bfs_supermap(self,source,dest):
+        pass
+
+    def genetic_supermap(self,source):
+        pass
+
+    def antcolony(self, source, dest):
+        pass
+
     def path_find(self):
         print("Pathfinding tool\n")
 
