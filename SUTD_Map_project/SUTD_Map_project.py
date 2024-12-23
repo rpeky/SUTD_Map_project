@@ -123,6 +123,11 @@ def print_supermap():
     q = Path_query.Query()
     q.pathfind_long_rundijk_supermap()
 
+def superdijkstra():
+    dd_supermap=None
+    pass
+
+
 def main():
     cl_s="\n"*100
     validate_lookupdir()
