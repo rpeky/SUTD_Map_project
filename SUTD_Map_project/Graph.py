@@ -953,16 +953,31 @@ class Graph():
             self.Dijkstra_modified(vertid)
 
     def Dijkstra_externalpoints(self, startpoint):
+        #probably can depreciate if we are using dijkstra all, worth trying if we do not want to use the super map json file
         pass
 
     def Floyd_Warshall(self, source):
+        #alternative search algo
+        pass
+
+    def bfs(self, source, dest):
+        #might work on a small scale in the level maps, data set should be small enough to try, dijkstras might be overkill
         pass
 
     #heuristics
     def A_star(self, source, destination):
+        #consider using the coordinate general direction to suggest the path to take
+        #possibly not very effective considering the figure 8 shape of most floors, might recommend an inferior path?
+        #also not likely to be useful in the super map
+        #to consider use in level 1, might have the greatest use there
         pass
 
     def Ant_colony(self, source):
+        #can consider, need to figure out how it works
+        pass
+
+    def genetic_search(self, source):
+        #run from every source to see which path will be the best to any other path??
         pass
 
 #_PATH OUTPUT FUNCTIONS_#

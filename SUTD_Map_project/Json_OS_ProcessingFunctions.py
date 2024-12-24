@@ -25,7 +25,7 @@ def save_file_json(tosave, filename, folder_idx):
     full_path = os.path.join(newdir, filename)
     with open(full_path, 'w') as outfile:
         json.dump(tosave, outfile, sort_keys=True, indent=4, ensure_ascii=False)
-    generate_logfile("Appended {} to {}".format(tosave, filename))
+    #generate_logfile("Appended {} to {}".format(tosave, filename))
 
 def load_file_json(filename, folder_idx):
     cwd = os.getcwd()
@@ -84,7 +84,7 @@ def rebuild_lookupdir():
     if (rebuild != lkdict):
         print("override original with rebuild dict")
         save_file_json(rebuild,"Lookup_directory.json",2)
-        generate_logfile('Replaced {} with {}'.format(lkdict,rebuild))
+        #generate_logfile('Replaced {} with {}'.format(lkdict,rebuild))
     else:
         print("Validated lookup ref, no errors to correct")
 
@@ -110,7 +110,7 @@ def rebuild_lookupcon():
     if (rebuildlcon != lkdict):
         print("override original with rebuild dict")
         save_file_json(rebuildlcon,"Lookup_connections.json",2)
-        generate_logfile('Replaced {} with {}'.format(lkdict,rebuildlcon))
+        #generate_logfile('Replaced {} with {}'.format(lkdict,rebuildlcon))
 
     else:
         print("Validated lookup connections, no errors to correct")
@@ -137,7 +137,7 @@ def rebuild_locationID():
     if (rebuildlid != lkdict):
         print("override original with rebuild dict")
         save_file_json(rebuildlid,"Lookup_locationID.json",2)
-        generate_logfile('Replaced {} with {}'.format(lkdict,rebuildlid))
+        #generate_logfile('Replaced {} with {}'.format(lkdict,rebuildlid))
 
     else:
         print("Validated locatio IDs, no errors to correct")
@@ -151,7 +151,7 @@ def generate_supermap():
         generate_logfile('Added new supermap')
     else:
         oldsupermap = load_file_json(".supermap.json",0)
-        generate_logfile('Updating supermap, initial map {}'.format(oldsupermap))
+        #generate_logfile('Updating supermap, initial map {}'.format(oldsupermap))
 
     supermap_dd = dict()
 
@@ -160,5 +160,5 @@ def generate_supermap():
             if not entry.name.startswith('.') and entry.is_file():
                 supermap_dd.update(load_file_json(entry,0))
     save_file_json(supermap_dd,".supermap.json",0)
-    generate_logfile('Generated new supermap, values:\n{}'.format(supermap_dd))
+    #generate_logfile('Generated new supermap, values:\n{}'.format(supermap_dd))
     print('Generated new supermap')

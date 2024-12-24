@@ -239,52 +239,81 @@ class Query():
 
     #to rewrite to fit the new storage format of graph
     def pathfind_long_rundijk_supermap(self):
+        print("Running supermap search")
         superdd = Json_OS_ProcessingFunctions.load_file_json('.supermap.json',0)
-        dd_djk = dict()
-        vtxs = set(superdd)
-        sp = None
-        for vtx in vtxs:
-            if(sp != None):
-                dd_djk[vtx] = (float('inf'),[])
-            else:
-                curr_vtx = vtx
-                dd_djk[vtx] = (0,[])
-        visited_vtxs = set()
-        while True:
-            #set as visited
-            visited_vtxs.add(curr_vtx)
-            #set adjacent vtx
-            adj_vtx = [i for i in superdd[curr_vtx]["Neighbour"].keys() if i in vtxs]
-            #update distance
-            for adj in adj_vtx:
-                #store distance and path to compare
-                old_dist = dd_djk[adj][0]
-                old_path = dd_djk[adj][1]
+        if not superdd:
+            raise VlaueError("Empty graph, please input stuff")
 
-                #calculate new distance for the current check
-                new_dist = dd_djk[curr_vtx][0] + superdd[curr_vtx]["Neighbour"][adj]
-                new_path = dd_djk[curr_vtx][1] + [curr_vtx]
+        dd_sol=dict()
 
-                #check diff
-                if new_dist < old_dist:
-                    dd_djk[adj] = (new_dist, new_path)
+        vtxs=set(superdd)
 
-            curr_vtx = None
-            curr_dist = float('inf')
+        for sp in vtxs:
+            print(f"Starting Dijkstras from {sp}")
+            dd_djk=dict()
+            #set initial values
+            for vtx in vtxs:
+                if vtx==sp:
+                    dd_djk[vtx]=(0,[])
+                    curr_vtx=vtx
+                else:
+                    dd_djk[vtx]=(float('inf'),[])
+            #set to check which vertices have been visited
+            visited_vtxs=set()
 
-            #compare which distance is shortest and set value for next interation
-            for vtx, tupstore in dd_djk.items():
-                if (vtx not in visited_vtxs) and (tupstore[0] < curr_dist):
-                    curr_vtx = vtx
-                    curr_dist = tupstore[0]
-            #end condition, no more vtx to check
-            if curr_vtx == None:
-                break
-        Json_OS_ProcessingFunctions.save_file_json(dd_djk,".processed_dijk_supermap.json",0)
-        #return dd_djk
+            #dijkstras
+            while True:
+                #end con
+                if len(visited_vtxs)==len(vtxs):
+                    break
+
+                #set current as visited
+                visited_vtxs.add(curr_vtx)
+                #find neighbours
+                adj_vtx=[i for i in superdd[curr_vtx]["Neighbour"].keys() if i in vtxs]
+                
+                for adj in adj_vtx:
+                    #find old values to compare
+                    print(f"check path values from {curr_vtx} to {adj}")
+                    old_dist=dd_djk[adj][0]
+                    old_path=dd_djk[adj][1]
+
+                    #check new path values to compare
+                    new_dist=dd_djk[curr_vtx][0] + superdd[curr_vtx]["Neighbour"][adj]
+                    new_path=dd_djk[curr_vtx][1] + [curr_vtx, adj]
+
+                    #set new values if smaller
+                    if new_dist<old_dist:
+                        dd_djk[adj]=(new_dist,new_path)
+
+                curr_vtx=None
+                curr_dist=float('inf')
+                for vtx,(dist,_) in dd_djk.items():
+                    if vtx not in visited_vtxs and dist<curr_dist:
+                        curr_vtx = vtx
+                        curr_dist = dist
+
+                if curr_vtx is None:
+                    break
+
+            dd_sol[sp]=dd_djk
+
+        Json_OS_ProcessingFunctions.save_file_json(dd_sol, '.processed_dijk_supermap.json',0)
+
+        print("Completed super dijkstras, solution below")
+        print(dd_sol)
 
     def pathfind_long_appended_print(self):
         print(Json_OS_ProcessingFunctions.load_file_json('supermap.json',0))
+
+    def bfs_supermap(self,source,dest):
+        pass
+
+    def genetic_supermap(self,source):
+        pass
+
+    def antcolony(self, source, dest):
+        pass
 
     def path_find(self):
         print("Pathfinding tool\n")
