@@ -142,6 +142,21 @@ class Graph():
         else:
             return obj
 
+    @staticmethod
+    def distance_heading_to_dx_dy(distance, heading):
+        dx = distance * sin(radians(heading))
+        dy = distance * cos(radians(heading))
+        return dx, dy
+
+    @staticmethod
+    def dx_dy_to_distance_heading(dx, dy):
+        distance = (dx ** 2 + dy ** 2) ** 0.5
+        heading = 90 - degrees(atan2(dy, dx))
+        if dx < 0 and dy > 0:
+            heading += 360
+        return distance, heading
+
+
 
 #_GRAPH TOOLS_#
     #to think of more conditions of the vertex
@@ -177,12 +192,7 @@ class Graph():
 
     def remove_vertex(self):
         while True:
-            vertex_list = list(self.dd_graph.keys())
-            if len(vertex_list) == 0:
-                print("Empty graph, returning to graph generating tool")
-                return
-            prompt = "index of vertex to remove"
-            vertex_ID = Graph.query("list", prompt, options=vertex_list, quit_option=True)
+            vertex_ID = self.query_vertex(is_existing_vertex=True, prompt="index of vertex to remove")
             if vertex_ID == "quit":
                 print("returning to graph generating tool")
                 return
@@ -239,11 +249,30 @@ class Graph():
 
     # UI portion for adding vertex information
     #vertex name making
-    def query_vertex(self):
-        #to add existing vertex selection
-        q_pf=self.query_vertex_Prefix()
-        q_id=self.query_vertex_ID()
-        return self.localname+q_pf+"_"+q_id
+    def query_vertex(self, is_existing_vertex=False, prompt="vertex of choice"):
+        while True:
+            # query new vertex
+            if is_existing_vertex == False:
+                q_pf = self.query_vertex_Prefix()
+                q_id_number = self.query_vertex_ID_number()
+                q_id = self.localname + q_pf + "_" + q_id_number
+                if q_id in self.dd_graph:
+                    print("Vertex ID {} is already taken, please try another ID".format(q_id))
+                else:
+                    return q_id
+
+            # query existing vertex
+            else:
+                if len(self.dd_graph) == 0:
+                    print("Empty graph, returning to graph generating tool")
+                    return "quit"
+                return Graph.query(
+                    query_type="list",
+                    prompt=prompt,
+                    options=sorted(list(self.dd_graph.keys()))
+                )
+
+
 
     def query_vertex_Prefix(self):
         pref = ""
@@ -262,8 +291,8 @@ class Graph():
         heading = format(heading,'02d')
         return heading
 
-    def query_vertex_ID(self):
-        prompt = "ID of vertex"
+    def query_vertex_ID_number(self):
+        prompt = "ID number of vertex"
         vertex_ID = Graph.query(query_type="text", prompt=prompt, confirm_selected_option=True)
         return vertex_ID
 
@@ -340,17 +369,12 @@ class Graph():
 #_MODIFIER FUNCTIONS_#
 
     def modify_display_existing_vertex(self):
-        vertex_list=list(self.dd_graph.keys())
-        if len(vertex_list)==0:
-            print("Empty graph, returning to graph generating tool")
-            return
-        prompt = "index of vertex to modify"
-        vertex = Graph.query("list", prompt, options=vertex_list, quit_option=True)
-        if vertex == "quit":
+        vertex_ID = self.query_vertex(is_existing_vertex=True, prompt="vertex ID to modify")
+        if vertex_ID == "quit":
             print("returning to graph generating tool")
             return
         else:
-            self.modify_display_vertex(vertex)
+            self.modify_display_vertex(vertex_ID)
 
 
     def modify_display_vertex(self, vertex):
@@ -375,7 +399,7 @@ class Graph():
             self.add_new_neighbours,
             self.add_existing_neighbours,
             self.remove_existing_neighbours,
-            self.modify_existing_neighbours_headings,
+            self.set_position_by_distance_heading,
             self.add_external_connectionpoint,
             self.add_node_description,
             self.set_coordinates,
@@ -393,10 +417,8 @@ class Graph():
                 self.print_current_graph_state()
 
     def change_vertex_to_modify_display(self, vertex):
-        vert_list = list(self.dd_graph.keys())
-        prompt = "index of new vertex to modify/display"
-        new_vertex = Graph.query("list", prompt, vert_list)
-        return new_vertex
+        return self.query_vertex(is_existing_vertex=True, prompt="index of new vertex to modify/display")
+
 
     #used to modify the average density based on time, set higher on certain places on certain times
     #used to normalise routes based on density (i.e. a route might be shorter but have more people vs slightly longer route with no people)
@@ -583,17 +605,14 @@ class Graph():
     def add_neighbour(self, vertex_ID, neighbour_ID):
         vertex_x, vertex_y = self.dd_graph[vertex_ID]["Coordinates"]
         neighbour_x, neighbour_y = self.dd_graph[neighbour_ID]["Coordinates"]
-
         cluster = self.get_cluster(neighbour_ID)
+
         # Vertex and neighbour are in the same cluster
         # This means their positions relative to each other are already constrained
         # Hence we can automatically calculate distance and heading from vertex to neighbour without querying user
         if vertex_ID in cluster:
             dx, dy = neighbour_x - vertex_x, neighbour_y - vertex_y
-            adj_dist = (dx ** 2 + dy ** 2) ** 0.5
-            adj_heading = 90 - degrees(atan2(dy, dx))
-            if dy > 0 and dx < 0:
-                adj_heading += 360
+            adj_dist, adj_heading = Graph.dx_dy_to_distance_heading(dx, dy)
 
         # Vertex and neighbour are in different clusters
         # Need to query distance and heading because we don't know neighbour's position relative to vertex
@@ -602,7 +621,7 @@ class Graph():
             adj_heading = self.query_neighbour_heading()
 
             # Using vertex's coordinates and its distance & heading to neighbour, calculate neighbour's coordinates
-            dx, dy = adj_dist * sin(radians(adj_heading)), adj_dist * cos(radians(adj_heading))
+            dx, dy = Graph.distance_heading_to_dx_dy(adj_dist, adj_heading)
             neighbour_new_x, neighbour_new_y = dx + vertex_x, dy + vertex_y
 
             # Shift all the vertices in the neighbour's cluster by the same distance that we shift the neighbour
@@ -627,7 +646,8 @@ class Graph():
 
             # query vertex again if its already taken
             if neighbour_ID in self.dd_graph.keys():
-                print("Vertex ID is already taken, try another ID\n")
+                print("Vertex ID is already taken, try another ID")
+                print()
                 continue
 
             # Confirm neighbour ID to be added
@@ -714,7 +734,61 @@ class Graph():
             visiting = to_visit.pop()
             visited.add(visiting)
             to_visit |= self.dd_graph[visiting]["Neighbour"].keys() - visited
-        return visited
+        cluster = visited if include_current_vertex == True else visited - {vertex_ID}
+        return cluster
+
+
+    def set_position_by_distance_heading(self, vertex_ID):
+        other_vertex_type = Graph.query(
+            query_type="list",
+            prompt="type of other vertex relative to which we modify current vertex position",
+            options=["neighbour", "vertex in cluster"]
+        )
+        if other_vertex_type == "neighbour":
+            other_vertex_ID = Graph.query(
+                query_type="list",
+                prompt="neighbour whose distance and heading to modify",
+                options=list(self.dd_graph[vertex_ID]["Neighbour"].keys())
+            )
+        else: # other_vertex_type == "vertex in cluster"
+            other_vertex_ID = Graph.query(
+                query_type="list",
+                prompt="vertex whose distance and heading to modify position",
+                options=list(self.get_cluster(vertex_ID))
+            )
+
+        adj_dist = self.query_neighbour_distance()
+        adj_heading = self.query_neighbour_heading()
+
+        confirm = input("Confirm distance {} and heading {} from {} to {}? y/n: ".format(adj_dist, adj_heading, vertex_ID, other_vertex_ID))
+        print()
+
+        if confirm in selection_yes:
+
+            # Change vertex coordinates
+            dx, dy = Graph.distance_heading_to_dx_dy(adj_dist, adj_heading)
+            other_vertex_x, other_vertex_y = self.dd_graph[other_vertex_ID]["Coordinates"]
+            vertex_x, vertex_y = other_vertex_x - dx, other_vertex_y - dy
+            self.dd_graph[vertex_ID]["Coordinates"] = (vertex_x, vertex_y)
+
+            # For all the vertex's neighbours, change the distance and heading of vertex relative to them
+            for neighbour_ID in self.dd_graph[vertex_ID]["Neighbour"].keys():
+                neighbour_x, neighbour_y = self.dd_graph[neighbour_ID]["Coordinates"]
+                adj_dist, adj_heading = Graph.dx_dy_to_distance_heading(neighbour_x - vertex_x, neighbour_y - vertex_y)
+                self.dd_graph[vertex_ID]["Neighbour"][neighbour_ID] = adj_dist
+                self.dd_graph[vertex_ID]["Neighbour_head"][neighbour_ID] = adj_heading
+                neighbour_adj_dist = adj_dist
+                neighbour_adj_heading = adj_heading + 180 if adj_heading < 180 else adj_heading - 180
+                self.dd_graph[neighbour_ID]["Neighbour"][vertex_ID] = neighbour_adj_dist
+                self.dd_graph[neighbour_ID]["Neighbour_head"][vertex_ID] = neighbour_adj_heading
+
+        elif confirm in selection_no:
+            return
+
+        else:
+            print("Invalid input")
+
+
 
 
     def modify_existing_neighbours_headings(self, vertex_ID):
