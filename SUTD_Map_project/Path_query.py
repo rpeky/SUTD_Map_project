@@ -301,5 +301,23 @@ class Query():
             pass
             #self.pathfind_long_appendallmaps()
 
-    def translate_internalnameforoutput(self):
-        pass
+    def translate_internalnameforoutput(self, raw_data = None):
+        '''
+        Turn raw_data with underscore formatting to clean capitalized formatting.
+        '''
+        if raw_data is None:
+            raw_data = self.dd_locationid
+
+        data = {}
+        #List of Names/Acronyms that need to be in AllCaps
+        acronyms = ["SUTD", "ZJU", "NTU", "NUS", "IT"]
+
+        for room_code in raw_data:
+            #Get name after __
+            room_name = raw_data[room_code].split('__')[1]
+            #Format Name: Capitalize
+            room_name = ' '.join(word.capitalize() if word.upper() not in acronyms else word.upper() for word in room_name.split('_'))
+
+            data[room_code] = room_name
+
+        return data
