@@ -11,7 +11,7 @@ def check_folders_exist():
         if os.path.isdir(folder):
             continue
         os.mkdir(folder)
-        generate_logfile("mkdir {}".format(folder))
+        #generate_logfile("mkdir {}".format(folder))
 
 def check_file_exist(filename, folder_idx):
     cwd = os.getcwd()
@@ -61,7 +61,7 @@ def rebuild_lookupdir():
     cwd = os.getcwd()
     lkupdir = os.path.join(cwd, 'LookUp')
     masdir = os.path.join(cwd, 'Master')
-    logdir = os.path.join(cwd, 'Log')
+    #logdir = os.path.join(cwd, 'Log')
 
     lkdict = load_file_json("Lookup_directory.json", 2)
     lkupcount = 0
@@ -148,7 +148,8 @@ def generate_supermap():
     masdir = os.path.join(cwd, 'Master')
     fullpath_supermap = os.path.join(masdir, ".supermap.json")
     if not os.path.isfile(fullpath_supermap):
-        generate_logfile('Added new supermap')
+        pass
+        #generate_logfile('Added new supermap')
     else:
         oldsupermap = load_file_json(".supermap.json",0)
         #generate_logfile('Updating supermap, initial map {}'.format(oldsupermap))
