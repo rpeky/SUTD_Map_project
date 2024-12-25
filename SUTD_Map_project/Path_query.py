@@ -237,7 +237,10 @@ class Query():
         end_dd = self.convertloc_todd(eloc)
         #do dijkstras on the supermap to find the shortest map crossing - assumption that crosssing less maps means faster path search
 
-    #to rewrite to fit the new storage format of graph
+
+    #evaluates every solution from every location to every other location
+    #naive O(1) final solution, let cost of running dijkstras to every other location be M, calculation cost should be O(M^2) -> for n locations, search to every n location
+    #set n = ##number of nodes in the final super map## to validate later (if theres time)
     def pathfind_long_rundijk_supermap(self):
         print("Running supermap search")
         superdd = Json_OS_ProcessingFunctions.load_file_json('.supermap.json',0)
