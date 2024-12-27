@@ -283,7 +283,7 @@ class Query():
 
                     #check new path values to compare
                     new_dist=dd_djk[curr_vtx][0] + superdd[curr_vtx]["Neighbour"][adj]
-                    new_path=dd_djk[curr_vtx][1] + [curr_vtx, adj]
+                    new_path=dd_djk[curr_vtx][1] + [curr_vtx]
 
                     #set new values if smaller
                     if new_dist<old_dist:
