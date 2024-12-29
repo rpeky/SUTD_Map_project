@@ -1,5 +1,7 @@
 import time
 import json
+import copy
+import os
 
 import Graph
 import User
@@ -128,26 +130,50 @@ def superdijkstra():
     pass
 
 
+def update_vertex_structure():
+    # Get all floorplan json files in Master
+    master_dir = os.path.join(os.getcwd(), 'Master')
+    master_files = [os.path.join(master_dir, file) for file in os.listdir(master_dir)]
+    for file in master_files:
+
+        # Check if each vertex dictionary follows the template Graph.vertex_template in Graph.py
+        with open(file, r'r+') as in_file:
+            map = json.load(in_file)
+            new_map = copy.deepcopy(map)
+            for vertex in map:
+                for key, value in Graph.Graph.vertex_template.items():
+                    if key not in vertex:
+                        new_map[vertex][key] = copy.deepcopy(value)
+
+        # Save all the new vertex dictionaries
+        with open(file, r'w+') as out_file:
+            json.dump(new_map, out_file, indent=4)
+    print("\nAll json files in Master updated with new vertex dictionary structure\n")
+
+
 def main():
     cl_s="\n"*100
     validate_lookupdir()
-    options = {
-            '0': runpq,
-            '1': graphtool_ini,
-            '2': validate_lookupdir,
-            '3': print_supermap
-            }
+    options = [
+        ('pathfinding', runpq),
+        ('graph mapping tool', graphtool_ini),
+        ('lookup directory validation', validate_lookupdir),
+        ('supermap generation', print_supermap),
+        ('update vertex dictionary structure', update_vertex_structure)
+    ]
     while True:
         try:
             print(cl_s)
             print("SUTD Map Project 2023/2024 Default Page\n")
-            print("0 - Run Pathfinding\n1 - Run Graph mapping tool\n2 - Run Lookup directory validation\n3 - Run supermap generation\n")
+            for i, (task, function) in enumerate(options):
+                print(f"{i} - Run {task}")
+            # print("0 - Run Pathfinding\n1 - Run Graph mapping tool\n2 - Run Lookup directory validation\n3 - Run supermap generation\n")
             ct=input("Enter q to exit mapping tool\nSelect tool to run: ")
             if ct in quits:
                 print("Terminating Program")
                 break
-            elif ct in options.keys():
-                options[ct]()
+            elif int(ct) < len(options):
+                options[int(ct)][1]()
         except ValueError:
             print("Invalid input")
 
