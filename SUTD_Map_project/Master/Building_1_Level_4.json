@@ -3,26 +3,18 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {
-            "Building_1_Level_2_LIFT__LOBBY_C": "Building_1_Level_2.json",
-            "Building_1_Level_3_LIFT__LOBBY_C": "Building_1_Level_3.json",
-            "LEVEL_1_Level_1_LIFT__LOBBY_C": "LEVEL_1_Level_1.json"
-        },
-        "Connection_Point": true,
-        "Neighbour": {
-            "Building_1_Level_2_LIFT__LOBBY_C": 2.0,
-            "Building_1_Level_3_LIFT__LOBBY_C": 2.0,
-            "LEVEL_1_Level_1_LIFT__LOBBY_C": 2.0
-        },
-        "Neighbour_head": {
-            "Building_1_Level_2_LIFT__LOBBY_C": 0,
-            "Building_1_Level_3_LIFT__LOBBY_C": 0,
-            "LEVEL_1_Level_1_LIFT__LOBBY_C": 0
-        },
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
-        "Visited": 0
+        "Visited": 0,
+        "Coordinates": [
+            0,
+            0
+        ]
     },
     "Building_1_Level_4_ROOM__CAPSTON_CONFERENCE_ROOM_1": {
         "Access_Clearance": [],
@@ -32,10 +24,14 @@
         "Connection_Point": false,
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "1.407",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
-        "Visited": 0
+        "Visited": 0,
+        "Coordinates": [
+            0,
+            0
+        ]
     },
     "Building_1_Level_4_ROOM__COHORT_CLASSROOM_3": {
         "Access_Clearance": [],
@@ -45,10 +41,14 @@
         "Connection_Point": false,
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "1.413",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
-        "Visited": 0
+        "Visited": 0,
+        "Coordinates": [
+            0,
+            0
+        ]
     },
     "Building_1_Level_4_ROOM__SPARKS_STAFF_LOUNGE": {
         "Access_Clearance": [],
@@ -58,10 +58,14 @@
         "Connection_Point": false,
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "1.404",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
-        "Visited": 0
+        "Visited": 0,
+        "Coordinates": [
+            0,
+            0
+        ]
     },
     "Building_1_Level_4_ROOM__THINK_TANK_6": {
         "Access_Clearance": [],
@@ -71,10 +75,14 @@
         "Connection_Point": false,
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "1.408",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
-        "Visited": 0
+        "Visited": 0,
+        "Coordinates": [
+            0,
+            0
+        ]
     },
     "Building_1_Level_4_ROOM__THINK_TANK_7": {
         "Access_Clearance": [],
@@ -84,9 +92,13 @@
         "Connection_Point": false,
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "1.409",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
-        "Visited": 0
+        "Visited": 0,
+        "Coordinates": [
+            0,
+            0
+        ]
     }
 }

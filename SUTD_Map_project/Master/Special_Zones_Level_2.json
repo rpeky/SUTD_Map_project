@@ -5,16 +5,16 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
-        "Neighbour": {
-            "Special_Zones_Level_2_BUILDING_SPORTS_AND_RECREATION_CENTRE": 4.0
-        },
-        "Neighbour_head": {
-            "Special_Zones_Level_2_BUILDING_SPORTS_AND_RECREATION_CENTRE": 0
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
-        "Visited": 0
+        "Visited": 0,
+        "Coordinates": [
+            0,
+            0
+        ]
     },
     "Special_Zones_Level_2_BUILDING_BUILDING_1": {
         "Access_Clearance": [],
@@ -22,18 +22,16 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
-        "Neighbour": {
-            "Special_Zones_Level_2_BUILDING_BUILDING_2": 4.0,
-            "Special_Zones_Level_2_BUILDING_BUILDING_3": 4.0
-        },
-        "Neighbour_head": {
-            "Special_Zones_Level_2_BUILDING_BUILDING_2": 0,
-            "Special_Zones_Level_2_BUILDING_BUILDING_3": 0
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
-        "Visited": 0
+        "Visited": 0,
+        "Coordinates": [
+            0,
+            0
+        ]
     },
     "Special_Zones_Level_2_BUILDING_BUILDING_2": {
         "Access_Clearance": [],
@@ -41,18 +39,16 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
-        "Neighbour": {
-            "Special_Zones_Level_2_BUILDING_BUILDING_1": 4.0,
-            "Special_Zones_Level_2_BUILDING_BUILDING_3": 4.0
-        },
-        "Neighbour_head": {
-            "Special_Zones_Level_2_BUILDING_BUILDING_1": 18,
-            "Special_Zones_Level_2_BUILDING_BUILDING_3": 0
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
-        "Visited": 0
+        "Visited": 0,
+        "Coordinates": [
+            0,
+            0
+        ]
     },
     "Special_Zones_Level_2_BUILDING_BUILDING_3": {
         "Access_Clearance": [],
@@ -60,18 +56,16 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
-        "Neighbour": {
-            "Special_Zones_Level_2_BUILDING_BUILDING_1": 4.0,
-            "Special_Zones_Level_2_BUILDING_BUILDING_2": 4.0
-        },
-        "Neighbour_head": {
-            "Special_Zones_Level_2_BUILDING_BUILDING_1": 18,
-            "Special_Zones_Level_2_BUILDING_BUILDING_2": 18
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
-        "Visited": 0
+        "Visited": 0,
+        "Coordinates": [
+            0,
+            0
+        ]
     },
     "Special_Zones_Level_2_BUILDING_SPORTS_AND_RECREATION_CENTRE": {
         "Access_Clearance": [],
@@ -79,15 +73,15 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
-        "Neighbour": {
-            "Special_Zones_Level_2_BUILDING_BLOCK_59": 4.0
-        },
-        "Neighbour_head": {
-            "Special_Zones_Level_2_BUILDING_BLOCK_59": 18
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
-        "Visited": 0
+        "Visited": 0,
+        "Coordinates": [
+            0,
+            0
+        ]
     }
 }
