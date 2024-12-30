@@ -3,22 +3,14 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {
-            "Building_1_Level_3_LIFT__LOBBY_C": "Building_1_Level_3.json",
-            "Building_1_Level_4_LIFT__LOBBY_C": "Building_1_Level_4.json",
-            "LEVEL_1_Level_1_LIFT__LOBBY_C": "LEVEL_1_Level_1.json"
-        },
-        "Connection_Point": true,
-        "Neighbour": {
-            "Building_1_Level_3_LIFT__LOBBY_C": 2.0,
-            "Building_1_Level_4_LIFT__LOBBY_C": 2.0,
-            "LEVEL_1_Level_1_LIFT__LOBBY_C": 2.0
-        },
-        "Neighbour_head": {
-            "Building_1_Level_3_LIFT__LOBBY_C": 0,
-            "Building_1_Level_4_LIFT__LOBBY_C": 0,
-            "LEVEL_1_Level_1_LIFT__LOBBY_C": 0
-        },
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -28,22 +20,14 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {
-            "Building_1_Level_2_LIFT__LOBBY_C": "Building_1_Level_2.json",
-            "Building_1_Level_4_LIFT__LOBBY_C": "Building_1_Level_4.json",
-            "LEVEL_1_Level_1_LIFT__LOBBY_C": "LEVEL_1_Level_1.json"
-        },
-        "Connection_Point": true,
-        "Neighbour": {
-            "Building_1_Level_2_LIFT__LOBBY_C": 2.0,
-            "Building_1_Level_4_LIFT__LOBBY_C": 2.0,
-            "LEVEL_1_Level_1_LIFT__LOBBY_C": 2.0
-        },
-        "Neighbour_head": {
-            "Building_1_Level_2_LIFT__LOBBY_C": 0,
-            "Building_1_Level_4_LIFT__LOBBY_C": 0,
-            "LEVEL_1_Level_1_LIFT__LOBBY_C": 0
-        },
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -53,22 +37,14 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {
-            "Building_1_Level_2_LIFT__LOBBY_C": "Building_1_Level_2.json",
-            "Building_1_Level_3_LIFT__LOBBY_C": "Building_1_Level_3.json",
-            "LEVEL_1_Level_1_LIFT__LOBBY_C": "LEVEL_1_Level_1.json"
-        },
-        "Connection_Point": true,
-        "Neighbour": {
-            "Building_1_Level_2_LIFT__LOBBY_C": 2.0,
-            "Building_1_Level_3_LIFT__LOBBY_C": 2.0,
-            "LEVEL_1_Level_1_LIFT__LOBBY_C": 2.0
-        },
-        "Neighbour_head": {
-            "Building_1_Level_2_LIFT__LOBBY_C": 0,
-            "Building_1_Level_3_LIFT__LOBBY_C": 0,
-            "LEVEL_1_Level_1_LIFT__LOBBY_C": 0
-        },
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -80,9 +56,13 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "1.407",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -93,9 +73,13 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "1.413",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -106,9 +90,13 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "1.404",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -119,9 +107,13 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "1.408",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -132,9 +124,13 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "1.409",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -146,15 +142,11 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            6.553216354311934,
-            4.588611490808369
+            0,
+            0
         ],
-        "Neighbour": {
-            "Building_2_Level_2_INTER__SPIRAL_STAIRS": 8
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_INTER__SPIRAL_STAIRS": 235
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -303,15 +295,11 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            56.65797985667433,
-            -0.9396926207859024
+            0,
+            0
         ],
-        "Neighbour": {
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_16": 15
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_16": 270
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -324,15 +312,11 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            -9.0,
-            -1.6532731788489267e-15
+            0,
+            0
         ],
-        "Neighbour": {
-            "Building_2_Level_2_INTER__LOBBY_F": 9
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_INTER__LOBBY_F": 90
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -413,17 +397,11 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            41.65797985667433,
-            -0.9396926207859034
+            0,
+            0
         ],
-        "Neighbour": {
-            "Building_2_Level_2_ENTRANCE__SMOKE_STOP_LOBBY_E": 15,
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_16_2": 8
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_ENTRANCE__SMOKE_STOP_LOBBY_E": 90,
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_16_2": 270
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -436,17 +414,11 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            33.65797985667433,
-            -0.9396926207859049
+            0,
+            0
         ],
-        "Neighbour": {
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_16": 8,
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_17": 3
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_16": 90,
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_17": 270
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -459,17 +431,11 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            30.65797985667433,
-            -0.939692620785905
+            0,
+            0
         ],
-        "Neighbour": {
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_16_2": 3,
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_17_2": 6
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_16_2": 90,
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_17_2": 270
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -482,17 +448,11 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            24.65797985667433,
-            -0.9396926207859061
+            0,
+            0
         ],
-        "Neighbour": {
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_17": 6,
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_18": 3
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_17": 90,
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_18": 270
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -505,17 +465,11 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            21.65797985667433,
-            -0.9396926207859063
+            0,
+            0
         ],
-        "Neighbour": {
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_17_2": 3,
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_18_2": 6
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_17_2": 90,
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_18_2": 270
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -528,17 +482,11 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            15.65797985667433,
-            -0.9396926207859074
+            0,
+            0
         ],
-        "Neighbour": {
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_18": 6,
-            "Building_2_Level_2_INTER__THINK_TANK_18": 1
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_18": 90,
-            "Building_2_Level_2_INTER__THINK_TANK_18": 20
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -551,15 +499,11 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            -5.7340643100229425,
-            4.015035054457322
+            0,
+            0
         ],
-        "Neighbour": {
-            "Building_2_Level_2_INTER__SPIRAL_STAIRS": 7
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_INTER__SPIRAL_STAIRS": 125
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -572,15 +516,11 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            2.0045820831961376,
-            22.912478056110146
+            0,
+            0
         ],
-        "Neighbour": {
-            "Building_2_Level_2_INTER__LOBBY_F": 23
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_INTER__LOBBY_F": 185
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -596,20 +536,8 @@
             0,
             0
         ],
-        "Neighbour": {
-            "Building_2_Level_2_ENTRANCE__SMOKE_STOP_LOBBY_F": 9,
-            "Building_2_Level_2_INTER__CLEAN_ROOM": 23,
-            "Building_2_Level_2_INTER__THINK_TANK_18": 16,
-            "Building_2_Level_2_LIFT__LOBBY_F": 6,
-            "Building_2_Level_2_STAIRS__WOODEN_STAIRS": 4
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_ENTRANCE__SMOKE_STOP_LOBBY_F": 270,
-            "Building_2_Level_2_INTER__CLEAN_ROOM": 5,
-            "Building_2_Level_2_INTER__THINK_TANK_18": 90,
-            "Building_2_Level_2_LIFT__LOBBY_F": 205,
-            "Building_2_Level_2_STAIRS__WOODEN_STAIRS": 90
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -625,18 +553,8 @@
             0,
             0
         ],
-        "Neighbour": {
-            "Building_2_Level_2_ENTRANCE__CANTEEN": 8,
-            "Building_2_Level_2_ENTRANCE__WALKWAY_LINK_DOORS": 7,
-            "Building_2_Level_2_LIFT__LOBBY_E": 11,
-            "Building_2_Level_2_STAIRS__SPIRAL_STAIRS": 5
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_ENTRANCE__CANTEEN": 55,
-            "Building_2_Level_2_ENTRANCE__WALKWAY_LINK_DOORS": 305,
-            "Building_2_Level_2_LIFT__LOBBY_E": 235,
-            "Building_2_Level_2_STAIRS__SPIRAL_STAIRS": 160
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -683,17 +601,11 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            16.0,
-            9.797174393178826e-16
+            0,
+            0
         ],
-        "Neighbour": {
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_18_2": 1,
-            "Building_2_Level_2_INTER__LOBBY_F": 16
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_ENTRANCE__THINK_TANK_18_2": 200,
-            "Building_2_Level_2_INTER__LOBBY_F": 270
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -703,28 +615,14 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {
-            "Building_2_Level_3_LIFT__LOBBY_E": "Building_2_Level_3.json",
-            "Building_2_Level_4_LIFT__LOBBY_E": "Building_2_Level_4.json",
-            "LEVEL_1_Level_1_LIFT__LOBBY_E": "LEVEL_1_Level_1.json"
-        },
-        "Connection_Point": true,
+        "Connected_vertex": {},
+        "Connection_Point": false,
         "Coordinates": [
-            -9.010672487178907,
-            -6.30934079986151
+            0,
+            0
         ],
-        "Neighbour": {
-            "Building_2_Level_2_INTER__SPIRAL_STAIRS": 11,
-            "Building_2_Level_3_LIFT__LOBBY_E": 3,
-            "Building_2_Level_4_LIFT__LOBBY_E": 4,
-            "LEVEL_1_Level_1_LIFT__LOBBY_E": 3
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_INTER__SPIRAL_STAIRS": 55,
-            "Building_2_Level_3_LIFT__LOBBY_E": 270,
-            "Building_2_Level_4_LIFT__LOBBY_E": 270,
-            "LEVEL_1_Level_1_LIFT__LOBBY_E": 270
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -734,25 +632,14 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {
-            "Building_2_Level_4_LIFT__LOBBY_F": "Building_2_Level_4.json",
-            "LEVEL_1_Level_1_LIFT__LOBBY_F": "LEVEL_1_Level_1.json"
-        },
-        "Connection_Point": true,
+        "Connected_vertex": {},
+        "Connection_Point": false,
         "Coordinates": [
-            -2.5357095704441956,
-            -5.4378467222199
+            0,
+            0
         ],
-        "Neighbour": {
-            "Building_2_Level_2_INTER__LOBBY_F": 6,
-            "Building_2_Level_4_LIFT__LOBBY_F": 4,
-            "LEVEL_1_Level_1_LIFT__LOBBY_F": 3
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_INTER__LOBBY_F": 25,
-            "Building_2_Level_4_LIFT__LOBBY_F": 270,
-            "LEVEL_1_Level_1_LIFT__LOBBY_F": 270
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -762,23 +649,14 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {
-            "Building_2_Level_4_LIFT__LIFT_LOBBY_J": "Building_2_Level_4.json",
-            "LEVEL_1_Level_1_LIFT__LOBBY_J": "LEVEL_1_Level_1.json"
-        },
-        "Connection_Point": true,
+        "Connected_vertex": {},
+        "Connection_Point": false,
         "Coordinates": [
             0,
             0
         ],
-        "Neighbour": {
-            "Building_2_Level_4_LIFT__LIFT_LOBBY_J": 4,
-            "LEVEL_1_Level_1_LIFT__LOBBY_J": 3
-        },
-        "Neighbour_head": {
-            "Building_2_Level_4_LIFT__LIFT_LOBBY_J": 265,
-            "LEVEL_1_Level_1_LIFT__LOBBY_J": 260
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -813,7 +691,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "2.207",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -830,7 +708,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "2.204",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -847,7 +725,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "2.208",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -864,7 +742,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "2.205",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -881,7 +759,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "2.206",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -898,7 +776,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "2.209",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -915,7 +793,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "2.204A",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -932,7 +810,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "2.201",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -949,7 +827,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "2.202",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -966,7 +844,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "2.203",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -993,7 +871,7 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": true,
+        "Connection_Point": false,
         "Coordinates": [
             0,
             0
@@ -1010,7 +888,7 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": true,
+        "Connection_Point": false,
         "Coordinates": [
             0,
             0
@@ -1027,7 +905,7 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": true,
+        "Connection_Point": false,
         "Coordinates": [
             0,
             0
@@ -1044,7 +922,7 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": true,
+        "Connection_Point": false,
         "Coordinates": [
             0,
             0
@@ -1061,7 +939,7 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": true,
+        "Connection_Point": false,
         "Coordinates": [
             0,
             0
@@ -1078,17 +956,13 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": true,
+        "Connection_Point": false,
         "Coordinates": [
-            1.7101007166283444,
-            -4.698463103929542
+            0,
+            0
         ],
-        "Neighbour": {
-            "Building_2_Level_2_INTER__SPIRAL_STAIRS": 5
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_INTER__SPIRAL_STAIRS": 340
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -1099,17 +973,13 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": true,
+        "Connection_Point": false,
         "Coordinates": [
-            4.0,
-            2.4492935982947064e-16
+            0,
+            0
         ],
-        "Neighbour": {
-            "Building_2_Level_2_INTER__LOBBY_F": 4
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_INTER__LOBBY_F": 270
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -2054,23 +1924,14 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {
-            "Building_2_Level_2_LIFT__LOBBY_E": "Building_2_Level_2.json",
-            "LEVEL_1_Level_1_LIFT__LOBBY_E": "LEVEL_1_Level_1.json"
-        },
-        "Connection_Point": true,
+        "Connected_vertex": {},
+        "Connection_Point": false,
         "Coordinates": [
             0,
             0
         ],
-        "Neighbour": {
-            "Building_2_Level_2_LIFT__LOBBY_E": 3,
-            "LEVEL_1_Level_1_LIFT__LOBBY_E": 4
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_LIFT__LOBBY_E": 270,
-            "LEVEL_1_Level_1_LIFT__LOBBY_E": 270
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -3406,23 +3267,14 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {
-            "Building_2_Level_2_LIFT__LOBBY_J": "Building_2_Level_2.json",
-            "LEVEL_1_Level_1_LIFT__LOBBY_J": "LEVEL_1_Level_1.json"
-        },
-        "Connection_Point": true,
+        "Connected_vertex": {},
+        "Connection_Point": false,
         "Coordinates": [
             0,
             0
         ],
-        "Neighbour": {
-            "Building_2_Level_2_LIFT__LOBBY_J": 4,
-            "LEVEL_1_Level_1_LIFT__LOBBY_J": 6
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_LIFT__LOBBY_J": 265,
-            "LEVEL_1_Level_1_LIFT__LOBBY_J": 265
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -3432,23 +3284,14 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {
-            "Building_2_Level_2_LIFT__LOBBY_E": "Building_2_Level_2.json",
-            "LEVEL_1_Level_1_LIFT__LOBBY_E": "LEVEL_1_Level_1.json"
-        },
-        "Connection_Point": true,
+        "Connected_vertex": {},
+        "Connection_Point": false,
         "Coordinates": [
             0,
             0
         ],
-        "Neighbour": {
-            "Building_2_Level_2_LIFT__LOBBY_E": 4,
-            "LEVEL_1_Level_1_LIFT__LOBBY_E": 5
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_LIFT__LOBBY_E": 270,
-            "LEVEL_1_Level_1_LIFT__LOBBY_E": 270
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -3458,23 +3301,14 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {
-            "Building_2_Level_2_LIFT__LOBBY_F": "Building_2_Level_2.json",
-            "LEVEL_1_Level_1_LIFT__LOBBY_F": "LEVEL_1_Level_1.json"
-        },
-        "Connection_Point": true,
+        "Connected_vertex": {},
+        "Connection_Point": false,
         "Coordinates": [
             0,
             0
         ],
-        "Neighbour": {
-            "Building_2_Level_2_LIFT__LOBBY_F": 4,
-            "LEVEL_1_Level_1_LIFT__LOBBY_F": 6
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_LIFT__LOBBY_F": 270,
-            "LEVEL_1_Level_1_LIFT__LOBBY_F": 270
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -3842,7 +3676,7 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": true,
+        "Connection_Point": false,
         "Coordinates": [
             0,
             0
@@ -3859,7 +3693,7 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": true,
+        "Connection_Point": false,
         "Coordinates": [
             0,
             0
@@ -3876,7 +3710,7 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": true,
+        "Connection_Point": false,
         "Coordinates": [
             0,
             0
@@ -3893,7 +3727,7 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": true,
+        "Connection_Point": false,
         "Coordinates": [
             0,
             0
@@ -3910,7 +3744,7 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": true,
+        "Connection_Point": false,
         "Coordinates": [
             0,
             0
@@ -3927,7 +3761,7 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": true,
+        "Connection_Point": false,
         "Coordinates": [
             0,
             0
@@ -5458,9 +5292,13 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "2.603",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -5613,7 +5451,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.306.01",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -5868,7 +5706,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.309",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -5885,7 +5723,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.303",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -5902,7 +5740,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.304",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -5919,7 +5757,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.305",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -5936,7 +5774,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.301-12",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -5953,7 +5791,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.310",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -5970,7 +5808,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.306",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -5987,7 +5825,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.311",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -6004,7 +5842,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.308",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -6021,7 +5859,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.301",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -6072,7 +5910,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.3.3",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -6089,7 +5927,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.302",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -6480,7 +6318,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.406",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -6497,7 +6335,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.401",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -6514,7 +6352,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.411",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -6531,7 +6369,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.408",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -6548,7 +6386,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.407",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -6565,7 +6403,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.413",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -6582,7 +6420,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.409",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -6599,7 +6437,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.412",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -6633,7 +6471,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.413-03",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -6650,7 +6488,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.401-15",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -6667,7 +6505,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.410",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -6684,7 +6522,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.402",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -6701,7 +6539,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.403",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -6718,7 +6556,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.404",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -6735,7 +6573,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.405",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -6825,16 +6663,595 @@
         "Sheltered": true,
         "Visited": 0
     },
+    "Building_5_Level_3_ENTRANCE__ALUMNI_OFFICE_/_ALUMNI_LOUNGE": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_ENTRANCE__CAREER_DEVELOPMENT_CENTRE_/_OFFICE_OF_UNDERGRADUATE_STUDIES": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_ENTRANCE__CAREER_DEVELOPMENT_CENTRE_/_OFFICE_OF_UNDERGRADUATE_STUDIES_2": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_ENTRANCE__FIRE_FIGHTING_LOBBY_O": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_ENTRANCE__SMOKE_STOP_LOBBY_N": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_ENTRANCE__TRAINING_ROOM": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_INTER__OUTSIDE_ALUMNI_OFFICE_BEND": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_INTER__OUTSIDE_FIRE_FIGHTING_LOBBY_O_BEND": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_LIFT__LOBBY_O": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_ROOM__ALUMNI_OFFICE_/_ALUMNI_LOUNGE": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_ROOM__CAREER_DEVELOPMENT_CENTRE": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_ROOM__OFFICE_OF_UNDERGRADUATE_STUDIES": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_ROOM__TRAINING_ROOM": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_STAIRS__S501": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_STAIRS__S502": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_TOILET__1": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_WALKWAY__LINK_BRIDGE_BUILDING_2<->5": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_4_ENTRANCE__DATA_CENTRE": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            25.8823269039836,
+            19.788298251049138
+        ],
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE_2": 12,
+            "Building_5_Level_4_ROOM__DATA_CENTRE": 10,
+            "Building_5_Level_4_TOILET__1": 21
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE_2": 220,
+            "Building_5_Level_4_ROOM__DATA_CENTRE": 270,
+            "Building_5_Level_4_TOILET__1": 40
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_4_ENTRANCE__FIRE_FIGHTING_LOBBY_O": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            35.53278917727884,
+            48.00401817863024
+        ],
+        "Neighbour": {
+            "Building_5_Level_4_INTER__OUTSIDE_LOBBY_O_BEND": 10,
+            "Building_5_Level_4_LIFT__LOBBY_O": 4,
+            "Building_5_Level_4_STAIRS__S501": 6
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_INTER__OUTSIDE_LOBBY_O_BEND": 100,
+            "Building_5_Level_4_LIFT__LOBBY_O": 170,
+            "Building_5_Level_4_STAIRS__S501": 205
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_4_ENTRANCE__SMOKE_STOP_LOBBY_N": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            2.383787100566278,
+            3.701364945550599
+        ],
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE": 6,
+            "Building_5_Level_4_STAIRS__S502": 2
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE": 90,
+            "Building_5_Level_4_STAIRS__S502": 0
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            8.383787100566279,
+            3.7013649455505995
+        ],
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__SMOKE_STOP_LOBBY_N": 6,
+            "Building_5_Level_4_INTER__OUTSIDE_STUDENT_ACTIVITY_CENTRE_BEND": 4,
+            "Building_5_Level_4_ROOM__STUDENT_ACTIVITY_CENTRE": 7
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__SMOKE_STOP_LOBBY_N": 270,
+            "Building_5_Level_4_INTER__OUTSIDE_STUDENT_ACTIVITY_CENTRE_BEND": 90,
+            "Building_5_Level_4_ROOM__STUDENT_ACTIVITY_CENTRE": 0
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE_2": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            18.16887558774513,
+            10.595764933621401
+        ],
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__DATA_CENTRE": 12,
+            "Building_5_Level_4_INTER__OUTSIDE_STUDENT_ACTIVITY_CENTRE_BEND": 9,
+            "Building_5_Level_4_ROOM__STUDENT_ACTIVITY_CENTRE": 9.785658284675568
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__DATA_CENTRE": 40,
+            "Building_5_Level_4_INTER__OUTSIDE_STUDENT_ACTIVITY_CENTRE_BEND": 220,
+            "Building_5_Level_4_ROOM__STUDENT_ACTIVITY_CENTRE": 270.61830816704696
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_4_INTER__OUTSIDE_LOBBY_O_BEND": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            45.380866707400926,
+            46.26753640196094
+        ],
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__FIRE_FIGHTING_LOBBY_O": 10,
+            "Building_5_Level_4_TOILET__1": 12
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__FIRE_FIGHTING_LOBBY_O": 280,
+            "Building_5_Level_4_TOILET__1": 210
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_4_INTER__OUTSIDE_STUDENT_ACTIVITY_CENTRE_BEND": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            12.383787100566277,
+            3.7013649455505995
+        ],
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE": 4,
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE_2": 9
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE": 270,
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE_2": 40
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_4_LIFT__LOBBY_O": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": true,
+        "Coordinates": [
+            36.227381887946564,
+            44.064787166581404
+        ],
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__FIRE_FIGHTING_LOBBY_O": 4,
+            "Building_5_Level_4_STAIRS__S501": 3.560997314535409
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__FIRE_FIGHTING_LOBBY_O": 350,
+            "Building_5_Level_4_STAIRS__S501": 245.1122691051619
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_4_ROOM__DATA_CENTRE": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            15.8823269039836,
+            19.788298251049135
+        ],
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__DATA_CENTRE": 10
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__DATA_CENTRE": 90
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
     "Building_5_Level_4_ROOM__STUDENT_ACTIVITY_CENTRE": {
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
-        "Description": "Club lockers and activity centre",
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Coordinates": [
+            8.383787100566279,
+            10.7013649455506
+        ],
+        "Description": "Student Activity Centre is located in Building 5 Level 4, and is a common space in SUTD for students to use for their activities, be it club or academic. The room mainly serves as storage for SUTD clubs and interest groups, in the form of lockers and rooms. Apply with Office of Student Life (OSL) for club storage space. Air conditioned, and can be accessed by student red card, closing time approximately 2300.",
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE": 7,
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE_2": 9.785658284675568
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE": 180,
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE_2": 90.61830816704696
+        },
         "Room_ID": "5.401",
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_4_STAIRS__S501": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": true,
+        "Coordinates": [
+            32.997079606834646,
+            42.56617145641034
+        ],
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__FIRE_FIGHTING_LOBBY_O": 6,
+            "Building_5_Level_4_LIFT__LOBBY_O": 3.560997314535409
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__FIRE_FIGHTING_LOBBY_O": 25,
+            "Building_5_Level_4_LIFT__LOBBY_O": 65.11226910516189
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_4_STAIRS__S502": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": true,
+        "Coordinates": [
+            2.383787100566278,
+            5.7013649455505995
+        ],
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__SMOKE_STOP_LOBBY_N": 2
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__SMOKE_STOP_LOBBY_N": 180
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_4_TOILET__1": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            39.380866707400926,
+            35.875231556547675
+        ],
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__DATA_CENTRE": 21,
+            "Building_5_Level_4_INTER__OUTSIDE_LOBBY_O_BEND": 12
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__DATA_CENTRE": 220,
+            "Building_5_Level_4_INTER__OUTSIDE_LOBBY_O_BEND": 30
+        },
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -6844,7 +7261,11 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": true,
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
         "Neighbour": {},
         "Neighbour_head": {},
         "Room_ID": null,
@@ -6856,22 +7277,14 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {
-            "Building_1_Level_2_LIFT__LOBBY_C": "Building_1_Level_2.json",
-            "Building_1_Level_3_LIFT__LOBBY_C": "Building_1_Level_3.json",
-            "Building_1_Level_4_LIFT__LOBBY_C": "Building_1_Level_4.json"
-        },
-        "Connection_Point": true,
-        "Neighbour": {
-            "Building_1_Level_2_LIFT__LOBBY_C": 2.0,
-            "Building_1_Level_3_LIFT__LOBBY_C": 2.0,
-            "Building_1_Level_4_LIFT__LOBBY_C": 2.0
-        },
-        "Neighbour_head": {
-            "Building_1_Level_2_LIFT__LOBBY_C": 0,
-            "Building_1_Level_3_LIFT__LOBBY_C": 0,
-            "Building_1_Level_4_LIFT__LOBBY_C": 0
-        },
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -6881,22 +7294,14 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {
-            "Building_2_Level_2_LIFT__LOBBY_E": "Building_2_Level_2.json",
-            "Building_2_Level_3_LIFT__LOBBY_E": "Building_2_Level_3.json",
-            "Building_2_Level_4_LIFT__LOBBY_E": "Building_2_Level_4.json"
-        },
-        "Connection_Point": true,
-        "Neighbour": {
-            "Building_2_Level_2_LIFT__LOBBY_E": 3,
-            "Building_2_Level_3_LIFT__LOBBY_E": 4,
-            "Building_2_Level_4_LIFT__LOBBY_E": 5
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_LIFT__LOBBY_E": 270,
-            "Building_2_Level_3_LIFT__LOBBY_E": 270,
-            "Building_2_Level_4_LIFT__LOBBY_E": 270
-        },
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -6906,19 +7311,14 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {
-            "Building_2_Level_2_LIFT__LOBBY_F": "Building_2_Level_2.json",
-            "Building_2_Level_4_LIFT__LOBBY_F": "Building_2_Level_4.json"
-        },
-        "Connection_Point": true,
-        "Neighbour": {
-            "Building_2_Level_2_LIFT__LOBBY_F": 3,
-            "Building_2_Level_4_LIFT__LOBBY_F": 6
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_LIFT__LOBBY_F": 270,
-            "Building_2_Level_4_LIFT__LOBBY_F": 270
-        },
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -6928,19 +7328,14 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {
-            "Building_2_Level_2_LIFT__LOBBY_J": "Building_2_Level_2.json",
-            "Building_2_Level_4_LIFT__LIFT_LOBBY_J": "Building_2_Level_4.json"
-        },
-        "Connection_Point": true,
-        "Neighbour": {
-            "Building_2_Level_2_LIFT__LOBBY_J": 3,
-            "Building_2_Level_4_LIFT__LIFT_LOBBY_J": 6
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_LIFT__LOBBY_J": 260,
-            "Building_2_Level_4_LIFT__LIFT_LOBBY_J": 265
-        },
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -6951,7 +7346,11 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": true,
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
         "Neighbour": {},
         "Neighbour_head": {},
         "Room_ID": null,
@@ -6964,7 +7363,11 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": true,
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
         "Neighbour": {},
         "Neighbour_head": {},
         "Room_ID": null,
@@ -6978,12 +7381,12 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
-        "Neighbour": {
-            "Special_Zones_Level_1_BUILDING_2": 5.0
-        },
-        "Neighbour_head": {
-            "Special_Zones_Level_1_BUILDING_2": 0
-        },
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -6995,12 +7398,12 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
-        "Neighbour": {
-            "Special_Zones_Level_1_BUILDING_1": 5.0
-        },
-        "Neighbour_head": {
-            "Special_Zones_Level_1_BUILDING_1": 18
-        },
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -7012,12 +7415,12 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
-        "Neighbour": {
-            "Special_Zones_Level_2_BUILDING_SPORTS_AND_RECREATION_CENTRE": 4.0
-        },
-        "Neighbour_head": {
-            "Special_Zones_Level_2_BUILDING_SPORTS_AND_RECREATION_CENTRE": 0
-        },
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -7029,14 +7432,12 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
-        "Neighbour": {
-            "Special_Zones_Level_2_BUILDING_BUILDING_2": 4.0,
-            "Special_Zones_Level_2_BUILDING_BUILDING_3": 4.0
-        },
-        "Neighbour_head": {
-            "Special_Zones_Level_2_BUILDING_BUILDING_2": 0,
-            "Special_Zones_Level_2_BUILDING_BUILDING_3": 0
-        },
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -7048,14 +7449,12 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
-        "Neighbour": {
-            "Special_Zones_Level_2_BUILDING_BUILDING_1": 4.0,
-            "Special_Zones_Level_2_BUILDING_BUILDING_3": 4.0
-        },
-        "Neighbour_head": {
-            "Special_Zones_Level_2_BUILDING_BUILDING_1": 18,
-            "Special_Zones_Level_2_BUILDING_BUILDING_3": 0
-        },
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -7067,14 +7466,12 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
-        "Neighbour": {
-            "Special_Zones_Level_2_BUILDING_BUILDING_1": 4.0,
-            "Special_Zones_Level_2_BUILDING_BUILDING_2": 4.0
-        },
-        "Neighbour_head": {
-            "Special_Zones_Level_2_BUILDING_BUILDING_1": 18,
-            "Special_Zones_Level_2_BUILDING_BUILDING_2": 18
-        },
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -7086,12 +7483,12 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
-        "Neighbour": {
-            "Special_Zones_Level_2_BUILDING_BLOCK_59": 4.0
-        },
-        "Neighbour_head": {
-            "Special_Zones_Level_2_BUILDING_BLOCK_59": 18
-        },
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -7103,14 +7500,12 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
-        "Neighbour": {
-            "Special_Zones_Level_3_BUILDING_2": 3.0,
-            "Special_Zones_Level_3_BUILDING_3": 5.0
-        },
-        "Neighbour_head": {
-            "Special_Zones_Level_3_BUILDING_2": 0,
-            "Special_Zones_Level_3_BUILDING_3": 0
-        },
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -7122,16 +7517,12 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
-        "Neighbour": {
-            "Special_Zones_Level_3_BUILDING_1": 3.0,
-            "Special_Zones_Level_3_BUILDING_3": 5.0,
-            "Special_Zones_Level_3_BUILDING_5": 4.0
-        },
-        "Neighbour_head": {
-            "Special_Zones_Level_3_BUILDING_1": 18,
-            "Special_Zones_Level_3_BUILDING_3": 0,
-            "Special_Zones_Level_3_BUILDING_5": 18
-        },
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -7143,14 +7534,12 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
-        "Neighbour": {
-            "Special_Zones_Level_3_BUILDING_1": 5.0,
-            "Special_Zones_Level_3_BUILDING_2": 5.0
-        },
-        "Neighbour_head": {
-            "Special_Zones_Level_3_BUILDING_1": 18,
-            "Special_Zones_Level_3_BUILDING_2": 18
-        },
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -7162,12 +7551,12 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
-        "Neighbour": {
-            "Special_Zones_Level_3_BUILDING_2": 4.0
-        },
-        "Neighbour_head": {
-            "Special_Zones_Level_3_BUILDING_2": 0
-        },
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -7179,12 +7568,12 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
-        "Neighbour": {
-            "Special_Zones_Level_5_BUILDING_BUILDING_2": 4.0
-        },
-        "Neighbour_head": {
-            "Special_Zones_Level_5_BUILDING_BUILDING_2": 0
-        },
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -7196,12 +7585,12 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
-        "Neighbour": {
-            "Special_Zones_Level_5_BUILDING_BUILDING_1": 4.0
-        },
-        "Neighbour_head": {
-            "Special_Zones_Level_5_BUILDING_BUILDING_1": 18
-        },
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,

@@ -147,7 +147,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.306.01",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -402,7 +402,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.309",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -419,7 +419,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.303",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -436,7 +436,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.304",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -453,7 +453,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.305",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -470,7 +470,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.301-12",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -487,7 +487,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.310",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -504,7 +504,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.306",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -521,7 +521,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.311",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -538,7 +538,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.308",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -555,7 +555,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.301",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -606,7 +606,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.3.3",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -623,7 +623,7 @@
         ],
         "Neighbour": {},
         "Neighbour_head": {},
-        "Room_ID": "3.302",
+        "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0

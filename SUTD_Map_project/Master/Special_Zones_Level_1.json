@@ -5,16 +5,16 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
-        "Neighbour": {
-            "Special_Zones_Level_1_BUILDING_2": 5.0
-        },
-        "Neighbour_head": {
-            "Special_Zones_Level_1_BUILDING_2": 0
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
-        "Visited": 0
+        "Visited": 0,
+        "Coordinates": [
+            0,
+            0
+        ]
     },
     "Special_Zones_Level_1_BUILDING_2": {
         "Access_Clearance": [],
@@ -22,15 +22,15 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
-        "Neighbour": {
-            "Special_Zones_Level_1_BUILDING_1": 5.0
-        },
-        "Neighbour_head": {
-            "Special_Zones_Level_1_BUILDING_1": 18
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
-        "Visited": 0
+        "Visited": 0,
+        "Coordinates": [
+            0,
+            0
+        ]
     }
 }
