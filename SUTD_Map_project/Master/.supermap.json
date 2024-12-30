@@ -6663,6 +6663,295 @@
         "Sheltered": true,
         "Visited": 0
     },
+    "Building_5_Level_3_ENTRANCE__ALUMNI_OFFICE_/_ALUMNI_LOUNGE": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_ENTRANCE__CAREER_DEVELOPMENT_CENTRE_/_OFFICE_OF_UNDERGRADUATE_STUDIES": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_ENTRANCE__CAREER_DEVELOPMENT_CENTRE_/_OFFICE_OF_UNDERGRADUATE_STUDIES_2": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_ENTRANCE__FIRE_FIGHTING_LOBBY_O": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_ENTRANCE__SMOKE_STOP_LOBBY_N": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_ENTRANCE__TRAINING_ROOM": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_INTER__OUTSIDE_ALUMNI_OFFICE_BEND": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_INTER__OUTSIDE_FIRE_FIGHTING_LOBBY_O_BEND": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_LIFT__LOBBY_O": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_ROOM__ALUMNI_OFFICE_/_ALUMNI_LOUNGE": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_ROOM__CAREER_DEVELOPMENT_CENTRE": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_ROOM__OFFICE_OF_UNDERGRADUATE_STUDIES": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_ROOM__TRAINING_ROOM": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_STAIRS__S501": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_STAIRS__S502": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_TOILET__1": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
+    "Building_5_Level_3_WALKWAY__LINK_BRIDGE_BUILDING_2<->5": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
+        "Neighbour": {},
+        "Neighbour_head": {},
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
     "Building_5_Level_4_ENTRANCE__DATA_CENTRE": {
         "Access_Clearance": [],
         "Average_travel_time": null,
