@@ -6959,11 +6959,19 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            25.8823269039836,
+            19.788298251049138
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE_2": 12,
+            "Building_5_Level_4_ROOM__DATA_CENTRE": 10,
+            "Building_5_Level_4_TOILET__1": 21
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE_2": 220,
+            "Building_5_Level_4_ROOM__DATA_CENTRE": 270,
+            "Building_5_Level_4_TOILET__1": 40
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -6976,11 +6984,19 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            35.53278917727884,
+            48.00401817863024
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_5_Level_4_INTER__OUTSIDE_LOBBY_O_BEND": 10,
+            "Building_5_Level_4_LIFT__LOBBY_O": 4,
+            "Building_5_Level_4_STAIRS__S501": 6
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_INTER__OUTSIDE_LOBBY_O_BEND": 100,
+            "Building_5_Level_4_LIFT__LOBBY_O": 170,
+            "Building_5_Level_4_STAIRS__S501": 205
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -6993,11 +7009,17 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            2.383787100566278,
+            3.701364945550599
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE": 6,
+            "Building_5_Level_4_STAIRS__S502": 2
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE": 90,
+            "Building_5_Level_4_STAIRS__S502": 0
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -7010,11 +7032,19 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            8.383787100566279,
+            3.7013649455505995
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__SMOKE_STOP_LOBBY_N": 6,
+            "Building_5_Level_4_INTER__OUTSIDE_STUDENT_ACTIVITY_CENTRE_BEND": 4,
+            "Building_5_Level_4_ROOM__STUDENT_ACTIVITY_CENTRE": 7
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__SMOKE_STOP_LOBBY_N": 270,
+            "Building_5_Level_4_INTER__OUTSIDE_STUDENT_ACTIVITY_CENTRE_BEND": 90,
+            "Building_5_Level_4_ROOM__STUDENT_ACTIVITY_CENTRE": 0
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -7027,11 +7057,19 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            18.16887558774513,
+            10.595764933621401
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__DATA_CENTRE": 12,
+            "Building_5_Level_4_INTER__OUTSIDE_STUDENT_ACTIVITY_CENTRE_BEND": 9,
+            "Building_5_Level_4_ROOM__STUDENT_ACTIVITY_CENTRE": 9.785658284675568
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__DATA_CENTRE": 40,
+            "Building_5_Level_4_INTER__OUTSIDE_STUDENT_ACTIVITY_CENTRE_BEND": 220,
+            "Building_5_Level_4_ROOM__STUDENT_ACTIVITY_CENTRE": 270.61830816704696
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -7044,11 +7082,17 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            45.380866707400926,
+            46.26753640196094
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__FIRE_FIGHTING_LOBBY_O": 10,
+            "Building_5_Level_4_TOILET__1": 12
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__FIRE_FIGHTING_LOBBY_O": 280,
+            "Building_5_Level_4_TOILET__1": 210
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -7061,11 +7105,17 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            12.383787100566277,
+            3.7013649455505995
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE": 4,
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE_2": 9
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE": 270,
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE_2": 40
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -7076,13 +7126,19 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": false,
+        "Connection_Point": true,
         "Coordinates": [
-            0,
-            0
+            36.227381887946564,
+            44.064787166581404
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__FIRE_FIGHTING_LOBBY_O": 4,
+            "Building_5_Level_4_STAIRS__S501": 3.560997314535409
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__FIRE_FIGHTING_LOBBY_O": 350,
+            "Building_5_Level_4_STAIRS__S501": 245.1122691051619
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -7095,11 +7151,15 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            15.8823269039836,
+            19.788298251049135
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__DATA_CENTRE": 10
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__DATA_CENTRE": 90
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -7112,13 +7172,19 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            8.383787100566279,
+            10.7013649455506
         ],
         "Description": "Student Activity Centre is located in Building 5 Level 4, and is a common space in SUTD for students to use for their activities, be it club or academic. The room mainly serves as storage for SUTD clubs and interest groups, in the form of lockers and rooms. Apply with Office of Student Life (OSL) for club storage space. Air conditioned, and can be accessed by student red card, closing time approximately 2300.",
-        "Neighbour": {},
-        "Neighbour_head": {},
-        "Room_ID": null,
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE": 7,
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE_2": 9.785658284675568
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE": 180,
+            "Building_5_Level_4_ENTRANCE__STUDENT_ACTIVITY_CENTRE_2": 90.61830816704696
+        },
+        "Room_ID": "5.401",
         "Route_intersection": false,
         "Sheltered": true,
         "Visited": 0
@@ -7128,13 +7194,19 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": false,
+        "Connection_Point": true,
         "Coordinates": [
-            0,
-            0
+            32.997079606834646,
+            42.56617145641034
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__FIRE_FIGHTING_LOBBY_O": 6,
+            "Building_5_Level_4_LIFT__LOBBY_O": 3.560997314535409
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__FIRE_FIGHTING_LOBBY_O": 25,
+            "Building_5_Level_4_LIFT__LOBBY_O": 65.11226910516189
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -7145,13 +7217,17 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": false,
+        "Connection_Point": true,
         "Coordinates": [
-            0,
-            0
+            2.383787100566278,
+            5.7013649455505995
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__SMOKE_STOP_LOBBY_N": 2
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__SMOKE_STOP_LOBBY_N": 180
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -7164,11 +7240,17 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            39.380866707400926,
+            35.875231556547675
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_5_Level_4_ENTRANCE__DATA_CENTRE": 21,
+            "Building_5_Level_4_INTER__OUTSIDE_LOBBY_O_BEND": 12
+        },
+        "Neighbour_head": {
+            "Building_5_Level_4_ENTRANCE__DATA_CENTRE": 220,
+            "Building_5_Level_4_INTER__OUTSIDE_LOBBY_O_BEND": 30
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
