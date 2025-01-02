@@ -685,6 +685,7 @@ class Graph():
             print("No neighbours to add!\n")
             return
         prompt = "existing vertex ID to add as neighbour of {}".format(vertex_ID)
+        vert_list.sort()
 
         while True:
             neighbour_ID = Graph.query("list", prompt, vert_list, quit_option=True, confirm_selected_option=True)

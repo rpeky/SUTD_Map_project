@@ -1482,14 +1482,20 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {},
-        "Connection_Point": false,
+        "Connected_vertex": {
+            "Building_5_Level_3_WALKWAY__LINK_BRIDGE_BUILDING_2<->5": "Building_5_Level_3.json"
+        },
+        "Connection_Point": true,
         "Coordinates": [
             0,
             0
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_5_Level_3_WALKWAY__LINK_BRIDGE_BUILDING_2<->5": 33
+        },
+        "Neighbour_head": {
+            "Building_5_Level_3_WALKWAY__LINK_BRIDGE_BUILDING_2<->5": 10
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,

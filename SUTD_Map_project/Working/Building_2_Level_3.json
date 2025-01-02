@@ -159,11 +159,19 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            -26.178893568691457,
+            24.904867452293637
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_1_2": 8,
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_2_2": 5,
+            "Building_2_Level_3_ROOM__DYSON_STUDIO_1": 5
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_1_2": 270,
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_2_2": 90,
+            "Building_2_Level_3_ROOM__DYSON_STUDIO_1": 0
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -176,11 +184,19 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            -34.17889356869146,
+            24.904867452293637
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_1": 8,
+            "Building_2_Level_3_ENTRANCE__TECH_OFFICE": 8,
+            "Building_2_Level_3_ROOM__DYSON_STUDIO_1": 9.433981132056605
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_1": 90,
+            "Building_2_Level_3_ENTRANCE__TECH_OFFICE": 270,
+            "Building_2_Level_3_ROOM__DYSON_STUDIO_1": 57.9946167919165
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -193,11 +209,19 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            -13.178893568691457,
+            24.90486745229364
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_3_2": 8,
+            "Building_2_Level_3_INTER__DYSON_STUDIO_2_STUDIO_7": 6,
+            "Building_2_Level_3_ROOM__DYSON_STUDIO_2": 9.433981132056603
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_3_2": 90,
+            "Building_2_Level_3_INTER__DYSON_STUDIO_2_STUDIO_7": 270,
+            "Building_2_Level_3_ROOM__DYSON_STUDIO_2": 302.00538320808346
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -210,11 +234,19 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            -21.178893568691457,
+            24.90486745229364
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_1": 5,
+            "Building_2_Level_3_INTER__DYSON_STUDIO_2_STUDIO_7": 2,
+            "Building_2_Level_3_ROOM__DYSON_STUDIO_2": 5
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_1": 270,
+            "Building_2_Level_3_INTER__DYSON_STUDIO_2_STUDIO_7": 90,
+            "Building_2_Level_3_ROOM__DYSON_STUDIO_2": 0
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -227,11 +259,19 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            2.821106431308543,
+            24.90486745229364
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_INTER__AUDITORIUM_DYSON_STUDIO_3_STUDIO_7": 5,
+            "Building_2_Level_3_INTER__BRIDGE_DYSON_STUDIO_3": 3,
+            "Building_2_Level_3_ROOM__DYSON_STUDIO_3": 8.666495588566672
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_INTER__AUDITORIUM_DYSON_STUDIO_3_STUDIO_7": 270,
+            "Building_2_Level_3_INTER__BRIDGE_DYSON_STUDIO_3": 90,
+            "Building_2_Level_3_ROOM__DYSON_STUDIO_3": 304.6226802210916
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -244,11 +284,19 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            -5.178893568691457,
+            24.90486745229364
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_2": 8,
+            "Building_2_Level_3_INTER__AUDITORIUM_DYSON_STUDIO_3_STUDIO_7": 3,
+            "Building_2_Level_3_ROOM__DYSON_STUDIO_3": 5
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_2": 270,
+            "Building_2_Level_3_INTER__AUDITORIUM_DYSON_STUDIO_3_STUDIO_7": 90,
+            "Building_2_Level_3_ROOM__DYSON_STUDIO_3": 10
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -431,11 +479,19 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            -55.17889356869146,
+            24.904867452293637
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_ENTRANCE__SMOKE_STOP_LOBBY_H": 3,
+            "Building_2_Level_3_ENTRANCE__THINK_TANK_22": 6,
+            "Building_2_Level_3_ROOM__ROOT_COVE": 8
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_ENTRANCE__SMOKE_STOP_LOBBY_H": 90,
+            "Building_2_Level_3_ENTRANCE__THINK_TANK_22": 220,
+            "Building_2_Level_3_ROOM__ROOT_COVE": 350
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -482,11 +538,19 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            -52.17889356869146,
+            24.904867452293637
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_ENTRANCE__ROOT_COVE": 3,
+            "Building_2_Level_3_STAIRS__S201": 5,
+            "Building_2_Level_3_TOILET__2": 7
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_ENTRANCE__ROOT_COVE": 270,
+            "Building_2_Level_3_STAIRS__S201": 0,
+            "Building_2_Level_3_TOILET__2": 90
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -516,11 +580,15 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            -2.598076211353316,
+            1.5000000000000004
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_INTER__STUDIO_7_THINK_TANK_20": 3
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_INTER__STUDIO_7_THINK_TANK_20": 120
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -533,11 +601,15 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            -15.245948656435699,
+            4.290522725540429
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_INTER__LOBBY_F_STUDIO_7": 3
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_INTER__LOBBY_F_STUDIO_7": 220
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -550,11 +622,19 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            -42.17889356869146,
+            24.904867452293637
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_1_2": 8,
+            "Building_2_Level_3_ROOM__TECH_OFFICE": 5,
+            "Building_2_Level_3_TOILET__2": 3
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_1_2": 90,
+            "Building_2_Level_3_ROOM__TECH_OFFICE": 0,
+            "Building_2_Level_3_TOILET__2": 270
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -601,11 +681,15 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            6.0,
+            3.6739403974420594e-16
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_INTER__STUDIO_7_THINK_TANK_20": 6
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_INTER__STUDIO_7_THINK_TANK_20": 270
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -635,11 +719,15 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            -59.035619226810695,
+            20.308600793579767
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_ENTRANCE__ROOT_COVE": 6
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_ENTRANCE__ROOT_COVE": 40
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -669,11 +757,19 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            -2.178893568691457,
+            24.90486745229364
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_3": 5,
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_3_2": 3,
+            "Building_2_Level_3_INTER__STUDIO_7_THINK_TANK_20": 25
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_3": 90,
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_3_2": 270,
+            "Building_2_Level_3_INTER__STUDIO_7_THINK_TANK_20": 175
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -703,11 +799,15 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            5.821106431308543,
+            24.90486745229364
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_3": 3
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_3": 270
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -771,11 +871,19 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            -19.178893568691457,
+            24.90486745229364
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_2": 6,
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_2_2": 2,
+            "Building_2_Level_3_INTER__LOBBY_F_STUDIO_7": 23
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_2": 90,
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_2_2": 270,
+            "Building_2_Level_3_INTER__LOBBY_F_STUDIO_7": 175
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -849,6 +957,31 @@
         "Sheltered": true,
         "Visited": 0
     },
+    "Building_2_Level_3_INTER__LOBBY_F_STUDIO_7": {
+        "Access_Clearance": [],
+        "Average_travel_time": null,
+        "Avg_density": 1,
+        "Connected_vertex": {},
+        "Connection_Point": false,
+        "Coordinates": [
+            -17.174311485495316,
+            1.9923893961834942
+        ],
+        "Neighbour": {
+            "Building_2_Level_3_ENTRANCE__STUDIO_7_2": 3,
+            "Building_2_Level_3_INTER__DYSON_STUDIO_2_STUDIO_7": 23,
+            "Building_2_Level_3_STAIRS__LOBBY_F": 5
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_ENTRANCE__STUDIO_7_2": 40,
+            "Building_2_Level_3_INTER__DYSON_STUDIO_2_STUDIO_7": 355,
+            "Building_2_Level_3_STAIRS__LOBBY_F": 90
+        },
+        "Room_ID": null,
+        "Route_intersection": false,
+        "Sheltered": true,
+        "Visited": 0
+    },
     "Building_2_Level_3_INTER__SPIRAL_STAIRS_AUDITORIUM_AI_MEGA_CENTRE": {
         "Access_Clearance": [],
         "Average_travel_time": null,
@@ -876,8 +1009,16 @@
             0,
             0
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_ENTRANCE__STUDIO_7": 3,
+            "Building_2_Level_3_ENTRANCE__THINK_TANK_20": 6,
+            "Building_2_Level_3_INTER__AUDITORIUM_DYSON_STUDIO_3_STUDIO_7": 25
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_ENTRANCE__STUDIO_7": 300,
+            "Building_2_Level_3_ENTRANCE__THINK_TANK_20": 90,
+            "Building_2_Level_3_INTER__AUDITORIUM_DYSON_STUDIO_3_STUDIO_7": 355
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -904,23 +1045,14 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {
-            "Building_2_Level_2_LIFT__LOBBY_E": "Building_2_Level_2.json",
-            "LEVEL_1_Level_1_LIFT__LOBBY_E": "LEVEL_1_Level_1.json"
-        },
-        "Connection_Point": true,
+        "Connected_vertex": {},
+        "Connection_Point": false,
         "Coordinates": [
             0,
             0
         ],
-        "Neighbour": {
-            "Building_2_Level_2_LIFT__LOBBY_E": 3,
-            "LEVEL_1_Level_1_LIFT__LOBBY_E": 4
-        },
-        "Neighbour_head": {
-            "Building_2_Level_2_LIFT__LOBBY_E": 270,
-            "LEVEL_1_Level_1_LIFT__LOBBY_E": 270
-        },
+        "Neighbour": {},
+        "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -1052,11 +1184,19 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            -26.178893568691457,
+            29.90486745229364
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_1": 5,
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_1_2": 9.433981132056605,
+            "Building_2_Level_3_ROOM__DYSON_STUDIO_2": 5.0
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_1": 180,
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_1_2": 237.99461679191648,
+            "Building_2_Level_3_ROOM__DYSON_STUDIO_2": 90.0
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -1069,11 +1209,19 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            -21.178893568691457,
+            29.90486745229364
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_2": 9.433981132056603,
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_2_2": 5,
+            "Building_2_Level_3_ROOM__DYSON_STUDIO_1": 5.0
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_2": 122.00538320808346,
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_2_2": 180,
+            "Building_2_Level_3_ROOM__DYSON_STUDIO_1": 270.0
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -1086,11 +1234,17 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            -4.310652680356805,
+            29.82890621735468
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_3": 8.666495588566672,
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_3_2": 5
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_3": 124.62268022109163,
+            "Building_2_Level_3_ENTRANCE__DYSON_STUDIO_3_2": 190
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -1203,13 +1357,17 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": false,
+        "Connection_Point": true,
         "Coordinates": [
-            0,
-            0
+            -56.5680789900269,
+            32.7833294763913
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_ENTRANCE__ROOT_COVE": 8
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_ENTRANCE__ROOT_COVE": 170
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -1239,11 +1397,15 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            -42.17889356869146,
+            29.904867452293637
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_ENTRANCE__TECH_OFFICE": 5
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_ENTRANCE__TECH_OFFICE": 180
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -1317,23 +1479,6 @@
         "Sheltered": true,
         "Visited": 0
     },
-    "Building_2_Level_3_STAIRS__LIFT_LOBBY_F": {
-        "Access_Clearance": [],
-        "Average_travel_time": null,
-        "Avg_density": 1,
-        "Connected_vertex": {},
-        "Connection_Point": false,
-        "Coordinates": [
-            0,
-            0
-        ],
-        "Neighbour": {},
-        "Neighbour_head": {},
-        "Room_ID": null,
-        "Route_intersection": false,
-        "Sheltered": true,
-        "Visited": 0
-    },
     "Building_2_Level_3_STAIRS__LOBBY_F": {
         "Access_Clearance": [],
         "Average_travel_time": null,
@@ -1341,11 +1486,15 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            -12.174311485495316,
+            1.9923893961834944
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_INTER__LOBBY_F_STUDIO_7": 5
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_INTER__LOBBY_F_STUDIO_7": 270
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -1358,11 +1507,15 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            -52.17889356869146,
+            29.904867452293637
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_ENTRANCE__SMOKE_STOP_LOBBY_H": 5
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_ENTRANCE__SMOKE_STOP_LOBBY_H": 180
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -1460,11 +1613,17 @@
         "Connected_vertex": {},
         "Connection_Point": false,
         "Coordinates": [
-            0,
-            0
+            -45.17889356869146,
+            24.904867452293637
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_2_Level_3_ENTRANCE__SMOKE_STOP_LOBBY_H": 7,
+            "Building_2_Level_3_ENTRANCE__TECH_OFFICE": 3
+        },
+        "Neighbour_head": {
+            "Building_2_Level_3_ENTRANCE__SMOKE_STOP_LOBBY_H": 270,
+            "Building_2_Level_3_ENTRANCE__TECH_OFFICE": 90
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
@@ -1491,14 +1650,20 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {},
-        "Connection_Point": false,
+        "Connected_vertex": {
+            "Building_5_Level_3_WALKWAY__LINK_BRIDGE_BUILDING_2<->5": "Building_5_Level_3.json"
+        },
+        "Connection_Point": true,
         "Coordinates": [
             0,
             0
         ],
-        "Neighbour": {},
-        "Neighbour_head": {},
+        "Neighbour": {
+            "Building_5_Level_3_WALKWAY__LINK_BRIDGE_BUILDING_2<->5": 33
+        },
+        "Neighbour_head": {
+            "Building_5_Level_3_WALKWAY__LINK_BRIDGE_BUILDING_2<->5": 10
+        },
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,

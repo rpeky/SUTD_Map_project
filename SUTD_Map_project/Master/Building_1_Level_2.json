@@ -5,15 +5,15 @@
         "Avg_density": 1,
         "Connected_vertex": {},
         "Connection_Point": false,
+        "Coordinates": [
+            0,
+            0
+        ],
         "Neighbour": {},
         "Neighbour_head": {},
         "Room_ID": null,
         "Route_intersection": false,
         "Sheltered": true,
-        "Visited": 0,
-        "Coordinates": [
-            0,
-            0
-        ]
+        "Visited": 0
     }
 }
