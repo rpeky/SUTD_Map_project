@@ -274,7 +274,6 @@ class Query():
                 visited_vtxs.add(curr_vtx)
                 #find neighbours
                 adj_vtx=[i for i in superdd[curr_vtx]["Neighbour"].keys() if i in vtxs]
-                
                 for adj in adj_vtx:
                     #find old values to compare
                     print(f"check path values from {curr_vtx} to {adj}")

@@ -129,13 +129,11 @@ def superdijkstra():
     dd_supermap=None
     pass
 
-
 def update_vertex_structure():
     # Get all floorplan json files in Master
     master_dir = os.path.join(os.getcwd(), 'Master')
     master_files = [os.path.join(master_dir, file) for file in os.listdir(master_dir)]
     for file in master_files:
-
         # Check if each vertex dictionary follows the template Graph.vertex_template in Graph.py
         with open(file, r'r+') as in_file:
             map = json.load(in_file)
@@ -144,7 +142,6 @@ def update_vertex_structure():
                 for key, value in Graph.Graph.vertex_template.items():
                     if key not in vertex:
                         new_map[vertex][key] = copy.deepcopy(value)
-
         # Save all the new vertex dictionaries
         with open(file, r'w+') as out_file:
             json.dump(new_map, out_file, indent=4)
@@ -158,8 +155,9 @@ def main():
         ('pathfinding', runpq),
         ('graph mapping tool', graphtool_ini),
         ('lookup directory validation', validate_lookupdir),
-        ('supermap generation', print_supermap),
-        ('update vertex dictionary structure', update_vertex_structure)
+        ('supermap generation', print_supermap)
+        #hiding fn in case of accidental overwrite
+        #('update vertex dictionary structure', update_vertex_structure)
     ]
     while True:
         try:
