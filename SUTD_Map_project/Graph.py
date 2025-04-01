@@ -104,7 +104,8 @@ class Graph():
                     elif query_type == "range":
                         min_input, max_input = options
                         try:
-                            selected_index = int(user_input)
+                            # set as float for more accurate distance measurement
+                            selected_index = float(user_input)
                             if min_input <= selected_index < max_input:
                                 selected_option = selected_index
                                 break
