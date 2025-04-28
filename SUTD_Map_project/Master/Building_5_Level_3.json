@@ -322,6 +322,7 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {
+            "Building_5_Level_2_STAIRS__S501": "Building_5_Level_2.json",
             "Building_5_Level_4_STAIRS__S501": "Building_5_Level_4.json"
         },
         "Connection_Point": true,
@@ -330,10 +331,12 @@
             55.04431248390714
         ],
         "Neighbour": {
+            "Building_5_Level_2_STAIRS__S501": 20.0,
             "Building_5_Level_3_ENTRANCE__FIRE_FIGHTING_LOBBY_O": 6,
             "Building_5_Level_4_STAIRS__S501": 20
         },
         "Neighbour_head": {
+            "Building_5_Level_2_STAIRS__S501": 0.0,
             "Building_5_Level_3_ENTRANCE__FIRE_FIGHTING_LOBBY_O": 70,
             "Building_5_Level_4_STAIRS__S501": 0
         },
@@ -347,6 +350,7 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {
+            "Building_5_Level_2_STAIRS__S502": "Building_5_Level_2.json",
             "Building_5_Level_4_STAIRS__S502": "Building_5_Level_4.json"
         },
         "Connection_Point": true,
@@ -355,10 +359,12 @@
             1.5000000000000004
         ],
         "Neighbour": {
+            "Building_5_Level_2_STAIRS__S502": 20.0,
             "Building_5_Level_3_ENTRANCE__SMOKE_STOP_LOBBY_N": 3,
             "Building_5_Level_4_STAIRS__S502": 20
         },
         "Neighbour_head": {
+            "Building_5_Level_2_STAIRS__S502": 0.0,
             "Building_5_Level_3_ENTRANCE__SMOKE_STOP_LOBBY_N": 120,
             "Building_5_Level_4_STAIRS__S502": 0
         },

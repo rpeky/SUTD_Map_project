@@ -4,8 +4,10 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {
+            "Building_5_Level_2_LIFT__LOBBY_O": "Building_5_Level_2.json",
             "Building_5_Level_3_LIFT__LOBBY_O": "Building_5_Level_3.json",
-            "Building_5_Level_4_LIFT__LOBBY_O": "Building_5_Level_4.json"
+            "Building_5_Level_4_LIFT__LOBBY_O": "Building_5_Level_4.json",
+            "Building_5_Level_6_LIFT__LOBBY_O": "Building_5_Level_6.json"
         },
         "Connection_Point": true,
         "Coordinates": [
@@ -13,12 +15,16 @@
             0
         ],
         "Neighbour": {
+            "Building_5_Level_2_LIFT__LOBBY_O": 3.0,
             "Building_5_Level_3_LIFT__LOBBY_O": 2.0,
-            "Building_5_Level_4_LIFT__LOBBY_O": 1.0
+            "Building_5_Level_4_LIFT__LOBBY_O": 1.0,
+            "Building_5_Level_6_LIFT__LOBBY_O": 1.0
         },
         "Neighbour_head": {
+            "Building_5_Level_2_LIFT__LOBBY_O": 0.0,
             "Building_5_Level_3_LIFT__LOBBY_O": 0.0,
-            "Building_5_Level_4_LIFT__LOBBY_O": 0.0
+            "Building_5_Level_4_LIFT__LOBBY_O": 0.0,
+            "Building_5_Level_6_LIFT__LOBBY_O": 0.0
         },
         "Room_ID": null,
         "Route_intersection": false,
