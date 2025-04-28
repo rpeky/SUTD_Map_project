@@ -104,7 +104,8 @@ class Graph():
                     elif query_type == "range":
                         min_input, max_input = options
                         try:
-                            selected_index = int(user_input)
+                            # set as float for more accurate distance measurement
+                            selected_index = float(user_input)
                             if min_input <= selected_index < max_input:
                                 selected_option = selected_index
                                 break
@@ -212,7 +213,7 @@ class Graph():
                 else:
                     print("Invalid input\n")
             while True:
-                cont = input("Continue removing verteices? y/n: ")
+                cont = input("Continue removing vertices? y/n: ")
                 if cont in selection_yes:
                     break
                 elif cont in selection_no:
@@ -685,6 +686,7 @@ class Graph():
             print("No neighbours to add!\n")
             return
         prompt = "existing vertex ID to add as neighbour of {}".format(vertex_ID)
+        vert_list.sort()
 
         while True:
             neighbour_ID = Graph.query("list", prompt, vert_list, quit_option=True, confirm_selected_option=True)

@@ -172,17 +172,21 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {},
+        "Connected_vertex": {
+            "Building_5_Level_3_LIFT__LOBBY_O": "Building_5_Level_3.json"
+        },
         "Connection_Point": true,
         "Coordinates": [
             36.227381887946564,
             44.064787166581404
         ],
         "Neighbour": {
+            "Building_5_Level_3_LIFT__LOBBY_O": 1,
             "Building_5_Level_4_ENTRANCE__FIRE_FIGHTING_LOBBY_O": 4,
             "Building_5_Level_4_STAIRS__S501": 3.560997314535409
         },
         "Neighbour_head": {
+            "Building_5_Level_3_LIFT__LOBBY_O": 0,
             "Building_5_Level_4_ENTRANCE__FIRE_FIGHTING_LOBBY_O": 350,
             "Building_5_Level_4_STAIRS__S501": 245.1122691051619
         },
@@ -240,17 +244,21 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {},
+        "Connected_vertex": {
+            "Building_5_Level_3_STAIRS__S501": "Building_5_Level_3.json"
+        },
         "Connection_Point": true,
         "Coordinates": [
             32.997079606834646,
             42.56617145641034
         ],
         "Neighbour": {
+            "Building_5_Level_3_STAIRS__S501": 20,
             "Building_5_Level_4_ENTRANCE__FIRE_FIGHTING_LOBBY_O": 6,
             "Building_5_Level_4_LIFT__LOBBY_O": 3.560997314535409
         },
         "Neighbour_head": {
+            "Building_5_Level_3_STAIRS__S501": 0,
             "Building_5_Level_4_ENTRANCE__FIRE_FIGHTING_LOBBY_O": 25,
             "Building_5_Level_4_LIFT__LOBBY_O": 65.11226910516189
         },
@@ -263,16 +271,20 @@
         "Access_Clearance": [],
         "Average_travel_time": null,
         "Avg_density": 1,
-        "Connected_vertex": {},
+        "Connected_vertex": {
+            "Building_5_Level_3_STAIRS__S502": "Building_5_Level_3.json"
+        },
         "Connection_Point": true,
         "Coordinates": [
             2.383787100566278,
             5.7013649455505995
         ],
         "Neighbour": {
+            "Building_5_Level_3_STAIRS__S502": 20,
             "Building_5_Level_4_ENTRANCE__SMOKE_STOP_LOBBY_N": 2
         },
         "Neighbour_head": {
+            "Building_5_Level_3_STAIRS__S502": 0,
             "Building_5_Level_4_ENTRANCE__SMOKE_STOP_LOBBY_N": 180
         },
         "Room_ID": null,
