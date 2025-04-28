@@ -213,7 +213,7 @@ class Graph():
                 else:
                     print("Invalid input\n")
             while True:
-                cont = input("Continue removing verteices? y/n: ")
+                cont = input("Continue removing vertices? y/n: ")
                 if cont in selection_yes:
                     break
                 elif cont in selection_no:
