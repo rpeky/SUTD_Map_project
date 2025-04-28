@@ -325,6 +325,7 @@
             14.568766911527916,
             -34.47302890255477
         ],
+        "Description": "Maker Space 2 takes up the main area of the second floor of the Fabrication Lab in SUTD, with a laser cutting section, electronics section, drill press, work benches and a zund cutter amongs the avaliable tools and services on this floor.",
         "Neighbour": {
             "Building_5_Level_2_ENTRANCE__FABLAB_BALCONY": 9.24
         },
@@ -410,7 +411,7 @@
         "Average_travel_time": null,
         "Avg_density": 1,
         "Connected_vertex": {},
-        "Connection_Point": false,
+        "Connection_Point": true,
         "Coordinates": [
             0,
             0
