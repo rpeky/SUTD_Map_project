@@ -262,7 +262,7 @@ def main():
     while True:
         try:
             print(cl_s)
-            print("SUTD Map Project 2023/2024 Default Page\n")
+            print("SUTD Map Project 2023/2024/2025 Default Page\n")
             for i, (task, function) in enumerate(options):
                 print(f"{i} - Run {task}")
             # print("0 - Run Pathfinding\n1 - Run Graph mapping tool\n2 - Run Lookup directory validation\n3 - Run supermap generation\n")
